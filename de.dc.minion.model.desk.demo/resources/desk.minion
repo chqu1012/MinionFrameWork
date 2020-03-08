@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
+  <toadies>
+    <touchPoints xsi:type="model:VisionTouch">
+      <visions id="left.vision" name="Hello Vision" uri="de.dc.minion.model.desk.demo.vision.LeftVision"/>
+      <visions id="right.vision" name="Right Vision"/>
+    </touchPoints>
+    <touchPoints xsi:type="model:LandscapeTouch">
+      <landscapes id="hello.landscape" name="Hello Landscape" left="//@toadies.0/@touchPoints.0/@visions.0"/>
+      <landscapes name="Hello Vison" right="//@toadies.0/@touchPoints.0/@visions.1 //@toadies.0/@touchPoints.0/@visions.0"/>
+    </touchPoints>
+    <touchPoints xsi:type="model:ToolbarTouch">
+      <toolbarItems name="New File" command="//@toadies.0/@touchPoints.3/@commands.0"/>
+      <toolbarItems name="Open" command="//@toadies.0/@touchPoints.3/@commands.1"/>
+      <toolbarItems name="Save"/>
+      <toolbarItems name="Save as"/>
+    </touchPoints>
+    <touchPoints xsi:type="model:CommandTouch">
+      <commands id="de.dc.new.file" name="New File" handler="de.dc.minion.model.desk.demo.handler.NewFileHandler"/>
+      <commands id="open.file" name="Open File" handler="de.dc.minion.model.desk.demo.handler.OpenFileHandler"/>
+    </touchPoints>
+    <touchPoints xsi:type="model:DeskmanTouch">
+      <deskmans name="Minion Editor" uri="de.dc.minion.model.desk.controller.MinionEditor" extension="minion"/>
+    </touchPoints>
+  </toadies>
+</model:Minion>

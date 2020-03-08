@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Demo
+Bundle-SymbolicName: de.dc.minion.model.desk.demo
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: de.dc.minion.model.desk.demo
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: de.dc.minion.model.desk;bundle-version="1.0.0",
+ de.dc.minion.model;bundle-version="0.1.0",
+ de.dc.minion.model.common;bundle-version="1.0.0",
+ com.google.inject;bundle-version="3.0.0"

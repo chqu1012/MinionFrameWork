@@ -1,0 +1,104 @@
+@Ecore(nsURI="http://www.frateranatis.org/minon")
+@GenModel(multipleEditorPages="false", creationIcons="false", editDirectory="/de.dc.minion.model.edit/src-gen",
+	editorDirectory="/de.dc.minion.model.editor/src-gen", richClientPlatform="true", codeFormatting="true",
+	importerID="org.eclipse.emf.importer.ecore", runtimePlatform="RCP", fileExtensions="minion", modelName="Minon",
+	prefix="Minion", editPluginID="de.dc.minion.model.edit", tableProviders="true",
+	editorPluginID="de.dc.minion.model.editor", modelDirectory="/de.dc.minion.model/src-gen",
+	modelPluginID="de.dc.minion.model", generateExampleClass="false", revertAction="true", findAction="true",
+	expandAllAction="true", decoration="Live", creationSubmenus="true", collapseAllAction="true",
+	autoResizeProperties="true", autoExpandProperties="1")
+package de.dc.minion.fx.model
+
+class Minion{
+	// Plug-Ins
+	contains Toady[0..*] toadies
+}
+
+class Toady{
+	String ^id
+	// Extension Points
+	contains TouchPoint[0..*] touchPoints
+	ToadyStatus status
+}
+
+abstract class Touch{
+	String ^id
+	String name
+	String uri
+}
+
+abstract class TouchPoint{
+}
+
+class Command{
+	String ^id
+	String name
+	String handler
+}
+
+class ToolbarItem{
+	String ^id
+	String name
+	String tooltip
+	String icon
+	refers Command command
+}
+
+// Toolbar Extension Point
+class ToolbarTouch extends TouchPoint{
+	contains ToolbarItem[0..*] toolbarItems
+}
+
+// Command Registry Extension Point
+class CommandTouch extends TouchPoint{
+	contains Command[0..*] commands
+}
+
+// ViewParts Extension Point
+class VisionTouch extends TouchPoint, ChangeListener{
+	contains Vision[0..*] visions
+}
+
+// EditorParts Extension Point
+class DeskmanTouch extends TouchPoint{
+	contains Deskman[0..*] deskmans
+}
+
+// Perspective Extension Point
+class LandscapeTouch extends TouchPoint{
+	contains Landscape[0..*] landscapes
+}
+
+// ViewParts
+class Vision extends Touch, ChangeListener{
+	String icon
+}
+
+// EditorPart
+class Deskman extends Touch{
+	String icon
+	String ^extension
+}
+
+// Perspective
+class Landscape extends Touch{
+	refers Vision[0..*] left
+	refers Vision[0..*] right
+	refers Vision[0..*] bottom
+	refers Deskman[0..*] center
+	boolean showToolbar = 'true'
+	boolean showStatusbar = 'true'
+	boolean showMenubar = 'true'
+	boolean showSearch = 'true'
+	boolean showLandscapeSwitcher = 'true'
+}
+
+class ChangeListener{
+	boolean changeListener = 'true'
+}
+
+enum ToadyStatus{
+	Started
+	Stopped
+	Running
+}

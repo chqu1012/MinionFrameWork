@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension
+         point="org.eclipse.core.runtime.applications"
+         id="MinonEditorAdvisorApplication">
+      <!-- @generated minion -->
+      <application>
+         <run class="de.dc.minion.fx.model.presentation.MinonEditorAdvisor$Application"/>
+      </application>
+   </extension>
+
+   <extension point="org.eclipse.ui.perspectives">
+      <!-- @generated minion -->
+      <perspective
+            name="%_UI_Perspective_label"
+            class="de.dc.minion.fx.model.presentation.MinonEditorAdvisor$Perspective"
+            id="de.dc.minion.fx.model.presentation.MinonEditorAdvisorPerspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <!-- @generated minion -->
+      <command
+            name="%_UI_Menu_OpenURI_label"
+            description="%_UI_Menu_OpenURI_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.minion.fx.model.presentation.MinonEditorAdvisorOpenURICommand"/>
+      <command
+            name="%_UI_Menu_Open_label"
+            description="%_UI_Menu_Open_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.minion.fx.model.presentation.MinonEditorAdvisorOpenCommand"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <!-- @generated minion -->
+      <key
+            commandId="de.dc.minion.fx.model.presentation.MinonEditorAdvisorOpenURICommand"
+            sequence="M1+U"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="de.dc.minion.fx.model.presentation.MinonEditorAdvisorOpenCommand"
+            sequence="M1+O"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated minion -->
+      <actionSet
+            label="%_UI_MinonEditorAdvisor_ActionSet_label"
+            visible="true"
+            id="MinonEditorAdvisorActionSet">
+         <action
+               label="%_UI_Menu_About_label"
+               class="de.dc.minion.fx.model.presentation.MinonEditorAdvisor$AboutAction"
+               menubarPath="help/additions"
+               id="de.dc.minion.fx.model.presentation.MinonEditorAdvisorAboutAction"/>
+         <action
+               label="%_UI_Menu_OpenURI_label"
+               definitionId="de.dc.minion.fx.model.presentation.MinonEditorAdvisorOpenURICommand"
+               class="de.dc.minion.fx.model.presentation.MinonEditorAdvisor$OpenURIAction"
+               menubarPath="file/additions"
+               id="de.dc.minion.fx.model.presentation.MinonEditorAdvisorOpenURIAction"/>
+         <action
+               label="%_UI_Menu_Open_label"
+               definitionId="de.dc.minion.fx.model.presentation.MinonEditorAdvisorOpenCommand"
+               class="de.dc.minion.fx.model.presentation.MinonEditorAdvisor$OpenAction"
+               menubarPath="file/additions"
+               id="de.dc.minion.fx.model.presentation.MinonEditorAdvisorOpenAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated minion -->
+      <actionSet
+            label="%_UI_MinionModelWizard_ActionSet_label"
+            visible="true"
+            id="de.dc.minion.fx.model.presentation.MinionActionBarContributorActionSet">
+         <action
+               label="%_UI_MinionModelWizard_label"
+               class="de.dc.minion.fx.model.presentation.MinionActionBarContributor$NewAction"
+               menubarPath="file/new/additions"
+               id="de.dc.minion.fx.model.presentation.MinionActionBarContributorNewAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated minion -->
+      <editor
+            id="de.dc.minion.fx.model.presentation.MinionEditorID"
+            name="%_UI_MinionEditor_label"
+            icon="icons/full/obj16/MinionModelFile.gif"
+            extensions="minion"
+            class="de.dc.minion.fx.model.presentation.MinionEditor"
+            contributorClass="de.dc.minion.fx.model.presentation.MinionActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
