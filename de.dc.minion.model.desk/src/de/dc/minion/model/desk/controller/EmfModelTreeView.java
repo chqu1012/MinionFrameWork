@@ -292,8 +292,8 @@ public abstract class EmfModelTreeView<T> extends EmfModelView<T> {
 		}
 		if (selection != null) {
 			// TODO: Event command stack refresh
-//			MinionPlatform.getInstance(IEventBroker.class)
-//					.post(new EventContext<>(EventTopic.SELECTION, selection.getValue()));
+			MinionPlatform.getInstance(IEventBroker.class)
+					.post(new EventContext<>("property.selection", selection.getValue()));
 //			if (event.getClickCount() == 2) {
 //				eventBroker.post(new EventContext<>(EventTopic.OPEN_EDITOR, selection.getValue()));
 //			}
