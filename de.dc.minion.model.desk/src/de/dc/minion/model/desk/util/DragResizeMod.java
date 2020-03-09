@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Control;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -81,6 +82,8 @@ public class DragResizeMod {
                 ((Rectangle) node).setHeight(h);
             }else if (node instanceof Control) {
             	((Control) node).setPrefSize(w, h);
+            }else if (node instanceof Region) {
+            	((Region) node).setPrefSize(w, h);
 			}
         }
     };

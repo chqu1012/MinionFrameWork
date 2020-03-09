@@ -183,6 +183,7 @@ public class MinionBuilder extends MinionSwitch<Node>{
 			if (view==null) {
 				view = createVision(object);
 				view.setVision(object);
+				view.initialize();
 			}
 		} catch (NullPointerException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			log.log(Level.SEVERE, "Viewpart cannot created (id: " + object.getId() + "instance: "
@@ -209,8 +210,9 @@ public class MinionBuilder extends MinionSwitch<Node>{
 		IEmfViewPart view = controlManager.findViewBy(object.getId());
 		if (view==null) {
 			view = new MinionRecentlyOpenVision();
-			view.setVision(object);
 			MinionPlatform.inject(view);
+			view.setVision(object);
+			view.initialize();
 			controlManager.registrate(object.getId(), view);
 		}
 		return new TextArea("ViewPart cannot be created!");

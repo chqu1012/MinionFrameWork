@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import de.dc.minion.model.common.control.EmfViewPart;
 import de.dc.minion.model.common.event.ISelectionService;
 import de.dc.minion.model.desk.control.shape.DraggableItem;
+import de.dc.minion.model.desk.control.shape.ZoomableScrollPane;
 import de.dc.minion.model.desk.util.DragResizeMod;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,7 +24,7 @@ public class MinionParentChildVision extends EmfViewPart implements ChangeListen
 	@Override
 	public Parent create() {
 		parent = new Pane();
-		return parent;
+		return new ZoomableScrollPane(parent);
 	}
 	
 	@Override
@@ -42,7 +43,6 @@ public class MinionParentChildVision extends EmfViewPart implements ChangeListen
 				eObject.eAllContents().forEachRemaining(e->{
 					DraggableItem item = new DraggableItem(e.toString());
 					item.setOnMouseClicked(s-> item.selectionProperty().set(item.selectionProperty().not().get()));
-					DragResizeMod.makeResizable(item);
 					parent.getChildren().add(item);
 				});				
 			}
