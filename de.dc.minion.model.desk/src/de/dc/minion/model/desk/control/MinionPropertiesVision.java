@@ -1,4 +1,4 @@
-package de.dc.minion.model.common.file;
+package de.dc.minion.model.desk.control;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;

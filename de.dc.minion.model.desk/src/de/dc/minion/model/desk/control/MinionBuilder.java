@@ -33,7 +33,6 @@ import de.dc.minion.model.common.control.IEmfViewPart;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.event.ISelectionService;
 import de.dc.minion.model.common.file.IEmfFileManager;
-import de.dc.minion.model.common.file.MinionPropertiesVision;
 import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.Node;
