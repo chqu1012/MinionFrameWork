@@ -7,7 +7,9 @@ import java.util.List;
 import com.google.inject.Inject;
 
 import de.dc.minion.model.common.IControlManager;
+import de.dc.minion.model.common.control.EmfViewPart;
 import de.dc.minion.model.common.control.IEmfEditorPart;
+import de.dc.minion.model.common.control.IEmfViewPart;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.file.IEmfFileManager;
 import de.dc.minion.model.desk.control.dnd.DraggingTabPaneSupport;
@@ -165,7 +167,10 @@ public class LandscapeFX extends SplitPane {
 	
 	
 	
-	public void addToRight(Tab tab) {
+	public void addToRight(EmfViewPart tab) {
+		if (tab==null) {
+			return;
+		}
 		tab.setOnClosed(event -> {
 			if (rightTabPane.getTabs().isEmpty()) {
 				hideRight(true);
@@ -175,6 +180,9 @@ public class LandscapeFX extends SplitPane {
 	}
 
 	public void addToLeft(Tab tab) {
+		if (tab==null) {
+			return;
+		}
 		tab.setOnClosed(event -> {
 			if (leftTabPane.getTabs().isEmpty()) {
 				hideLeft(true);
@@ -183,7 +191,10 @@ public class LandscapeFX extends SplitPane {
 		leftTabPane.getTabs().add(tab);
 	}
 
-	public void addToBottom(Tab tab) {
+	public void addToBottom(EmfViewPart tab) {
+		if (tab==null) {
+			return;
+		}
 		tab.setOnClosed(event -> {
 			if (bottomPane.getTabs().isEmpty()) {
 				hideBottom(true);
@@ -192,7 +203,7 @@ public class LandscapeFX extends SplitPane {
 		bottomPane.getTabs().add(tab);
 	}
 
-	public void addToEditorArea(Tab tab) {
+	public void addToEditorArea(EmfViewPart tab) {
 		editorArea.getTabs().add(tab);
 	}
 }

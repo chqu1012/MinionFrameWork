@@ -351,6 +351,121 @@ public class MinionItemProviderAdapterFactory extends MinionAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.fx.model.RecentlyOpenVision} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RecentlyOpenVisionItemProvider recentlyOpenVisionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.fx.model.RecentlyOpenVision}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRecentlyOpenVisionAdapter() {
+		if (recentlyOpenVisionItemProvider == null) {
+			recentlyOpenVisionItemProvider = new RecentlyOpenVisionItemProvider(this);
+		}
+
+		return recentlyOpenVisionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.fx.model.RecentlyOpenFile} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RecentlyOpenFileItemProvider recentlyOpenFileItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.fx.model.RecentlyOpenFile}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRecentlyOpenFileAdapter() {
+		if (recentlyOpenFileItemProvider == null) {
+			recentlyOpenFileItemProvider = new RecentlyOpenFileItemProvider(this);
+		}
+
+		return recentlyOpenFileItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.fx.model.PropertyVision} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PropertyVisionItemProvider propertyVisionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.fx.model.PropertyVision}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPropertyVisionAdapter() {
+		if (propertyVisionItemProvider == null) {
+			propertyVisionItemProvider = new PropertyVisionItemProvider(this);
+		}
+
+		return propertyVisionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.fx.model.FileVision} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FileVisionItemProvider fileVisionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.fx.model.FileVision}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFileVisionAdapter() {
+		if (fileVisionItemProvider == null) {
+			fileVisionItemProvider = new FileVisionItemProvider(this);
+		}
+
+		return fileVisionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.fx.model.UndoRedoVision} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UndoRedoVisionItemProvider undoRedoVisionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.fx.model.UndoRedoVision}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUndoRedoVisionAdapter() {
+		if (undoRedoVisionItemProvider == null) {
+			undoRedoVisionItemProvider = new UndoRedoVisionItemProvider(this);
+		}
+
+		return undoRedoVisionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dc.minion.fx.model.ChangeListener} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -502,6 +617,16 @@ public class MinionItemProviderAdapterFactory extends MinionAdapterFactory
 			deskmanItemProvider.dispose();
 		if (landscapeItemProvider != null)
 			landscapeItemProvider.dispose();
+		if (recentlyOpenVisionItemProvider != null)
+			recentlyOpenVisionItemProvider.dispose();
+		if (recentlyOpenFileItemProvider != null)
+			recentlyOpenFileItemProvider.dispose();
+		if (propertyVisionItemProvider != null)
+			propertyVisionItemProvider.dispose();
+		if (fileVisionItemProvider != null)
+			fileVisionItemProvider.dispose();
+		if (undoRedoVisionItemProvider != null)
+			undoRedoVisionItemProvider.dispose();
 		if (changeListenerItemProvider != null)
 			changeListenerItemProvider.dispose();
 	}

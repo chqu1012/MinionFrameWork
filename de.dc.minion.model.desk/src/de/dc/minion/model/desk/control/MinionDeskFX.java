@@ -115,46 +115,8 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 				Minion minion = efile.load(minionFile.getAbsolutePath());
 				minionBuilder.setDesk(this);
 				minionBuilder.doSwitch(minion);
-				
-				
-//				for (ExtensionPoint point : extensionPoints) {
-//					if (point instanceof PerspectiveExtension) {
-//						PerspectiveExtension perspectiveExtions = (PerspectiveExtension) point;
-//						initPerspective(perspectiveExtions);
-//					} else if (point instanceof CommandExtension) {
-//						CommandExtension commandExtension = (CommandExtension) point;
-//						initCommand(commandExtension);
-//					} else if (point instanceof EditorExtension) {
-//						EditorExtension editorExtension = (EditorExtension) point;
-//						initEditors(editorExtension);
-//					}
-//				}
 			}
 		}
-	}
-
-	private void initEditors() {
-//		for (Editor editor : editorExtension.getEditors()) {
-//			try {
-//				Class<?> clazz = Class.forName(editor.getExtensionUri());
-//				IEmfEditorPart<?> view = (IEmfEditorPart) DIPlatform.getInstance(clazz);
-//				DIPlatform.getInstance(IEmfFileManager.class).register(view);
-//			} catch (NullPointerException | ClassNotFoundException e) {
-//				e.printStackTrace();
-//			}
-//		}
-	}
-
-	private void initCommand() {
-//		for (de.dc.javafx.xcore.workbench.extensions.Command c : commandExtension.getCommands()) {
-//			try {
-//				Class<IEmfCommand> commandClass = (Class<IEmfCommand>) Class.forName(c.getId());
-//				IEmfCommand command = DIPlatform.getInstance(commandClass);
-//				DIPlatform.getInstance(EmfCommandManager.class).register(c.getId(), command);
-//			} catch (ClassNotFoundException e) {
-//				log.log(Level.SEVERE, "Error on register command id " + c.getId() + ", message: " + e.getMessage());
-//			}
-//		}
 	}
 
 	public Minion getMinion() {

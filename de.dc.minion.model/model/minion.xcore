@@ -93,6 +93,21 @@ class Landscape extends Touch{
 	boolean showLandscapeSwitcher = 'true'
 }
 
+class RecentlyOpenVision extends Vision{
+	contains RecentlyOpenFile[0..*] files
+}
+
+class RecentlyOpenFile{
+	String name
+	Date timestamp
+}
+
+class PropertyVision extends Vision{}
+
+class FileVision extends Vision{}
+
+class UndoRedoVision extends Vision{}
+
 class ChangeListener{
 	boolean changeListener = 'true'
 }

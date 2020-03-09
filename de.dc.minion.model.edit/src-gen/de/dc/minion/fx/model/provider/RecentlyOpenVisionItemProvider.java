@@ -4,7 +4,7 @@ package de.dc.minion.fx.model.provider;
 
 import de.dc.minion.fx.model.MinionFactory;
 import de.dc.minion.fx.model.MinionPackage;
-import de.dc.minion.fx.model.VisionTouch;
+import de.dc.minion.fx.model.RecentlyOpenVision;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,26 +13,23 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dc.minion.fx.model.VisionTouch} object.
+ * This is the item provider adapter for a {@link de.dc.minion.fx.model.RecentlyOpenVision} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class VisionTouchItemProvider extends TouchPointItemProvider {
+public class RecentlyOpenVisionItemProvider extends VisionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VisionTouchItemProvider(AdapterFactory adapterFactory) {
+	public RecentlyOpenVisionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -47,25 +44,8 @@ public class VisionTouchItemProvider extends TouchPointItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addChangeListenerPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Change Listener feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addChangeListenerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ChangeListener_changeListener_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ChangeListener_changeListener_feature",
-								"_UI_ChangeListener_type"),
-						MinionPackage.Literals.CHANGE_LISTENER__CHANGE_LISTENER, true, false, false,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -80,7 +60,7 @@ public class VisionTouchItemProvider extends TouchPointItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(MinionPackage.Literals.VISION_TOUCH__VISIONS);
+			childrenFeatures.add(MinionPackage.Literals.RECENTLY_OPEN_VISION__FILES);
 		}
 		return childrenFeatures;
 	}
@@ -99,14 +79,14 @@ public class VisionTouchItemProvider extends TouchPointItemProvider {
 	}
 
 	/**
-	 * This returns VisionTouch.gif.
+	 * This returns RecentlyOpenVision.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/VisionTouch"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/RecentlyOpenVision"));
 	}
 
 	/**
@@ -127,8 +107,9 @@ public class VisionTouchItemProvider extends TouchPointItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		VisionTouch visionTouch = (VisionTouch) object;
-		return getString("_UI_VisionTouch_type") + " " + visionTouch.isChangeListener();
+		String label = ((RecentlyOpenVision) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_RecentlyOpenVision_type")
+				: getString("_UI_RecentlyOpenVision_type") + " " + label;
 	}
 
 	/**
@@ -142,11 +123,8 @@ public class VisionTouchItemProvider extends TouchPointItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(VisionTouch.class)) {
-		case MinionPackage.VISION_TOUCH__CHANGE_LISTENER:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		case MinionPackage.VISION_TOUCH__VISIONS:
+		switch (notification.getFeatureID(RecentlyOpenVision.class)) {
+		case MinionPackage.RECENTLY_OPEN_VISION__FILES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -164,20 +142,8 @@ public class VisionTouchItemProvider extends TouchPointItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(MinionPackage.Literals.VISION_TOUCH__VISIONS,
-				MinionFactory.eINSTANCE.createVision()));
-
-		newChildDescriptors.add(createChildParameter(MinionPackage.Literals.VISION_TOUCH__VISIONS,
-				MinionFactory.eINSTANCE.createRecentlyOpenVision()));
-
-		newChildDescriptors.add(createChildParameter(MinionPackage.Literals.VISION_TOUCH__VISIONS,
-				MinionFactory.eINSTANCE.createPropertyVision()));
-
-		newChildDescriptors.add(createChildParameter(MinionPackage.Literals.VISION_TOUCH__VISIONS,
-				MinionFactory.eINSTANCE.createFileVision()));
-
-		newChildDescriptors.add(createChildParameter(MinionPackage.Literals.VISION_TOUCH__VISIONS,
-				MinionFactory.eINSTANCE.createUndoRedoVision()));
+		newChildDescriptors.add(createChildParameter(MinionPackage.Literals.RECENTLY_OPEN_VISION__FILES,
+				MinionFactory.eINSTANCE.createRecentlyOpenFile()));
 	}
 
 }

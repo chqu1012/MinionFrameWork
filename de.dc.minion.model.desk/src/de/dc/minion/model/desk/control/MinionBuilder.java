@@ -16,6 +16,8 @@ import de.dc.minion.fx.model.DeskmanTouch;
 import de.dc.minion.fx.model.Landscape;
 import de.dc.minion.fx.model.LandscapeTouch;
 import de.dc.minion.fx.model.Minion;
+import de.dc.minion.fx.model.RecentlyOpenFile;
+import de.dc.minion.fx.model.RecentlyOpenVision;
 import de.dc.minion.fx.model.Toady;
 import de.dc.minion.fx.model.ToolbarItem;
 import de.dc.minion.fx.model.ToolbarTouch;
@@ -25,7 +27,9 @@ import de.dc.minion.fx.model.util.MinionSwitch;
 import de.dc.minion.model.common.IControlManager;
 import de.dc.minion.model.common.command.ICommandHandler;
 import de.dc.minion.model.common.command.ICommandService;
+import de.dc.minion.model.common.control.EmfViewPart;
 import de.dc.minion.model.common.control.IEmfEditorPart;
+import de.dc.minion.model.common.control.IEmfViewPart;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.event.ISelectionService;
 import de.dc.minion.model.common.file.IEmfFileManager;
@@ -152,17 +156,18 @@ public class MinionBuilder extends MinionSwitch<Node>{
 		
 		if (leftPane != null) {
 			for (Vision view : leftPane) {
-				LandscapeFX.addToLeft(createTab(view));
+				LandscapeFX.addToLeft((EmfViewPart) controlManager.findViewBy(view.getId()));
 			}
 		}
 		if (rightPane != null) {
 			for (Vision view : rightPane) {
-				LandscapeFX.addToRight(createTab(view));
+				LandscapeFX.addToRight((EmfViewPart) controlManager.findViewBy(view.getId()));
 			}
 		}
 		if (bottomPane != null) {
 			for (Vision view : bottomPane) {
-				LandscapeFX.addToBottom(createTab(view));
+//				caseVision(view);
+				LandscapeFX.addToBottom((EmfViewPart) controlManager.findViewBy(view.getId()));
 			}
 		}
 		
@@ -175,12 +180,12 @@ public class MinionBuilder extends MinionSwitch<Node>{
 	
 	@Override
 	public Node caseVision(Vision object) {
-		Node view = controlManager.findBy(object.getId());
+		IEmfViewPart view = controlManager.findViewBy(object.getId());
 		try {
 			if (view==null) {
 				view = createVision(object);
+				view.setVision(object);
 			}
-			return view;
 		} catch (NullPointerException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			log.log(Level.SEVERE, "Viewpart cannot created (id: " + object.getId() + "instance: "
 					+ object.getUri() + ", name: " + object.getName() + ") ");
@@ -188,11 +193,22 @@ public class MinionBuilder extends MinionSwitch<Node>{
 		return new TextArea("ViewPart cannot be created!");
 	}
 
-	private Node createVision(Vision object)
+	@Override
+	public Node caseRecentlyOpenVision(RecentlyOpenVision object) {
+		IEmfViewPart view = controlManager.findViewBy(object.getId());
+		if (view==null) {
+			view = new MinionRecentlyOpenVision();
+			view.setVision(object);
+			MinionPlatform.inject(view);
+			controlManager.registrate(object.getId(), view);
+		}
+		return new TextArea("ViewPart cannot be created!");
+	}
+
+	private IEmfViewPart createVision(Vision object)
 			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-		Node view;
-		Class<?> clazz = Class.forName(object.getUri());
-		view = (Node) clazz.newInstance();
+		Class<IEmfViewPart> clazz = (Class<IEmfViewPart>) Class.forName(object.getUri());
+		IEmfViewPart view = clazz.newInstance();
 		MinionPlatform.inject(view);
 		
 		boolean isChangeListener = ChangeListener.class.isAssignableFrom(view.getClass());
@@ -204,25 +220,26 @@ public class MinionBuilder extends MinionSwitch<Node>{
 		return view;
 	}
 	
-	private Tab createTab(Vision e) {
-		String id = e.getId();
-		
-		Tab tab = new Tab(e.getName());
-		tab.setClosable(true);
-		BorderPane pane = new BorderPane();
-		pane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-		Node node = caseVision(e);
-		pane.setCenter(node);
-		tab.setContent(pane);
-		
-		if (id==null) {
-			return tab;
-		}
-		if (controlManager.findBy(id)!=null) {
-			return controlManager.findBy(id);
-		}
-		return tab;
-	}
+//	private Tab createTab(Vision e) {
+//Tab tab;
+//		//		String id = e.getId();
+////		
+////		Tab tab = new Tab(e.getName());
+////		tab.setClosable(true);
+////		BorderPane pane = new BorderPane();
+////		pane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+////		Node node = caseVision(e);
+////		pane.setCenter(node);
+////		tab.setContent(pane);
+////		
+////		if (id==null) {
+////			return tab;
+////		}
+////		if (controlManager.findBy(id)!=null) {
+////			return controlManager.findBy(id);
+////		}
+//		return tab;
+//	}
 
 	public void setDesk(MinionDeskFX minionDesk) {
 		this.minionDesk = minionDesk;

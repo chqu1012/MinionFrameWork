@@ -4,12 +4,14 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.dc.minion.model.common.control.IEmfViewPart;
 import javafx.scene.Node;
 
 public class ControlManager implements IControlManager{
 
 	private Map<String, Node> controlRegistry = new HashMap<>();
 	private Map<String, Node> toolbarRegistry = new HashMap<>();
+	private Map<String, IEmfViewPart> viewRegistry = new HashMap<>();
 
 	@Override
 	public void registrate(String id, Node control) {
@@ -34,6 +36,16 @@ public class ControlManager implements IControlManager{
 	@Override
 	public Collection<Node> findAllToolbar() {
 		return toolbarRegistry.values();
+	}
+
+	@Override
+	public IEmfViewPart findViewBy(String id) {
+		return viewRegistry.get(id);
+	}
+
+	@Override
+	public void registrate(String id, IEmfViewPart part) {
+		viewRegistry.put(id, part);
 	}
 	
 }
