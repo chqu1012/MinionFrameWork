@@ -2,8 +2,9 @@
  */
 package de.dc.minion.fx.model.provider;
 
+import de.dc.minion.fx.model.EmfProject;
+import de.dc.minion.fx.model.MinionFactory;
 import de.dc.minion.fx.model.MinionPackage;
-import de.dc.minion.fx.model.RecentlyOpenFile;
 
 import java.util.Collection;
 import java.util.List;
@@ -12,6 +13,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -26,12 +29,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dc.minion.fx.model.RecentlyOpenFile} object.
+ * This is the item provider adapter for a {@link de.dc.minion.fx.model.EmfProject} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class RecentlyOpenFileItemProvider extends ItemProviderAdapter
+public class EmfProjectItemProvider extends ItemProviderAdapter
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
 		IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider {
 	/**
@@ -40,7 +43,7 @@ public class RecentlyOpenFileItemProvider extends ItemProviderAdapter
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RecentlyOpenFileItemProvider(AdapterFactory adapterFactory) {
+	public EmfProjectItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -55,70 +58,117 @@ public class RecentlyOpenFileItemProvider extends ItemProviderAdapter
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
-			addPathPropertyDescriptor(object);
-			addTimestampPropertyDescriptor(object);
+			addEPackagePropertyDescriptor(object);
+			addEfactoryPropertyDescriptor(object);
+			addModelItemProviderAdapterFactoryPropertyDescriptor(object);
+			addRootElementPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the EPackage feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addEPackagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_RecentlyOpenFile_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_RecentlyOpenFile_name_feature",
-								"_UI_RecentlyOpenFile_type"),
-						MinionPackage.Literals.RECENTLY_OPEN_FILE__NAME, true, false, false,
+						getResourceLocator(), getString("_UI_EmfProject_ePackage_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_EmfProject_ePackage_feature",
+								"_UI_EmfProject_type"),
+						MinionPackage.Literals.EMF_PROJECT__EPACKAGE, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Path feature.
+	 * This adds a property descriptor for the Efactory feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPathPropertyDescriptor(Object object) {
+	protected void addEfactoryPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_RecentlyOpenFile_path_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_RecentlyOpenFile_path_feature",
-								"_UI_RecentlyOpenFile_type"),
-						MinionPackage.Literals.RECENTLY_OPEN_FILE__PATH, true, false, false,
+						getResourceLocator(), getString("_UI_EmfProject_efactory_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_EmfProject_efactory_feature",
+								"_UI_EmfProject_type"),
+						MinionPackage.Literals.EMF_PROJECT__EFACTORY, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Timestamp feature.
+	 * This adds a property descriptor for the Model Item Provider Adapter Factory feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTimestampPropertyDescriptor(Object object) {
+	protected void addModelItemProviderAdapterFactoryPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_RecentlyOpenFile_timestamp_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_RecentlyOpenFile_timestamp_feature",
-								"_UI_RecentlyOpenFile_type"),
-						MinionPackage.Literals.RECENTLY_OPEN_FILE__TIMESTAMP, true, false, false,
+						getResourceLocator(), getString("_UI_EmfProject_modelItemProviderAdapterFactory_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_EmfProject_modelItemProviderAdapterFactory_feature", "_UI_EmfProject_type"),
+						MinionPackage.Literals.EMF_PROJECT__MODEL_ITEM_PROVIDER_ADAPTER_FACTORY, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This returns RecentlyOpenFile.gif.
+	 * This adds a property descriptor for the Root Element feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRootElementPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_EmfProject_rootElement_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_EmfProject_rootElement_feature",
+								"_UI_EmfProject_type"),
+						MinionPackage.Literals.EMF_PROJECT__ROOT_ELEMENT, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(MinionPackage.Literals.EMF_PROJECT__EDITING_ATTRIBUTES);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
+	 * This returns EmfProject.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/RecentlyOpenFile"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/EmfProject"));
 	}
 
 	/**
@@ -154,9 +204,9 @@ public class RecentlyOpenFileItemProvider extends ItemProviderAdapter
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((RecentlyOpenFile) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_RecentlyOpenFile_type")
-				: getString("_UI_RecentlyOpenFile_type") + " " + label;
+		String label = ((EmfProject) object).getEPackage();
+		return label == null || label.length() == 0 ? getString("_UI_EmfProject_type")
+				: getString("_UI_EmfProject_type") + " " + label;
 	}
 
 	/**
@@ -185,11 +235,15 @@ public class RecentlyOpenFileItemProvider extends ItemProviderAdapter
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(RecentlyOpenFile.class)) {
-		case MinionPackage.RECENTLY_OPEN_FILE__NAME:
-		case MinionPackage.RECENTLY_OPEN_FILE__PATH:
-		case MinionPackage.RECENTLY_OPEN_FILE__TIMESTAMP:
+		switch (notification.getFeatureID(EmfProject.class)) {
+		case MinionPackage.EMF_PROJECT__EPACKAGE:
+		case MinionPackage.EMF_PROJECT__EFACTORY:
+		case MinionPackage.EMF_PROJECT__MODEL_ITEM_PROVIDER_ADAPTER_FACTORY:
+		case MinionPackage.EMF_PROJECT__ROOT_ELEMENT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case MinionPackage.EMF_PROJECT__EDITING_ATTRIBUTES:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -205,6 +259,9 @@ public class RecentlyOpenFileItemProvider extends ItemProviderAdapter
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(MinionPackage.Literals.EMF_PROJECT__EDITING_ATTRIBUTES,
+				MinionFactory.eINSTANCE.createEmfAttribute()));
 	}
 
 	/**

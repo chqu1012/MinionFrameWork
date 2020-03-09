@@ -99,6 +99,7 @@ class RecentlyOpenVision extends Vision{
 
 class RecentlyOpenFile{
 	String name
+	String path
 	Date timestamp
 }
 
@@ -116,4 +117,17 @@ enum ToadyStatus{
 	Started
 	Stopped
 	Running
+}
+
+// Emf Generation Model
+class EmfProject{
+	String ePackage
+	String efactory
+	String modelItemProviderAdapterFactory
+	String rootElement
+	contains EmfAttribute[0..*] editingAttributes
+}
+
+class EmfAttribute{
+	String name
 }

@@ -489,6 +489,52 @@ public class MinionItemProviderAdapterFactory extends MinionAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.fx.model.EmfProject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EmfProjectItemProvider emfProjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.fx.model.EmfProject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEmfProjectAdapter() {
+		if (emfProjectItemProvider == null) {
+			emfProjectItemProvider = new EmfProjectItemProvider(this);
+		}
+
+		return emfProjectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.fx.model.EmfAttribute} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EmfAttributeItemProvider emfAttributeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.fx.model.EmfAttribute}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEmfAttributeAdapter() {
+		if (emfAttributeItemProvider == null) {
+			emfAttributeItemProvider = new EmfAttributeItemProvider(this);
+		}
+
+		return emfAttributeItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -629,6 +675,10 @@ public class MinionItemProviderAdapterFactory extends MinionAdapterFactory
 			undoRedoVisionItemProvider.dispose();
 		if (changeListenerItemProvider != null)
 			changeListenerItemProvider.dispose();
+		if (emfProjectItemProvider != null)
+			emfProjectItemProvider.dispose();
+		if (emfAttributeItemProvider != null)
+			emfAttributeItemProvider.dispose();
 	}
 
 }

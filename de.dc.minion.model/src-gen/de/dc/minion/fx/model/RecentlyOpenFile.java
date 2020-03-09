@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.dc.minion.fx.model.RecentlyOpenFile#getName <em>Name</em>}</li>
+ *   <li>{@link de.dc.minion.fx.model.RecentlyOpenFile#getPath <em>Path</em>}</li>
  *   <li>{@link de.dc.minion.fx.model.RecentlyOpenFile#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  *
@@ -45,6 +46,28 @@ public interface RecentlyOpenFile extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Path</em>' attribute.
+	 * @see #setPath(String)
+	 * @see de.dc.minion.fx.model.MinionPackage#getRecentlyOpenFile_Path()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getPath();
+
+	/**
+	 * Sets the value of the '{@link de.dc.minion.fx.model.RecentlyOpenFile#getPath <em>Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Path</em>' attribute.
+	 * @see #getPath()
+	 * @generated
+	 */
+	void setPath(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Timestamp</b></em>' attribute.
