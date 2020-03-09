@@ -2,6 +2,7 @@ package de.dc.minion.model.desk.control;
 
 import java.io.File;
 
+import com.google.common.eventbus.Subscribe;
 import com.google.inject.Inject;
 
 import de.dc.minion.fx.model.RecentlyOpenFile;
@@ -35,7 +36,8 @@ public class MinionRecentlyOpenVision extends EmfViewPart{
 	
 	RecentlyOpenFilesReader minionFile = new RecentlyOpenFilesReader();
 	ObservableList<RecentlyOpenFile> files;
-
+	File fileRecentlyOpenFiles = new File("./config/recentlyopenfiles.minion");
+	
 	@Override
 	public Parent create() {
 		files = FXCollections.observableArrayList();
@@ -93,10 +95,7 @@ public class MinionRecentlyOpenVision extends EmfViewPart{
 		HBox.setHgrow(textSearch, Priority.ALWAYS);
 		
 		Button buttonRefresh = new Button("Refresh");
-		buttonRefresh.setOnAction(e->{
-			files.clear();
-			initialize();
-		});
+		buttonRefresh.setOnAction(e->refreshListView());
 		
 		hbox.getChildren().add(textSearch);
 		hbox.getChildren().add(buttonRefresh);
@@ -109,8 +108,22 @@ public class MinionRecentlyOpenVision extends EmfViewPart{
 	
 	@Override
 	public void initialize() {
-		File fileRecentlyOpenFiles = new File("./config/recentlyopenfiles.minion");
+		refreshListView();
+		eventBroker.register(this);
+	}
+	
+	@Subscribe
+	public void addRecentlyOPenFile(EventContext<File> context) {
+		if (context.getEventId().equals("add/recently/open/file")) {
+			File input = context.getInput();
+			RecentlyOpenFile openFile = minionFile.addFile(input);
+			files.add(openFile);
+		}
+	}
+
+	private void refreshListView() {
 		if (fileRecentlyOpenFiles.exists()) {
+			files.clear();
 			RecentlyOpenVision minion = minionFile.load(fileRecentlyOpenFiles.getAbsolutePath());
 			files.addAll(minion.getFiles());
 		}
