@@ -16,7 +16,7 @@ import de.dc.minion.fx.model.DeskmanTouch;
 import de.dc.minion.fx.model.Landscape;
 import de.dc.minion.fx.model.LandscapeTouch;
 import de.dc.minion.fx.model.Minion;
-import de.dc.minion.fx.model.RecentlyOpenFile;
+import de.dc.minion.fx.model.PropertyVision;
 import de.dc.minion.fx.model.RecentlyOpenVision;
 import de.dc.minion.fx.model.Toady;
 import de.dc.minion.fx.model.ToolbarItem;
@@ -33,13 +33,12 @@ import de.dc.minion.model.common.control.IEmfViewPart;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.event.ISelectionService;
 import de.dc.minion.model.common.file.IEmfFileManager;
+import de.dc.minion.model.common.file.MinionPropertiesVision;
 import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.BorderPane;
 
 public class MinionBuilder extends MinionSwitch<Node>{
 	
@@ -193,6 +192,19 @@ public class MinionBuilder extends MinionSwitch<Node>{
 		return new TextArea("ViewPart cannot be created!");
 	}
 
+	@Override
+	public Node casePropertyVision(PropertyVision object) {
+		IEmfViewPart view = controlManager.findViewBy(object.getId());
+		if (view==null) {
+			view = new MinionPropertiesVision();
+			MinionPlatform.inject(view);
+			view.setVision(object);
+			view.initialize();
+			controlManager.registrate(object.getId(), view);
+		}
+		return new TextArea("ViewPart cannot be created!");
+	}
+	
 	@Override
 	public Node caseRecentlyOpenVision(RecentlyOpenVision object) {
 		IEmfViewPart view = controlManager.findViewBy(object.getId());
