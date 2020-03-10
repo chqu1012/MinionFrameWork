@@ -10,18 +10,14 @@ import java.util.Map;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 
 import de.dc.minion.fx.model.EmfCommand;
 import de.dc.minion.fx.model.MinionFactory;
@@ -30,6 +26,7 @@ import de.dc.minion.model.common.control.IEmfEditorPart;
 import de.dc.minion.model.common.event.EventContext;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.desk.module.MinionPlatform;
+import de.dc.minion.model.desk.util.EAttributeFormSwitch;
 import de.dc.minion.model.desk.util.EmfUtil;
 import de.dc.minion.model.desk.util.UIConstants;
 import javafx.beans.property.BooleanProperty;
@@ -43,7 +40,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -52,7 +48,6 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -69,7 +64,8 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 
 	private static final String EDITED_STYLE = "-fx-background-color: red; -fx-text-fill: white;";
 	protected EmfModelTreeView<T> treeView;
-
+	private EAttributeFormSwitch aetributeSwitch;
+	
 	protected BooleanProperty isDirtyProperty = new SimpleBooleanProperty(false);
 
 	public EmfDetailedTreeView() {
@@ -143,11 +139,10 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 		for (Object object : collection) {
 			if (object instanceof CommandParameter) {
 				CommandParameter commandParameter = (CommandParameter) object;
-				String name = commandParameter.getValue().getClass().getSimpleName().replace("Impl", "");
-				String menuText = ((IItemLabelProvider) manager.getAdapterFactory().adapt(commandParameter.getValue(),
-						IItemLabelProvider.class)).getText(commandParameter.getValue());
-				Object icon = ((IItemLabelProvider) manager.getAdapterFactory().adapt(commandParameter.getValue(),
-						IItemLabelProvider.class)).getImage(commandParameter.getValue());
+				Object param = commandParameter.getValue();
+				String name = param.getClass().getSimpleName().replace("Impl", "");
+				String menuText = manager.getLabelProvider(param).getText(param);
+				Object icon = manager.getLabelProvider(param).getImage(param);
 
 				Button button = new Button();
 				button.setTooltip(new Tooltip(menuText));
@@ -199,14 +194,13 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 				});
 				Button addChildButton = new Button("Add");
 				addChildButton.setOnAction(e -> {
-					IEmfManager<T> emfManager = treeView.getEmfManager();
 					String name = param.getValue().getClass().getSimpleName().replace("Impl", "");
 
 					EClassifier eClassifier = treeView.getEmfManager().getModelPackage().getEClassifier(name);
 					EObject obj = treeView.getEmfManager().getExtendedModelFactory().create((EClass) eClassifier);
 
-					int id = EmfUtil.getValueByName(emfManager.getModelPackage(), name);
-					EObject createdObject = emfManager.getExtendedModelFactory().create(obj.eClass());
+					int id = EmfUtil.getValueByName(manager.getModelPackage(), name);
+					EObject createdObject = manager.getExtendedModelFactory().create(obj.eClass());
 					childEattributesMap.entrySet().forEach(ks -> {
 						TextField textfield = ks.getValue();
 						if (textfield.getStyle().equals(EDITED_STYLE)) {
@@ -233,11 +227,8 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 			collection.forEach(c->{
 				if (c instanceof CommandParameter) {
 					CommandParameter param = (CommandParameter) c;
-
-					String tabName = ((IItemLabelProvider) manager.getAdapterFactory().adapt(param.getValue(),
-							IItemLabelProvider.class)).getText(param.getValue());
-					Object icon = ((IItemLabelProvider) manager.getAdapterFactory().adapt(param.getValue(),
-							IItemLabelProvider.class)).getImage(param.getValue());
+					String tabName = manager.getLabelProvider(param.getValue()).getText(param.getValue());
+					Object icon = manager.getLabelProvider(param.getValue()).getImage(param.getValue());
 
 					EObject child = (EObject) param.getValue();
 					VBox vbox = new VBox(5);
@@ -269,12 +260,16 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 							TextField textfield = ks.getKey();
 							if (textfield.getAccessibleHelp().contains(selectedTab.getText())) {
 								if (textfield.getStyle().equals(EDITED_STYLE)) {
-									if (ks.getValue().getEType().getName().contains("Double")) {
-										createdObject.eSet(ks.getValue(), Double.parseDouble(textfield.getText()));
-									} else if (ks.getValue().getEType().getName().contains("Integer")) {
-										createdObject.eSet(ks.getValue(), Integer.parseInt(textfield.getText()));
+									EAttribute attributeName = ks.getValue();
+									String typeName = attributeName.getEType().getName();
+									if (typeName.contains("Double")) {
+										createdObject.eSet(attributeName, Double.parseDouble(textfield.getText()));
+									} else if (typeName.contains("Integer")) {
+										createdObject.eSet(attributeName, Integer.parseInt(textfield.getText()));
+									} else if (typeName.contains("Boolean")) {
+										createdObject.eSet(attributeName, Boolean.parseBoolean(textfield.getText()));
 									} else {
-										createdObject.eSet(ks.getValue(), textfield.getText());
+										createdObject.eSet(attributeName, textfield.getText());
 									}
 									textfield.setText("");
 									textfield.setStyle(null);
@@ -302,70 +297,21 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 
 	private void initAttributeFormular(EObject eObject) {
 		EList<EAttribute> attributes = eObject.eClass().getEAllAttributes();
+		aetributeSwitch = new EAttributeFormSwitch(treeView.getEmfManager().getEditingDomain(), eObject);
 		for (EAttribute eAttribute : attributes) {
 			HBox hbox = new HBox(5.0);
 			Label label = new Label(eAttribute.getName());
 			label.setPrefWidth(100);
 			hbox.getChildren().add(label);
 
-			if (eAttribute.getEType().getName().equals("EBoolean")) {
-				Boolean booleanValue = eObject.eGet(eAttribute) == null ? true : (boolean) eObject.eGet(eAttribute);
-
-				ComboBox<Boolean> comboBox = new ComboBox<>(values);
-				comboBox.getSelectionModel().select(booleanValue);
-				comboBox.getSelectionModel().selectedItemProperty()
-						.addListener((ChangeListener<Boolean>) (observable1, oldValue1, newValue1) -> {
-							Boolean selection = comboBox.getSelectionModel().getSelectedItem();
-							Command command = new SetCommand(editingDomain, eObject, eAttribute, selection);
-							executeCommand(command);
-						});
-				hbox.getChildren().add(comboBox);
-			} else if (eAttribute.getEType() instanceof EEnum) {
-				EEnum enumeration = (EEnum) eAttribute.getEAttributeType();
-				EList<EEnumLiteral> literals = enumeration.getELiterals();
-
-				Object currentSelection = eObject.eGet(eAttribute) == null ? literals.get(0) : eObject.eGet(eAttribute);
-				EEnumLiteral selectedLiteral = enumeration.getEEnumLiteralByLiteral(String.valueOf(currentSelection));
-
-				ComboBox<Enumerator> enumCombo = new ComboBox<>(FXCollections.observableArrayList(literals));
-				enumCombo.getSelectionModel().select(selectedLiteral.getInstance());
-				enumCombo.getSelectionModel().selectedItemProperty()
-						.addListener((ChangeListener<Enumerator>) (observable1, oldValue1, newValue1) -> {
-							Enumerator selection = enumCombo.getSelectionModel().getSelectedItem();
-							EEnumLiteral enumLiteral = enumeration.getEEnumLiteral(selection.getName());
-							Command command = new SetCommand(editingDomain, eObject, eAttribute,
-									enumLiteral.getInstance());
-							executeCommand(command);
-						});
-
-				hbox.getChildren().add(enumCombo);
-			} else {
-				Button acceptButton = new Button("Accept");
-				String stringValue = eObject.eGet(eAttribute) == null ? "" : eObject.eGet(eAttribute).toString();
-				TextField textField = new TextField(stringValue);
-				textField.setOnKeyPressed(event -> {
-					KeyCode code = event.getCode();
-					switch (code) {
-					case TAB:
-						break;
-					case CONTROL:
-						break;
-					case SHIFT:
-						break;
-					case ENTER:
-						setValue(eObject, eAttribute, textField);
-						break;
-					default:
-						textField.setStyle(EDITED_STYLE);
-					}
-				});
-				acceptButton.setOnAction(event -> setValue(eObject, eAttribute, textField));
-
-				eattributeUIMap.put(eAttribute, textField);
-				hbox.getChildren().add(textField);
-				hbox.getChildren().add(acceptButton);
+			Node node = aetributeSwitch.doSwitch(eAttribute);
+			if (node instanceof TextField) {
+				eattributeUIMap.put(eAttribute, (TextField) node);
 			}
-
+			if (node == null) {
+				continue;
+			}
+			hbox.getChildren().add(node);
 			attributeContainer.getChildren().add(hbox);
 		}
 		Button acceptAllButton = new Button("Accept All");

@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 
 import de.dc.minion.model.common.command.CommandStackImpl;
 import de.dc.minion.model.common.file.IEmfFile;
@@ -45,4 +46,6 @@ public interface IEmfManager<T> {
 	IEmfFile<T> getFile();
 
 	IEmfFile<T> initFile();
+
+	IItemLabelProvider getLabelProvider(Object object);
 }

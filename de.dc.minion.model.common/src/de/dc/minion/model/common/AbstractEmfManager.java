@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 
@@ -41,6 +42,11 @@ public abstract class AbstractEmfManager<T> implements IEmfManager<T> {
 
 	protected abstract T initModel();
 
+	@Override
+	public IItemLabelProvider getLabelProvider(Object object) {
+		 return (IItemLabelProvider) adapterFactory.adapt(object, IItemLabelProvider.class);
+	}
+	
 	protected T createNewModelOnNullCheck() {
 		return initModel();
 	}
