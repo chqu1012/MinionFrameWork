@@ -46,7 +46,7 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 		String name = object.getName();
 		Object attributeValue = instanceObject.eGet(currentAttribute);
 		TextField node = null;
-		if (name.equals("EIntegerObject")) {
+		if (name.equals("EInteger")) {
 			node = new TextField();
 		} else if (name.equals("EString")) {
 			node = new TextField();
@@ -54,11 +54,11 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 			DatePicker datePicker = new DatePicker();
 			datePicker.setMinWidth(200);
 			return datePicker;
-		} else if (name.equals("EFloatObject")) {
+		} else if (name.equals("EFloat")) {
 			node = new TextField();
-		} else if (name.equals("EDoubleObject")) {
+		} else if (name.equals("EDouble")) {
 			node = new TextField();
-		} else if (name.equals("EBooleanObject")) {
+		} else if (name.equals("EBoolean")) {
 			EmfComboBox<Boolean> combobox = new EmfComboBox<>(currentAttribute);
 			combobox.setItems(FXCollections.observableArrayList(true, false));
 			combobox.select((Boolean) attributeValue);
