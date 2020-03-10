@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class DraggableItem extends Pane{ 
+	
 	private BooleanProperty selectedProperty = new SimpleBooleanProperty();
 	
 	public DraggableItem(String name) {

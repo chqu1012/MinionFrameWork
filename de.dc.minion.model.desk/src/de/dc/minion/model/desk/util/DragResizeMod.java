@@ -1,5 +1,4 @@
 package de.dc.minion.model.desk.util;
-import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
@@ -41,39 +40,17 @@ public class DragResizeMod {
     private static final OnDragResizeEventListener defaultListener = new OnDragResizeEventListener() {
         @Override
         public void onDrag(Node node, double x, double y, double h, double w) {
-            /*
-            // TODO find generic way to get parent width and height of any node
-            // can perform out of bounds check here if you know your parent size
-            if (x > width - w ) x = width - w;
-            if (y > height - h) y = height - h;
-            if (x < 0) x = 0;
-            if (y < 0) y = 0;
-            */
             setNodeSize(node, x, y, h, w);
         }
 
         @Override
         public void onResize(Node node, double x, double y, double h, double w) {
-            /*
-            // TODO find generic way to get parent width and height of any node
-            // can perform out of bounds check here if you know your parent size
-            if (w > width - x) w = width - x;
-            if (h > height - y) h = height - y;
-            if (x < 0) x = 0;
-            if (y < 0) y = 0;
-            */
             setNodeSize(node, x, y, h, w);
         }
 
         private void setNodeSize(Node node, double x, double y, double h, double w) {
             node.setLayoutX(x);
             node.setLayoutY(y);
-            // TODO find generic way to set width and height of any node
-            // here we cant set height and width to node directly.
-            // or i just cant find how to do it,
-            // so you have to wright resize code anyway for your Nodes...
-            //something like this
-            System.out.println(node);
             if (node instanceof Canvas) {
                 ((Canvas) node).setWidth(w);
                 ((Canvas) node).setHeight(h);
@@ -126,30 +103,10 @@ public class DragResizeMod {
     public static void makeResizable(Node node, OnDragResizeEventListener listener) {
         final DragResizeMod resizer = new DragResizeMod(node, listener);
 
-        node.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                resizer.mousePressed(event);
-            }
-        });
-        node.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                resizer.mouseDragged(event);
-            }
-        });
-        node.setOnMouseMoved(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                resizer.mouseOver(event);
-            }
-        });
-        node.setOnMouseReleased(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                resizer.mouseReleased(event);
-            }
-        });
+        node.setOnMousePressed(event -> resizer.mousePressed(event));
+        node.setOnMouseDragged(event -> resizer.mouseDragged(event));
+        node.setOnMouseMoved(event -> resizer.mouseOver(event));
+        node.setOnMouseReleased(event -> resizer.mouseReleased(event));
     }
 
     protected void mouseReleased(MouseEvent event) {
@@ -260,7 +217,6 @@ public class DragResizeMod {
     }
 
     protected void mousePressed(MouseEvent event) {
-
         if (isInResizeZone(event)) {
             setNewInitialEventCoordinates(event);
             state = currentMouseState(event);

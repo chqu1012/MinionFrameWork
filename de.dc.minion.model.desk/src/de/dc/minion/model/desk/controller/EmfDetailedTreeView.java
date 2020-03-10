@@ -3,6 +3,7 @@ package de.dc.minion.model.desk.controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,22 +23,30 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 
+import de.dc.minion.fx.model.EmfCommand;
+import de.dc.minion.fx.model.MinionFactory;
 import de.dc.minion.model.common.IEmfManager;
 import de.dc.minion.model.common.control.IEmfEditorPart;
 import de.dc.minion.model.common.event.EventContext;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.desk.module.MinionPlatform;
 import de.dc.minion.model.desk.util.EmfUtil;
+import de.dc.minion.model.desk.util.UIConstants;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeItem;
@@ -46,6 +55,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewController
 		implements ChangeListener<TreeItem<Object>>, IEmfEditorPart<T> {
@@ -55,9 +65,12 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 
 	private Map<EAttribute, TextField> eattributeUIMap = new HashMap<>();
 	private Map<EAttribute, TextField> childEattributesMap = new HashMap<>();
+	private Map<TextField, EAttribute> childTabEattributesMap = new HashMap<>();
 
 	private static final String EDITED_STYLE = "-fx-background-color: red; -fx-text-fill: white;";
 	protected EmfModelTreeView<T> treeView;
+
+	protected BooleanProperty isDirtyProperty = new SimpleBooleanProperty(false);
 
 	public EmfDetailedTreeView() {
 		FXMLLoader fxmlLoader = new FXMLLoader(
@@ -101,25 +114,21 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 
 	@Override
 	protected void onDeleteSelectionValueAction(ActionEvent event) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	protected void onEditValueAction(ActionEvent event) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void changed(ObservableValue<? extends TreeItem<Object>> observable, TreeItem<Object> oldValue,
 			TreeItem<Object> newValue) {
-		if (newValue!=null) {
+		if (newValue != null) {
 			Object value = newValue.getValue();
 			if (value instanceof EObject) {
 				clearAllFields();
 				EObject eObject = (EObject) value;
-				
+
 				initAttributeFormular(eObject);
 				initChildPropertiesToolbar(eObject);
 				initTableContent(newValue, value, eObject);
@@ -152,8 +161,14 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 					command.execute();
 
 					// TODO: Event command stack refresh
-//					MinionPlatform.getInstance(IEventBroker.class)
-//							.post(new EventContext<>(EventTopic.COMMAND_STACK_REFRESH, CommandFactory.create(command)));
+					EmfCommand emfCommand = MinionFactory.eINSTANCE.createEmfCommand();
+					emfCommand.setTimestamp(LocalDateTime.now());
+					emfCommand.setCommand(command);
+					emfCommand.setName(command.getLabel());
+					emfCommand.setDescription(command.getDescription());
+
+					MinionPlatform.getInstance(IEventBroker.class)
+							.post(new EventContext<>(UIConstants.UPDATE_COMMAND_HISTORY.name(), emfCommand));
 					treeView.getTreeView().getSelectionModel().getSelectedItem().setExpanded(true);
 
 					ObservableList<TreeItem<Object>> children = treeView.getTreeView().getSelectionModel()
@@ -166,16 +181,16 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 	}
 
 	private void initTableContent(TreeItem<Object> newValue, Object value, EObject eObject) {
+		IEmfManager<T> manager = treeView.getEmfManager();
 		Collection<?> collection = editingDomain.getNewChildDescriptors(eObject, null);
 		boolean showTableContainer = collection.size() == 1;
-		tableContainer.setVisible(showTableContainer);
-
 		if (showTableContainer) {
 			Object object = collection.iterator().next();
 			if (object instanceof CommandParameter) {
 				CommandParameter param = (CommandParameter) object;
 				EObject child = (EObject) param.getValue();
 				child.eClass().getEAllAttributes().forEach(e -> {
+					childAttributeContainer.getChildren().add(new Label(e.getName()+":"));
 					TextField textField = new TextField();
 					textField.setPromptText(e.getName());
 					textField.setOnKeyPressed(event -> textField.setStyle(EDITED_STYLE));
@@ -197,6 +212,8 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 						if (textfield.getStyle().equals(EDITED_STYLE)) {
 							if (ks.getKey().getEType().getName().contains("Double")) {
 								createdObject.eSet(ks.getKey(), Double.parseDouble(textfield.getText()));
+							} else if (ks.getKey().getEType().getName().contains("Integer")) {
+								createdObject.eSet(ks.getKey(), Integer.parseInt(textfield.getText()));
 							} else {
 								createdObject.eSet(ks.getKey(), textfield.getText());
 							}
@@ -211,6 +228,75 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 				});
 				childAttributeContainer.getChildren().add(addChildButton);
 			}
+		}else {
+			TabPane tabPane = new TabPane();
+			collection.forEach(c->{
+				if (c instanceof CommandParameter) {
+					CommandParameter param = (CommandParameter) c;
+
+					String tabName = ((IItemLabelProvider) manager.getAdapterFactory().adapt(param.getValue(),
+							IItemLabelProvider.class)).getText(param.getValue());
+					Object icon = ((IItemLabelProvider) manager.getAdapterFactory().adapt(param.getValue(),
+							IItemLabelProvider.class)).getImage(param.getValue());
+
+					EObject child = (EObject) param.getValue();
+					VBox vbox = new VBox(5);
+					vbox.setPadding(new Insets(10));
+					child.eClass().getEAllAttributes().forEach(e -> {
+						vbox.getChildren().add(new Label(e.getName()+":"));
+						TextField textField = new TextField();
+						textField.setAccessibleHelp(tabName);
+						textField.setPromptText(e.getName());
+						textField.setOnKeyPressed(event -> textField.setStyle(EDITED_STYLE));
+						vbox.getChildren().add(textField);
+						childTabEattributesMap.put(textField, e);
+					});
+					
+					Button addChildButton = new Button("Create");
+					addChildButton.setOnAction(e -> {
+						IEmfManager<T> emfManager = treeView.getEmfManager();
+						String name = param.getValue().getClass().getSimpleName().replace("Impl", "");
+
+						EClassifier eClassifier = treeView.getEmfManager().getModelPackage().getEClassifier(name);
+						EObject obj = treeView.getEmfManager().getExtendedModelFactory().create((EClass) eClassifier);
+
+						int id = EmfUtil.getValueByName(emfManager.getModelPackage(), name);
+						EObject createdObject = emfManager.getExtendedModelFactory().create(obj.eClass());
+						
+						Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
+						
+						childTabEattributesMap.entrySet().forEach(ks -> {
+							TextField textfield = ks.getKey();
+							if (textfield.getAccessibleHelp().contains(selectedTab.getText())) {
+								if (textfield.getStyle().equals(EDITED_STYLE)) {
+									if (ks.getValue().getEType().getName().contains("Double")) {
+										createdObject.eSet(ks.getValue(), Double.parseDouble(textfield.getText()));
+									} else if (ks.getValue().getEType().getName().contains("Integer")) {
+										createdObject.eSet(ks.getValue(), Integer.parseInt(textfield.getText()));
+									} else {
+										createdObject.eSet(ks.getValue(), textfield.getText());
+									}
+									textfield.setText("");
+									textfield.setStyle(null);
+								}
+							}
+						});
+						Command command = AddCommand.create(editingDomain, value, id, createdObject);
+						executeCommand(command);
+
+						newValue.setExpanded(true);
+					});
+					
+					vbox.getChildren().add(addChildButton);
+					
+					Tab tab = new Tab(tabName);
+					tab.setGraphic(new ImageView(new Image(((URL) icon).toExternalForm())));
+					tab.setClosable(false);
+					tab.setContent(vbox);
+					tabPane.getTabs().add(tab);
+				}
+			});
+			childAttributeContainer.getChildren().add(tabPane);
 		}
 	}
 
@@ -316,9 +402,16 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 
 	private void executeCommand(Command command) {
 		editingDomain.getCommandStack().execute(command);
-		// TODO: Event command stack refresh
-//		MinionPlatform.getInstance(IEventBroker.class)
-//				.post(new EventContext<>(EventTopic.COMMAND_STACK_REFRESH, CommandFactory.create(command)));
+
+		EmfCommand emfCommand = MinionFactory.eINSTANCE.createEmfCommand();
+		emfCommand.setTimestamp(LocalDateTime.now());
+		emfCommand.setCommand(command);
+		emfCommand.setName(command.getLabel());
+		emfCommand.setDescription(command.getDescription());
+
+		MinionPlatform.getInstance(IEventBroker.class)
+				.post(new EventContext<>(UIConstants.UPDATE_COMMAND_HISTORY.name(), emfCommand));
+
 		Object value = treeView.getTreeView().getSelectionModel().getSelectedItem().getValue();
 		MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("chartfx.update", value));
 	}

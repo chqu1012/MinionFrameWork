@@ -7,10 +7,11 @@
       <visions xsi:type="model:RecentlyOpenVision" id="recentlyOpenFiles" name="Recently Open Files" uri="de.dc.minion.model.desk.control.MinionRecentlyOpenVision"/>
       <visions xsi:type="model:PropertyVision" id="minionPropertiesVision" name="Properties" uri="de.dc.minion.model.desk.control.MinionPropertiesVision"/>
       <visions id="parentChildVision" name="Parent Child Vision" uri="de.dc.minion.model.desk.control.MinionParentChildVision"/>
+      <visions id="vision.undo.redo" name="History Touch" uri="de.dc.minion.model.desk.control.MinionCommandHistoryVision"/>
     </touchPoints>
     <touchPoints xsi:type="model:LandscapeTouch">
       <landscapes id="hello.landscape" name="Hello Landscape" left="//@toadies.0/@touchPoints.0/@visions.0"/>
-      <landscapes name="Hello Vison" left="//@toadies.0/@touchPoints.0/@visions.2" right="//@toadies.0/@touchPoints.0/@visions.1 //@toadies.0/@touchPoints.0/@visions.0" bottom="//@toadies.0/@touchPoints.0/@visions.3 //@toadies.0/@touchPoints.0/@visions.4"/>
+      <landscapes name="Hello Vison" left="//@toadies.0/@touchPoints.0/@visions.2" right="//@toadies.0/@touchPoints.0/@visions.5 //@toadies.0/@touchPoints.0/@visions.1 //@toadies.0/@touchPoints.0/@visions.0" bottom="//@toadies.0/@touchPoints.0/@visions.3 //@toadies.0/@touchPoints.0/@visions.4"/>
     </touchPoints>
     <touchPoints xsi:type="model:ToolbarTouch">
       <toolbarItems name="New File" command="//@toadies.0/@touchPoints.3/@commands.0"/>

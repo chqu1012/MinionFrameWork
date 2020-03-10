@@ -489,6 +489,75 @@ public class MinionItemProviderAdapterFactory extends MinionAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.fx.model.CommandHistoryTouch} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CommandHistoryTouchItemProvider commandHistoryTouchItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.fx.model.CommandHistoryTouch}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCommandHistoryTouchAdapter() {
+		if (commandHistoryTouchItemProvider == null) {
+			commandHistoryTouchItemProvider = new CommandHistoryTouchItemProvider(this);
+		}
+
+		return commandHistoryTouchItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.fx.model.EmfCommand} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EmfCommandItemProvider emfCommandItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.fx.model.EmfCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEmfCommandAdapter() {
+		if (emfCommandItemProvider == null) {
+			emfCommandItemProvider = new EmfCommandItemProvider(this);
+		}
+
+		return emfCommandItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.fx.model.EmfResult} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EmfResultItemProvider emfResultItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.fx.model.EmfResult}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEmfResultAdapter() {
+		if (emfResultItemProvider == null) {
+			emfResultItemProvider = new EmfResultItemProvider(this);
+		}
+
+		return emfResultItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dc.minion.fx.model.EmfProject} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -675,6 +744,12 @@ public class MinionItemProviderAdapterFactory extends MinionAdapterFactory
 			undoRedoVisionItemProvider.dispose();
 		if (changeListenerItemProvider != null)
 			changeListenerItemProvider.dispose();
+		if (commandHistoryTouchItemProvider != null)
+			commandHistoryTouchItemProvider.dispose();
+		if (emfCommandItemProvider != null)
+			emfCommandItemProvider.dispose();
+		if (emfResultItemProvider != null)
+			emfResultItemProvider.dispose();
 		if (emfProjectItemProvider != null)
 			emfProjectItemProvider.dispose();
 		if (emfAttributeItemProvider != null)

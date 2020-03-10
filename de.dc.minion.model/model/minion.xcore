@@ -9,6 +9,8 @@
 	autoResizeProperties="true", autoExpandProperties="1")
 package de.dc.minion.fx.model
 
+import java.time.LocalDateTime
+
 class Minion{
 	// Plug-Ins
 	contains Toady[0..*] toadies
@@ -118,6 +120,46 @@ enum ToadyStatus{
 	Stopped
 	Running
 }
+
+/** EMF Command Undo Redo Model */
+class CommandHistoryTouch extends Vision{
+	contains EmfCommand[0..*] commands
+}
+
+class EmfCommand{
+	String name
+	String description
+	Timestamp timestamp	
+	InternCommand command
+	
+	op boolean canUndo(){
+		command.canUndo
+	}
+
+	op void undo(){
+		if(canUndo){
+			command.undo
+		}
+	}	
+	
+	op void redo(){
+		command.redo
+	}
+	
+	op String getMessage(){
+		return command.label + ' '+command.result.size+' selection(s)'    
+	}
+	
+	contains EmfResult[0..*] results
+}
+
+class EmfResult{
+	String name
+	Object object
+}
+
+type Timestamp wraps LocalDateTime
+type InternCommand wraps org.eclipse.emf.common.command.Command
 
 // Emf Generation Model
 class EmfProject{

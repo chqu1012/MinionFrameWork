@@ -8,7 +8,6 @@ import de.dc.minion.model.common.control.EmfViewPart;
 import de.dc.minion.model.common.event.ISelectionService;
 import de.dc.minion.model.desk.control.shape.DraggableItem;
 import de.dc.minion.model.desk.control.shape.ZoomableScrollPane;
-import de.dc.minion.model.desk.util.DragResizeMod;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Parent;
@@ -42,7 +41,11 @@ public class MinionParentChildVision extends EmfViewPart implements ChangeListen
 				EObject eObject = (EObject) value;
 				eObject.eAllContents().forEachRemaining(e->{
 					DraggableItem item = new DraggableItem(e.toString());
-					item.setOnMouseClicked(s-> item.selectionProperty().set(item.selectionProperty().not().get()));
+					item.setOnMouseClicked(s-> {
+						if (s.getClickCount()==2) {
+							item.selectionProperty().set(item.selectionProperty().not().get());
+						}
+					});
 					parent.getChildren().add(item);
 				});				
 			}
