@@ -37,8 +37,7 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 	@Override
 	public Node caseEAttribute(EAttribute object) {
 		this.currentAttribute = object;
-		EClassifier eType = object.getEType();
-		return doSwitch(eType);
+		return doSwitch(object.getEType());
 	}
 
 	@Override
@@ -53,6 +52,7 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 		} else if (name.equals("EDate")) {
 			DatePicker datePicker = new DatePicker();
 			datePicker.setMinWidth(200);
+			datePicker.setOnAction(e-> setValue(instanceObject, currentAttribute, datePicker.getValue()));
 			return datePicker;
 		} else if (name.equals("EFloat")) {
 			node = new TextField();

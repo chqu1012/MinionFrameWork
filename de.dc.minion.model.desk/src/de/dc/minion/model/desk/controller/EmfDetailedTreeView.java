@@ -33,7 +33,6 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -55,7 +54,6 @@ import javafx.scene.layout.VBox;
 public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewController
 		implements ChangeListener<TreeItem<Object>>, IEmfEditorPart<T> {
 
-	private ObservableList<Boolean> values = FXCollections.observableArrayList();
 	private EditingDomain editingDomain;
 
 	private Map<EAttribute, TextField> eattributeUIMap = new HashMap<>();
@@ -90,9 +88,6 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 		AnchorPane.setLeftAnchor(treeView, 0d);
 		AnchorPane.setRightAnchor(treeView, 0d);
 		emfModelTreeViewContainer.getChildren().add(treeView);
-
-		values.add(true);
-		values.add(false);
 	}
 
 	public EmfModelTreeView<T> getTreeView() {
@@ -186,15 +181,13 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 				CommandParameter param = (CommandParameter) object;
 				EObject child = (EObject) param.getValue();
 				
-				formChildSwitch = new EAttributeFormSwitch(manager.getEditingDomain(), child);
+				formChildSwitch = new EAttributeFormSwitch(editingDomain, child);
 				
 				child.eClass().getEAllAttributes().forEach(e -> {
-					
 					Node node = formChildSwitch.doSwitch(e);
 					if (node instanceof TextField) {
 						childEattributesMap.put(e, (TextField) node);
 					}
-					System.out.println(node);
 					if (node!=null) {
 						childAttributeContainer.getChildren().add(new Label(e.getName()+":"));
 						childAttributeContainer.getChildren().add(node);
@@ -305,7 +298,7 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 
 	private void initAttributeFormular(EObject eObject) {
 		EList<EAttribute> attributes = eObject.eClass().getEAllAttributes();
-		formSwitch = new EAttributeFormSwitch(treeView.getEmfManager().getEditingDomain(), eObject);
+		formSwitch = new EAttributeFormSwitch(editingDomain, eObject);
 		for (EAttribute eAttribute : attributes) {
 			HBox hbox = new HBox(5.0);
 			Label label = new Label(eAttribute.getName());
