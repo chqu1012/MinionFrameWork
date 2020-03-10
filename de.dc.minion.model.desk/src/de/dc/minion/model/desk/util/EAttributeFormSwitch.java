@@ -70,6 +70,7 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 			String value = attributeValue == null ? "" : attributeValue.toString();
 			node.setMinWidth(200);
 			node.setText(value);
+			node.setPromptText(currentAttribute.getName());
 			node.setOnKeyPressed(event -> {
 				TextField textField = (TextField) event.getSource();
 				KeyCode code = event.getCode();

@@ -64,7 +64,8 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 
 	private static final String EDITED_STYLE = "-fx-background-color: red; -fx-text-fill: white;";
 	protected EmfModelTreeView<T> treeView;
-	private EAttributeFormSwitch aetributeSwitch;
+	private EAttributeFormSwitch formSwitch;
+	private EAttributeFormSwitch formChildSwitch;
 	
 	protected BooleanProperty isDirtyProperty = new SimpleBooleanProperty(false);
 
@@ -184,13 +185,20 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 			if (object instanceof CommandParameter) {
 				CommandParameter param = (CommandParameter) object;
 				EObject child = (EObject) param.getValue();
+				
+				formChildSwitch = new EAttributeFormSwitch(manager.getEditingDomain(), child);
+				
 				child.eClass().getEAllAttributes().forEach(e -> {
-					childAttributeContainer.getChildren().add(new Label(e.getName()+":"));
-					TextField textField = new TextField();
-					textField.setPromptText(e.getName());
-					textField.setOnKeyPressed(event -> textField.setStyle(EDITED_STYLE));
-					childAttributeContainer.getChildren().add(textField);
-					childEattributesMap.put(e, textField);
+					
+					Node node = formChildSwitch.doSwitch(e);
+					if (node instanceof TextField) {
+						childEattributesMap.put(e, (TextField) node);
+					}
+					System.out.println(node);
+					if (node!=null) {
+						childAttributeContainer.getChildren().add(new Label(e.getName()+":"));
+						childAttributeContainer.getChildren().add(node);
+					}
 				});
 				Button addChildButton = new Button("Add");
 				addChildButton.setOnAction(e -> {
@@ -297,14 +305,14 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 
 	private void initAttributeFormular(EObject eObject) {
 		EList<EAttribute> attributes = eObject.eClass().getEAllAttributes();
-		aetributeSwitch = new EAttributeFormSwitch(treeView.getEmfManager().getEditingDomain(), eObject);
+		formSwitch = new EAttributeFormSwitch(treeView.getEmfManager().getEditingDomain(), eObject);
 		for (EAttribute eAttribute : attributes) {
 			HBox hbox = new HBox(5.0);
 			Label label = new Label(eAttribute.getName());
 			label.setPrefWidth(100);
 			hbox.getChildren().add(label);
 
-			Node node = aetributeSwitch.doSwitch(eAttribute);
+			Node node = formSwitch.doSwitch(eAttribute);
 			if (node instanceof TextField) {
 				eattributeUIMap.put(eAttribute, (TextField) node);
 			}
