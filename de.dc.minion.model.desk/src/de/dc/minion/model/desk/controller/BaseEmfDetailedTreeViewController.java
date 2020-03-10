@@ -2,7 +2,6 @@ package de.dc.minion.model.desk.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -25,13 +24,7 @@ public abstract class BaseEmfDetailedTreeViewController extends SplitPane {
     protected VBox attributeContainer;
 
     @FXML
-    protected VBox tableContainer;
-
-    @FXML
-    protected HBox childAttributeContainer;
-
-    @FXML
-    protected TableView<?> tableView;
+    protected VBox childAttributeContainer;
 
     @FXML
     protected abstract void onAddNewValueAction(ActionEvent event);
