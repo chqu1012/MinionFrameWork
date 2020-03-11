@@ -121,6 +121,29 @@ public class MeshItemProviderAdapterFactory extends MeshAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.mesh.Circle} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CircleItemProvider circleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.mesh.Circle}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCircleAdapter() {
+		if (circleItemProvider == null) {
+			circleItemProvider = new CircleItemProvider(this);
+		}
+
+		return circleItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -229,6 +252,8 @@ public class MeshItemProviderAdapterFactory extends MeshAdapterFactory
 			meshContainerItemProvider.dispose();
 		if (rectangleItemProvider != null)
 			rectangleItemProvider.dispose();
+		if (circleItemProvider != null)
+			circleItemProvider.dispose();
 	}
 
 }

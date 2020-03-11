@@ -184,6 +184,9 @@ public class MeshContainerItemProvider extends ItemProviderAdapter
 
 		newChildDescriptors.add(createChildParameter(MeshPackage.Literals.MESH_CONTAINER__SHAPES,
 				MeshFactory.eINSTANCE.createRectangle()));
+
+		newChildDescriptors.add(createChildParameter(MeshPackage.Literals.MESH_CONTAINER__SHAPES,
+				MeshFactory.eINSTANCE.createCircle()));
 	}
 
 	/**
