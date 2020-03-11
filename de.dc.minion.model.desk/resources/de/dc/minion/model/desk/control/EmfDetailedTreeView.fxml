@@ -6,7 +6,9 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -15,7 +17,22 @@
    <items>
       <TitledPane animated="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="EMF Model TreeView">
         <content>
-          <AnchorPane fx:id="emfModelTreeViewContainer" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            <VBox>
+               <children>
+                  <BorderPane fx:id="emfModelTreeViewContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" VBox.vgrow="ALWAYS">
+                     <top>
+                        <ToolBar fx:id="emModelTreeViewToolbar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
+                     </top>
+                     <bottom>
+                        <ToolBar maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                           <items>
+                              <Label fx:id="labelTooltip" />
+                           </items>
+                        </ToolBar>
+                     </bottom>
+                  </BorderPane>
+               </children>
+            </VBox>
         </content>
       </TitledPane>
       <TitledPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Properties">
@@ -50,7 +67,6 @@
                                        </font>
                                     </Label>
                                     <Separator prefWidth="200.0" />
-                                    <HBox fx:id="childToolbar" spacing="5.0" />
                                     <VBox fx:id="childAttributeContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" />
                                  </children>
                               </VBox>

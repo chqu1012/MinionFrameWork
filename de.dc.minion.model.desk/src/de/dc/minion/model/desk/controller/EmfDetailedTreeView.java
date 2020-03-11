@@ -47,7 +47,6 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -83,11 +82,7 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 		treeView.getTreeView().getSelectionModel().selectedItemProperty().addListener(this);
 		editingDomain = treeView.getEmfManager().getEditingDomain();
 
-		AnchorPane.setBottomAnchor(treeView, 0d);
-		AnchorPane.setTopAnchor(treeView, 0d);
-		AnchorPane.setLeftAnchor(treeView, 0d);
-		AnchorPane.setRightAnchor(treeView, 0d);
-		emfModelTreeViewContainer.getChildren().add(treeView);
+		emfModelTreeViewContainer.setCenter(treeView);
 	}
 
 	public EmfModelTreeView<T> getTreeView() {
@@ -131,7 +126,7 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 	private void initChildPropertiesToolbar(EObject eObject) {
 		IEmfManager<T> manager = treeView.getEmfManager();
 		Collection<?> collection = editingDomain.getNewChildDescriptors(eObject, null);
-		childToolbar.getChildren().clear();
+		emModelTreeViewToolbar.getItems().clear();
 		for (Object object : collection) {
 			if (object instanceof CommandParameter) {
 				CommandParameter commandParameter = (CommandParameter) object;
@@ -143,6 +138,7 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 				Button button = new Button();
 				button.setTooltip(new Tooltip(menuText));
 				button.setGraphic(new ImageView(new Image(((URL) icon).toExternalForm())));
+				button.setOnMouseEntered(e-> labelTooltip.setText("Create new "+menuText));
 				button.setOnAction(event -> {
 					EClassifier eClassifier = manager.getModelPackage().getEClassifier(name);
 					EObject obj = manager.getExtendedModelFactory().create((EClass) eClassifier);
@@ -166,7 +162,7 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 							.getSelectedItem().getChildren();
 					treeView.getTreeView().getSelectionModel().select(children.get(children.size() - 1));
 				});
-				childToolbar.getChildren().add(button);
+				emModelTreeViewToolbar.getItems().add(button);
 			}
 		}
 	}
