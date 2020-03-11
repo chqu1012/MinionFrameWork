@@ -9,4 +9,5 @@ Require-Bundle: de.dc.minion.model.desk;bundle-version="1.0.0",
  com.google.inject;bundle-version="3.0.0",
  de.dc.minion.model.addon.mesh;bundle-version="0.1.0",
  de.dc.minion.model.addon.mesh.edit;bundle-version="1.0.0",
- de.dc.minion.model.common
+ de.dc.minion.model.common,
+ de.dc.minion.model;bundle-version="0.1.0"

@@ -33,69 +33,75 @@ import de.dc.minion.model.common.control.IEmfViewPart;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.event.ISelectionService;
 import de.dc.minion.model.common.file.IEmfFileManager;
+import de.dc.minion.model.desk.controller.EmptyViewPart;
 import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
-public class MinionBuilder extends MinionSwitch<Node>{
-	
+public class MinionBuilder extends MinionSwitch<Object> {
+
 	private Logger log = Logger.getLogger(MinionBuilder.class.getSimpleName());
-	
-	@Inject ISelectionService selectionService;
-	@Inject IEventBroker eventBroker;
-	@Inject IControlManager controlManager;
-	@Inject IEmfFileManager fileManager;
-	@Inject ICommandService commandService;
-	
+
+	@Inject
+	ISelectionService selectionService;
+	@Inject
+	IEventBroker eventBroker;
+	@Inject
+	IControlManager controlManager;
+	@Inject
+	IEmfFileManager fileManager;
+	@Inject
+	ICommandService commandService;
+
 	private MinionDeskFX minionDesk;
 	private Map<String, Landscape> landscapes = new HashMap<>();
 
 	@Override
-	public Node caseMinion(Minion object) {
+	public Object caseMinion(Minion object) {
 		object.getToadies().forEach(this::doSwitch);
 		return super.caseMinion(object);
 	}
 
 	@Override
-	public Node caseToady(Toady object) {
+	public Object caseToady(Toady object) {
 		object.getTouchPoints().forEach(this::doSwitch);
 		return super.caseToady(object);
 	}
-	
+
 	@Override
-	public Node caseLandscapeTouch(LandscapeTouch object) {
+	public Object caseLandscapeTouch(LandscapeTouch object) {
 		object.getLandscapes().forEach(this::doSwitch);
 		return super.caseLandscapeTouch(object);
 	}
-	
+
 	@Override
-	public Node caseVisionTouch(VisionTouch object) {
+	public Object caseVisionTouch(VisionTouch object) {
 		object.getVisions().forEach(this::doSwitch);
 		return super.caseVisionTouch(object);
 	}
-	
+
 	@Override
-	public Node caseDeskmanTouch(DeskmanTouch object) {
-		object.getDeskmans().forEach(e->doSwitch(e));
+	public Object caseDeskmanTouch(DeskmanTouch object) {
+		object.getDeskmans().forEach(e -> doSwitch(e));
 		return super.caseDeskmanTouch(object);
 	}
-	
+
 	@Override
-	public Node caseToolbarTouch(ToolbarTouch object) {
+	public Object caseToolbarTouch(ToolbarTouch object) {
 		object.getToolbarItems().forEach(this::doSwitch);
 		return super.caseToolbarTouch(object);
 	}
-	
+
 	@Override
-	public Node caseCommandTouch(CommandTouch object) {
+	public Object caseCommandTouch(CommandTouch object) {
 		object.getCommands().forEach(this::doSwitch);
 		return super.caseCommandTouch(object);
 	}
 
 	@Override
-	public Node caseDeskman(Deskman object) {
+	public Object caseDeskman(Deskman object) {
 		try {
 			Class<IEmfEditorPart> clazz = (Class<IEmfEditorPart>) Class.forName(object.getUri());
 			IEmfEditorPart<?> view = clazz.newInstance();
@@ -106,12 +112,12 @@ public class MinionBuilder extends MinionSwitch<Node>{
 		}
 		return super.caseDeskman(object);
 	}
-	
+
 	@Override
-	public Node caseCommand(Command object) {
+	public Object caseCommand(Command object) {
 		String id = object.getId();
 		String handler = object.getHandler();
-		if (id!=null && handler!=null) {
+		if (id != null && handler != null) {
 			try {
 				Class<ICommandHandler> handlerClass = (Class<ICommandHandler>) Class.forName(handler);
 				ICommandHandler commandHandler = handlerClass.newInstance();
@@ -125,114 +131,103 @@ public class MinionBuilder extends MinionSwitch<Node>{
 		}
 		return super.caseCommand(object);
 	}
-	
+
 	@Override
-	public Node caseToolbarItem(ToolbarItem object) {
+	public Object caseToolbarItem(ToolbarItem object) {
 		Button button = new Button(object.getName());
 		Command command = object.getCommand();
-		if (command!=null) {
-			button.setOnAction(e-> commandService.execute(command.getId()));
+		if (command != null) {
+			button.setOnAction(e -> commandService.execute(command.getId()));
 		}
 		minionDesk.getToolBar().getItems().add(button);
-		
+
 		controlManager.registrate(object.getId(), button);
 		return super.caseToolbarItem(object);
 	}
-	
+
 	@Override
-	public Node caseLandscape(Landscape object) {
+	public Object caseLandscape(Landscape object) {
 		Button perspectiveButton = new Button(object.getName());
 		perspectiveButton.setId(object.getId());
 		perspectiveButton.setOnAction(e -> minionDesk.switchPerspective(object));
 		minionDesk.getPerspectiveToolBar().getItems().add(perspectiveButton);
-		
+
 		LandscapeFX LandscapeFX = new LandscapeFX();
-		
+
 		EList<Vision> rightPane = object.getRight();
 		EList<Vision> leftPane = object.getLeft();
 		EList<Vision> bottomPane = object.getBottom();
-		
+
 		if (leftPane != null) {
 			for (Vision view : leftPane) {
-				LandscapeFX.addToLeft((EmfViewPart) controlManager.findViewBy(view.getId()));
+				LandscapeFX.addToLeft((EmfViewPart) doSwitch(view));
 			}
 		}
 		if (rightPane != null) {
 			for (Vision view : rightPane) {
-				LandscapeFX.addToRight((EmfViewPart) controlManager.findViewBy(view.getId()));
+				LandscapeFX.addToRight((EmfViewPart) doSwitch(view));
 			}
 		}
 		if (bottomPane != null) {
 			for (Vision view : bottomPane) {
-//				caseVision(view);
-				LandscapeFX.addToBottom((EmfViewPart) controlManager.findViewBy(view.getId()));
+				LandscapeFX.addToBottom((EmfViewPart) doSwitch(view));
 			}
 		}
-		
+
 		minionDesk.addLandscapeFX(object.getId(), LandscapeFX);
-		
+
 		landscapes.put(object.getId(), object);
 		controlManager.registrate(object.getId(), perspectiveButton);
 		return super.caseLandscape(object);
 	}
-	
+
 	@Override
-	public Node caseVision(Vision object) {
-		IEmfViewPart view = controlManager.findViewBy(object.getId());
+	public Object caseVision(Vision object) {
 		try {
-			if (view==null) {
-				view = createVision(object);
-				view.setVision(object);
-				view.initialize();
-			}
-		} catch (NullPointerException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-			log.log(Level.SEVERE, "Viewpart cannot created (id: " + object.getId() + "instance: "
-					+ object.getUri() + ", name: " + object.getName() + ") ");
+			return createVision(object);
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+			e.printStackTrace();
 		}
-		return new TextArea("ViewPart cannot be created!");
+		return new EmptyViewPart(object.getName());
 	}
 
 	@Override
-	public Node casePropertyVision(PropertyVision object) {
-		IEmfViewPart view = controlManager.findViewBy(object.getId());
-		if (view==null) {
-			view = new MinionPropertiesVision();
-			MinionPlatform.inject(view);
-			view.setVision(object);
-			view.initialize();
-			controlManager.registrate(object.getId(), view);
-		}
-		return new TextArea("ViewPart cannot be created!");
+	public Object casePropertyVision(PropertyVision object) {
+		MinionPropertiesVision properties = new MinionPropertiesVision();
+		MinionPlatform.inject(properties);
+		properties.setVision(object);
+		properties.initialize();
+		return properties;
 	}
-	
+
 	@Override
-	public Node caseRecentlyOpenVision(RecentlyOpenVision object) {
-		IEmfViewPart view = controlManager.findViewBy(object.getId());
-		if (view==null) {
-			view = new MinionRecentlyOpenVision();
-			MinionPlatform.inject(view);
-			view.setVision(object);
-			view.initialize();
-			controlManager.registrate(object.getId(), view);
-		}
-		return new TextArea("ViewPart cannot be created!");
+	public Object caseRecentlyOpenVision(RecentlyOpenVision object) {
+		MinionRecentlyOpenVision view = new MinionRecentlyOpenVision();
+		MinionPlatform.inject(view);
+		view.setVision(object);
+		view.initialize();
+		return view;
 	}
 
 	private IEmfViewPart createVision(Vision object)
 			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		if (object.getUri()==null) {
+			return new EmptyViewPart(object.getName());
+		}
 		Class<IEmfViewPart> clazz = (Class<IEmfViewPart>) Class.forName(object.getUri());
 		IEmfViewPart view = clazz.newInstance();
 		MinionPlatform.inject(view);
-		
+		view.setVision(object);
+		view.initialize();
 		boolean isChangeListener = ChangeListener.class.isAssignableFrom(view.getClass());
 		if (isChangeListener && object.isChangeListener()) {
 			selectionService.addListener((ChangeListener<?>) view);
 		}
-		
+
 		controlManager.registrate(object.getId(), view);
 		return view;
 	}
-	
+
 //	private Tab createTab(Vision e) {
 //Tab tab;
 //		//		String id = e.getId();
