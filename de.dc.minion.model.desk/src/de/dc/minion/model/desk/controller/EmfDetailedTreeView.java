@@ -34,23 +34,26 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewController
+public abstract class EmfDetailedTreeView<T> extends SplitPane
 		implements ChangeListener<TreeItem<Object>>, IEmfEditorPart<T> {
 
 	private EditingDomain editingDomain;
@@ -63,8 +66,15 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 	protected EmfModelTreeView<T> treeView;
 	private EAttributeFormSwitch formSwitch;
 	private EAttributeFormSwitch formChildSwitch;
-	
 	protected BooleanProperty isDirtyProperty = new SimpleBooleanProperty(false);
+	
+	@FXML Label labelTooltip;
+	@FXML ToolBar emModelTreeViewToolbar;
+	@FXML HBox toolbar;
+	@FXML SplitPane root;
+    @FXML BorderPane emfModelTreeViewContainer;
+    @FXML VBox attributeContainer;
+    @FXML VBox childAttributeContainer;
 
 	public EmfDetailedTreeView() {
 		FXMLLoader fxmlLoader = new FXMLLoader(
@@ -94,18 +104,6 @@ public abstract class EmfDetailedTreeView<T> extends BaseEmfDetailedTreeViewCont
 	}
 
 	protected abstract EmfModelTreeView<T> initEmfModelTreeView();
-
-	@Override
-	protected void onAddNewValueAction(ActionEvent event) {
-	}
-
-	@Override
-	protected void onDeleteSelectionValueAction(ActionEvent event) {
-	}
-
-	@Override
-	protected void onEditValueAction(ActionEvent event) {
-	}
 
 	@Override
 	public void changed(ObservableValue<? extends TreeItem<Object>> observable, TreeItem<Object> oldValue,

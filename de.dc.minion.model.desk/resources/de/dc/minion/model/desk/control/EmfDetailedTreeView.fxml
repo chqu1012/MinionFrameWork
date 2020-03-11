@@ -15,7 +15,7 @@
 
 <fx:root fx:id="root" dividerPositions="0.2706766917293233" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" type="SplitPane" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1">
    <items>
-      <TitledPane animated="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="EMF Model TreeView">
+      <TitledPane animated="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="EMF Model TreeView" SplitPane.resizableWithParent="false">
         <content>
             <VBox>
                <children>
