@@ -18,4 +18,12 @@ Require-Bundle: org.apache.commons.io;bundle-version="2.6.0",
  de.dc.minion.model.edit;bundle-version="1.0.0"
 Export-Package: de.dc.minion.model.desk,
  de.dc.minion.model.desk.control,
- de.dc.minion.model.desk.module
+ de.dc.minion.model.desk.control.cell,
+ de.dc.minion.model.desk.control.dnd,
+ de.dc.minion.model.desk.control.internal,
+ de.dc.minion.model.desk.control.shape,
+ de.dc.minion.model.desk.controller,
+ de.dc.minion.model.desk.handler,
+ de.dc.minion.model.desk.module,
+ de.dc.minion.model.desk.service,
+ de.dc.minion.model.desk.util

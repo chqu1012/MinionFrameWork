@@ -1,0 +1,34 @@
+@Ecore(nsURI="http://www.frateranatis.org/minon/addon/mesh")
+@GenModel(
+	modelPluginID="de.dc.minion.model.addon.mesh", 
+	modelDirectory="/de.dc.minion.model.addon.mesh/src-gen",
+	editorPluginID="de.dc.minion.model.addon.mesh.editor",
+	editPluginID="de.dc.minion.model.addon.mesh.edit", 
+	editDirectory="/de.dc.minion.model.addon.mesh.edit/src-gen",
+	editorDirectory="/de.dc.minion.model.addon.mesh.editor/src-gen", 
+	fileExtensions="mesh", modelName="Mesh", prefix="Mesh",
+	
+	multipleEditorPages="false", creationIcons="false", 
+	richClientPlatform="true", codeFormatting="true",
+	importerID="org.eclipse.emf.importer.ecore", runtimePlatform="RCP", tableProviders="true",
+	generateExampleClass="false", revertAction="true", findAction="true",
+	expandAllAction="true", decoration="Live", creationSubmenus="true", collapseAllAction="true",
+	autoResizeProperties="true", autoExpandProperties="1")
+package de.dc.minion.model.addon.mesh
+
+class MeshContainer{
+	contains Shape[0..*] shapes
+}
+
+abstract class Shape{
+	Double positionX = '10'
+	Double positionY = '10'
+	String colorBackground
+	String colorBorder
+	Integer widthBorder
+}
+
+class Rectangle extends Shape{
+	Double width = '200'
+	Double height = '200'
+}
