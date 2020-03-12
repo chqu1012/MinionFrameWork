@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
+  <toadies>
+    <touchPoints xsi:type="model:VisionTouch">
+      <visions xsi:type="model:CommandHistoryTouch" id="de.dc.minion.model.desk.control.MinionRecentlyOpenVision" name="Command History" uri="de.dc.minion.model.desk.control.MinionRecentlyOpenVision"/>
+      <visions id="vision.mesh.diagram" name="MeshDiagram" uri="de.dc.minion.model.addon.mesh.ui.MeshDiagram"/>
+    </touchPoints>
+    <touchPoints xsi:type="model:LandscapeTouch">
+      <landscapes id="landscape.mesh" name="Mesh Landscape" left="//@toadies.0/@touchPoints.0/@visions.0" right="//@toadies.0/@touchPoints.0/@visions.1" center="//@toadies.0/@touchPoints.2/@deskmans.0"/>
+    </touchPoints>
+    <touchPoints xsi:type="model:DeskmanTouch">
+      <deskmans name="Mesh Deskman" uri="de.dc.minion.model.addon.mesh.ui.MeshEditor" extension="minion"/>
+    </touchPoints>
+  </toadies>
+</model:Minion>

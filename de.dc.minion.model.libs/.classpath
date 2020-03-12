@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="libs/AnimateFX-1.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/fxgraphics2d-1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jfreechart-fx-1.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jfxutils-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/orson-charts-fx-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/orsoncharts-1.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/efxclipse/3.6.0/org.eclipse.fx.core_3.6.0.201904161317.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/efxclipse/3.6.0/org.eclipse.fx.ui.controls_3.6.0.201904161317.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/efxclipse/3.6.0/org.eclipse.fx.emf.edit.ui_3.6.0.201904161317.jar"/>

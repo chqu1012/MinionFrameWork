@@ -1,0 +1,116 @@
+@Ecore(nsURI="http://www.frateranatis.org/minon/addon/chart")
+@GenModel(
+	modelPluginID="de.dc.minion.model.addon.chart", 
+	modelDirectory="/de.dc.minion.model.addon.chart/src-gen",
+	editorPluginID="de.dc.minion.model.addon.chart.editor",
+	editPluginID="de.dc.minion.model.addon.chart.edit", 
+	editDirectory="/de.dc.minion.model.addon.chart.edit/src-gen",
+	editorDirectory="/de.dc.minion.model.addon.chart.editor/src-gen", 
+	fileExtensions="chart", modelName="Chart", prefix="Chart",
+	
+	multipleEditorPages="false", creationIcons="false", 
+	richClientPlatform="true", codeFormatting="true",
+	importerID="org.eclipse.emf.importer.ecore", runtimePlatform="RCP", tableProviders="true",
+	generateExampleClass="false", revertAction="true", findAction="true",
+	expandAllAction="true", decoration="Live", creationSubmenus="true", collapseAllAction="true",
+	autoResizeProperties="true", autoExpandProperties="1")
+package de.dc.javafx.xcore.workbench.chart
+
+class ChartProject{
+	String name
+	contains ChartFX[0..*] charts
+}
+
+abstract class ChartFX{
+	String name
+	String xAxisLabel = ""
+	String yAxisLabel = ""
+	String zAxisLabel = ""
+	contains ChartFXConfig config
+} 
+
+abstract class XYChartFX extends ChartFX{
+	contains SeriesFX[0..*] series	
+}
+
+abstract class CategoryChartFX extends ChartFX{
+	contains CategorySeriesFX[0..*] series
+}
+
+abstract class CategoryRowChartFX extends ChartFX{
+	contains CategoryRowSeriesFX[0..*] series
+}
+
+abstract class XYZChartFX extends ChartFX{
+	contains XYZSeriesFX[0..*] series
+}
+
+class XYZSeriesFX{
+	String name
+	contains XYZValueFX[0..*] values
+}
+
+class CategorySeriesFX{
+	String name
+	contains CategoryValueFX[0..*] values
+}
+
+class CategoryRowSeriesFX extends CategorySeriesFX{
+	String rowKey
+}
+
+class SeriesFX{
+	String name
+	contains XYValueFX[0..*] values
+}
+
+class XYValueFX{
+	double x ='0'
+	double y = '0'
+}
+
+class XYZValueFX extends XYValueFX{
+	double z = '0'
+}
+
+class CategoryValueFX{
+	String name = ''
+	double value ='0'
+}
+
+class LineChartFX extends XYChartFX{}
+class AreaChartFX extends XYChartFX{}
+class ScatterChartFX extends XYChartFX{}
+class BubbleChartFX extends XYChartFX{}
+class BarChartFX extends CategoryChartFX{}
+class PieChartFX extends CategoryChartFX{}
+
+// Orson Chart API
+class AreaChart3dFX extends XYChartFX{}
+class BarChart3dFX extends XYChartFX{}
+class LineChart3dFX extends XYChartFX{}
+class PieChart3dFX extends CategoryChartFX{}
+class ScatterChart3dFX extends XYZChartFX{}
+class StackedBarChart3dFX extends CategoryRowChartFX{}
+class XYZBarChart3dFX extends XYZChartFX{}
+class XYZLineChart3dFX extends XYZChartFX{}
+class SurfaceChart3dFX extends CategoryRowChartFX{
+	String function = 'Math.cos(x) * Math.sin(z)'
+}
+
+class ChartFXConfig{
+	ChartSide sideLegend
+	ChartSide titleSide
+	boolean showLegend = 'true'
+	boolean isAnimated = 'true'
+	boolean alternativeColumnFillVisible = 'true'
+	boolean alternativeRowFillVisible = 'true'
+	boolean horizontalGridLinesVisible = 'true'
+	boolean horizontalZeroLinesVisible = 'true'
+	boolean verticalGridLinesVisible = 'true'
+	boolean verticalZeroLinesVisible = 'true'
+}
+
+enum ChartSide{
+	TOP BOTTOM LEFT RIGHT
+}
