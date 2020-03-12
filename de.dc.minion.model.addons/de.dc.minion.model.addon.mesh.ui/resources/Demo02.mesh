@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mesh:MeshContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mesh="http://www.frateranatis.org/minon/addon/mesh">
+  <shapes xsi:type="mesh:Rectangle" colorBackground="blue"/>
+  <shapes xsi:type="mesh:Rectangle" positionX="300.0" colorBackground="red"/>
+  <transitions xsi:type="mesh:FadeTransition" transitionShapes="//@shapes.0 //@shapes.1"/>
+  <timelines name="Test" play="//@transitions.0"/>
+</mesh:MeshContainer>
