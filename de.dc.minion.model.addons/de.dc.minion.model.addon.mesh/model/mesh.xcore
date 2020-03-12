@@ -18,6 +18,8 @@ package de.dc.minion.model.addon.mesh
 
 class MeshContainer{
 	contains Shape[0..*] shapes
+	contains Timeline[0..*] timelines
+	contains Transition[0..*] transitions
 }
 
 abstract class Shape{
@@ -33,6 +35,27 @@ class Rectangle extends Shape{
 	Double height = '200'
 }
 
+class Box extends Rectangle{
+	Double depth = '200'
+	Double positionZ = '10'
+}
+
 class Circle extends Shape{
 	Integer radius = '20'
+}
+
+class Timeline{
+	String name
+	refers Transition[0..*] play
+}
+
+abstract class Transition{
+	String name
+	refers Shape[0..*] transitionShapes
+}
+
+class FadeTransition extends Transition{
+	Double fromValue = '1.0'
+	Double toValue = '0.1'
+	Boolean autoReverse = 'true'
 }

@@ -121,6 +121,29 @@ public class MeshItemProviderAdapterFactory extends MeshAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.mesh.Box} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BoxItemProvider boxItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.mesh.Box}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBoxAdapter() {
+		if (boxItemProvider == null) {
+			boxItemProvider = new BoxItemProvider(this);
+		}
+
+		return boxItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.mesh.Circle} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -141,6 +164,52 @@ public class MeshItemProviderAdapterFactory extends MeshAdapterFactory
 		}
 
 		return circleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.mesh.Timeline} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimelineItemProvider timelineItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.mesh.Timeline}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimelineAdapter() {
+		if (timelineItemProvider == null) {
+			timelineItemProvider = new TimelineItemProvider(this);
+		}
+
+		return timelineItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.mesh.FadeTransition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FadeTransitionItemProvider fadeTransitionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.mesh.FadeTransition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFadeTransitionAdapter() {
+		if (fadeTransitionItemProvider == null) {
+			fadeTransitionItemProvider = new FadeTransitionItemProvider(this);
+		}
+
+		return fadeTransitionItemProvider;
 	}
 
 	/**
@@ -252,8 +321,14 @@ public class MeshItemProviderAdapterFactory extends MeshAdapterFactory
 			meshContainerItemProvider.dispose();
 		if (rectangleItemProvider != null)
 			rectangleItemProvider.dispose();
+		if (boxItemProvider != null)
+			boxItemProvider.dispose();
 		if (circleItemProvider != null)
 			circleItemProvider.dispose();
+		if (timelineItemProvider != null)
+			timelineItemProvider.dispose();
+		if (fadeTransitionItemProvider != null)
+			fadeTransitionItemProvider.dispose();
 	}
 
 }

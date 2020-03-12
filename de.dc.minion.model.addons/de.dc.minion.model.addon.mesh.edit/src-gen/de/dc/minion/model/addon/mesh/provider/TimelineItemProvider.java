@@ -2,10 +2,8 @@
  */
 package de.dc.minion.model.addon.mesh.provider;
 
-import de.dc.minion.model.addon.mesh.MeshContainer;
-import de.dc.minion.model.addon.mesh.MeshFactory;
 import de.dc.minion.model.addon.mesh.MeshPackage;
-
+import de.dc.minion.model.addon.mesh.Timeline;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,8 +12,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -23,16 +20,17 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dc.minion.model.addon.mesh.MeshContainer} object.
+ * This is the item provider adapter for a {@link de.dc.minion.model.addon.mesh.Timeline} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class MeshContainerItemProvider extends ItemProviderAdapter
+public class TimelineItemProvider extends ItemProviderAdapter
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
 		IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider {
 	/**
@@ -41,7 +39,7 @@ public class MeshContainerItemProvider extends ItemProviderAdapter
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MeshContainerItemProvider(AdapterFactory adapterFactory) {
+	public TimelineItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,51 +54,52 @@ public class MeshContainerItemProvider extends ItemProviderAdapter
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
+			addPlayPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(MeshPackage.Literals.MESH_CONTAINER__SHAPES);
-			childrenFeatures.add(MeshPackage.Literals.MESH_CONTAINER__TIMELINES);
-			childrenFeatures.add(MeshPackage.Literals.MESH_CONTAINER__TRANSITIONS);
-		}
-		return childrenFeatures;
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Timeline_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Timeline_name_feature",
+								"_UI_Timeline_type"),
+						MeshPackage.Literals.TIMELINE__NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Play feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addPlayPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Timeline_play_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Timeline_play_feature",
+								"_UI_Timeline_type"),
+						MeshPackage.Literals.TIMELINE__PLAY, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This returns MeshContainer.gif.
+	 * This returns Timeline.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/MeshContainer"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Timeline"));
 	}
 
 	/**
@@ -136,7 +135,9 @@ public class MeshContainerItemProvider extends ItemProviderAdapter
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_MeshContainer_type");
+		String label = ((Timeline) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Timeline_type")
+				: getString("_UI_Timeline_type") + " " + label;
 	}
 
 	/**
@@ -165,11 +166,9 @@ public class MeshContainerItemProvider extends ItemProviderAdapter
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(MeshContainer.class)) {
-		case MeshPackage.MESH_CONTAINER__SHAPES:
-		case MeshPackage.MESH_CONTAINER__TIMELINES:
-		case MeshPackage.MESH_CONTAINER__TRANSITIONS:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+		switch (notification.getFeatureID(Timeline.class)) {
+		case MeshPackage.TIMELINE__NAME:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -185,21 +184,6 @@ public class MeshContainerItemProvider extends ItemProviderAdapter
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(MeshPackage.Literals.MESH_CONTAINER__SHAPES,
-				MeshFactory.eINSTANCE.createRectangle()));
-
-		newChildDescriptors.add(
-				createChildParameter(MeshPackage.Literals.MESH_CONTAINER__SHAPES, MeshFactory.eINSTANCE.createBox()));
-
-		newChildDescriptors.add(createChildParameter(MeshPackage.Literals.MESH_CONTAINER__SHAPES,
-				MeshFactory.eINSTANCE.createCircle()));
-
-		newChildDescriptors.add(createChildParameter(MeshPackage.Literals.MESH_CONTAINER__TIMELINES,
-				MeshFactory.eINSTANCE.createTimeline()));
-
-		newChildDescriptors.add(createChildParameter(MeshPackage.Literals.MESH_CONTAINER__TRANSITIONS,
-				MeshFactory.eINSTANCE.createFadeTransition()));
 	}
 
 	/**
