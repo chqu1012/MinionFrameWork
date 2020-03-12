@@ -6,7 +6,7 @@ import javafx.scene.layout.BorderPane;
 
 public abstract class EmfViewPart extends Tab implements IEmfViewPart{
 
-	private BorderPane pane;
+	protected BorderPane pane;
 
 	public EmfViewPart() {
 		pane = new BorderPane();
