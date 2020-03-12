@@ -1,5 +1,6 @@
 package de.dc.minion.model.common;
 
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
@@ -48,4 +49,6 @@ public interface IEmfManager<T> {
 	IEmfFile<T> initFile();
 
 	IItemLabelProvider getLabelProvider(Object object);
+
+	AdapterFactory getModelItemProviderAdapterFactory();
 }

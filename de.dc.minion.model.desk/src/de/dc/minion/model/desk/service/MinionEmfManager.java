@@ -30,7 +30,7 @@ public class MinionEmfManager extends AbstractEmfManager<Minion>{
 	}
 
 	@Override
-	protected AdapterFactory getModelItemProviderAdapterFactory() {
+	public AdapterFactory getModelItemProviderAdapterFactory() {
 		return new MinionItemProviderAdapterFactory();
 	}
 

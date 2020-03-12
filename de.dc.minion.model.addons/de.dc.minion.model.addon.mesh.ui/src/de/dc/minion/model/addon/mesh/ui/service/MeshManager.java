@@ -30,7 +30,7 @@ public class MeshManager extends AbstractEmfManager<MeshContainer>{
 	}
 
 	@Override
-	protected AdapterFactory getModelItemProviderAdapterFactory() {
+	public AdapterFactory getModelItemProviderAdapterFactory() {
 		return new MeshItemProviderAdapterFactory();
 	}
 

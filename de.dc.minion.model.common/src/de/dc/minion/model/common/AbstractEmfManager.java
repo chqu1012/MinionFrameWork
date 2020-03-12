@@ -1,6 +1,5 @@
 package de.dc.minion.model.common;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -37,8 +36,6 @@ public abstract class AbstractEmfManager<T> implements IEmfManager<T> {
 		changeRecorder = new ChangeRecorder();
 		root = initModel();
 	}
-
-	protected abstract AdapterFactory getModelItemProviderAdapterFactory();
 
 	protected abstract T initModel();
 

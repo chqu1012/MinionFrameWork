@@ -6,6 +6,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.command.Command;
@@ -14,10 +15,13 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
 
 import de.dc.minion.fx.model.EmfCommand;
 import de.dc.minion.fx.model.MinionFactory;
@@ -292,6 +296,8 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 
 	private void initAttributeFormular(EObject eObject) {
 		EList<EAttribute> attributes = eObject.eClass().getEAllAttributes();
+		
+		EList<EReference> eAllReferences = eObject.eClass().getEReferences();
 		formSwitch = new EAttributeFormSwitch(editingDomain, eObject);
 		for (EAttribute eAttribute : attributes) {
 			HBox hbox = new HBox(5.0);
@@ -309,6 +315,26 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 			hbox.getChildren().add(node);
 			attributeContainer.getChildren().add(hbox);
 		}
+		
+		for (EReference eReference : eAllReferences) {
+			HBox hbox = new HBox(5.0);
+			Label label = new Label(eReference.getName());
+			label.setPrefWidth(100);
+			hbox.getChildren().add(label);
+
+			IEmfManager<T> manager = treeView.getEmfManager();
+			IItemPropertySource source = (IItemPropertySource) manager.getModelItemProviderAdapterFactory().adapt(eObject, IItemPropertySource.class);
+			List<IItemPropertyDescriptor> propertyDescriptors = source.getPropertyDescriptors(eObject);
+			for (IItemPropertyDescriptor d : propertyDescriptors) {
+				if (d.isSortChoices(eObject)) {
+					d.getChoiceOfValues(eObject).forEach(e->{
+						System.out.println(e);
+					});;
+				}
+			}
+			attributeContainer.getChildren().add(hbox);
+		}
+		
 		Button acceptAllButton = new Button("Accept All");
 		acceptAllButton.setOnAction(event -> {
 			eattributeUIMap.entrySet().stream().forEach(e -> {
