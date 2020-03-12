@@ -3,7 +3,6 @@ package de.dc.minion.model.addon.chart.ui.service;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.change.ChangeFactory;
 
 import de.dc.javafx.xcore.workbench.chart.ChartFactory;
 import de.dc.javafx.xcore.workbench.chart.ChartPackage;
@@ -22,7 +21,7 @@ public class ChartManager extends AbstractEmfManager<ChartProject>{
 
 	@Override
 	public EFactory getExtendedModelFactory() {
-		return ChangeFactory.eINSTANCE;
+		return ChartFactory.eINSTANCE;
 	}
 
 	@Override

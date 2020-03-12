@@ -10,4 +10,5 @@ Require-Bundle: de.dc.minion.model.libs;bundle-version="1.0.0",
  de.dc.minion.model.addon.chart.edit;bundle-version="1.0.0",
  de.dc.minion.model.addon.chart,
  de.dc.minion.model.common,
- de.dc.minion.model.desk;bundle-version="1.0.0"
+ de.dc.minion.model.desk;bundle-version="1.0.0",
+ de.dc.minion.model;bundle-version="0.1.0"
