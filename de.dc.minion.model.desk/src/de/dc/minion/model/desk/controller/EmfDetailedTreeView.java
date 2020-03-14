@@ -37,6 +37,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,6 +45,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -322,16 +324,22 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 			label.setPrefWidth(100);
 			hbox.getChildren().add(label);
 
+			ListView listView = new ListView<>();
 			IEmfManager<T> manager = treeView.getEmfManager();
 			IItemPropertySource source = (IItemPropertySource) manager.getModelItemProviderAdapterFactory().adapt(eObject, IItemPropertySource.class);
 			List<IItemPropertyDescriptor> propertyDescriptors = source.getPropertyDescriptors(eObject);
 			for (IItemPropertyDescriptor d : propertyDescriptors) {
 				if (d.isSortChoices(eObject)) {
-					d.getChoiceOfValues(eObject).forEach(e->{
-						System.out.println(e);
-					});;
+					listView.setItems(FXCollections.observableArrayList(d.getChoiceOfValues(eObject)));
 				}
 			}
+			listView.setPrefHeight(100);
+			hbox.getChildren().add(listView);
+			Button buttonn = new Button("Add");
+			buttonn.setOnMouseClicked(e1->{
+				
+			});
+			hbox.getChildren().add(buttonn);
 			attributeContainer.getChildren().add(hbox);
 		}
 		
