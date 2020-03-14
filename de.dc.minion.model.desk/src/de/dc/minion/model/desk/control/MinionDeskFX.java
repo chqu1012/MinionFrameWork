@@ -10,7 +10,6 @@ import java.util.Optional;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.eclipse.fx.ui.controls.styledtext.StyleRange;
 import org.eclipse.fx.ui.controls.styledtext.StyledTextArea;
 
 import com.google.common.base.Charsets;
@@ -170,24 +169,28 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 	public void openFile(EventContext<?> context) {
 		Object input = context.getInput();
 		if (context.getEventId().equals("open.editor")) {
-			String filename = showTabTextByObject(input) == null ? "" : showTabTextByObject(input);
 			File file = new File((String) input);
-			if (!filename.isEmpty() && !isFileOpen(filename)) {
-				Optional<IEmfEditorPart<?>> editorPart = MinionPlatform.getInstance(IEmfFileManager.class)
-						.getEditorByExtension(FilenameUtils.getExtension(filename));
-				editorPart.ifPresent(e -> {
-					try {
-						IEmfEditorPart<?> editor = e.getClass().newInstance();
-						MinionPlatform.inject(editor);
-						Tab editorTab = new Tab(file.getName());
-						editor.load(file);
-						editorTab.setContent((Node) editor);
-						currentLandscape.getEditorArea().getTabs().add(editorTab);
-						currentLandscape.getEditorArea().getSelectionModel().select(editorTab);
-					} catch (InstantiationException | IllegalAccessException e1) {
-						e1.printStackTrace();
-					}
-				});
+			String filename = file.getName();
+			if (!filename.isEmpty()) {
+				if (!isFileOpen(filename)) {
+					Optional<IEmfEditorPart<?>> editorPart = MinionPlatform.getInstance(IEmfFileManager.class)
+							.getEditorByExtension(FilenameUtils.getExtension(filename));
+					editorPart.ifPresent(e -> {
+						try {
+							IEmfEditorPart<?> editor = e.getClass().newInstance();
+							MinionPlatform.inject(editor);
+							Tab editorTab = new Tab(file.getName());
+							editor.load(file);
+							editorTab.setContent((Node) editor);
+							currentLandscape.getEditorArea().getTabs().add(editorTab);
+							currentLandscape.getEditorArea().getSelectionModel().select(editorTab);
+						} catch (InstantiationException | IllegalAccessException e1) {
+							e1.printStackTrace();
+						}
+					});
+				}else {
+					getTabByName(filename).ifPresent(e -> currentLandscape.getEditorArea().getSelectionModel().select(e));
+				}
 			} else {
 				StyledTextArea styledTextArea = new StyledTextArea();
 				try {
@@ -200,7 +203,6 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 					e1.printStackTrace();
 				}
 			}
-			getTabByName(filename).ifPresent(e -> currentLandscape.getEditorArea().getSelectionModel().select(e));
 		}
 	}
 
@@ -215,8 +217,6 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 //			currentPerspective.getBottomTabPane().getSelectionModel().select(preview);
 //		}
 //	}
-
-	protected abstract String showTabTextByObject(Object input);
 
 	public boolean isFileOpen(String name) {
 		return currentLandscape.getEditorArea().getTabs().stream().anyMatch(e -> e.getText().equalsIgnoreCase(name));
