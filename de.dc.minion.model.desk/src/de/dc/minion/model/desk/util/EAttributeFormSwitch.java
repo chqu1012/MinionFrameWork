@@ -13,10 +13,8 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import de.dc.minion.model.desk.control.internal.EmfComboBox;
-import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -93,17 +91,15 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 				: instanceObject.eGet(currentAttribute);
 		EEnumLiteral selectedLiteral = enumeration.getEEnumLiteralByLiteral(String.valueOf(currentSelection));
 
-		ComboBox<Enumerator> enumCombo = new ComboBox<>(FXCollections.observableArrayList(literals));
-		enumCombo.getSelectionModel().select(selectedLiteral.getInstance());
-		enumCombo.getSelectionModel().selectedItemProperty()
-				.addListener((ChangeListener<Enumerator>) (observable1, oldValue1, newValue1) -> {
-					Enumerator selection = enumCombo.getSelectionModel().getSelectedItem();
-					EEnumLiteral enumLiteral = enumeration.getEEnumLiteral(selection.getName());
-					Command command = new SetCommand(editingDomain, instanceObject, currentAttribute,
-							enumLiteral.getInstance());
-					command.execute();
-				});
-		return enumCombo;
+		EmfComboBox<Enumerator> combobox = new EmfComboBox<>(currentAttribute);
+		combobox.setItems(FXCollections.observableArrayList(literals));
+		combobox.select(selectedLiteral.getInstance());
+		combobox.addListener(e -> {
+			Enumerator enumInstance = enumeration.getEEnumLiteral(e.getName()).getInstance();
+			EAttribute attribute = combobox.getEAttribute();
+			setValue(instanceObject, attribute, enumInstance);
+		});
+		return combobox;
 	}
 
 	private void setValue(EObject eObject, EAttribute eAttribute, Object value) {
