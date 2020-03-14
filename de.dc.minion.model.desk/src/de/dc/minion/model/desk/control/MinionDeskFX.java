@@ -177,12 +177,13 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 						.getEditorByExtension(FilenameUtils.getExtension(filename));
 				editorPart.ifPresent(e -> {
 					try {
-						IEmfEditorPart editor = e.getClass().newInstance();
+						IEmfEditorPart<?> editor = e.getClass().newInstance();
 						MinionPlatform.inject(editor);
 						Tab editorTab = new Tab(file.getName());
 						editor.load(file);
 						editorTab.setContent((Node) editor);
 						currentLandscape.getEditorArea().getTabs().add(editorTab);
+						currentLandscape.getEditorArea().getSelectionModel().select(editorTab);
 					} catch (InstantiationException | IllegalAccessException e1) {
 						e1.printStackTrace();
 					}
@@ -194,6 +195,7 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 					Tab editorTab = new Tab(filename);
 					editorTab.setContent(styledTextArea);
 					currentLandscape.getEditorArea().getTabs().add(editorTab);
+					currentLandscape.getEditorArea().getSelectionModel().select(editorTab);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
