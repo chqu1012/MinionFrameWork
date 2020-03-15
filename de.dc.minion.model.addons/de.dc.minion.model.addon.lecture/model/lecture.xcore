@@ -1,0 +1,93 @@
+@Ecore(nsURI="http://www.frateranatis.org/minon/addon/lectute")
+@GenModel(
+	modelPluginID="de.dc.minion.model.addon.lecture", 
+	modelDirectory="/de.dc.minion.model.addon.lecture/src-gen",
+	editorPluginID="de.dc.minion.model.addon.lecture.editor",
+	editPluginID="de.dc.minion.model.addon.lecture.edit", 
+	editDirectory="/de.dc.minion.model.addon.lecture.edit/src-gen",
+	editorDirectory="/de.dc.minion.model.addon.lecture.editor/src-gen", 
+	fileExtensions="lecture", modelName="Lecture", prefix="Lecture",
+	
+	multipleEditorPages="false", creationIcons="false", 
+	richClientPlatform="true", codeFormatting="true",
+	importerID="org.eclipse.emf.importer.ecore", runtimePlatform="RCP", tableProviders="true",
+	generateExampleClass="false", revertAction="true", findAction="true",
+	expandAllAction="true", decoration="Live", creationSubmenus="true", collapseAllAction="true",
+	autoResizeProperties="true", autoExpandProperties="1"
+)
+package de.dc.minion.model.addon.lecture
+
+class LectureProject{
+	contains Section[0..*] sections
+}
+
+class Section extends Content, TransitionElement{
+	String name = ''
+	boolean useMarkDown = 'false'
+	contains Content[0..*] contents
+}
+
+abstract class TransitionElement{
+	Transition transition
+}
+
+abstract class Content{
+}
+
+abstract class ListContent extends Content{
+	contains ListItem[0..*] item
+}
+
+class OrderedListContent extends ListContent{
+}
+
+class UnorderedListContent extends ListContent{
+}
+
+class FileContent extends Content{
+	String path
+}
+
+class StringContent extends Content{
+	String body = ''
+}
+
+abstract class HtmlElement{
+	String styleClass = ''
+	String value = ''
+}
+
+
+class Header extends Content{
+	int level
+	String value = ''
+}
+
+class Paragraph extends Content, HtmlElement{
+	contains HtmlElement[0..*] children
+}
+
+class Span extends HtmlElement{
+}
+
+class CodeBlock extends HtmlElement{
+	String language = 'java'
+}
+
+class Link extends HtmlElement, Content{
+	String href = ''
+	String alt = ''
+}
+
+class ListItem{
+	String value = ''
+}
+
+enum Transition{
+	NONE as "none"
+	SLIDE as "slide"
+	FADE as "fade"
+	CONVEX as "convex"
+	CONCAVE as "concave"
+	ZOOM as "zoom"
+}

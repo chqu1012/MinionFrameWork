@@ -98,6 +98,7 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 
 		treeView = initEmfModelTreeView();
 		treeView.getTreeView().getSelectionModel().selectedItemProperty().addListener(this);
+		
 		editingDomain = treeView.getEmfManager().getEditingDomain();
 
 		emfModelTreeViewContainer.setCenter(treeView);
