@@ -62,6 +62,8 @@ public class EmfProjectItemProvider extends ItemProviderAdapter
 			addEfactoryPropertyDescriptor(object);
 			addModelItemProviderAdapterFactoryPropertyDescriptor(object);
 			addRootElementPropertyDescriptor(object);
+			addRootElementPackagePropertyDescriptor(object);
+			addExportPathPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -127,6 +129,38 @@ public class EmfProjectItemProvider extends ItemProviderAdapter
 						getString("_UI_PropertyDescriptor_description", "_UI_EmfProject_rootElement_feature",
 								"_UI_EmfProject_type"),
 						MinionPackage.Literals.EMF_PROJECT__ROOT_ELEMENT, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Root Element Package feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRootElementPackagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_EmfProject_rootElementPackage_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_EmfProject_rootElementPackage_feature",
+								"_UI_EmfProject_type"),
+						MinionPackage.Literals.EMF_PROJECT__ROOT_ELEMENT_PACKAGE, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Export Path feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addExportPathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_EmfProject_exportPath_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_EmfProject_exportPath_feature",
+								"_UI_EmfProject_type"),
+						MinionPackage.Literals.EMF_PROJECT__EXPORT_PATH, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -240,6 +274,8 @@ public class EmfProjectItemProvider extends ItemProviderAdapter
 		case MinionPackage.EMF_PROJECT__EFACTORY:
 		case MinionPackage.EMF_PROJECT__MODEL_ITEM_PROVIDER_ADAPTER_FACTORY:
 		case MinionPackage.EMF_PROJECT__ROOT_ELEMENT:
+		case MinionPackage.EMF_PROJECT__ROOT_ELEMENT_PACKAGE:
+		case MinionPackage.EMF_PROJECT__EXPORT_PATH:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case MinionPackage.EMF_PROJECT__EDITING_ATTRIBUTES:

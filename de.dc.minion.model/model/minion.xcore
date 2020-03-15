@@ -167,6 +167,8 @@ class EmfProject{
 	String efactory
 	String modelItemProviderAdapterFactory
 	String rootElement
+	String rootElementPackage
+	String exportPath
 	contains EmfAttribute[0..*] editingAttributes
 }
 

@@ -34,6 +34,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.dc.minion.fx.model.impl.EmfProjectImpl#getEfactory <em>Efactory</em>}</li>
  *   <li>{@link de.dc.minion.fx.model.impl.EmfProjectImpl#getModelItemProviderAdapterFactory <em>Model Item Provider Adapter Factory</em>}</li>
  *   <li>{@link de.dc.minion.fx.model.impl.EmfProjectImpl#getRootElement <em>Root Element</em>}</li>
+ *   <li>{@link de.dc.minion.fx.model.impl.EmfProjectImpl#getRootElementPackage <em>Root Element Package</em>}</li>
+ *   <li>{@link de.dc.minion.fx.model.impl.EmfProjectImpl#getExportPath <em>Export Path</em>}</li>
  *   <li>{@link de.dc.minion.fx.model.impl.EmfProjectImpl#getEditingAttributes <em>Editing Attributes</em>}</li>
  * </ul>
  *
@@ -119,6 +121,46 @@ public class EmfProjectImpl extends MinimalEObjectImpl.Container implements EmfP
 	 * @ordered
 	 */
 	protected String rootElement = ROOT_ELEMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRootElementPackage() <em>Root Element Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRootElementPackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ROOT_ELEMENT_PACKAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRootElementPackage() <em>Root Element Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRootElementPackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String rootElementPackage = ROOT_ELEMENT_PACKAGE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getExportPath() <em>Export Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExportPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String EXPORT_PATH_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getExportPath() <em>Export Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExportPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String exportPath = EXPORT_PATH_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getEditingAttributes() <em>Editing Attributes</em>}' containment reference list.
@@ -252,6 +294,54 @@ public class EmfProjectImpl extends MinimalEObjectImpl.Container implements EmfP
 	 * @generated
 	 */
 	@Override
+	public String getRootElementPackage() {
+		return rootElementPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setRootElementPackage(String newRootElementPackage) {
+		String oldRootElementPackage = rootElementPackage;
+		rootElementPackage = newRootElementPackage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MinionPackage.EMF_PROJECT__ROOT_ELEMENT_PACKAGE,
+					oldRootElementPackage, rootElementPackage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getExportPath() {
+		return exportPath;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setExportPath(String newExportPath) {
+		String oldExportPath = exportPath;
+		exportPath = newExportPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MinionPackage.EMF_PROJECT__EXPORT_PATH, oldExportPath,
+					exportPath));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EList<EmfAttribute> getEditingAttributes() {
 		if (editingAttributes == null) {
 			editingAttributes = new EObjectContainmentEList<EmfAttribute>(EmfAttribute.class, this,
@@ -290,6 +380,10 @@ public class EmfProjectImpl extends MinimalEObjectImpl.Container implements EmfP
 			return getModelItemProviderAdapterFactory();
 		case MinionPackage.EMF_PROJECT__ROOT_ELEMENT:
 			return getRootElement();
+		case MinionPackage.EMF_PROJECT__ROOT_ELEMENT_PACKAGE:
+			return getRootElementPackage();
+		case MinionPackage.EMF_PROJECT__EXPORT_PATH:
+			return getExportPath();
 		case MinionPackage.EMF_PROJECT__EDITING_ATTRIBUTES:
 			return getEditingAttributes();
 		}
@@ -316,6 +410,12 @@ public class EmfProjectImpl extends MinimalEObjectImpl.Container implements EmfP
 			return;
 		case MinionPackage.EMF_PROJECT__ROOT_ELEMENT:
 			setRootElement((String) newValue);
+			return;
+		case MinionPackage.EMF_PROJECT__ROOT_ELEMENT_PACKAGE:
+			setRootElementPackage((String) newValue);
+			return;
+		case MinionPackage.EMF_PROJECT__EXPORT_PATH:
+			setExportPath((String) newValue);
 			return;
 		case MinionPackage.EMF_PROJECT__EDITING_ATTRIBUTES:
 			getEditingAttributes().clear();
@@ -345,6 +445,12 @@ public class EmfProjectImpl extends MinimalEObjectImpl.Container implements EmfP
 		case MinionPackage.EMF_PROJECT__ROOT_ELEMENT:
 			setRootElement(ROOT_ELEMENT_EDEFAULT);
 			return;
+		case MinionPackage.EMF_PROJECT__ROOT_ELEMENT_PACKAGE:
+			setRootElementPackage(ROOT_ELEMENT_PACKAGE_EDEFAULT);
+			return;
+		case MinionPackage.EMF_PROJECT__EXPORT_PATH:
+			setExportPath(EXPORT_PATH_EDEFAULT);
+			return;
 		case MinionPackage.EMF_PROJECT__EDITING_ATTRIBUTES:
 			getEditingAttributes().clear();
 			return;
@@ -369,6 +475,11 @@ public class EmfProjectImpl extends MinimalEObjectImpl.Container implements EmfP
 					: !MODEL_ITEM_PROVIDER_ADAPTER_FACTORY_EDEFAULT.equals(modelItemProviderAdapterFactory);
 		case MinionPackage.EMF_PROJECT__ROOT_ELEMENT:
 			return ROOT_ELEMENT_EDEFAULT == null ? rootElement != null : !ROOT_ELEMENT_EDEFAULT.equals(rootElement);
+		case MinionPackage.EMF_PROJECT__ROOT_ELEMENT_PACKAGE:
+			return ROOT_ELEMENT_PACKAGE_EDEFAULT == null ? rootElementPackage != null
+					: !ROOT_ELEMENT_PACKAGE_EDEFAULT.equals(rootElementPackage);
+		case MinionPackage.EMF_PROJECT__EXPORT_PATH:
+			return EXPORT_PATH_EDEFAULT == null ? exportPath != null : !EXPORT_PATH_EDEFAULT.equals(exportPath);
 		case MinionPackage.EMF_PROJECT__EDITING_ATTRIBUTES:
 			return editingAttributes != null && !editingAttributes.isEmpty();
 		}
@@ -394,6 +505,10 @@ public class EmfProjectImpl extends MinimalEObjectImpl.Container implements EmfP
 		result.append(modelItemProviderAdapterFactory);
 		result.append(", rootElement: ");
 		result.append(rootElement);
+		result.append(", rootElementPackage: ");
+		result.append(rootElementPackage);
+		result.append(", exportPath: ");
+		result.append(exportPath);
 		result.append(')');
 		return result.toString();
 	}

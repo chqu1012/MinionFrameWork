@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.dc.minion.fx.model.EmfProject#getEfactory <em>Efactory</em>}</li>
  *   <li>{@link de.dc.minion.fx.model.EmfProject#getModelItemProviderAdapterFactory <em>Model Item Provider Adapter Factory</em>}</li>
  *   <li>{@link de.dc.minion.fx.model.EmfProject#getRootElement <em>Root Element</em>}</li>
+ *   <li>{@link de.dc.minion.fx.model.EmfProject#getRootElementPackage <em>Root Element Package</em>}</li>
+ *   <li>{@link de.dc.minion.fx.model.EmfProject#getExportPath <em>Export Path</em>}</li>
  *   <li>{@link de.dc.minion.fx.model.EmfProject#getEditingAttributes <em>Editing Attributes</em>}</li>
  * </ul>
  *
@@ -114,6 +116,50 @@ public interface EmfProject extends EObject {
 	 * @generated
 	 */
 	void setRootElement(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Root Element Package</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Root Element Package</em>' attribute.
+	 * @see #setRootElementPackage(String)
+	 * @see de.dc.minion.fx.model.MinionPackage#getEmfProject_RootElementPackage()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getRootElementPackage();
+
+	/**
+	 * Sets the value of the '{@link de.dc.minion.fx.model.EmfProject#getRootElementPackage <em>Root Element Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Root Element Package</em>' attribute.
+	 * @see #getRootElementPackage()
+	 * @generated
+	 */
+	void setRootElementPackage(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Export Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Export Path</em>' attribute.
+	 * @see #setExportPath(String)
+	 * @see de.dc.minion.fx.model.MinionPackage#getEmfProject_ExportPath()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getExportPath();
+
+	/**
+	 * Sets the value of the '{@link de.dc.minion.fx.model.EmfProject#getExportPath <em>Export Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Export Path</em>' attribute.
+	 * @see #getExportPath()
+	 * @generated
+	 */
+	void setExportPath(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Editing Attributes</b></em>' containment reference list.
