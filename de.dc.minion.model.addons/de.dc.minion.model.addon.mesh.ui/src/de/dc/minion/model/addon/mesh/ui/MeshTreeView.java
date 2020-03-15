@@ -11,5 +11,4 @@ public class MeshTreeView extends EmfModelTreeView<MeshContainer>{
 	public IEmfManager<MeshContainer> initEmfManager() {
 		return new MeshManager();
 	}
-
 }

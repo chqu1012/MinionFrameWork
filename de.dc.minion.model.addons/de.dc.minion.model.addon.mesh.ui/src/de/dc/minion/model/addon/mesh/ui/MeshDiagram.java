@@ -1,6 +1,5 @@
 package de.dc.minion.model.addon.mesh.ui;
 
-
 import org.eclipse.emf.ecore.EObject;
 
 import de.dc.minion.model.addon.mesh.ui.renderer.MeshRenderer;

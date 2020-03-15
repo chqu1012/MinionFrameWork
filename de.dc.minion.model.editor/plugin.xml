@@ -101,5 +101,38 @@
             contributorClass="de.dc.minion.fx.model.presentation.MinionActionBarContributor">
       </editor>
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="de.dc.minion.model.editor.handler.CreateIdeHandler"
+            id="de.dc.minion.model.editor.GenerateCodeCommand"
+            name="Generate Minion Codes">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
+         <command
+               commandId="de.dc.minion.model.editor.GenerateCodeCommand"
+               icon="icons/icons8-einheit-16.png"
+               label="Generate Minion Code"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        ifEmpty="false">
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                     </adapt>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
 
 </plugin>

@@ -35,6 +35,7 @@ import de.dc.minion.model.desk.util.EmfUtil;
 import de.dc.minion.model.desk.util.UIConstants;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -58,6 +59,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 
 public abstract class EmfDetailedTreeView<T> extends SplitPane
 		implements ChangeListener<TreeItem<Object>>, IEmfEditorPart<T> {
@@ -324,8 +326,9 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 			label.setPrefWidth(100);
 			hbox.getChildren().add(label);
 
-			ListView listView = new ListView<>();
 			IEmfManager<T> manager = treeView.getEmfManager();
+
+			ListView listView = new ListView<>();
 			IItemPropertySource source = (IItemPropertySource) manager.getModelItemProviderAdapterFactory().adapt(eObject, IItemPropertySource.class);
 			List<IItemPropertyDescriptor> propertyDescriptors = source.getPropertyDescriptors(eObject);
 			for (IItemPropertyDescriptor d : propertyDescriptors) {

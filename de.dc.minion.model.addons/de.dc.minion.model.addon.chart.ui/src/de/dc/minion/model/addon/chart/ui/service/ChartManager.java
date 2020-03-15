@@ -38,5 +38,4 @@ public class ChartManager extends AbstractEmfManager<ChartProject>{
 	protected ChartProject initModel() {
 		return ChartFactory.eINSTANCE.createChartProject();
 	}
-
 }

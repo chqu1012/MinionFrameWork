@@ -10,5 +10,4 @@ public class MeshEditor extends EmfDetailedTreeView<MeshContainer>{
 	protected EmfModelTreeView<MeshContainer> initEmfModelTreeView() {
 		return new MeshTreeView();
 	}
-
 }

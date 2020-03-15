@@ -24,5 +24,4 @@ public class ChartFile extends EmfFile<ChartProject>{
 	public String getExtension() {
 		return "chart";
 	}
-
 }
