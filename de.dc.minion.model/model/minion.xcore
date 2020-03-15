@@ -88,6 +88,7 @@ class Landscape extends Touch{
 	refers Vision[0..*] right
 	refers Vision[0..*] bottom
 	refers Deskman[0..*] center
+	boolean useAsPage = 'false'
 	boolean showToolbar = 'true'
 	boolean showStatusbar = 'true'
 	boolean showMenubar = 'true'

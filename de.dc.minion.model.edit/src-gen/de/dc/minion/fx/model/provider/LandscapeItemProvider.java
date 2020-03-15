@@ -48,6 +48,7 @@ public class LandscapeItemProvider extends TouchItemProvider {
 			addRightPropertyDescriptor(object);
 			addBottomPropertyDescriptor(object);
 			addCenterPropertyDescriptor(object);
+			addUseAsPagePropertyDescriptor(object);
 			addShowToolbarPropertyDescriptor(object);
 			addShowStatusbarPropertyDescriptor(object);
 			addShowMenubarPropertyDescriptor(object);
@@ -115,6 +116,22 @@ public class LandscapeItemProvider extends TouchItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_Landscape_center_feature",
 								"_UI_Landscape_type"),
 						MinionPackage.Literals.LANDSCAPE__CENTER, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Use As Page feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUseAsPagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Landscape_useAsPage_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Landscape_useAsPage_feature",
+								"_UI_Landscape_type"),
+						MinionPackage.Literals.LANDSCAPE__USE_AS_PAGE, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -243,6 +260,7 @@ public class LandscapeItemProvider extends TouchItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Landscape.class)) {
+		case MinionPackage.LANDSCAPE__USE_AS_PAGE:
 		case MinionPackage.LANDSCAPE__SHOW_TOOLBAR:
 		case MinionPackage.LANDSCAPE__SHOW_STATUSBAR:
 		case MinionPackage.LANDSCAPE__SHOW_MENUBAR:

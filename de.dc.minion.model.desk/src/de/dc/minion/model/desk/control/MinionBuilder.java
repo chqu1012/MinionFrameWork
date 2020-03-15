@@ -147,37 +147,41 @@ public class MinionBuilder extends MinionSwitch<Object> {
 
 	@Override
 	public Object caseLandscape(Landscape object) {
-		Button perspectiveButton = new Button(object.getName());
-		perspectiveButton.setId(object.getId());
-		perspectiveButton.setOnAction(e -> minionDesk.switchPerspective(object));
-		minionDesk.getPerspectiveToolBar().getItems().add(perspectiveButton);
+		if (object.isUseAsPage()) {
+			
+		}else {
+			Button perspectiveButton = new Button(object.getName());
+			perspectiveButton.setId(object.getId());
+			perspectiveButton.setOnAction(e -> minionDesk.switchPerspective(object));
+			minionDesk.getPerspectiveToolBar().getItems().add(perspectiveButton);
 
-		LandscapeFX LandscapeFX = new LandscapeFX();
+			LandscapeFX LandscapeFX = new LandscapeFX();
 
-		EList<Vision> rightPane = object.getRight();
-		EList<Vision> leftPane = object.getLeft();
-		EList<Vision> bottomPane = object.getBottom();
+			EList<Vision> rightPane = object.getRight();
+			EList<Vision> leftPane = object.getLeft();
+			EList<Vision> bottomPane = object.getBottom();
 
-		if (leftPane != null) {
-			for (Vision view : leftPane) {
-				LandscapeFX.addToLeft((EmfViewPart) doSwitch(view));
+			if (leftPane != null) {
+				for (Vision view : leftPane) {
+					LandscapeFX.addToLeft((EmfViewPart) doSwitch(view));
+				}
 			}
-		}
-		if (rightPane != null) {
-			for (Vision view : rightPane) {
-				LandscapeFX.addToRight((EmfViewPart) doSwitch(view));
+			if (rightPane != null) {
+				for (Vision view : rightPane) {
+					LandscapeFX.addToRight((EmfViewPart) doSwitch(view));
+				}
 			}
-		}
-		if (bottomPane != null) {
-			for (Vision view : bottomPane) {
-				LandscapeFX.addToBottom((EmfViewPart) doSwitch(view));
+			if (bottomPane != null) {
+				for (Vision view : bottomPane) {
+					LandscapeFX.addToBottom((EmfViewPart) doSwitch(view));
+				}
 			}
+
+			minionDesk.addLandscapeFX(object.getId(), LandscapeFX);
+
+			landscapes.put(object.getId(), object);
+			controlManager.registrate(object.getId(), perspectiveButton);
 		}
-
-		minionDesk.addLandscapeFX(object.getId(), LandscapeFX);
-
-		landscapes.put(object.getId(), object);
-		controlManager.registrate(object.getId(), perspectiveButton);
 		return super.caseLandscape(object);
 	}
 
