@@ -180,7 +180,11 @@ class CreateIdeFileDialog extends TitleAreaDialog {
 		var Button rootModelButton = new Button(container, SWT.NONE)
 		rootModelButton.setText("...")
 		rootModelButton.addListener(SWT.Selection, [ event |
-			openTypeDialog(INTERFACE, "", [value|rootModelText.setText(value)])
+			openTypeDialogCU(INTERFACE, "", [value|
+				rootModelText.text = '''«value.packageDeclarations.get(0).elementName».«value.elementName»'''
+				model.rootModel = value.elementName.replace('.java', '')
+				model.rootModelPackage = value.packageDeclarations.get(0).elementName
+			])
 		])
 		var Label lblIdeModelswitchl = new Label(container, SWT.NONE)
 		lblIdeModelswitchl.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1))
@@ -323,6 +327,25 @@ class CreateIdeFileDialog extends TitleAreaDialog {
 					var sourceType = obj as SourceType
 					var element = sourceType.parent as CompilationUnit
 					consumer.accept('''«element.packageDeclarations.get(0).elementName».«element.elementName»''')
+					return element
+				}
+			}
+		}
+		return null
+	}
+	
+	def CompilationUnit openTypeDialogCU(int type, String filterPattern, Consumer<CompilationUnit> consumer) {
+		var dialog = new OpenTypeSelectionDialog(new Shell, true, PlatformUI.workbench.progressService, null, type)
+		dialog.setTitle(JavaUIMessages.OpenTypeAction_dialogTitle)
+		dialog.setMessage(JavaUIMessages.OpenTypeAction_dialogMessage)
+		dialog.setInitialPattern('''*«filterPattern»''')
+		var result = dialog.open
+		if (result === 0) {
+			for (Object obj : dialog.result) {
+				if (obj instanceof SourceType) {
+					var sourceType = obj as SourceType
+					var element = sourceType.parent as CompilationUnit
+					consumer.accept(element)
 					return element
 				}
 			}

@@ -4,7 +4,7 @@ import de.dc.minion.model.editor.model.IdeModel
 
 class DiagramTemplate implements IGenerator<IdeModel>{
 	
-	override path(IdeModel model)'''«model.name»Diagram.java'''
+	override path(IdeModel model)'''«model.name.toFirstUpper»Diagram.java'''
 
 	override gen(IdeModel model)'''
 	package «model.packagePath»;
@@ -19,8 +19,8 @@ class DiagramTemplate implements IGenerator<IdeModel>{
 	import javafx.scene.control.TreeItem;
 	import javafx.scene.layout.BorderPane;
 		
-	«val name = model.name»
-	public class «name»Diagram extends EmfPreviewPart implements ChangeListener<Object> {
+	«val name = model.name.toFirstUpper»
+	public class «name»Diagram extends EmfViewPart implements ChangeListener<Object> {
 	
 		private «name»Renderer renderer;
 		private BorderPane parent;

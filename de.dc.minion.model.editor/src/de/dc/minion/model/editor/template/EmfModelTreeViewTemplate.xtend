@@ -4,21 +4,22 @@ import de.dc.minion.model.editor.model.IdeModel
 
 class EmfModelTreeViewTemplate implements IGenerator<IdeModel>{
 	
-	override path(IdeModel model)'''«model.name»TreeView.java'''
+	override path(IdeModel model)'''«model.name.toFirstUpper»TreeView.java'''
 
 	override gen(IdeModel model)'''
 	package «model.packagePath»;
 	
-	import «model.packagePath».«model.rootModel»;
-	import «model.packagePath».ui.service.«model.name»Manager;
+	import «model.rootModelPackage».*;
+	import «model.packagePath».service.*;
 	import de.dc.minion.model.common.IEmfManager;
 	import de.dc.minion.model.desk.controller.EmfModelTreeView;
 	
-	public class «model.name»TreeView extends EmfModelTreeView<«model.rootModel»>{
+	«val name = model.name.toFirstUpper»
+	public class «name»TreeView extends EmfModelTreeView<«model.rootModel»>{
 	
 		@Override
 		public IEmfManager<«model.rootModel»> initEmfManager() {
-			return new «model.name»Manager();
+			return new «name»Manager();
 		}
 	}
 	'''

@@ -12,6 +12,7 @@ public class IdeModel {
 	private String ePackage = "";
 	private String itemProviderAdapterFactory = "";
 	private String rootModel = "";
+	private String rootModelPackage = "";
 	private String modelSwitch = "";
 	private List<IMethod> editableAttributes = new ArrayList<>();
 	private boolean generateDemo = true;
@@ -86,5 +87,13 @@ public class IdeModel {
 
 	public void setGenerateDemo(boolean generateDemo) {
 		this.generateDemo = generateDemo;
+	}
+
+	public String getRootModelPackage() {
+		return rootModelPackage;
+	}
+
+	public void setRootModelPackage(String rootModelPackage) {
+		this.rootModelPackage = rootModelPackage;
 	}
 }

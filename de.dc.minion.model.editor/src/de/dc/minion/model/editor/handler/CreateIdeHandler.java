@@ -34,13 +34,11 @@ public class CreateIdeHandler extends AbstractHandler {
 			if (firstElement instanceof PackageFragmentRoot) {
 				PackageFragmentRoot root = (PackageFragmentRoot) firstElement;
 				String path = root.getResource().getLocation().toString();
-				System.out.println(path);
 				CreateIdeFileDialog dialog = new CreateIdeFileDialog(new Shell());
 				int code = dialog.open();
 				if (code == 0) {
 					IdeModel model = dialog.getModel();
-					String name = model.getName();
-					
+					path = path +"/"+model.getPackagePath().replace('.', '/');
 //					EmfProject project = MinionFactory.eINSTANCE.createEmfProject();
 //					project.setEfactory(model.geteFactory());
 //					project.setEPackage(model.getePackage());
