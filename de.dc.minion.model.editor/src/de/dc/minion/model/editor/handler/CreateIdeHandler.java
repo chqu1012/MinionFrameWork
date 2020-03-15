@@ -63,7 +63,6 @@ public class CreateIdeHandler extends AbstractHandler {
 					new EmfProjectFile().write(project, path+"/generation-config.minion");
 				}
 				
-				
 				try {
 					root.getResource().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 				} catch (CoreException e) {
