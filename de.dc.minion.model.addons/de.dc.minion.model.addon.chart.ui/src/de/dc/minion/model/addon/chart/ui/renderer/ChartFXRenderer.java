@@ -48,6 +48,7 @@ import de.dc.javafx.xcore.workbench.chart.CategoryValueFX;
 import de.dc.javafx.xcore.workbench.chart.ChartFXConfig;
 import de.dc.javafx.xcore.workbench.chart.LineChart3dFX;
 import de.dc.javafx.xcore.workbench.chart.LineChartFX;
+import de.dc.javafx.xcore.workbench.chart.PerlinNoiseChart3d;
 import de.dc.javafx.xcore.workbench.chart.PieChart3dFX;
 import de.dc.javafx.xcore.workbench.chart.PieChartFX;
 import de.dc.javafx.xcore.workbench.chart.ScatterChart3dFX;
@@ -69,6 +70,7 @@ import de.dc.minion.model.addon.chart.ui.control.BaseLineChart;
 import de.dc.minion.model.addon.chart.ui.control.BasePieChart;
 import de.dc.minion.model.addon.chart.ui.control.BaseScatterChart;
 import de.dc.minion.model.addon.chart.ui.control.BaseXYChart;
+import de.dc.minion.model.addon.chart.ui.renderer.control.PerlinNoiseChart;
 import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.chart.CategoryAxis;
@@ -419,5 +421,10 @@ public class ChartFXRenderer extends ChartSwitch<Node> {
 			}
 		}
 		return currentChart;
+	}
+	
+	@Override
+	public Node casePerlinNoiseChart3d(PerlinNoiseChart3d object) {
+		return new PerlinNoiseChart();
 	}
 }

@@ -604,6 +604,29 @@ public class ChartItemProviderAdapterFactory extends ChartAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.javafx.xcore.workbench.chart.PerlinNoiseChart3d} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PerlinNoiseChart3dItemProvider perlinNoiseChart3dItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.javafx.xcore.workbench.chart.PerlinNoiseChart3d}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPerlinNoiseChart3dAdapter() {
+		if (perlinNoiseChart3dItemProvider == null) {
+			perlinNoiseChart3dItemProvider = new PerlinNoiseChart3dItemProvider(this);
+		}
+
+		return perlinNoiseChart3dItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dc.javafx.xcore.workbench.chart.ChartFXConfig} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -777,6 +800,8 @@ public class ChartItemProviderAdapterFactory extends ChartAdapterFactory
 			xyzLineChart3dFXItemProvider.dispose();
 		if (surfaceChart3dFXItemProvider != null)
 			surfaceChart3dFXItemProvider.dispose();
+		if (perlinNoiseChart3dItemProvider != null)
+			perlinNoiseChart3dItemProvider.dispose();
 		if (chartFXConfigItemProvider != null)
 			chartFXConfigItemProvider.dispose();
 	}

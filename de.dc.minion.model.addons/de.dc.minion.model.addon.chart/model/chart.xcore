@@ -98,6 +98,8 @@ class SurfaceChart3dFX extends CategoryRowChartFX{
 	String function = 'Math.cos(x) * Math.sin(z)'
 }
 
+class PerlinNoiseChart3d extends XYZChartFX{}
+
 class ChartFXConfig{
 	ChartSide sideLegend
 	ChartSide titleSide
