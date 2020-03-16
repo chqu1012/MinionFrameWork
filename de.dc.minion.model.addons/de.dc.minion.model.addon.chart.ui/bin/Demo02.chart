@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<chart:ChartProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:chart="http://www.frateranatis.org/minon/addon/chart">
+  <charts xsi:type="chart:LineChartFX">
+    <config/>
+    <series name="Switzerland">
+      <values x="1.0" y="11.0"/>
+      <values x="2.0" y="8.0"/>
+      <values x="3.0" y="6.0"/>
+      <values x="4.0" y="4.0"/>
+      <values x="6.0" y="3.0"/>
+      <values x="7.0" y="8.0"/>
+      <values x="8.0" y="11.0"/>
+      <values x="9.0" y="9.0"/>
+      <values x="11.0" y="4.0"/>
+    </series>
+    <series name="French">
+      <values x="1.0" y="1.0"/>
+      <values x="2.0" y="12.0"/>
+      <values x="3.0" y="12.0"/>
+      <values x="4.0" y="5.0"/>
+      <values x="6.0" y="8.0"/>
+      <values x="7.0" y="9.0"/>
+      <values x="8.0" y="7.0"/>
+      <values x="9.0" y="4.0"/>
+      <values x="11.0" y="8.0"/>
+    </series>
+    <series name="Germany">
+      <values x="1.0" y="4.0"/>
+      <values x="2.0" y="6.0"/>
+      <values x="3.0" y="12.0"/>
+      <values x="4.0" y="8.0"/>
+      <values x="6.0" y="3.0"/>
+      <values x="7.0" y="6.0"/>
+      <values x="8.0" y="11.0"/>
+      <values x="9.0" y="9.0"/>
+      <values x="11.0" y="4.0"/>
+    </series>
+  </charts>
+</chart:ChartProject>

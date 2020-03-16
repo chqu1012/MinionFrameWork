@@ -11,5 +11,11 @@
     <touchPoints xsi:type="model:DeskmanTouch">
       <deskmans name="Chart Deskman" uri="de.dc.minion.model.addon.chart.ui.ChartEditor" extension="chart"/>
     </touchPoints>
+    <touchPoints xsi:type="model:CommandTouch">
+      <commands id="chart.dummy.value.creation" name="Chart Values Generation" handler="de.dc.minion.model.addon.chart.ui.command.GenerateChartValuesHandler"/>
+    </touchPoints>
+    <touchPoints xsi:type="model:ToolbarTouch">
+      <toolbarItems id="generate.chart.values" name="Generate Chart Values" command="//@toadies.0/@touchPoints.3/@commands.0"/>
+    </touchPoints>
   </toadies>
 </model:Minion>
