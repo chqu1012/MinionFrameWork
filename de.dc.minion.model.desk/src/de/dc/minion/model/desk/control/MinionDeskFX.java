@@ -30,6 +30,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
@@ -83,13 +84,13 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 
 	@Inject
 	protected MinionBuilder minionBuilder;
-	
+
 	protected Minion minion;
 
-	protected LandscapeFX currentLandscape;
+	protected ILandscapeFX currentLandscape;
 
-	protected Map<String, Optional<LandscapeFX>> perspectiveManager = new HashMap<>();
-	
+	protected Map<String, Optional<ILandscapeFX>> perspectiveManager = new HashMap<>();
+
 	public MinionDeskFX() {
 		MinionPlatform.inject(this);
 		selectionService.addListener(this);
@@ -97,7 +98,7 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 
 		controlManager.registrate(TOOLBAR_ID, getToolBar());
 		controlManager.registrate(PERSPECTIVE_TOOLBAR_ID, getPerspectiveToolBar());
-		
+
 		registerTourches();
 	}
 
@@ -107,7 +108,7 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 
 		for (URL url : urls) {
 			String file = url.getFile();
-			file = file+"desk.minion";
+			file = file + "desk.minion";
 			File minionFile = new File(file);
 			if (minionFile.exists()) {
 				MinionFile efile = new MinionFile();
@@ -150,7 +151,7 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 			currentLandscape.hideBottom((Boolean) context.getInput());
 		}
 	}
-	
+
 	@Subscribe
 	public void hideLeftTabPane(EventContext<Boolean> context) {
 		if (context.getEventId().equals("workbench/hide/left")) {
@@ -164,7 +165,7 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 			currentLandscape.hideRight((Boolean) context.getInput());
 		}
 	}
-	
+
 	@Subscribe
 	public void openFile(EventContext<?> context) {
 		Object input = context.getInput();
@@ -188,8 +189,9 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 							e1.printStackTrace();
 						}
 					});
-				}else {
-					getTabByName(filename).ifPresent(e -> currentLandscape.getEditorArea().getSelectionModel().select(e));
+				} else {
+					getTabByName(filename)
+							.ifPresent(e -> currentLandscape.getEditorArea().getSelectionModel().select(e));
 				}
 			} else {
 				StyledTextArea styledTextArea = new StyledTextArea();
@@ -227,24 +229,36 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 				.findAny();
 	}
 
-	public void addLandscapeFX(String id, LandscapeFX landscapeFX) {
-		perspectiveArea.getChildren().add(landscapeFX);
+	public void addLandscapeFX(String id, ILandscapeFX landscapeFX) {
+		Parent landscapeNode = (Parent) landscapeFX;
+		perspectiveArea.getChildren().add(landscapeNode);
 		perspectiveManager.put(id, Optional.of(landscapeFX));
 		currentLandscape = landscapeFX;
 	}
-	
-	public LandscapeFX getCurrentLandscape() {
+
+	public ILandscapeFX getCurrentLandscape() {
 		return currentLandscape;
 	}
 
 	public void switchPerspective(Landscape landscape) {
-		Optional<LandscapeFX> optionalPerspective = perspectiveManager.get(landscape.getId());
+		Optional<ILandscapeFX> optionalPerspective = perspectiveManager.get(landscape.getId());
 		if (optionalPerspective != null) {
 			optionalPerspective.ifPresent(perspective -> {
 				currentLandscape = perspective;
 				controlManager.registrate(MinionDeskFX.EDITOR_AREA_ID, currentLandscape.getEditorArea());
 				statusLinePerspectiveLabel.setText(landscape.getName());
-				perspective.toFront();
+				((Parent) perspective).toFront();
+			});
+		}
+	}
+
+	@Subscribe
+	public void openLandscapeBy(EventContext<String> context) {
+		if (context.getEventId().equals("/open/landscape/as/page")) {
+			Optional<ILandscapeFX> optionalLandscape = perspectiveManager.get(context.getInput());
+			optionalLandscape.ifPresent(l -> {
+				l.init();
+				((Parent) l).toFront();
 			});
 		}
 	}

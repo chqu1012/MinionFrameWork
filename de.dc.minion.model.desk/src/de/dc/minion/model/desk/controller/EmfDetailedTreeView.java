@@ -104,6 +104,11 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 		emfModelTreeViewContainer.setCenter(treeView);
 	}
 
+	@Override
+	public IEmfManager<T> getEmfManager() {
+		return treeView.getEmfManager();
+	}
+	
 	public EmfModelTreeView<T> getTreeView() {
 		return treeView;
 	}

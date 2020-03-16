@@ -13,17 +13,6 @@
       <landscapes id="hello.landscape" name="Hello Landscape" left="//@toadies.0/@touchPoints.0/@visions.0"/>
       <landscapes name="Hello Vison" left="//@toadies.0/@touchPoints.0/@visions.2" right="//@toadies.0/@touchPoints.0/@visions.5 //@toadies.0/@touchPoints.0/@visions.1 //@toadies.0/@touchPoints.0/@visions.0" bottom="//@toadies.0/@touchPoints.0/@visions.3 //@toadies.0/@touchPoints.0/@visions.4"/>
     </touchPoints>
-    <touchPoints xsi:type="model:ToolbarTouch">
-      <toolbarItems name="New File" command="//@toadies.0/@touchPoints.3/@commands.0"/>
-      <toolbarItems name="Open" command="//@toadies.0/@touchPoints.3/@commands.1"/>
-      <toolbarItems name="Save"/>
-      <toolbarItems id="save.as.file.toolbar" name="Save as" command="//@toadies.0/@touchPoints.3/@commands.2"/>
-    </touchPoints>
-    <touchPoints xsi:type="model:CommandTouch">
-      <commands id="de.dc.new.file" name="New File" handler="de.dc.minion.model.desk.demo.handler.NewFileHandler"/>
-      <commands id="open.file" name="Open File" handler="de.dc.minion.model.desk.demo.handler.OpenFileHandler"/>
-      <commands id="save.as.file" name="Save As" handler="de.dc.minion.model.desk.demo.handler.SaveAsFileHandler"/>
-    </touchPoints>
     <touchPoints xsi:type="model:DeskmanTouch">
       <deskmans name="Minion Editor" uri="de.dc.minion.model.desk.controller.MinionEditor" extension="minion"/>
     </touchPoints>

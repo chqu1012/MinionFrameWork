@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
+  <toadies>
+    <touchPoints xsi:type="model:LandscapeTouch">
+      <landscapes id="emf.file.wizard" name="Emf File Wizard" uri="de.dc.minion.model.desk.controller.EmfFileWizard" useAsPage="true"/>
+    </touchPoints>
+    <touchPoints xsi:type="model:ToolbarTouch">
+      <toolbarItems name="New File" command="//@toadies.0/@touchPoints.2/@commands.0"/>
+      <toolbarItems name="Open" command="//@toadies.0/@touchPoints.2/@commands.1"/>
+      <toolbarItems name="Save"/>
+      <toolbarItems id="save.as.file.toolbar" name="Save as" command="//@toadies.0/@touchPoints.2/@commands.2"/>
+    </touchPoints>
+    <touchPoints xsi:type="model:CommandTouch">
+      <commands id="de.dc.new.file" name="New File" handler="de.dc.minion.model.desk.demo.handler.NewFileHandler"/>
+      <commands id="open.file" name="Open File" handler="de.dc.minion.model.desk.demo.handler.OpenFileHandler"/>
+      <commands id="save.as.file" name="Save As" handler="de.dc.minion.model.desk.demo.handler.SaveAsFileHandler"/>
+    </touchPoints>
+  </toadies>
+</model:Minion>

@@ -9,7 +9,6 @@ import com.google.inject.Inject;
 import de.dc.minion.model.common.IControlManager;
 import de.dc.minion.model.common.control.EmfViewPart;
 import de.dc.minion.model.common.control.IEmfEditorPart;
-import de.dc.minion.model.common.control.IEmfViewPart;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.file.IEmfFileManager;
 import de.dc.minion.model.desk.control.dnd.DraggingTabPaneSupport;
@@ -24,7 +23,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 
-public class LandscapeFX extends SplitPane {
+public class LandscapeFX extends SplitPane implements ILandscapeFX{
 
 	public static final String LEFT_PANE_ID = "de.dc.javafx.xcore.workbench.ui.control.LeftPane";
 	public static final String RIGHT_PANE_ID = "de.dc.javafx.xcore.workbench.ui.control.RightPane";
@@ -205,5 +204,9 @@ public class LandscapeFX extends SplitPane {
 
 	public void addToEditorArea(EmfViewPart tab) {
 		editorArea.getTabs().add(tab);
+	}
+
+	@Override
+	public void init() {
 	}
 }

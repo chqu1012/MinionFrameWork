@@ -1,6 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" />
+<fx:root fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: derive(-fx-base,26.4%);" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <BorderPane maxHeight="500.0" maxWidth="400.0" style="-fx-background-color: derive(-fx-base,30.4%); -fx-border-color: lightgray;" BorderPane.alignment="CENTER">
+         <center>
+            <StackPane>
+               <children>
+                  <VBox fx:id="paneWizard" maxHeight="400.0" maxWidth="400.0" spacing="5.0" style="-fx-background-color: derive(-fx-base,30.4%);">
+                     <children>
+                        <Label text="Wizards:">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="textSearch" promptText="Filter wizards">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <ListView fx:id="listViewWizards" onMouseClicked="#onListViewMouseClicked" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </ListView>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="paneFileDirectory" maxHeight="400.0" maxWidth="400.0" spacing="5.0" style="-fx-background-color: derive(-fx-base,30.4%);">
+                     <children>
+                        <Label text="Filename:">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="textFilename">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Enter the parent folder:">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox>
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                           <children>
+                              <TextField fx:id="textDirectory" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="buttonOpenDirectory" mnemonicParsing="false" onAction="#onButtonAction" text="..." />
+                           </children>
+                        </HBox>
+                        <CheckBox fx:id="checkBoxOpenTreeView" mnemonicParsing="false" text="Choose Directory via Tree View">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <TreeView fx:id="treeViewFile" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </TreeView>
+                        <Label fx:id="labelFilenameHint" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" wrapText="true">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Italic" size="10.0" />
+                           </font>
+                        </Label>
+                        <Label maxWidth="1.7976931348623157E308" />
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+         </center>
+         <top>
+            <Label maxWidth="1.7976931348623157E308" prefHeight="72.0" prefWidth="598.0" style="-fx-background-color: derive(-fx-base,15.4%);" text="Select a wizard" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </top>
+         <bottom>
+            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="598.0" spacing="5.0" style="-fx-background-color: derive(-fx-base,15.4%);" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="buttonHelp" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="65.0" text="Help" />
+                  <Label maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="buttonBack" disable="true" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="65.0" text="&lt; Back">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="buttonNext" disable="true" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="65.0" text="Next &gt;" />
+                  <Button fx:id="buttonFinish" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="65.0" text="Finish" />
+                  <Button fx:id="buttonCancel" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="65.0" text="Cancel" />
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </center>
+</fx:root>

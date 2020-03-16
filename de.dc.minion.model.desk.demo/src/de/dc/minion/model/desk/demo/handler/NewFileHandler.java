@@ -1,12 +1,18 @@
 package de.dc.minion.model.desk.demo.handler;
 
+import com.google.inject.Inject;
+
 import de.dc.minion.model.common.command.ICommandHandler;
+import de.dc.minion.model.common.event.EventContext;
+import de.dc.minion.model.common.event.IEventBroker;
 
 public class NewFileHandler implements ICommandHandler{
 
+	@Inject IEventBroker eventBroker;
+	
 	@Override
 	public void execute() {
-		System.out.println("New File Command");
+		eventBroker.post(new EventContext<>("/open/landscape/as/page", "emf.file.wizard"));
 	}
 
 }

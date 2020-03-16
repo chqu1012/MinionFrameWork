@@ -57,6 +57,7 @@ public class MinionBuilder extends MinionSwitch<Object> {
 
 	private MinionDeskFX minionDesk;
 	private Map<String, Landscape> landscapes = new HashMap<>();
+	private Map<String, ILandscapeFX> landscapePages = new HashMap<>();
 
 	@Override
 	public Object caseMinion(Minion object) {
@@ -148,7 +149,17 @@ public class MinionBuilder extends MinionSwitch<Object> {
 	@Override
 	public Object caseLandscape(Landscape object) {
 		if (object.isUseAsPage()) {
-			
+			String uri = object.getUri();
+			try {
+				Class<ILandscapeFX> clazz = (Class<ILandscapeFX>) Class.forName(uri);
+				ILandscapeFX newInstance =  clazz.newInstance();
+				MinionPlatform.inject(newInstance);
+				newInstance.init();
+				landscapePages.put(object.getId(), newInstance);
+				minionDesk.addLandscapeFX(object.getId(), (ILandscapeFX)newInstance);
+			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+				e.printStackTrace();
+			}
 		}else {
 			Button perspectiveButton = new Button(object.getName());
 			perspectiveButton.setId(object.getId());
