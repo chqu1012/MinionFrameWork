@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<lecture:LectureProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lecture="http://www.frateranatis.org/minon/addon/lectute">
+  <sections transition="slide" name="Chapter 1">
+    <contents xsi:type="lecture:StringContent" body="Hello World"/>
+  </sections>
+</lecture:LectureProject>

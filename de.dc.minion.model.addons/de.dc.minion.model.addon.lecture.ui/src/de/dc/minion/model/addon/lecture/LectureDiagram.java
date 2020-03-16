@@ -9,16 +9,20 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.Parent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.BorderPane;
-	
+import javafx.scene.web.*;
+
 public class LectureDiagram extends EmfViewPart implements ChangeListener<Object> {
 
-	private LectureRenderer renderer;
+	private LectureContentSwitch renderer;
 	private BorderPane parent;
+	private WebView webView;
 	
 	@Override
 	public Parent create() {
-		renderer = new LectureRenderer();
+		webView = new WebView();
+		renderer = new LectureContentSwitch(webView.getEngine());
 		parent = new BorderPane();
+		parent.setCenter(webView);
 		return parent;
 	}
 
@@ -28,7 +32,7 @@ public class LectureDiagram extends EmfViewPart implements ChangeListener<Object
 			if (newValue instanceof TreeItem) {
 				TreeItem<Object> treeItem = (TreeItem<Object>) newValue;
 				Object value = treeItem.getValue();
-				parent.setCenter(renderer.doSwitch((EObject) value));
+				renderer.doSwitch((EObject) value);
 			}
 		}
 	}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<lecture:LectureProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lecture="http://www.frateranatis.org/minon/addon/lectute">
+  <sections transition="slide" name="Chapter 1 - String Content">
+    <contents xsi:type="lecture:StringContent" body="Hello World"/>
+  </sections>
+  <sections name="Chapter 2 - Multi String content">
+    <contents xsi:type="lecture:StringContent" body="Hello World"/>
+    <contents xsi:type="lecture:StringContent" body="Hello World"/>
+    <contents xsi:type="lecture:StringContent" body="Hello World"/>
+    <contents xsi:type="lecture:StringContent" body="Hello World"/>
+    <contents xsi:type="lecture:StringContent" body="Hello World"/>
+  </sections>
+  <sections name="Chapter 3 - Unordered List">
+    <contents xsi:type="lecture:UnorderedListContent">
+      <item value="one"/>
+      <item value="Two"/>
+      <item value="Three"/>
+      <item value="Four"/>
+    </contents>
+  </sections>
+  <sections name="Chapter 4 - OrderedList">
+    <contents xsi:type="lecture:OrderedListContent">
+      <item value="James Bond"/>
+      <item value="Peter Parker"/>
+      <item value="Julian Bam"/>
+      <item value="Diana Ross"/>
+    </contents>
+  </sections>
+</lecture:LectureProject>
