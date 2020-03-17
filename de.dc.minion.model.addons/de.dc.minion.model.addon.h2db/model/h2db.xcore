@@ -1,0 +1,55 @@
+@Ecore(nsURI="http://www.frateranatis.org/minon/addon/h2")
+@GenModel(
+	modelPluginID="de.dc.minion.model.addon.h2db", 
+	modelDirectory="/de.dc.minion.model.addon.h2db/src-gen",
+	editorPluginID="de.dc.minion.model.addon.h2db.editor",
+	editPluginID="de.dc.minion.model.addon.h2db.edit", 
+	editDirectory="/de.dc.minion.model.addon.h2db.edit/src-gen",
+	editorDirectory="/de.dc.minion.model.addon.h2db.editor/src-gen", 
+	fileExtensions="h2", modelName="H2", prefix="H2",
+	
+	multipleEditorPages="false", creationIcons="false", 
+	richClientPlatform="true", codeFormatting="true",
+	importerID="org.eclipse.emf.importer.ecore", runtimePlatform="RCP", tableProviders="true",
+	generateExampleClass="false", revertAction="true", findAction="true",
+	expandAllAction="true", decoration="Live", creationSubmenus="true", collapseAllAction="true",
+	autoResizeProperties="true", autoExpandProperties="1")
+package de.dc.minion.model.addon.h2db
+
+class H2Servers{
+	contains Config[0..*] configurations
+}
+
+class Config{
+	String url = 'jdbc:h2:file:./data/Repository;DB_CLOSE_ON_EXIT=true'
+	int port = '8000'
+	String user = 'SA'
+	String password = 'SA'
+	Status status = 'STOPPED'
+	contains Table[0..*] tables
+	contains SQLFolder[0..1] folder
+}
+
+class SQLFolder{
+	contains SQLStatement[0..*] statements
+}
+
+class SQLStatement{
+	String name
+	String statment
+}
+
+class Table{
+	String name
+	contains Column[0..*] columns
+}
+
+class Column{
+	String name
+	String datatype
+}
+
+enum Status{
+	STARTED
+	STOPPED
+}

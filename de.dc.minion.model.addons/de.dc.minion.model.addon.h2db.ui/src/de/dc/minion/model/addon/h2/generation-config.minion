@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="ASCII"?>
+<model:EmfProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model="http://www.frateranatis.org/minon" ePackage="de.dc.minion.model.addon.h2.H2Package" efactory="de.dc.minion.model.addon.h2.H2Factory" modelItemProviderAdapterFactory="de.dc.minion.model.addon.h2.provider.H2ItemProviderAdapterFactory" rootElement="H2Servers" rootElementPackage="de.dc.minion.model.addon.h2db" exportPath="C:/Development/eclipse-modeling-2019-12/eclipse-workspace/de.dc.minion.model.addon.h2db.ui/src/de/dc/minion/model/addon/h2"/>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<h2db:H2Servers xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:h2db="http://www.frateranatis.org/minon/addon/h2">
+  <configurations>
+    <tables name="Person">
+      <columns name="Name" datatype="String"/>
+      <columns name="Lastname" datatype="String"/>
+    </tables>
+    <folder>
+      <statements name="Create Person" statment="CREATE TABLE IF NOT EXISTS PERSON (ID INT PRIMARY KEY AUTO_INCREMENT(1,1) NOT NULL, NAME VARCHAR(255))"/>
+    </folder>
+  </configurations>
+</h2db:H2Servers>

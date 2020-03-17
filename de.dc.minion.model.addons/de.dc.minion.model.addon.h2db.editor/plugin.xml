@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension
+         point="org.eclipse.core.runtime.applications"
+         id="H2EditorAdvisorApplication">
+      <!-- @generated h2db -->
+      <application>
+         <run class="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisor$Application"/>
+      </application>
+   </extension>
+
+   <extension point="org.eclipse.ui.perspectives">
+      <!-- @generated h2db -->
+      <perspective
+            name="%_UI_Perspective_label"
+            class="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisor$Perspective"
+            id="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisorPerspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <!-- @generated h2db -->
+      <command
+            name="%_UI_Menu_OpenURI_label"
+            description="%_UI_Menu_OpenURI_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisorOpenURICommand"/>
+      <command
+            name="%_UI_Menu_Open_label"
+            description="%_UI_Menu_Open_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisorOpenCommand"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <!-- @generated h2db -->
+      <key
+            commandId="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisorOpenURICommand"
+            sequence="M1+U"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisorOpenCommand"
+            sequence="M1+O"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated h2db -->
+      <actionSet
+            label="%_UI_H2EditorAdvisor_ActionSet_label"
+            visible="true"
+            id="H2EditorAdvisorActionSet">
+         <action
+               label="%_UI_Menu_About_label"
+               class="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisor$AboutAction"
+               menubarPath="help/additions"
+               id="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisorAboutAction"/>
+         <action
+               label="%_UI_Menu_OpenURI_label"
+               definitionId="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisorOpenURICommand"
+               class="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisor$OpenURIAction"
+               menubarPath="file/additions"
+               id="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisorOpenURIAction"/>
+         <action
+               label="%_UI_Menu_Open_label"
+               definitionId="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisorOpenCommand"
+               class="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisor$OpenAction"
+               menubarPath="file/additions"
+               id="de.dc.minion.model.addon.h2db.presentation.H2EditorAdvisorOpenAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated h2db -->
+      <actionSet
+            label="%_UI_H2ModelWizard_ActionSet_label"
+            visible="true"
+            id="de.dc.minion.model.addon.h2db.presentation.H2ActionBarContributorActionSet">
+         <action
+               label="%_UI_H2ModelWizard_label"
+               class="de.dc.minion.model.addon.h2db.presentation.H2ActionBarContributor$NewAction"
+               menubarPath="file/new/additions"
+               id="de.dc.minion.model.addon.h2db.presentation.H2ActionBarContributorNewAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated h2db -->
+      <editor
+            id="de.dc.minion.model.addon.h2db.presentation.H2EditorID"
+            name="%_UI_H2Editor_label"
+            icon="icons/full/obj16/H2ModelFile.gif"
+            extensions="h2"
+            class="de.dc.minion.model.addon.h2db.presentation.H2Editor"
+            contributorClass="de.dc.minion.model.addon.h2db.presentation.H2ActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

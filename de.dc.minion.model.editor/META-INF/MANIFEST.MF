@@ -36,5 +36,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.apache.commons.io,
  org.eclipse.equinox.event,
  de.dc.minion.model.common;bundle-version="1.0.0",
- de.dc.minion.model.desk;bundle-version="1.0.0"
+ de.dc.minion.model.desk;bundle-version="1.0.0",
+ org.apache.commons.lang3
 Bundle-ActivationPolicy: lazy
