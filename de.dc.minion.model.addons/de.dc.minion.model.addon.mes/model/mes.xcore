@@ -1,0 +1,99 @@
+@Ecore(nsURI="http://www.frateranatis.org/minon/addon/mes")
+@GenModel(
+	modelPluginID="de.dc.minion.model.addon.mes", 
+	modelDirectory="/de.dc.minion.model.addon.mes/src-gen",
+	editorPluginID="de.dc.minion.model.addon.mes.editor",
+	editPluginID="de.dc.minion.model.addon.mes.edit", 
+	editDirectory="/de.dc.minion.model.addon.mes.edit/src-gen",
+	editorDirectory="/de.dc.minion.model.addon.mes.editor/src-gen", 
+	fileExtensions="mes", modelName="Mes", prefix="Mes",
+	
+	multipleEditorPages="false", creationIcons="false", 
+	richClientPlatform="true", codeFormatting="true",
+	importerID="org.eclipse.emf.importer.ecore", runtimePlatform="RCP", tableProviders="true",
+	generateExampleClass="false", revertAction="true", findAction="true",
+	expandAllAction="true", decoration="Live", creationSubmenus="true", collapseAllAction="true",
+	autoResizeProperties="true", autoExpandProperties="1")
+package de.dc.minion.model.addon.mes
+
+import java.time.LocalDate
+
+class Mes{
+	contains ListElement[0..*] lists
+}
+
+abstract class NamedElement{
+	String name
+	String description
+}
+
+abstract class ListElement<T> extends NamedElement{
+	contains T[0..*] items 
+}
+
+class ApplicationList extends ListElement<Application>{}
+class AccessPrivilegeList extends ListElement<AccessPrivilege>{}
+class FilterList extends ListElement<Filter>{}
+class TaskList extends ListElement<Task>{}
+class FormList extends ListElement<Form>{}
+class ListList extends ListElement<ListItem>{}
+class ConfigurationList extends ListElement<Property>{}
+class StatusList extends ListElement<Status>{}
+class UserList extends ListElement<User>{}
+class UserGroupList extends ListElement<UserGroup>{}
+class ReportList extends ListElement<Report>{}
+class StateModelList extends ListElement<State>{}
+class MesssagesList extends ListElement<Messages>{}
+class LocaleList extends ListElement<Locale>{}
+class DataTableList extends ListElement<DataTable>{}
+class Status extends ListElement<StatusItem>{}
+
+class DataTable extends NamedElement{
+	contains Column[0..*] columns
+}
+class Column extends NamedElement{
+	String ^type
+	boolean isNullable
+	String defaultValue
+	int textLength
+}
+class Locale extends NamedElement{}
+class Messages extends NamedElement{
+	refers Locale locale
+	String message
+}
+class State extends NamedElement{}
+class Report extends NamedElement{}
+class StatusItem extends NamedElement{}
+class UserGroup extends NamedElement{
+	String email
+}
+class User extends NamedElement{
+	String firstname
+	String lastname
+	String email
+	String note
+	String password
+	Date passwordDuration
+	Date passwordExpiration
+	Date userExpiration
+	refers StatusItem status
+}
+class ListItem extends NamedElement{}
+class Form extends NamedElement{}
+class Task extends NamedElement{}
+class Filter extends NamedElement{}
+class Application extends NamedElement{}
+
+class AccessPrivilege extends NamedElement{
+	LocalDate start
+	LocalDate end
+}
+
+
+class Property extends NamedElement{
+	String value
+	String ^type
+}
+
+type LocalDate wraps LocalDate

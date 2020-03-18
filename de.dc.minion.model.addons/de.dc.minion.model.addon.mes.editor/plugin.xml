@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension
+         point="org.eclipse.core.runtime.applications"
+         id="MesEditorAdvisorApplication">
+      <!-- @generated mes -->
+      <application>
+         <run class="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisor$Application"/>
+      </application>
+   </extension>
+
+   <extension point="org.eclipse.ui.perspectives">
+      <!-- @generated mes -->
+      <perspective
+            name="%_UI_Perspective_label"
+            class="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisor$Perspective"
+            id="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisorPerspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <!-- @generated mes -->
+      <command
+            name="%_UI_Menu_OpenURI_label"
+            description="%_UI_Menu_OpenURI_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisorOpenURICommand"/>
+      <command
+            name="%_UI_Menu_Open_label"
+            description="%_UI_Menu_Open_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisorOpenCommand"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <!-- @generated mes -->
+      <key
+            commandId="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisorOpenURICommand"
+            sequence="M1+U"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisorOpenCommand"
+            sequence="M1+O"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated mes -->
+      <actionSet
+            label="%_UI_MesEditorAdvisor_ActionSet_label"
+            visible="true"
+            id="MesEditorAdvisorActionSet">
+         <action
+               label="%_UI_Menu_About_label"
+               class="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisor$AboutAction"
+               menubarPath="help/additions"
+               id="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisorAboutAction"/>
+         <action
+               label="%_UI_Menu_OpenURI_label"
+               definitionId="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisorOpenURICommand"
+               class="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisor$OpenURIAction"
+               menubarPath="file/additions"
+               id="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisorOpenURIAction"/>
+         <action
+               label="%_UI_Menu_Open_label"
+               definitionId="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisorOpenCommand"
+               class="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisor$OpenAction"
+               menubarPath="file/additions"
+               id="de.dc.minion.model.addon.mes.presentation.MesEditorAdvisorOpenAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated mes -->
+      <actionSet
+            label="%_UI_MesModelWizard_ActionSet_label"
+            visible="true"
+            id="de.dc.minion.model.addon.mes.presentation.MesActionBarContributorActionSet">
+         <action
+               label="%_UI_MesModelWizard_label"
+               class="de.dc.minion.model.addon.mes.presentation.MesActionBarContributor$NewAction"
+               menubarPath="file/new/additions"
+               id="de.dc.minion.model.addon.mes.presentation.MesActionBarContributorNewAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated mes -->
+      <editor
+            id="de.dc.minion.model.addon.mes.presentation.MesEditorID"
+            name="%_UI_MesEditor_label"
+            icon="icons/full/obj16/MesModelFile.gif"
+            extensions="mes"
+            class="de.dc.minion.model.addon.mes.presentation.MesEditor"
+            contributorClass="de.dc.minion.model.addon.mes.presentation.MesActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
