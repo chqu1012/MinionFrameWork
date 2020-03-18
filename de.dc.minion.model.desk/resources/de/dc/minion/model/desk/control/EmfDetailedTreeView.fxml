@@ -3,15 +3,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <fx:root fx:id="root" dividerPositions="0.2706766917293233" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" type="SplitPane" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1">
    <items>
@@ -35,51 +31,35 @@
             </VBox>
         </content>
       </TitledPane>
-      <TitledPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Properties">
-         <content>
-            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
-               <children>
-                  <ScrollPane fitToWidth="true" layoutX="49.0" layoutY="21.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.3" orientation="VERTICAL">
+         <items>
+            <TitledPane collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="General">
+               <content>
+                  <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <content>
-                        <AnchorPane>
-                           <children>
-                              <VBox prefHeight="1000.0" prefWidth="539.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <HBox fx:id="toolbar" spacing="5.0">
-                                       <children>
-                                          <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="General" HBox.hgrow="ALWAYS">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                    <Separator prefWidth="200.0" />
-                                    <Label text="Press Enter to accept the Value">
-                                       <font>
-                                          <Font name="System Italic" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <VBox fx:id="attributeContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" />
-                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Child Properties">
-                                       <font>
-                                          <Font name="System Bold" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Separator prefWidth="200.0" />
-                                    <VBox fx:id="childAttributeContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" />
-                                 </children>
-                              </VBox>
-                           </children>
+                        <VBox fx:id="attributeContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="4.0">
                            <padding>
-                              <Insets left="10.0" right="10.0" top="10.0" />
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
-                        </AnchorPane>
+                        </VBox>
                      </content>
                   </ScrollPane>
-               </children>
-            </AnchorPane>
-         </content>
-      </TitledPane>
+               </content>
+            </TitledPane>
+            <TitledPane collapsible="false" text="Create new child">
+               <content>
+                  <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pannable="true" prefHeight="400.0">
+                     <content>
+                        <VBox fx:id="childAttributeContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="4.0">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </TitledPane>
+         </items>
+      </SplitPane>
    </items>
 </fx:root>

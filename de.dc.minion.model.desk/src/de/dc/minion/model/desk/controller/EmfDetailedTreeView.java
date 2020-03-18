@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Collection;
@@ -63,6 +64,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
@@ -204,13 +206,19 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 						childEattributesMap.put(e, node);
 					}
 					if (node!=null) {
-						childAttributeContainer.getChildren().add(new Label(e.getName()+":"));
-						childAttributeContainer.getChildren().add(node);
+						HBox hbox = new HBox(5);
+						Label label = new Label(e.getName()+":");
+						label.setPrefWidth(100);
+						hbox.getChildren().add(label);
+						HBox.setHgrow(node, Priority.ALWAYS);
+						hbox.getChildren().add(node);
+						childAttributeContainer.getChildren().add(hbox);
 					}
 				});
-				Button addChildButton = new Button("Add");
+				String name = param.getValue().getClass().getSimpleName().replace("Impl", "");
+
+				Button addChildButton = new Button("Create new "+name);
 				addChildButton.setOnAction(e -> {
-					String name = param.getValue().getClass().getSimpleName().replace("Impl", "");
 
 					EClassifier eClassifier = treeView.getEmfManager().getModelPackage().getEClassifier(name);
 					EObject obj = treeView.getEmfManager().getExtendedModelFactory().create((EClass) eClassifier);
@@ -236,11 +244,17 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 						}else if (control instanceof DatePicker) {
 							if (typeName.equals("LocalDate")) {
 								DatePicker picker = (DatePicker) control;
-								createdObject.eSet(ks.getKey(), picker.getValue());
+								LocalDate dateValue = picker.getValue();
+								if (dateValue!=null) {
+									createdObject.eSet(ks.getKey(), dateValue);
+								}
 							}else if (typeName.contains("Date")) {
 								DatePicker picker = (DatePicker) control;
-								Instant instant = picker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant();
-								createdObject.eSet(ks.getKey(),Date.from( instant));
+								LocalDate dateValue = picker.getValue();
+								if (dateValue!=null) {
+									Instant instant = dateValue.atStartOfDay(ZoneId.systemDefault()).toInstant();
+									createdObject.eSet(ks.getKey(),Date.from( instant));
+								}
 							}
 						}
 					});
@@ -263,19 +277,25 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 					VBox vbox = new VBox(5);
 					vbox.setPadding(new Insets(10));
 					child.eClass().getEAllAttributes().forEach(e -> {
-						vbox.getChildren().add(new Label(e.getName()+":"));
+						HBox hbox = new HBox(5);
+						Label label = new Label(e.getName()+":");
+						label.setPrefWidth(100);
+						hbox.getChildren().add(label);
 						TextField textField = new TextField();
 						textField.setAccessibleHelp(tabName);
 						textField.setPromptText(e.getName());
 						textField.setOnKeyPressed(event -> textField.setStyle(EDITED_STYLE));
-						vbox.getChildren().add(textField);
+						HBox.setHgrow(textField, Priority.ALWAYS);
+						hbox.getChildren().add(textField);
+						vbox.getChildren().add(hbox);
 						childTabEattributesMap.put(textField, e);
 					});
 					
-					Button addChildButton = new Button("Create");
+					String name = param.getValue().getClass().getSimpleName().replace("Impl", "");
+
+					Button addChildButton = new Button("Create new "+name);
 					addChildButton.setOnAction(e -> {
 						IEmfManager<T> emfManager = treeView.getEmfManager();
-						String name = param.getValue().getClass().getSimpleName().replace("Impl", "");
 
 						EClassifier eClassifier = treeView.getEmfManager().getModelPackage().getEClassifier(name);
 						EObject obj = treeView.getEmfManager().getExtendedModelFactory().create((EClass) eClassifier);
