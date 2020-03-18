@@ -73,6 +73,7 @@ public class H2ResultTouch extends EmfViewPart implements ChangeListener<Object>
 						data.add(row);
 
 					}
+					c.close();
 
 					// FINALLY ADDED TO TableView
 					tableView.setItems(data);
