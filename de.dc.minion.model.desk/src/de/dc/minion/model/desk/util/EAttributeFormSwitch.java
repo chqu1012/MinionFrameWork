@@ -1,5 +1,9 @@
 package de.dc.minion.model.desk.util;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
@@ -13,6 +17,8 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import de.dc.minion.model.desk.control.internal.EmfComboBox;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
@@ -42,6 +48,7 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 	public Node caseEClassifier(EClassifier object) {
 		String name = object.getName();
 		Object attributeValue = instanceObject.eGet(currentAttribute);
+		String value = attributeValue == null ? "" : attributeValue.toString();
 		TextField node = null;
 		if (name.equals("EIntegerObject") || name.equals("EInteger")) {
 			node = new TextField();
@@ -50,7 +57,32 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 		} else if (name.equals("EDate")) {
 			DatePicker datePicker = new DatePicker();
 			datePicker.setMinWidth(200);
-			datePicker.setOnAction(e-> setValue(instanceObject, currentAttribute, datePicker.getValue()));
+			Object instanceValue = instanceObject.eGet(currentAttribute);
+			if (instanceValue!=null) {
+				Date date = (Date) instanceValue;
+				datePicker.setValue(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			}
+			datePicker.setOnAction(e->{
+				LocalDate val = datePicker.getValue();
+				if (val!=null) {
+					setValue(instanceObject, currentAttribute, Date.from(val.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+				}
+			});
+			return datePicker;
+		} else if (name.equals("LocalDate")) {
+			DatePicker datePicker = new DatePicker();
+			datePicker.setMinWidth(200);
+			Object instanceValue = instanceObject.eGet(currentAttribute);
+			if (instanceValue!=null) {
+				LocalDate date = (LocalDate) instanceValue;
+				datePicker.setValue(date);
+			}
+			datePicker.setOnAction(e->{
+				LocalDate val = datePicker.getValue();
+				if (val!=null) {
+					setValue(instanceObject, currentAttribute, val);
+				}
+			});
 			return datePicker;
 		} else if (name.equals("EFloat")) {
 			node = new TextField();
@@ -65,7 +97,6 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 		}
 
 		if (node != null) {
-			String value = attributeValue == null ? "" : attributeValue.toString();
 			node.setMinWidth(200);
 			node.setText(value);
 			node.setPromptText(currentAttribute.getName());

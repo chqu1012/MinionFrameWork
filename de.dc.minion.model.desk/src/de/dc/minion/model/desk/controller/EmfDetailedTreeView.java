@@ -3,8 +3,11 @@ package de.dc.minion.model.desk.controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +48,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
@@ -67,7 +72,7 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 	private EditingDomain editingDomain;
 
 	private Map<EAttribute, TextField> eattributeUIMap = new HashMap<>();
-	private Map<EAttribute, TextField> childEattributesMap = new HashMap<>();
+	private Map<EAttribute, Node> childEattributesMap = new HashMap<>();
 	private Map<TextField, EAttribute> childTabEattributesMap = new HashMap<>();
 
 	private static final String EDITED_STYLE = "-fx-background-color: red; -fx-text-fill: white;";
@@ -195,6 +200,8 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 					Node node = formChildSwitch.doSwitch(e);
 					if (node instanceof TextField) {
 						childEattributesMap.put(e, (TextField) node);
+					}else if (node instanceof DatePicker) {
+						childEattributesMap.put(e, node);
 					}
 					if (node!=null) {
 						childAttributeContainer.getChildren().add(new Label(e.getName()+":"));
@@ -211,17 +218,30 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 					int id = EmfUtil.getValueByName(manager.getModelPackage(), name);
 					EObject createdObject = manager.getExtendedModelFactory().create(obj.eClass());
 					childEattributesMap.entrySet().forEach(ks -> {
-						TextField textfield = ks.getValue();
-						if (textfield.getStyle().equals(EDITED_STYLE)) {
-							if (ks.getKey().getEType().getName().contains("Double")) {
-								createdObject.eSet(ks.getKey(), Double.parseDouble(textfield.getText()));
-							} else if (ks.getKey().getEType().getName().contains("Integer")) {
-								createdObject.eSet(ks.getKey(), Integer.parseInt(textfield.getText()));
-							} else {
-								createdObject.eSet(ks.getKey(), textfield.getText());
+						Node control = ks.getValue();
+						String typeName = ks.getKey().getEType().getName();
+						if (control instanceof TextField) {
+							TextField textfield = (TextField) control;
+							if (textfield.getStyle().equals(EDITED_STYLE)) {
+								if (typeName.contains("Double")) {
+									createdObject.eSet(ks.getKey(), Double.parseDouble(textfield.getText()));
+								} else if (typeName.contains("Integer")) {
+									createdObject.eSet(ks.getKey(), Integer.parseInt(textfield.getText()));
+								} else {
+									createdObject.eSet(ks.getKey(), textfield.getText());
+								}
+								textfield.setText("");
+								textfield.setStyle(null);
 							}
-							textfield.setText("");
-							textfield.setStyle(null);
+						}else if (control instanceof DatePicker) {
+							if (typeName.equals("LocalDate")) {
+								DatePicker picker = (DatePicker) control;
+								createdObject.eSet(ks.getKey(), picker.getValue());
+							}else if (typeName.contains("Date")) {
+								DatePicker picker = (DatePicker) control;
+								Instant instant = picker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant();
+								createdObject.eSet(ks.getKey(),Date.from( instant));
+							}
 						}
 					});
 					Command command = AddCommand.create(editingDomain, value, id, createdObject);
