@@ -13,6 +13,8 @@ import de.dc.minion.model.addon.h2db.Config;
 import de.dc.minion.model.addon.h2db.SQLStatement;
 import de.dc.minion.model.addon.h2db.Status;
 import de.dc.minion.model.common.command.ICommandHandler;
+import de.dc.minion.model.common.event.EventContext;
+import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.event.ISelectionService;
 import javafx.application.Platform;
 import javafx.concurrent.Service;
@@ -23,6 +25,10 @@ public class StartH2Handler implements ICommandHandler {
 
 	@Inject
 	ISelectionService selectionService;
+	
+	@Inject
+	IEventBroker eventBroker;
+	
 	private Server server;
 	private Connection conn;
 
@@ -58,6 +64,7 @@ public class StartH2Handler implements ICommandHandler {
 						if (!contentSql.isEmpty() && conn !=null) {
 							Statement statment = conn.createStatement();
 							statment.execute(contentSql);
+							eventBroker.post(new EventContext<>("/update/status/label", "Statement "+content.getName()+" executed!"));
 						}
 					} catch (SQLException e) {
 						e.printStackTrace();
@@ -77,8 +84,11 @@ public class StartH2Handler implements ICommandHandler {
 //			server.start();
 			Server.startWebServer(conn, true);
 			h2s.setStatus(Status.STARTED);
+			
+			eventBroker.post(new EventContext<>("/update/status/label", "H2 Server "+h2s.getUrl()+" started!"));
 		} catch (Exception e) {
 			h2s.setStatus(Status.STOPPED);
+			eventBroker.post(new EventContext<>("/update/status/label", "H2 Server "+h2s.getUrl()+" stopped!"));
 			e.printStackTrace();
 		}
 	}

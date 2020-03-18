@@ -144,6 +144,13 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 	public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
 		statusLineLabel.setText("Selection: " + newValue.toString());
 	}
+	
+	@Subscribe
+	public void updateStatusLineLabel(EventContext<String> context) {
+		if (context.getEventId().equals("/update/status/label")) {
+			statusLineLabel.setText(context.getInput());
+		}
+	}
 
 	@Subscribe
 	public void hideBottomTabPane(EventContext<Boolean> context) {
