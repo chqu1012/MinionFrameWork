@@ -24,8 +24,10 @@ class Restaurant{
 }
  
 class Table{ 
-	Integer posX
-	Integer posY
+	Double x
+	Double y
+	Double width
+	Double height
 	Integer number
 	Integer seatCount
 	refers Waiter[0..*] waiters

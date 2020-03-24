@@ -58,8 +58,11 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 		Double width = node.getWidth();
 		Double height = node.getHeight();
 
-		node.getData().setPosX(x.intValue());
-		node.getData().setPosY(y.intValue());
+		Table data = node.getData();
+		data.setX(x);
+		data.setY(y);
+		data.setWidth(width);
+		data.setHeight(height);
 		
 		LOG.info(String.format("x:%s, y:%s, width:%s, height:%s", x, y, width, height));
 	}

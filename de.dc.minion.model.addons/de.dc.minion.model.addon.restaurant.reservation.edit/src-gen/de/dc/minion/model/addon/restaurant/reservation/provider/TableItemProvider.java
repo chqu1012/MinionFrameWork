@@ -55,8 +55,10 @@ public class TableItemProvider extends ItemProviderAdapter
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPosXPropertyDescriptor(object);
-			addPosYPropertyDescriptor(object);
+			addXPropertyDescriptor(object);
+			addYPropertyDescriptor(object);
+			addWidthPropertyDescriptor(object);
+			addHeightPropertyDescriptor(object);
 			addNumberPropertyDescriptor(object);
 			addSeatCountPropertyDescriptor(object);
 			addWaitersPropertyDescriptor(object);
@@ -65,32 +67,62 @@ public class TableItemProvider extends ItemProviderAdapter
 	}
 
 	/**
-	 * This adds a property descriptor for the Pos X feature.
+	 * This adds a property descriptor for the X feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPosXPropertyDescriptor(Object object) {
+	protected void addXPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Table_posX_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Table_posX_feature", "_UI_Table_type"),
-						ReservationPackage.Literals.TABLE__POS_X, true, false, false,
+						getResourceLocator(), getString("_UI_Table_x_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Table_x_feature", "_UI_Table_type"),
+						ReservationPackage.Literals.TABLE__X, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Pos Y feature.
+	 * This adds a property descriptor for the Y feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPosYPropertyDescriptor(Object object) {
+	protected void addYPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Table_posY_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Table_posY_feature", "_UI_Table_type"),
-						ReservationPackage.Literals.TABLE__POS_Y, true, false, false,
+						getResourceLocator(), getString("_UI_Table_y_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Table_y_feature", "_UI_Table_type"),
+						ReservationPackage.Literals.TABLE__Y, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Width feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWidthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Table_width_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Table_width_feature", "_UI_Table_type"),
+						ReservationPackage.Literals.TABLE__WIDTH, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Height feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHeightPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Table_height_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Table_height_feature", "_UI_Table_type"),
+						ReservationPackage.Literals.TABLE__HEIGHT, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -183,7 +215,7 @@ public class TableItemProvider extends ItemProviderAdapter
 	 */
 	@Override
 	public String getText(Object object) {
-		Integer labelValue = ((Table) object).getPosX();
+		Double labelValue = ((Table) object).getX();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ? getString("_UI_Table_type")
 				: getString("_UI_Table_type") + " " + label;
@@ -216,8 +248,10 @@ public class TableItemProvider extends ItemProviderAdapter
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Table.class)) {
-		case ReservationPackage.TABLE__POS_X:
-		case ReservationPackage.TABLE__POS_Y:
+		case ReservationPackage.TABLE__X:
+		case ReservationPackage.TABLE__Y:
+		case ReservationPackage.TABLE__WIDTH:
+		case ReservationPackage.TABLE__HEIGHT:
 		case ReservationPackage.TABLE__NUMBER:
 		case ReservationPackage.TABLE__SEAT_COUNT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
