@@ -17,6 +17,6 @@ public class ReservationRenderer extends ReservationSwitch<Node> {
 	
 	@Override
 	public Node caseTable(Table object) {
-		return new TableNode();
+		return new TableNode(object);
 	}
 }

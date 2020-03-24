@@ -13,9 +13,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class DraggableItem extends Pane{ 
+public class DraggableItem<T> extends Pane{ 
 	
 	private BooleanProperty selectedProperty = new SimpleBooleanProperty();
+	private T data;
+	
+	public DraggableItem(String name, T data) {
+		this(name);
+		this.data = data;
+	}
 	
 	public DraggableItem(String name) {
 		Label label = new Label(name);
@@ -59,6 +65,14 @@ public class DraggableItem extends Pane{
 				}
 			}
 		});
+	}
+	
+	public void setData(T data) {
+		this.data=data;
+	}
+	
+	public T getData() {
+		return data;
 	}
 	
 	public BooleanProperty selectionProperty() {
