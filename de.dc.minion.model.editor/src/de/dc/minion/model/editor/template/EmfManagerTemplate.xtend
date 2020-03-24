@@ -10,25 +10,14 @@ class EmfManagerTemplate implements IGenerator<IdeModel>{
 	package «model.packagePath».service;
 	
 	import org.eclipse.emf.common.notify.AdapterFactory;
-	import org.eclipse.emf.ecore.EFactory;
-	import org.eclipse.emf.ecore.EPackage;
 	
 	import «model.packagePath».file.*;
 	import «model.rootModelPackage».*;
 	import de.dc.minion.model.common.AbstractEmfManager;
 	import de.dc.minion.model.common.file.IEmfFile;
+	
 	«val name = model.name.toFirstUpper»
 	public class «name»Manager extends AbstractEmfManager<«model.rootModel»>{
-	
-		@Override
-		public EPackage getModelPackage() {
-			return «model.getePackage».eINSTANCE;
-		}
-	
-		@Override
-		public EFactory getExtendedModelFactory() {
-			return «model.geteFactory».eINSTANCE;
-		}
 	
 		@Override
 		public IEmfFile<«model.rootModel»> initFile() {
