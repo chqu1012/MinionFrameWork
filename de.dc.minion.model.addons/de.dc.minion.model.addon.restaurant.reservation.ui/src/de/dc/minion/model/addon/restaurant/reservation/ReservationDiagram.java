@@ -1,5 +1,7 @@
 package de.dc.minion.model.addon.restaurant.reservation;
 
+import java.util.logging.Logger;
+
 import org.eclipse.emf.ecore.EObject;
 
 import de.dc.minion.model.addon.restaurant.reservation.renderer.*;
@@ -17,6 +19,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 	
 public class ReservationDiagram extends EmfViewPart implements ChangeListener<Object> {
+	
+	private static final Logger LOG = Logger.getLogger(ReservationDiagram.class.getSimpleName());
 
 	private ReservationRenderer renderer;
 	private Pane parent;
@@ -40,8 +44,7 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 					eObject.eAllContents().forEachRemaining(e->{
 						TableNode node = (TableNode) renderer.doSwitch(e);
 						node.setOnMouseClicked(s-> selectNode(node, s));
-						node.layoutXProperty().addListener((obs, oldV, newV) -> changedLayoutX(node, newV));
-						node.layoutYProperty().addListener((obs, oldV, newV) -> changedLayoutY(node, newV));
+						node.setOnMouseExited(s->onMouseExited(node));
 						parent.getChildren().add(node);
 					});				
 				}
@@ -49,20 +52,18 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 		}
 	}
 	
-	public void changedLayoutY(TableNode node, Number newValue) {
-		if (newValue!=null) {
-			node.getData().setPosY(newValue.intValue());
-			node.setLayoutY(newValue.doubleValue());
-		}
+	public void onMouseExited(TableNode node) {
+		Double x = node.getLayoutX();
+		Double y = node.getLayoutY();
+		Double width = node.getWidth();
+		Double height = node.getHeight();
+
+		node.getData().setPosX(x.intValue());
+		node.getData().setPosY(y.intValue());
+		
+		LOG.info(String.format("x:%s, y:%s, width:%s, height:%s", x, y, width, height));
 	}
-	
-	public void changedLayoutX(TableNode node, Number newValue) {
-		if (newValue!=null) {
-			node.getData().setPosX(newValue.intValue());
-			node.setLayoutX(newValue.doubleValue());
-		}
-	}
-	
+
 	public void selectNode(TableNode node, MouseEvent s) {
 		if (s.getClickCount()==2) {
 			node.selectionProperty().set(node.selectionProperty().not().get());

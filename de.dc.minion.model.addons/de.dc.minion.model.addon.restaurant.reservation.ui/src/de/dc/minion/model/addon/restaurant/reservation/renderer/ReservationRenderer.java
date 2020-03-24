@@ -17,6 +17,15 @@ public class ReservationRenderer extends ReservationSwitch<Node> {
 	
 	@Override
 	public Node caseTable(Table object) {
-		return new TableNode(object);
+		TableNode table = new TableNode(object);
+		Integer posX = object.getPosX();
+		Integer posY = object.getPosY();
+		if (posX!=null) {
+			table.setLayoutX(posX);
+		}
+		if (posY!=null) {
+			table.setLayoutY(posY);
+		}
+		return table;
 	}
 }

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<reservation:Restaurant xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:reservation="http://www.frateranatis.org/minon/addon/restaurant/reservation">
+  <tables posX="-149" posY="-241"/>
+  <tables posX="470" posY="72"/>
+</reservation:Restaurant>
