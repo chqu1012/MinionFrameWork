@@ -1,0 +1,43 @@
+@Ecore(nsURI="http://www.frateranatis.org/minon/addon/restaurant/reservation")
+@GenModel(
+	modelPluginID="de.dc.minion.model.addon.restaurant.reservation", 
+	modelDirectory="/de.dc.minion.model.addon.restaurant.reservation/src-gen",
+	editorPluginID="de.dc.minion.model.addon.restaurant.reservation.editor",
+	editPluginID="de.dc.minion.model.addon.restaurant.reservation.edit", 
+	editDirectory="/de.dc.minion.model.addon.restaurant.reservation.edit/src-gen",
+	editorDirectory="/de.dc.minion.model.addon.restaurant.reservation.editor/src-gen", 
+	fileExtensions="reservation", modelName="Reservation", prefix="Reservation",
+	
+	multipleEditorPages="false", creationIcons="false", 
+	richClientPlatform="true", codeFormatting="true",
+	importerID="org.eclipse.emf.importer.ecore", runtimePlatform="RCP", tableProviders="true",
+	generateExampleClass="false", revertAction="true", findAction="true",
+	expandAllAction="true", decoration="Live", creationSubmenus="true", collapseAllAction="true",
+	autoResizeProperties="true", autoExpandProperties="1")
+package de.dc.minion.model.addon.restaurant.reservation
+
+class Restaurant{
+	String name
+	contains Table[0..*] tables
+	contains Grouping[0..*] groupings
+	contains Waiter[0..*] waiters
+}
+ 
+class Table{ 
+	Integer posX
+	Integer posY
+	Integer number
+	Integer seatCount
+	refers Waiter[0..*] waiters
+}
+
+class Grouping{
+	refers Table[0..*] associatedTables
+}
+
+class Waiter{
+	String lastname
+	String firstname
+	String email
+	String phone
+}

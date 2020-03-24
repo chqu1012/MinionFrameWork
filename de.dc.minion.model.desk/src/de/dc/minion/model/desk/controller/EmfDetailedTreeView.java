@@ -201,8 +201,12 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 				child.eClass().getEAllAttributes().forEach(e -> {
 					Node node = formChildSwitch.doSwitch(e);
 					if (node instanceof TextField) {
+						TextField t = (TextField) node;
+						t.setPrefWidth(400);
 						childEattributesMap.put(e, (TextField) node);
 					}else if (node instanceof DatePicker) {
+						DatePicker p = (DatePicker) node;
+						p.setValue(LocalDate.now());
 						childEattributesMap.put(e, node);
 					}
 					if (node!=null) {
@@ -210,7 +214,6 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 						Label label = new Label(e.getName()+":");
 						label.setPrefWidth(100);
 						hbox.getChildren().add(label);
-						HBox.setHgrow(node, Priority.ALWAYS);
 						hbox.getChildren().add(node);
 						childAttributeContainer.getChildren().add(hbox);
 					}

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension
+         point="org.eclipse.core.runtime.applications"
+         id="ReservationEditorAdvisorApplication">
+      <!-- @generated reservation -->
+      <application>
+         <run class="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisor$Application"/>
+      </application>
+   </extension>
+
+   <extension point="org.eclipse.ui.perspectives">
+      <!-- @generated reservation -->
+      <perspective
+            name="%_UI_Perspective_label"
+            class="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisor$Perspective"
+            id="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisorPerspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <!-- @generated reservation -->
+      <command
+            name="%_UI_Menu_OpenURI_label"
+            description="%_UI_Menu_OpenURI_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisorOpenURICommand"/>
+      <command
+            name="%_UI_Menu_Open_label"
+            description="%_UI_Menu_Open_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisorOpenCommand"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <!-- @generated reservation -->
+      <key
+            commandId="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisorOpenURICommand"
+            sequence="M1+U"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisorOpenCommand"
+            sequence="M1+O"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated reservation -->
+      <actionSet
+            label="%_UI_ReservationEditorAdvisor_ActionSet_label"
+            visible="true"
+            id="ReservationEditorAdvisorActionSet">
+         <action
+               label="%_UI_Menu_About_label"
+               class="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisor$AboutAction"
+               menubarPath="help/additions"
+               id="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisorAboutAction"/>
+         <action
+               label="%_UI_Menu_OpenURI_label"
+               definitionId="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisorOpenURICommand"
+               class="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisor$OpenURIAction"
+               menubarPath="file/additions"
+               id="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisorOpenURIAction"/>
+         <action
+               label="%_UI_Menu_Open_label"
+               definitionId="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisorOpenCommand"
+               class="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisor$OpenAction"
+               menubarPath="file/additions"
+               id="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorAdvisorOpenAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated reservation -->
+      <actionSet
+            label="%_UI_ReservationModelWizard_ActionSet_label"
+            visible="true"
+            id="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationActionBarContributorActionSet">
+         <action
+               label="%_UI_ReservationModelWizard_label"
+               class="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationActionBarContributor$NewAction"
+               menubarPath="file/new/additions"
+               id="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationActionBarContributorNewAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated reservation -->
+      <editor
+            id="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditorID"
+            name="%_UI_ReservationEditor_label"
+            icon="icons/full/obj16/ReservationModelFile.gif"
+            extensions="reservation"
+            class="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationEditor"
+            contributorClass="de.dc.minion.model.addon.restaurant.reservation.presentation.ReservationActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

@@ -56,7 +56,7 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 			node = new TextField();
 		} else if (name.equals("EDate")) {
 			DatePicker datePicker = new DatePicker();
-			datePicker.setMinWidth(200);
+			datePicker.setPrefWidth(200);
 			Object instanceValue = instanceObject.eGet(currentAttribute);
 			if (instanceValue!=null) {
 				Date date = (Date) instanceValue;
@@ -71,7 +71,7 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 			return datePicker;
 		} else if (name.equals("LocalDate")) {
 			DatePicker datePicker = new DatePicker();
-			datePicker.setMinWidth(200);
+			datePicker.setPrefWidth(200);
 			Object instanceValue = instanceObject.eGet(currentAttribute);
 			if (instanceValue!=null) {
 				LocalDate date = (LocalDate) instanceValue;
@@ -97,7 +97,7 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 		}
 
 		if (node != null) {
-			node.setMinWidth(200);
+			node.setPrefWidth(400);
 			node.setText(value);
 			node.setPromptText(currentAttribute.getName());
 			node.setOnKeyPressed(event -> {

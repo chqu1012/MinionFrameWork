@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <model:RecentlyOpenVision xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model="http://www.frateranatis.org/minon">
   <files name="recentlyopenfiles.minion" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.desk.demo\config\recentlyopenfiles.minion" timestamp="2019-03-08T00:00:00.000+0100"/>
-  <files name="desk.minion" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.desk.demo\resources\desk.minion" timestamp="2019-03-08T00:00:00.000+0100"/>
   <files name="testdesk.minion" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.desk.demo\resources\testdesk.minion" timestamp="2020-03-09T21:44:58.867+0100"/>
   <files name="Demo01.mesh" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mesh.ui\resources\Demo01.mesh" timestamp="2020-03-11T22:10:38.367+0100"/>
   <files name="Demo01.mesh" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mesh.ui\resources\Demo01.mesh" timestamp="2020-03-11T22:21:56.821+0100"/>
@@ -85,4 +84,16 @@
   <files name="Demo01.mes" path="C:\Development\eclipse-modeling-2019-12\eclipse-workspace\de.dc.minion.model.addon.mes.ui\resources\Demo01.mes" timestamp="2020-03-18T18:03:38.340+0100"/>
   <files name="Demo01.mes" path="C:\Development\eclipse-modeling-2019-12\eclipse-workspace\de.dc.minion.model.addon.mes.ui\resources\Demo01.mes" timestamp="2020-03-18T18:03:38.346+0100"/>
   <files name="Demo01.mes" path="C:\Development\eclipse-modeling-2019-12\eclipse-workspace\de.dc.minion.model.addon.mes.ui\resources\Demo01.mes" timestamp="2020-03-18T18:03:38.352+0100"/>
+  <files name="MES-APP.mes" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mes.ui\resources\MES-APP.mes" timestamp="2020-03-19T07:09:49.451+0100"/>
+  <files name="MES-APP.mes" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mes.ui\resources\MES-APP.mes" timestamp="2020-03-19T07:09:49.475+0100"/>
+  <files name="MES-APP.mes" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mes.ui\resources\MES-APP.mes" timestamp="2020-03-19T07:09:49.482+0100"/>
+  <files name="MES-APP.mes" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mes.ui\resources\MES-APP.mes" timestamp="2020-03-19T07:09:49.488+0100"/>
+  <files name="MES-APP.mes" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mes.ui\resources\MES-APP.mes" timestamp="2020-03-19T07:09:49.493+0100"/>
+  <files name="MES-APP.mes" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mes.ui\resources\MES-APP.mes" timestamp="2020-03-19T07:09:49.499+0100"/>
+  <files name="MES-APP.mes" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mes.ui\resources\MES-APP.mes" timestamp="2020-03-19T07:09:49.507+0100"/>
+  <files name="MES-APP.mes" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mes.ui\resources\MES-APP.mes" timestamp="2020-03-19T07:09:49.511+0100"/>
+  <files name="MES-APP.mes" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mes.ui\resources\MES-APP.mes" timestamp="2020-03-19T07:09:49.517+0100"/>
+  <files name="MES-APP.mes" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mes.ui\resources\MES-APP.mes" timestamp="2020-03-19T07:09:49.521+0100"/>
+  <files name="MES-APP.mes" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mes.ui\resources\MES-APP.mes" timestamp="2020-03-19T07:09:49.525+0100"/>
+  <files name="MES-APP.mes" path="C:\Development\Repository\MinionFrameWork\de.dc.minion.model.addons\de.dc.minion.model.addon.mes.ui\resources\MES-APP.mes" timestamp="2020-03-19T07:09:49.531+0100"/>
 </model:RecentlyOpenVision>
