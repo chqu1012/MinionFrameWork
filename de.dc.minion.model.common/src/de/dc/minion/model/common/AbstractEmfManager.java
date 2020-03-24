@@ -1,5 +1,7 @@
 package de.dc.minion.model.common;
 
+import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -39,6 +41,16 @@ public abstract class AbstractEmfManager<T> implements IEmfManager<T> {
 
 	protected abstract T initModel();
 
+	@Override
+	public EPackage getModelPackage() {
+		return getFile().getEPackageEInstance();
+	}
+	
+	@Override
+	public EFactory getExtendedModelFactory() {
+		return getFile().getEFactoryEInstance();
+	}
+	
 	@Override
 	public IItemLabelProvider getLabelProvider(Object object) {
 		 return (IItemLabelProvider) adapterFactory.adapt(object, IItemLabelProvider.class);
