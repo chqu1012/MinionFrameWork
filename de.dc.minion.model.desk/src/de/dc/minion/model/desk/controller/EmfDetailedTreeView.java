@@ -2,6 +2,7 @@ package de.dc.minion.model.desk.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -10,9 +11,9 @@ import java.time.ZoneId;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
@@ -20,12 +21,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
 
 import de.dc.minion.fx.model.EmfCommand;
 import de.dc.minion.fx.model.MinionFactory;
@@ -39,7 +39,6 @@ import de.dc.minion.model.desk.util.EmfUtil;
 import de.dc.minion.model.desk.util.UIConstants;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -49,9 +48,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
@@ -378,13 +377,46 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 			IEmfManager<T> manager = treeView.getEmfManager();
 
 			ListView listView = new ListView<>();
-			IItemPropertySource source = (IItemPropertySource) manager.getModelItemProviderAdapterFactory().adapt(eObject, IItemPropertySource.class);
-			List<IItemPropertyDescriptor> propertyDescriptors = source.getPropertyDescriptors(eObject);
-			for (IItemPropertyDescriptor d : propertyDescriptors) {
-				if (d.isSortChoices(eObject)) {
-					listView.setItems(FXCollections.observableArrayList(d.getChoiceOfValues(eObject)));
+			listView.setCellFactory(new Callback<ListView<EObject>, ListCell<EObject>>() {
+					@Override
+					public ListCell<EObject> call(ListView<EObject> param) {
+						return new ListCell<EObject>() {
+							@Override
+							protected void updateItem(EObject item, boolean empty) {
+								super.updateItem(item, empty);
+								if (item==null || empty) {
+									setText(null);
+								}else {
+									setText(treeView.getEmfManager().getLabelProvider(item).getText(item));
+								}
+							}
+						};
+					}
+			});
+			try {
+				Object result = eObject.getClass().getDeclaredMethod("get"+StringUtils.capitalise(eReference.getName()), null).invoke(eObject, null);
+				if (result instanceof EObjectContainmentEList) {
+					EObjectContainmentEList eList= (EObjectContainmentEList) result;
+					listView.setItems(FXCollections.observableArrayList(eList));
 				}
+			} catch (NoSuchMethodException | SecurityException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+//			IItemPropertySource source = (IItemPropertySource) manager.getModelItemProviderAdapterFactory().adapt(eObject, IItemPropertySource.class);
+//			List<IItemPropertyDescriptor> propertyDescriptors = source.getPropertyDescriptors(eObject);
+//			for (IItemPropertyDescriptor d : propertyDescriptors) {
+//				if (d.isSortChoices(eObject)) {
+//				}
+//			}
 			listView.setPrefHeight(100);
 			hbox.getChildren().add(listView);
 			Button buttonn = new Button("Add");

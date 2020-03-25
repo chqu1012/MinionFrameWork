@@ -171,7 +171,6 @@ public class MinionBuilder extends MinionSwitch<Object> {
 			EList<Vision> rightPane = object.getRight();
 			EList<Vision> leftPane = object.getLeft();
 			EList<Vision> bottomPane = object.getBottom();
-
 			if (leftPane != null) {
 				if (leftPane.size()==0) {
 					landscape.hideLeft(true);
