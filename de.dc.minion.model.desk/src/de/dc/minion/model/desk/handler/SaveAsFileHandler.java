@@ -1,4 +1,4 @@
-package de.dc.minion.model.desk.demo.handler;
+package de.dc.minion.model.desk.handler;
 
 import java.io.File;
 import java.util.Optional;

@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: derive(-fx-base,26.4%);" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <BorderPane maxHeight="300.0" maxWidth="400.0" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: white; -fx-background-radius: 2;" BorderPane.alignment="CENTER">
+      <BorderPane maxHeight="300.0" maxWidth="400.0" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: derive(-fx-base,15.4%); -fx-background-radius: 2;" BorderPane.alignment="CENTER">
          <top>
             <VBox BorderPane.alignment="CENTER">
                <BorderPane.margin>
@@ -84,4 +83,4 @@
          </bottom>
       </BorderPane>
    </center>
-</BorderPane>
+</fx:root>

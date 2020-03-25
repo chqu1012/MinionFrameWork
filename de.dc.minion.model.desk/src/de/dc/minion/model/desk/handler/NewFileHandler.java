@@ -1,4 +1,4 @@
-package de.dc.minion.model.desk.demo.handler;
+package de.dc.minion.model.desk.handler;
 
 import com.google.inject.Inject;
 
