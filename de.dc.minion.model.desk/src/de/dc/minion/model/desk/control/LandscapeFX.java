@@ -13,7 +13,12 @@ import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.file.IEmfFileManager;
 import de.dc.minion.model.desk.control.dnd.DraggingTabPaneSupport;
 import de.dc.minion.model.desk.module.MinionPlatform;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.binding.IntegerBinding;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -209,4 +214,5 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX{
 	@Override
 	public void init() {
 	}
+
 }

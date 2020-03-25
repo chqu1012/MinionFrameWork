@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
-<reservation:Restaurant xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:reservation="http://www.frateranatis.org/minon/addon/restaurant/reservation"/>
+<reservation:Restaurant xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:reservation="http://www.frateranatis.org/minon/addon/restaurant/reservation">
+  <tables x="-158.57142639160156" y="-91.4285659790039" width="301.4284147391595" height="100.0"/>
+  <tables x="161.42855834960938" y="172.85714721679688" width="225.71414428366285" height="60.00012721349785"/>
+  <tables x="290.0000344424835" y="-174.28557636562138" width="219.9998321533203" height="174.2857208251953"/>
+  <tables x="-392.85729976142574" y="224.28572175605672" width="268.5714416503906" height="271.4285583496094"/>
+</reservation:Restaurant>
