@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ASCII"?>
+<reservation:Restaurant xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:reservation="http://www.frateranatis.org/minon/addon/restaurant/reservation">
+  <tables x="56.78395244053431" y="59.80178233555385" width="221.0" height="188.0" number="1" seatCount="6">
+    <styles value="purple"/>
+  </tables>
+  <tables x="476.72515869140625" y="63.670379638671875" width="157.0" height="186.32962036132815" number="2" seatCount="4">
+    <styles value="yellow"/>
+  </tables>
+  <tables x="306.7402648925781" y="63.37556457519531" width="159.0" height="186.62443542480472" number="3" seatCount="4"/>
+  <tables x="66.04054968697687" y="288.89549909319203" width="369.0" height="180.0" number="4" seatCount="10">
+    <styles value="green"/>
+  </tables>
+  <tables x="453.18338012695324" y="292.8571690150669" width="719.9999389648438" height="177.0" number="5" seatCount="20">
+    <styles value="gray"/>
+  </tables>
+  <tables x="660.0000348772315" y="65.71428353445859" width="86.0" height="185.0" number="6" seatCount="2">
+    <styles value="orange"/>
+  </tables>
+  <tables x="1202.8572823660713" y="275.714307512556" width="163.0" height="106.0" number="7" seatCount="2">
+    <styles value="orange"/>
+  </tables>
+  <tables x="875.7143293108262" y="62.85714394705636" width="86.0" height="185.0" number="8" seatCount="2">
+    <styles value="orange"/>
+  </tables>
+  <tables x="1092.857177734375" y="65.71428680419922" width="79.99996512276789" height="185.0" number="9" seatCount="2">
+    <styles value="orange"/>
+  </tables>
+  <tables x="985.7142508370536" y="64.28570774623324" width="85.0" height="185.0" number="10" seatCount="2">
+    <styles value="orange"/>
+  </tables>
+  <tables x="768.5714372907365" y="64.28571319580078" width="86.0" height="185.0" number="11" seatCount="2">
+    <styles value="orange"/>
+  </tables>
+  <tables x="1202.8570905412944" y="402.8571515764508" width="159.0" height="98.0" number="12" seatCount="2">
+    <styles value="orange"/>
+  </tables>
+  <tables x="1385.7141287667405" y="401.4285888671875" width="159.0" height="98.0" number="13" seatCount="2">
+    <styles value="orange"/>
+  </tables>
+  <tables x="1387.142822265625" y="274.2857666015625" width="159.0" height="107.14280482700894" number="14" seatCount="2">
+    <styles value="orange"/>
+  </tables>
+  <tables x="60.32626070295055" y="497.4669538225446" width="367.0" height="177.0" number="15" seatCount="10">
+    <styles value="green"/>
+  </tables>
+  <tables x="823.1833932059151" y="496.0383736746652" width="362.0" height="177.00003051757812" number="16" seatCount="10">
+    <styles value="green"/>
+  </tables>
+  <tables x="440.32623563493974" y="497.46694074358254" width="367.0" height="177.99996948242188" number="17" seatCount="10">
+    <styles value="green"/>
+  </tables>
+</reservation:Restaurant>

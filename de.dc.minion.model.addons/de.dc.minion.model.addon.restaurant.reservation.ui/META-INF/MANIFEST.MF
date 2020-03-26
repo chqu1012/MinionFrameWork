@@ -13,3 +13,4 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.20.0",
  com.google.inject,
  de.dc.minion.model.addon.restaurant.reservation;bundle-version="0.1.0",
  de.dc.minion.model.addon.restaurant.reservation.edit;bundle-version="1.0.0"
+Import-Package: com.google.common.eventbus

@@ -4,9 +4,13 @@ import java.util.logging.Logger;
 
 import org.eclipse.emf.ecore.EObject;
 
+import com.google.inject.Inject;
+
 import de.dc.minion.model.addon.restaurant.reservation.renderer.ReservationRenderer;
 import de.dc.minion.model.addon.restaurant.reservation.renderer.control.TableNode;
 import de.dc.minion.model.common.control.EmfViewPart;
+import de.dc.minion.model.common.event.EventContext;
+import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.desk.control.shape.ZoomableScrollPane;
 import de.dc.minion.model.desk.util.DragResizeMod;
 import javafx.beans.value.ChangeListener;
@@ -22,6 +26,8 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 
 	private ReservationRenderer renderer;
 	private Pane parent;
+	
+	@Inject IEventBroker eventBroker;
 	
 	@Override
 	public Parent create() {
@@ -75,13 +81,10 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 		data.setY(y);
 		data.setWidth(width);
 		data.setHeight(height);
-		
-		LOG.info(String.format("x:%s, y:%s, width:%s, height:%s", x, y, width, height));
 	}
 
 	public void selectNode(TableNode node, MouseEvent s) {
-		if (s.getClickCount()==2) {
-			node.selectionProperty().set(node.selectionProperty().not().get());
-		}
+		eventBroker.post(new EventContext<>("/reservation/table/select", node.getData()));
+		node.selectionProperty().set(node.selectionProperty().not().get());
 	}
 }
