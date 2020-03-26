@@ -1,6 +1,7 @@
 package de.dc.minion.model.addon.restaurant.reservation;
 
 import com.google.common.eventbus.Subscribe;
+import com.google.inject.Inject;
 
 import de.dc.minion.model.common.event.EventContext;
 import de.dc.minion.model.common.event.IEventBroker;
@@ -10,9 +11,15 @@ import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.scene.control.TreeItem;
 public class ReservationEditor extends EmfDetailedTreeView<Restaurant>{
 	
+	@Inject IEventBroker eventBroker;
+	
+	public ReservationEditor() {
+		MinionPlatform.inject(this);
+		eventBroker.register(this);
+	}
+	
 	@Override
 	protected EmfModelTreeView<Restaurant> initEmfModelTreeView() {
-		MinionPlatform.getInstance(IEventBroker.class).register(this);
 		return new ReservationTreeView();
 	}
 	
@@ -41,7 +48,6 @@ public class ReservationEditor extends EmfDetailedTreeView<Restaurant>{
 				}
 			}else if (treeValue instanceof Table) {
 				Table treeTable = (Table) treeValue;
-				System.out.println("TreeItemValue: "+treeTable.getNumber()+", Selected: "+value.getNumber());
 				if (String.valueOf(treeTable.getNumber()).contains(String.valueOf(value.getNumber()))) return item;
 			}
 	    }
