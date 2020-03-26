@@ -32,10 +32,12 @@ public class DraggableItem<T> extends BorderPane{
 		DragResizeMod.makeResizable(this);
 		setPrefSize(100, 100);
 		
-		StringBinding css = Bindings.when(selectedProperty).
-				then("-fx-background-color: blue; -fx-border-color: yellow; -fx-border-width: 5").
-				otherwise("-fx-background-color: blue; -fx-border-color: transparent; -fx-border-width: 0");
-		styleProperty().bind(css);
+		setStyle("-fx-background-color: blue; -fx-border-color: transparent; -fx-border-width: 0");
+		
+//		StringBinding css = Bindings.when(selectedProperty).
+//				then("-fx-background-color: blue; -fx-border-color: yellow; -fx-border-width: 5").
+//				otherwise("-fx-background-color: blue; -fx-border-color: transparent; -fx-border-width: 0");
+//		styleProperty().bind(css);
 		
 //		HBox hbox = new HBox(2);
 //		hbox.getChildren().add(new Button("Edit"));

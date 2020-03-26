@@ -1,5 +1,7 @@
 package de.dc.minion.model.addon.restaurant.reservation.renderer.control;
 
+import java.util.Optional;
+
 import de.dc.minion.model.addon.restaurant.reservation.Table;
 import de.dc.minion.model.desk.control.shape.DraggableItem;
 import javafx.geometry.Insets;
@@ -15,6 +17,13 @@ public class TableNode extends DraggableItem<Table>{
 		Double posY = data.getY();
 		Double width = data.getWidth();
 		Double height = data.getHeight();
+		
+		
+		Optional<String> style = data.getStyles().stream().filter(e-> e.getValue()!=null).map(e->e.getStyleType().getLiteral()+": "+e.getValue()).reduce((e1, e2)->e1+":"+e2+";");
+		style.ifPresent(e->{
+			System.out.println(e);
+			setStyle(e);});
+		
 		if (height!=null) {
 			setPrefHeight(height);
 		}
@@ -37,7 +46,7 @@ public class TableNode extends DraggableItem<Table>{
 		Integer seatCount = data.getSeatCount();
 		if (seatCount!=null) {
 			for (int i = 0; i < seatCount; i++) {
-				Button seat = new Button(String.valueOf("Sitz: "+i));
+				Button seat = new Button(String.valueOf("Sitz: "+(i+1)));
 				seat.setMinSize(60, 60);
 				flowPane.getChildren().add(seat);
 			}

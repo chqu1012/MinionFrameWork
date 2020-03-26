@@ -121,6 +121,29 @@ public class ReservationItemProviderAdapterFactory extends ReservationAdapterFac
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.restaurant.reservation.Style} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StyleItemProvider styleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.restaurant.reservation.Style}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStyleAdapter() {
+		if (styleItemProvider == null) {
+			styleItemProvider = new StyleItemProvider(this);
+		}
+
+		return styleItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.restaurant.reservation.Grouping} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -275,6 +298,8 @@ public class ReservationItemProviderAdapterFactory extends ReservationAdapterFac
 			restaurantItemProvider.dispose();
 		if (tableItemProvider != null)
 			tableItemProvider.dispose();
+		if (styleItemProvider != null)
+			styleItemProvider.dispose();
 		if (groupingItemProvider != null)
 			groupingItemProvider.dispose();
 		if (waiterItemProvider != null)

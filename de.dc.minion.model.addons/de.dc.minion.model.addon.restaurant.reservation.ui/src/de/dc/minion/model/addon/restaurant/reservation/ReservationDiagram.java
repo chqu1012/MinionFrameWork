@@ -8,6 +8,7 @@ import de.dc.minion.model.addon.restaurant.reservation.renderer.ReservationRende
 import de.dc.minion.model.addon.restaurant.reservation.renderer.control.TableNode;
 import de.dc.minion.model.common.control.EmfViewPart;
 import de.dc.minion.model.desk.control.shape.ZoomableScrollPane;
+import de.dc.minion.model.desk.util.DragResizeMod;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Parent;
@@ -24,6 +25,8 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 	
 	@Override
 	public Parent create() {
+		DragResizeMod.makeResizable(pane);
+		
 		renderer = new ReservationRenderer();
 		parent = new Pane();
 		parent.setPrefSize(2000, 2000);

@@ -1,6 +1,7 @@
 package de.dc.minion.model.desk.controller;
 
 import de.dc.minion.model.common.control.EmfViewPart;
+import de.dc.minion.model.desk.util.DragResizeMod;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
@@ -10,6 +11,12 @@ import javafx.scene.control.TreeItem;
 
 public abstract class EmfPreviewPart extends EmfViewPart implements ChangeListener<Object>{
 
+	@Override
+	public void initialize() {
+		super.initialize();
+		DragResizeMod.makeResizable(pane);
+	}
+	
 	@Override
 	public Parent create() {
 		return new Label();
