@@ -136,6 +136,7 @@ public class MinionBuilder extends MinionSwitch<Object> {
 	@Override
 	public Object caseToolbarItem(ToolbarItem object) {
 		Button button = new Button(object.getName());
+		button.setMaxWidth(Double.MAX_VALUE);
 		Command command = object.getCommand();
 		if (command != null) {
 			button.setOnAction(e -> commandService.execute(command.getId()));

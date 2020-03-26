@@ -31,6 +31,12 @@ public class EmfFeatureEditorDialog extends BaseBindingEmfFeatureEditorDialogCon
 
 	@Override
 	protected void onButtonAction(ActionEvent event) {
+		Object source = event.getSource();
+		if (source == buttonCancel) {
+			root.toBack();
+		} else if (source == buttonOk) {
+			root.toBack();
+		}
 	}
 
 	@Override

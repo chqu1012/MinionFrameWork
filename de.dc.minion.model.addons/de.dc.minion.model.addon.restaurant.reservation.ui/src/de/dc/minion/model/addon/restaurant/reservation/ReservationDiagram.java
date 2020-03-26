@@ -26,8 +26,12 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 	public Parent create() {
 		renderer = new ReservationRenderer();
 		parent = new Pane();
-		parent.setPrefSize(1200, 800);
+		parent.setPrefSize(2000, 2000);
 		parent.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		parent.setStyle("-fx-border-color: lightgray");
+		
+		parent.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		
 		return new ZoomableScrollPane(parent);
 	}
 
@@ -36,16 +40,22 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 		if (newValue != null) {
 			if (newValue instanceof TreeItem) {
 				TreeItem item = (TreeItem) newValue;
-				parent.getChildren().clear();
 				Object value = item.getValue();
 				if (value instanceof EObject) {
 					EObject eObject = (EObject) value;
-					eObject.eAllContents().forEachRemaining(e->{
-						TableNode node = (TableNode) renderer.doSwitch(e);
-						node.setOnMouseClicked(s-> selectNode(node, s));
-						node.setOnMouseExited(s->onMouseExited(node));
-						parent.getChildren().add(node);
-					});				
+					if (eObject instanceof Restaurant) {
+						parent.getChildren().clear();
+						Restaurant restaurant = (Restaurant) eObject;
+						restaurant.getTables().forEach(e->{
+							TableNode node = (TableNode) renderer.doSwitch(e);
+							if (node != null) {
+								node.setOnMouseClicked(s-> selectNode(node, s));
+								node.setOnMouseExited(s->onMouseExited(node));
+								parent.getChildren().add(node);
+							}
+						});
+						
+					}
 				}
 			}
 		}
