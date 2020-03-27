@@ -30,7 +30,7 @@ import javafx.scene.shape.Line;
 
 public class ReservationDiagram extends EmfViewPart implements ChangeListener<Object> {
 
-	private static final Logger LOG = Logger.getLogger(ReservationDiagram.class.getSimpleName());
+	protected static final Logger LOG = Logger.getLogger(ReservationDiagram.class.getSimpleName());
 
 	private ReservationRenderer renderer;
 	private Pane parent;

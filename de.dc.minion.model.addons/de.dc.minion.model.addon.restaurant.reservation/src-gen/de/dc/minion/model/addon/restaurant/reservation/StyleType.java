@@ -46,7 +46,17 @@ public enum StyleType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	COLOR_BORDER(0, "COLOR_BORDER", "-fx-border-color");
+	COLOR_BORDER(0, "COLOR_BORDER", "-fx-border-color"),
+
+	/**
+	 * The '<em><b>COLOR LINE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #COLOR_LINE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	COLOR_LINE(0, "COLOR_LINE", "-fx-stroke");
 
 	/**
 	 * The '<em><b>COLOR BACKGROUND</b></em>' literal value.
@@ -82,13 +92,24 @@ public enum StyleType implements Enumerator {
 	public static final int COLOR_BORDER_VALUE = 0;
 
 	/**
+	 * The '<em><b>COLOR LINE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #COLOR_LINE
+	 * @model literal="-fx-stroke"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COLOR_LINE_VALUE = 0;
+
+	/**
 	 * An array of all the '<em><b>Style Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final StyleType[] VALUES_ARRAY = new StyleType[] { COLOR_BACKGROUND, COLOR_FOREGROUND,
-			COLOR_BORDER, };
+	private static final StyleType[] VALUES_ARRAY = new StyleType[] { COLOR_BACKGROUND, COLOR_FOREGROUND, COLOR_BORDER,
+			COLOR_LINE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Style Type</b></em>' enumerators.

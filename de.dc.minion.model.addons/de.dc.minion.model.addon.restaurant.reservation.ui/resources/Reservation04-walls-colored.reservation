@@ -49,11 +49,22 @@
   <tables x="440.32623563493974" y="497.46694074358254" width="367.0" height="177.99996948242188" number="17" seatCount="10">
     <styles value="green"/>
   </tables>
+  <groupings/>
   <layout>
-    <items xsi:type="reservation:Wall" startx="41.04745251603108" startY="20.523726291085765" endx="1277.6019575689866" endY="23.94434732857665"/>
-    <items xsi:type="reservation:Wall" startx="1275.891647050241" startY="20.523726291085765" endx="1599.1403350931298" endY="254.83626735921146"/>
-    <items xsi:type="reservation:Wall" startx="1599.1403350931298" startY="254.83626735921146" endx="1592.299093018148" endY="749.1160072766445"/>
-    <items xsi:type="reservation:Wall" startx="1592.299093018148" startY="749.1160072766445" endx="35.91652095979475" endY="740.5644546829174"/>
-    <items xsi:type="reservation:Wall" startx="37.6268314785402" startY="740.5644546829174" endx="41.04745251603108" endY="20.523726291085765"/>
+    <items xsi:type="reservation:Wall" startx="41.04745251603108" startY="20.523726291085765" endx="1277.6019575689866" endY="23.94434732857665">
+      <styles styleType="-fx-stroke" value="brown"/>
+    </items>
+    <items xsi:type="reservation:Wall" startx="1275.891647050241" startY="20.523726291085765" endx="1599.1403350931298" endY="254.83626735921146">
+      <styles styleType="-fx-stroke" value="yellow"/>
+    </items>
+    <items xsi:type="reservation:Wall" startx="1599.1403350931298" startY="254.83626735921146" endx="1592.299093018148" endY="749.1160072766445">
+      <styles styleType="-fx-stroke" value="purple"/>
+    </items>
+    <items xsi:type="reservation:Wall" startx="1592.299093018148" startY="749.1160072766445" endx="35.91652095979475" endY="740.5644546829174">
+      <styles styleType="-fx-stroke" value="blue"/>
+    </items>
+    <items xsi:type="reservation:Wall" startx="10.0" startY="740.5644546829174" endx="10.0" endY="20.523726291085765">
+      <styles styleType="-fx-stroke" value="red"/>
+    </items>
   </layout>
 </reservation:Restaurant>
