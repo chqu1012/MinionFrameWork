@@ -14,6 +14,8 @@ import de.dc.minion.model.common.event.EventContext;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.desk.control.shape.ZoomableScrollPane;
 import de.dc.minion.model.desk.util.DragResizeMod;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -21,6 +23,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.TreeItem;
@@ -57,8 +60,7 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 		ToggleButton buttonPannable = new ToggleButton("Pannable");
 		buttonAddWall.setOnAction(e -> enableAddWall = buttonAddWall.isSelected());
 		buttonPannable.setOnAction(e -> pannableProperty.set(buttonPannable.isSelected()));
-		toolbar.getItems().addAll(buttonAddWall, buttonPannable);
-
+		
 		vBox.getChildren().add(toolbar);
 
 		DragResizeMod.makeResizable(pane);
@@ -73,6 +75,25 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 		ZoomableScrollPane zoomablePane = new ZoomableScrollPane(parent);
 		vBox.getChildren().add(zoomablePane);
 
+		Button buttonZoomIn = new Button("+");
+		TextField textZoom = new TextField();
+		textZoom.setEditable(false);
+		textZoom.setPrefWidth(60);
+		textZoom.textProperty().bind(Bindings.format("%.2f", zoomablePane.scaleProperty().multiply(100)));
+		Button buttonZoomOut = new Button("-");
+		buttonZoomIn.setOnAction(e->{
+			DoubleBinding scaleValue = zoomablePane.scaleProperty().multiply(1.1);
+			zoomablePane.scaleProperty().set(scaleValue.get());
+			zoomablePane.updateScale();
+		});
+		buttonZoomOut.setOnAction(e->{
+			DoubleBinding scaleValue = zoomablePane.scaleProperty().multiply(0.9);
+			zoomablePane.scaleProperty().set(scaleValue.get());
+			zoomablePane.updateScale();
+		});
+		
+		toolbar.getItems().addAll(buttonAddWall, buttonPannable, buttonZoomIn, textZoom, buttonZoomOut);
+		
 		parent.addEventHandler(MouseEvent.MOUSE_PRESSED, ev -> {
 			startX = ev.getX();
 			startY = ev.getY();

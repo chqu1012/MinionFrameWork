@@ -1,4 +1,6 @@
 package de.dc.minion.model.desk.control.shape;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
@@ -8,7 +10,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
 public class ZoomableScrollPane extends ScrollPane {
-    private double scaleValue = 0.7;
+//	private double scaleValue = 0.7;
+	private DoubleProperty scaleProperty = new SimpleDoubleProperty(0.7);
     private double zoomIntensity = 0.02;
     private Node target;
     private Node zoomNode;
@@ -44,9 +47,9 @@ public class ZoomableScrollPane extends ScrollPane {
         return vBox;
     }
 
-    private void updateScale() {
-        target.setScaleX(scaleValue);
-        target.setScaleY(scaleValue);
+    public void updateScale() {
+        target.setScaleX(scaleProperty.get());
+        target.setScaleY(scaleProperty.get());
     }
 
     private void onScroll(double wheelDelta, Point2D mousePoint) {
@@ -59,7 +62,7 @@ public class ZoomableScrollPane extends ScrollPane {
         double valX = this.getHvalue() * (innerBounds.getWidth() - viewportBounds.getWidth());
         double valY = this.getVvalue() * (innerBounds.getHeight() - viewportBounds.getHeight());
 
-        scaleValue = scaleValue * zoomFactor;
+        scaleProperty.set(scaleProperty.get() * zoomFactor);
         updateScale();
         this.layout(); // refresh ScrollPane scroll positions & target bounds
 
@@ -74,5 +77,9 @@ public class ZoomableScrollPane extends ScrollPane {
         Bounds updatedInnerBounds = zoomNode.getBoundsInLocal();
         this.setHvalue((valX + adjustment.getX()) / (updatedInnerBounds.getWidth() - viewportBounds.getWidth()));
         this.setVvalue((valY + adjustment.getY()) / (updatedInnerBounds.getHeight() - viewportBounds.getHeight()));
+    }
+    
+    public DoubleProperty scaleProperty() {
+    	return scaleProperty;
     }
 }
