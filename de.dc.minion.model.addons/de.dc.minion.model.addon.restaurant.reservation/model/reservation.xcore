@@ -60,7 +60,11 @@ enum StyleType{
 	COLOR_BACKGROUND as '-fx-background-color'
 	COLOR_FOREGROUND as '-fx-text-fill'	
 	COLOR_BORDER as '-fx-border-color'
-	COLOR_LINE as '-fx-stroke'
+	STROKE as '-fx-stroke'
+	STROKE_WIDTH as '-fx-stroke-width'
+	STROKE_DASH_ARRAY as '-fx-stroke-dash-array'
+	STROKE_DASH_OFFSET as '-fx-stroke-dash-offset'
+	STROKE_LINE_CAP as '-fx-stroke-line-cap'
 }
 
 class Grouping{

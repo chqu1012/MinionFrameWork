@@ -49,14 +49,54 @@ public enum StyleType implements Enumerator {
 	COLOR_BORDER(0, "COLOR_BORDER", "-fx-border-color"),
 
 	/**
-	 * The '<em><b>COLOR LINE</b></em>' literal object.
+	 * The '<em><b>STROKE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #COLOR_LINE_VALUE
+	 * @see #STROKE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	COLOR_LINE(0, "COLOR_LINE", "-fx-stroke");
+	STROKE(0, "STROKE", "-fx-stroke"),
+
+	/**
+	 * The '<em><b>STROKE WIDTH</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STROKE_WIDTH_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	STROKE_WIDTH(0, "STROKE_WIDTH", "-fx-stroke-width"),
+
+	/**
+	 * The '<em><b>STROKE DASH ARRAY</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STROKE_DASH_ARRAY_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	STROKE_DASH_ARRAY(0, "STROKE_DASH_ARRAY", "-fx-stroke-dash-array"),
+
+	/**
+	 * The '<em><b>STROKE DASH OFFSET</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STROKE_DASH_OFFSET_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	STROKE_DASH_OFFSET(0, "STROKE_DASH_OFFSET", "-fx-stroke-dash-offset"),
+
+	/**
+	 * The '<em><b>STROKE LINE CAP</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STROKE_LINE_CAP_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	STROKE_LINE_CAP(0, "STROKE_LINE_CAP", "-fx-stroke-line-cap");
 
 	/**
 	 * The '<em><b>COLOR BACKGROUND</b></em>' literal value.
@@ -92,15 +132,59 @@ public enum StyleType implements Enumerator {
 	public static final int COLOR_BORDER_VALUE = 0;
 
 	/**
-	 * The '<em><b>COLOR LINE</b></em>' literal value.
+	 * The '<em><b>STROKE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #COLOR_LINE
+	 * @see #STROKE
 	 * @model literal="-fx-stroke"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int COLOR_LINE_VALUE = 0;
+	public static final int STROKE_VALUE = 0;
+
+	/**
+	 * The '<em><b>STROKE WIDTH</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STROKE_WIDTH
+	 * @model literal="-fx-stroke-width"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int STROKE_WIDTH_VALUE = 0;
+
+	/**
+	 * The '<em><b>STROKE DASH ARRAY</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STROKE_DASH_ARRAY
+	 * @model literal="-fx-stroke-dash-array"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int STROKE_DASH_ARRAY_VALUE = 0;
+
+	/**
+	 * The '<em><b>STROKE DASH OFFSET</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STROKE_DASH_OFFSET
+	 * @model literal="-fx-stroke-dash-offset"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int STROKE_DASH_OFFSET_VALUE = 0;
+
+	/**
+	 * The '<em><b>STROKE LINE CAP</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STROKE_LINE_CAP
+	 * @model literal="-fx-stroke-line-cap"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int STROKE_LINE_CAP_VALUE = 0;
 
 	/**
 	 * An array of all the '<em><b>Style Type</b></em>' enumerators.
@@ -109,7 +193,7 @@ public enum StyleType implements Enumerator {
 	 * @generated
 	 */
 	private static final StyleType[] VALUES_ARRAY = new StyleType[] { COLOR_BACKGROUND, COLOR_FOREGROUND, COLOR_BORDER,
-			COLOR_LINE, };
+			STROKE, STROKE_WIDTH, STROKE_DASH_ARRAY, STROKE_DASH_OFFSET, STROKE_LINE_CAP, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Style Type</b></em>' enumerators.

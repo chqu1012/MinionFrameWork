@@ -14,7 +14,7 @@ public class WallNode extends Line{
 		this.data=data;
 		DragResizeMod.makeResizable(this);
 		
-		Optional<String> style = data.getStyles().stream().filter(e-> e.getValue()!=null).map(e->e.getStyleType().getLiteral()+": "+e.getValue()).reduce((e1, e2)->e1+":"+e2+";");
+		Optional<String> style = data.getStyles().stream().filter(e-> e.getValue()!=null).map(e->e.getStyleType().getLiteral()+": "+e.getValue()).reduce((e1, e2)->e1+";"+e2);
 		style.ifPresent(this::setStyle);
 		
 		setStartX(data.getStartx());

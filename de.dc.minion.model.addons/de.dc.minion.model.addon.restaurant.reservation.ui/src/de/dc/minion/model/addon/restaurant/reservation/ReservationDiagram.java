@@ -14,6 +14,8 @@ import de.dc.minion.model.common.event.EventContext;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.desk.control.shape.ZoomableScrollPane;
 import de.dc.minion.model.desk.util.DragResizeMod;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
@@ -39,17 +41,23 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 	IEventBroker eventBroker;
 
 	private boolean enableAddWall = false;
+	private BooleanProperty pannableProperty;
+
 	private double startY, startX;
 	private Line line;
 
 	@Override
 	public Parent create() {
+		pannableProperty = new SimpleBooleanProperty(false);
+		
 		VBox vBox = new VBox();
 
 		ToolBar toolbar = new ToolBar();
 		ToggleButton buttonAddWall = new ToggleButton("Add Wall");
+		ToggleButton buttonPannable = new ToggleButton("Pannable");
 		buttonAddWall.setOnAction(e -> enableAddWall = buttonAddWall.isSelected());
-		toolbar.getItems().add(buttonAddWall);
+		buttonPannable.setOnAction(e -> pannableProperty.set(buttonPannable.isSelected()));
+		toolbar.getItems().addAll(buttonAddWall, buttonPannable);
 
 		vBox.getChildren().add(toolbar);
 
@@ -61,6 +69,9 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 		parent.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		parent.setStyle("-fx-border-color: lightgray");
 		parent.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+		ZoomableScrollPane zoomablePane = new ZoomableScrollPane(parent);
+		vBox.getChildren().add(zoomablePane);
 
 		parent.addEventHandler(MouseEvent.MOUSE_PRESSED, ev -> {
 			startX = ev.getX();
@@ -85,9 +96,8 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 				line = null;
 			}
 		});
-
-		vBox.getChildren().add(new ZoomableScrollPane(parent));
-
+		
+		zoomablePane.pannableProperty().bind(pannableProperty);
 		return vBox;
 	}
 
@@ -115,7 +125,6 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 							layout.getItems().forEach(e -> {
 								WallNode node = (WallNode) renderer.doSwitch(e);
 								if (node != null) {
-									node.setOnMouseExited(s -> onMouseWallExited(node));
 									parent.getChildren().add(node);
 								}
 							});
@@ -136,14 +145,6 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 		eventBroker.post(new EventContext<>("/reservation/add/Wall", wall));
 	}
 	
-	public void onMouseWallExited(WallNode node) {
-		Wall data = node.getData();
-		data.setStartx(node.getLayoutX());
-		data.setStartY(node.getStartY());
-		data.setEndx(node.getLayoutX());
-		data.setEndY(node.getEndY());
-	}
-
 	public void onMouseExited(TableNode node) {
 		Double x = node.getLayoutX();
 		Double y = node.getLayoutY();
