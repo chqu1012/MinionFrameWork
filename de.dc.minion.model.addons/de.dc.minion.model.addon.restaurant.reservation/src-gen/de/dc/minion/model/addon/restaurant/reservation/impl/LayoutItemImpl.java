@@ -7,8 +7,6 @@ import de.dc.minion.model.addon.restaurant.reservation.ReservationPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Layout Item</b></em>'.
@@ -16,7 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public abstract class LayoutItemImpl extends MinimalEObjectImpl.Container implements LayoutItem {
+public abstract class LayoutItemImpl extends StyledElementImpl implements LayoutItem {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

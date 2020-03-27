@@ -2,8 +2,6 @@
  */
 package de.dc.minion.model.addon.restaurant.reservation;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Layout Item</b></em>'.
@@ -14,5 +12,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface LayoutItem extends EObject {
+public interface LayoutItem extends StyledElement {
 } // LayoutItem

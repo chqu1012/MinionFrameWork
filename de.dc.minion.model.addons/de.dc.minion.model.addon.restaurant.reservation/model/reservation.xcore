@@ -28,7 +28,7 @@ class Layout{
 	contains LayoutItem[0..*] items
 }
  
-abstract class LayoutItem{}
+abstract class LayoutItem extends StyledElement{}
 
 class Wall extends LayoutItem{
 	Double startx
@@ -37,7 +37,11 @@ class Wall extends LayoutItem{
 	Double endY
 }
 
-class Table{ 
+abstract class StyledElement{
+	contains Style[0..*] styles
+}
+
+class Table extends StyledElement{ 
 	Double x
 	Double y
 	Double width
@@ -45,7 +49,6 @@ class Table{
 	Integer number
 	Integer seatCount
 	refers Waiter[0..*] waiters
-	contains Style[0..*] styles
 }
 
 class Style{
