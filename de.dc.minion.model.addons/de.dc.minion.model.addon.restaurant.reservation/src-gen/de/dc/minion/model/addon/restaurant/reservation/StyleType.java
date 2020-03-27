@@ -19,34 +19,44 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum StyleType implements Enumerator {
 	/**
-	 * The '<em><b>COLOR BACKGROUND</b></em>' literal object.
+	 * The '<em><b>BACKGROUND COLOR</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #COLOR_BACKGROUND_VALUE
+	 * @see #BACKGROUND_COLOR_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	COLOR_BACKGROUND(0, "COLOR_BACKGROUND", "-fx-background-color"),
+	BACKGROUND_COLOR(0, "BACKGROUND_COLOR", "-fx-background-color"),
 
 	/**
-	 * The '<em><b>COLOR FOREGROUND</b></em>' literal object.
+	 * The '<em><b>BACKGROUND RADIUS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #COLOR_FOREGROUND_VALUE
+	 * @see #BACKGROUND_RADIUS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	COLOR_FOREGROUND(0, "COLOR_FOREGROUND", "-fx-text-fill"),
+	BACKGROUND_RADIUS(0, "BACKGROUND_RADIUS", "-fx-background-radius"),
 
 	/**
-	 * The '<em><b>COLOR BORDER</b></em>' literal object.
+	 * The '<em><b>BORDER COLOR</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #COLOR_BORDER_VALUE
+	 * @see #BORDER_COLOR_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	COLOR_BORDER(0, "COLOR_BORDER", "-fx-border-color"),
+	BORDER_COLOR(0, "BORDER_COLOR", "-fx-border-color"),
+
+	/**
+	 * The '<em><b>TEXT FILL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TEXT_FILL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	TEXT_FILL(0, "TEXT_FILL", "-fx-text-fill"),
 
 	/**
 	 * The '<em><b>STROKE</b></em>' literal object.
@@ -99,37 +109,48 @@ public enum StyleType implements Enumerator {
 	STROKE_LINE_CAP(0, "STROKE_LINE_CAP", "-fx-stroke-line-cap");
 
 	/**
-	 * The '<em><b>COLOR BACKGROUND</b></em>' literal value.
+	 * The '<em><b>BACKGROUND COLOR</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #COLOR_BACKGROUND
+	 * @see #BACKGROUND_COLOR
 	 * @model literal="-fx-background-color"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int COLOR_BACKGROUND_VALUE = 0;
+	public static final int BACKGROUND_COLOR_VALUE = 0;
 
 	/**
-	 * The '<em><b>COLOR FOREGROUND</b></em>' literal value.
+	 * The '<em><b>BACKGROUND RADIUS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #COLOR_FOREGROUND
-	 * @model literal="-fx-text-fill"
+	 * @see #BACKGROUND_RADIUS
+	 * @model literal="-fx-background-radius"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int COLOR_FOREGROUND_VALUE = 0;
+	public static final int BACKGROUND_RADIUS_VALUE = 0;
 
 	/**
-	 * The '<em><b>COLOR BORDER</b></em>' literal value.
+	 * The '<em><b>BORDER COLOR</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #COLOR_BORDER
+	 * @see #BORDER_COLOR
 	 * @model literal="-fx-border-color"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int COLOR_BORDER_VALUE = 0;
+	public static final int BORDER_COLOR_VALUE = 0;
+
+	/**
+	 * The '<em><b>TEXT FILL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TEXT_FILL
+	 * @model literal="-fx-text-fill"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEXT_FILL_VALUE = 0;
 
 	/**
 	 * The '<em><b>STROKE</b></em>' literal value.
@@ -192,8 +213,8 @@ public enum StyleType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final StyleType[] VALUES_ARRAY = new StyleType[] { COLOR_BACKGROUND, COLOR_FOREGROUND, COLOR_BORDER,
-			STROKE, STROKE_WIDTH, STROKE_DASH_ARRAY, STROKE_DASH_OFFSET, STROKE_LINE_CAP, };
+	private static final StyleType[] VALUES_ARRAY = new StyleType[] { BACKGROUND_COLOR, BACKGROUND_RADIUS, BORDER_COLOR,
+			TEXT_FILL, STROKE, STROKE_WIDTH, STROKE_DASH_ARRAY, STROKE_DASH_OFFSET, STROKE_LINE_CAP, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Style Type</b></em>' enumerators.
@@ -249,8 +270,8 @@ public enum StyleType implements Enumerator {
 	 */
 	public static StyleType get(int value) {
 		switch (value) {
-		case COLOR_BACKGROUND_VALUE:
-			return COLOR_BACKGROUND;
+		case BACKGROUND_COLOR_VALUE:
+			return BACKGROUND_COLOR;
 		}
 		return null;
 	}

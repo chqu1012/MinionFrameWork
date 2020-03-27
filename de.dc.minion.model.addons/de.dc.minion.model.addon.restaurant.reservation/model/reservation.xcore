@@ -57,9 +57,10 @@ class Style{
 }
 
 enum StyleType{
-	COLOR_BACKGROUND as '-fx-background-color'
-	COLOR_FOREGROUND as '-fx-text-fill'	
-	COLOR_BORDER as '-fx-border-color'
+	BACKGROUND_COLOR as '-fx-background-color'
+	BACKGROUND_RADIUS as '-fx-background-radius'
+	BORDER_COLOR as '-fx-border-color'
+	TEXT_FILL as '-fx-text-fill'	
 	STROKE as '-fx-stroke'
 	STROKE_WIDTH as '-fx-stroke-width'
 	STROKE_DASH_ARRAY as '-fx-stroke-dash-array'

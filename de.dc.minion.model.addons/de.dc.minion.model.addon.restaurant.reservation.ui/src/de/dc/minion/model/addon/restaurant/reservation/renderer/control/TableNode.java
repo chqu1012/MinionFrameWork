@@ -18,7 +18,7 @@ public class TableNode extends DraggableItem<Table>{
 		Double width = data.getWidth();
 		Double height = data.getHeight();
 		
-		Optional<String> style = data.getStyles().stream().filter(e-> e.getValue()!=null).map(e->e.getStyleType().getLiteral()+": "+e.getValue()).reduce((e1, e2)->e1+":"+e2+";");
+		Optional<String> style = data.getStyles().stream().filter(e-> e.getValue()!=null).map(e->e.getStyleType().getLiteral()+": "+e.getValue()).reduce((e1, e2)->e1+";"+e2);
 		style.ifPresent(this::setStyle);
 		
 		if (height!=null) {

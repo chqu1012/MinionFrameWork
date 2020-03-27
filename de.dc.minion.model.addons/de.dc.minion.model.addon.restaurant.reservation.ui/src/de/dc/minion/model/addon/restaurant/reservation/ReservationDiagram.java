@@ -30,13 +30,14 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 
 public class ReservationDiagram extends EmfViewPart implements ChangeListener<Object> {
 
 	protected static final Logger LOG = Logger.getLogger(ReservationDiagram.class.getSimpleName());
 
+	private static final String CSS_SELECTED = ";-fx-border-color: yellow; -fx-border-width: 3";
+	
 	private ReservationRenderer renderer;
 	private Pane parent;
 
@@ -181,6 +182,12 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 
 	public void selectNode(TableNode node, MouseEvent s) {
 		eventBroker.post(new EventContext<>("/reservation/table/select", node.getData()));
-		node.selectionProperty().set(node.selectionProperty().not().get());
+		for (Node childNode : parent.getChildren()) {
+			if (childNode instanceof TableNode) {
+				TableNode tableNode = (TableNode) childNode;
+				tableNode.setStyle(tableNode.getStyle().replace(CSS_SELECTED, ""));				
+			}
+		}
+		node.setStyle(node.getStyle()+CSS_SELECTED);
 	}
 }

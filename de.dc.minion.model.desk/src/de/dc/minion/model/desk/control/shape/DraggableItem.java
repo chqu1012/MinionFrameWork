@@ -7,6 +7,8 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -27,6 +29,8 @@ public class DraggableItem<T> extends BorderPane{
 		Label label = new Label(name);
 		label.setPrefWidth(100);
 		label.setLayoutX(10);
+		label.setMaxWidth(Double.MAX_VALUE);
+		label.setAlignment(Pos.CENTER);
 		label.setLayoutY(10);
 		setTop(label);
 		DragResizeMod.makeResizable(this);

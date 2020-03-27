@@ -36,7 +36,7 @@ public class StyleImpl extends MinimalEObjectImpl.Container implements Style {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final StyleType STYLE_TYPE_EDEFAULT = StyleType.COLOR_BACKGROUND;
+	protected static final StyleType STYLE_TYPE_EDEFAULT = StyleType.BACKGROUND_COLOR;
 
 	/**
 	 * The cached value of the '{@link #getStyleType() <em>Style Type</em>}' attribute.
