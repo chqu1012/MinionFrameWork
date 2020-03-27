@@ -1,5 +1,7 @@
 package de.dc.minion.model.desk.control.shape;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
@@ -10,11 +12,14 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
 public class ZoomableScrollPane extends ScrollPane {
-//	private double scaleValue = 0.7;
+
 	private DoubleProperty scaleProperty = new SimpleDoubleProperty(0.7);
-    private double zoomIntensity = 0.02;
+	private BooleanProperty zoomingProperty = new SimpleBooleanProperty(true);
+    
+	private double zoomIntensity = 0.02;
     private Node target;
     private Node zoomNode;
+	private double zoomFactor;
 
     public ZoomableScrollPane(Node target) {
         this.target = target;
@@ -33,7 +38,7 @@ public class ZoomableScrollPane extends ScrollPane {
     private Node outerNode(Node node) {
         Node outerNode = centeredNode(node);
         outerNode.setOnScroll(e -> {
-        	if (e.isControlDown()) {
+        	if (zoomingProperty.get()) {
         		e.consume();
         		onScroll(e.getTextDeltaY(), new Point2D(e.getX(), e.getY()));
 			}
@@ -53,7 +58,7 @@ public class ZoomableScrollPane extends ScrollPane {
     }
 
     private void onScroll(double wheelDelta, Point2D mousePoint) {
-        double zoomFactor = Math.exp(wheelDelta * zoomIntensity);
+        zoomFactor = Math.exp(wheelDelta * zoomIntensity);
 
         Bounds innerBounds = zoomNode.getLayoutBounds();
         Bounds viewportBounds = getViewportBounds();
@@ -77,6 +82,14 @@ public class ZoomableScrollPane extends ScrollPane {
         Bounds updatedInnerBounds = zoomNode.getBoundsInLocal();
         this.setHvalue((valX + adjustment.getX()) / (updatedInnerBounds.getWidth() - viewportBounds.getWidth()));
         this.setVvalue((valY + adjustment.getY()) / (updatedInnerBounds.getHeight() - viewportBounds.getHeight()));
+    }
+    
+    public double getZoomFactor() {
+    	return zoomFactor;
+    }
+    
+    public BooleanProperty zoomingProperty() {
+    	return zoomingProperty;
     }
     
     public DoubleProperty scaleProperty() {

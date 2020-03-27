@@ -59,9 +59,11 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 		ToolBar toolbar = new ToolBar();
 		ToggleButton buttonAddWall = new ToggleButton("Add Wall");
 		ToggleButton buttonPannable = new ToggleButton("Pannable");
+		ToggleButton buttonLockScroll = new ToggleButton("Lock Scroll");
+		buttonLockScroll.setSelected(true);
 		buttonAddWall.setOnAction(e -> enableAddWall = buttonAddWall.isSelected());
 		buttonPannable.setOnAction(e -> pannableProperty.set(buttonPannable.isSelected()));
-		
+
 		vBox.getChildren().add(toolbar);
 
 		DragResizeMod.makeResizable(pane);
@@ -93,7 +95,7 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 			zoomablePane.updateScale();
 		});
 		
-		toolbar.getItems().addAll(buttonAddWall, buttonPannable, buttonZoomIn, textZoom, buttonZoomOut);
+		toolbar.getItems().addAll(buttonAddWall, buttonPannable, buttonLockScroll, buttonZoomIn, textZoom, buttonZoomOut);
 		
 		parent.addEventHandler(MouseEvent.MOUSE_PRESSED, ev -> {
 			startX = ev.getX();
@@ -120,6 +122,7 @@ public class ReservationDiagram extends EmfViewPart implements ChangeListener<Ob
 		});
 		
 		zoomablePane.pannableProperty().bind(pannableProperty);
+		zoomablePane.zoomingProperty().bind(buttonLockScroll.selectedProperty());
 		return vBox;
 	}
 
