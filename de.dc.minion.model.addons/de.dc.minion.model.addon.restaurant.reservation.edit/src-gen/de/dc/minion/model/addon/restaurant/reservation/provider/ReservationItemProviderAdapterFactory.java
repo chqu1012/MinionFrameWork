@@ -98,6 +98,52 @@ public class ReservationItemProviderAdapterFactory extends ReservationAdapterFac
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.restaurant.reservation.Layout} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LayoutItemProvider layoutItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.restaurant.reservation.Layout}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLayoutAdapter() {
+		if (layoutItemProvider == null) {
+			layoutItemProvider = new LayoutItemProvider(this);
+		}
+
+		return layoutItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.restaurant.reservation.Wall} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WallItemProvider wallItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.restaurant.reservation.Wall}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWallAdapter() {
+		if (wallItemProvider == null) {
+			wallItemProvider = new WallItemProvider(this);
+		}
+
+		return wallItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.restaurant.reservation.Table} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -296,6 +342,10 @@ public class ReservationItemProviderAdapterFactory extends ReservationAdapterFac
 	public void dispose() {
 		if (restaurantItemProvider != null)
 			restaurantItemProvider.dispose();
+		if (layoutItemProvider != null)
+			layoutItemProvider.dispose();
+		if (wallItemProvider != null)
+			wallItemProvider.dispose();
 		if (tableItemProvider != null)
 			tableItemProvider.dispose();
 		if (styleItemProvider != null)

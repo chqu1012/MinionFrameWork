@@ -2,6 +2,10 @@ package de.dc.minion.model.desk.control;
 
 import java.io.File;
 
+import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Inject;
 
@@ -125,7 +129,9 @@ public class MinionRecentlyOpenVision extends EmfViewPart{
 		if (fileRecentlyOpenFiles.exists()) {
 			files.clear();
 			RecentlyOpenVision minion = minionFile.load(fileRecentlyOpenFiles.getAbsolutePath());
-			files.addAll(minion.getFiles());
+			EList<RecentlyOpenFile> minonFiles = minion.getFiles();
+			ECollections.reverse(minonFiles);
+			files.addAll(minonFiles);
 		}
 	}
 }

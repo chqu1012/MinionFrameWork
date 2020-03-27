@@ -1,5 +1,9 @@
 package de.dc.minion.model.addon.restaurant.reservation;
 
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
+
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Inject;
 
@@ -21,6 +25,27 @@ public class ReservationEditor extends EmfDetailedTreeView<Restaurant>{
 	@Override
 	protected EmfModelTreeView<Restaurant> initEmfModelTreeView() {
 		return new ReservationTreeView();
+	}
+	
+	@Subscribe
+	public void subscribeAddWall(EventContext<Wall> context) {
+		if (context.getEventId().equals("/reservation/add/Wall")) {
+			Wall wall = context.getInput();
+			TreeItem<Object> root = treeView.getTreeView().getRoot();
+			Object value = root.getValue();
+			if (value instanceof Restaurant) {
+				Restaurant restaurant = (Restaurant) value;
+				Layout layout = restaurant.getLayout();
+				if (layout==null) {
+					layout = ReservationFactory.eINSTANCE.createLayout();
+					restaurant.setLayout(layout);					
+				}
+				
+				EditingDomain editingDomain = treeView.getEmfManager().getEditingDomain();
+				Command command = AddCommand.create(editingDomain, layout, ReservationPackage.eINSTANCE.getLayout_Items(), wall);
+				command.execute();
+			}
+		}
 	}
 	
 	@Subscribe

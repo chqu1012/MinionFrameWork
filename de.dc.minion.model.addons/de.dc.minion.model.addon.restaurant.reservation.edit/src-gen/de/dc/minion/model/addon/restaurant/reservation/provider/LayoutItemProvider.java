@@ -2,9 +2,9 @@
  */
 package de.dc.minion.model.addon.restaurant.reservation.provider;
 
+import de.dc.minion.model.addon.restaurant.reservation.Layout;
 import de.dc.minion.model.addon.restaurant.reservation.ReservationFactory;
 import de.dc.minion.model.addon.restaurant.reservation.ReservationPackage;
-import de.dc.minion.model.addon.restaurant.reservation.Restaurant;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,7 +16,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -24,17 +23,16 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dc.minion.model.addon.restaurant.reservation.Restaurant} object.
+ * This is the item provider adapter for a {@link de.dc.minion.model.addon.restaurant.reservation.Layout} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class RestaurantItemProvider extends ItemProviderAdapter
+public class LayoutItemProvider extends ItemProviderAdapter
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
 		IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider {
 	/**
@@ -43,7 +41,7 @@ public class RestaurantItemProvider extends ItemProviderAdapter
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RestaurantItemProvider(AdapterFactory adapterFactory) {
+	public LayoutItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -58,25 +56,8 @@ public class RestaurantItemProvider extends ItemProviderAdapter
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Restaurant_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Restaurant_name_feature",
-								"_UI_Restaurant_type"),
-						ReservationPackage.Literals.RESTAURANT__NAME, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -91,10 +72,7 @@ public class RestaurantItemProvider extends ItemProviderAdapter
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ReservationPackage.Literals.RESTAURANT__TABLES);
-			childrenFeatures.add(ReservationPackage.Literals.RESTAURANT__GROUPINGS);
-			childrenFeatures.add(ReservationPackage.Literals.RESTAURANT__WAITERS);
-			childrenFeatures.add(ReservationPackage.Literals.RESTAURANT__LAYOUT);
+			childrenFeatures.add(ReservationPackage.Literals.LAYOUT__ITEMS);
 		}
 		return childrenFeatures;
 	}
@@ -113,14 +91,14 @@ public class RestaurantItemProvider extends ItemProviderAdapter
 	}
 
 	/**
-	 * This returns Restaurant.gif.
+	 * This returns Layout.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Restaurant"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Layout"));
 	}
 
 	/**
@@ -156,9 +134,7 @@ public class RestaurantItemProvider extends ItemProviderAdapter
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Restaurant) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_Restaurant_type")
-				: getString("_UI_Restaurant_type") + " " + label;
+		return getString("_UI_Layout_type");
 	}
 
 	/**
@@ -187,14 +163,8 @@ public class RestaurantItemProvider extends ItemProviderAdapter
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Restaurant.class)) {
-		case ReservationPackage.RESTAURANT__NAME:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		case ReservationPackage.RESTAURANT__TABLES:
-		case ReservationPackage.RESTAURANT__GROUPINGS:
-		case ReservationPackage.RESTAURANT__WAITERS:
-		case ReservationPackage.RESTAURANT__LAYOUT:
+		switch (notification.getFeatureID(Layout.class)) {
+		case ReservationPackage.LAYOUT__ITEMS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -212,17 +182,8 @@ public class RestaurantItemProvider extends ItemProviderAdapter
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(ReservationPackage.Literals.RESTAURANT__TABLES,
-				ReservationFactory.eINSTANCE.createTable()));
-
-		newChildDescriptors.add(createChildParameter(ReservationPackage.Literals.RESTAURANT__GROUPINGS,
-				ReservationFactory.eINSTANCE.createGrouping()));
-
-		newChildDescriptors.add(createChildParameter(ReservationPackage.Literals.RESTAURANT__WAITERS,
-				ReservationFactory.eINSTANCE.createWaiter()));
-
-		newChildDescriptors.add(createChildParameter(ReservationPackage.Literals.RESTAURANT__LAYOUT,
-				ReservationFactory.eINSTANCE.createLayout()));
+		newChildDescriptors.add(createChildParameter(ReservationPackage.Literals.LAYOUT__ITEMS,
+				ReservationFactory.eINSTANCE.createWall()));
 	}
 
 	/**

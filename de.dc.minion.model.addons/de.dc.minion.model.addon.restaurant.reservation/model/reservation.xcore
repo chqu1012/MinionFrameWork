@@ -21,8 +21,22 @@ class Restaurant{
 	contains Table[0..*] tables
 	contains Grouping[0..*] groupings
 	contains Waiter[0..*] waiters
+	contains Layout[0..1] layout
+}
+
+class Layout{
+	contains LayoutItem[0..*] items
 }
  
+abstract class LayoutItem{}
+
+class Wall extends LayoutItem{
+	Double startx
+	Double startY
+	Double endx
+	Double endY
+}
+
 class Table{ 
 	Double x
 	Double y

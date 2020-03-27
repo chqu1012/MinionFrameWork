@@ -2,7 +2,9 @@ package de.dc.minion.model.addon.restaurant.reservation.renderer;
 
 import de.dc.minion.model.addon.restaurant.reservation.Restaurant;
 import de.dc.minion.model.addon.restaurant.reservation.Table;
+import de.dc.minion.model.addon.restaurant.reservation.Wall;
 import de.dc.minion.model.addon.restaurant.reservation.renderer.control.TableNode;
+import de.dc.minion.model.addon.restaurant.reservation.renderer.control.WallNode;
 import de.dc.minion.model.addon.restaurant.reservation.util.ReservationSwitch;
 import javafx.scene.Node;
 
@@ -18,5 +20,10 @@ public class ReservationRenderer extends ReservationSwitch<Node> {
 	@Override
 	public Node caseTable(Table object) {
 		return new TableNode(object);
+	}
+	
+	@Override
+	public Node caseWall(Wall object) {
+		return new WallNode(object);
 	}
 }
