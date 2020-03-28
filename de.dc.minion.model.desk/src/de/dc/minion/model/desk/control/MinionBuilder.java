@@ -258,27 +258,6 @@ public class MinionBuilder extends MinionSwitch<Object> {
 		return view;
 	}
 
-//	private Tab createTab(Vision e) {
-//Tab tab;
-//		//		String id = e.getId();
-////		
-////		Tab tab = new Tab(e.getName());
-////		tab.setClosable(true);
-////		BorderPane pane = new BorderPane();
-////		pane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-////		Node node = caseVision(e);
-////		pane.setCenter(node);
-////		tab.setContent(pane);
-////		
-////		if (id==null) {
-////			return tab;
-////		}
-////		if (controlManager.findBy(id)!=null) {
-////			return controlManager.findBy(id);
-////		}
-//		return tab;
-//	}
-
 	public void setDesk(MinionDeskFX minionDesk) {
 		this.minionDesk = minionDesk;
 		controlManager.registrate(MinionDeskFX.ID, minionDesk);

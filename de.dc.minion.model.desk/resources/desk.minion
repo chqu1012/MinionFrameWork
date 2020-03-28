@@ -4,6 +4,7 @@
     <touchPoints xsi:type="model:LandscapeTouch">
       <landscapes id="emf.file.wizard" name="Emf File Wizard" uri="de.dc.minion.model.desk.controller.EmfFileWizard" useAsPage="true"/>
       <landscapes id="emf.feature.dialog" name="Emf Feature Dialog" uri="de.dc.minion.model.desk.controller.EmfFeatureEditorDialog" useAsPage="true"/>
+      <landscapes id="emf.touch.manager" name="Emf Touch Manager" uri="de.dc.minion.model.desk.controller.EmfTouchManager" useAsPage="true"/>
     </touchPoints>
     <touchPoints xsi:type="model:ToolbarTouch">
       <toolbarItems name="New File" command="//@toadies.0/@touchPoints.2/@commands.0"/>
@@ -11,12 +12,14 @@
       <toolbarItems name="Save"/>
       <toolbarItems id="save.as.file.toolbar" name="Save as" command="//@toadies.0/@touchPoints.2/@commands.2"/>
       <toolbarItems id="toolbar.item.open.emf.feature.dialog" name="Emf Feature Dialog" command="//@toadies.0/@touchPoints.2/@commands.3"/>
+      <toolbarItems id="toolbar.item.emf.touch.manager" name="Touch Manager" command="//@toadies.0/@touchPoints.2/@commands.4"/>
     </touchPoints>
     <touchPoints xsi:type="model:CommandTouch">
       <commands id="de.dc.new.file" name="New File" handler="de.dc.minion.model.desk.handler.NewFileHandler"/>
       <commands id="open.file" name="Open File" handler="de.dc.minion.model.desk.demo.handler.OpenFileHandler"/>
       <commands id="save.as.file" name="Save As" handler="de.dc.minion.model.desk.handler.SaveAsFileHandler"/>
       <commands id="open.emf.feature.dialog" name="Open Emf Feature Dialog" handler="de.dc.minion.model.desk.handler.OpenEmfFeatureDialogHandler"/>
+      <commands id="open.emf.touch.manager" name="Open Emf Touch Manager" handler="de.dc.minion.model.desk.handler.OpenEmfTouchManagerHandler"/>
     </touchPoints>
   </toadies>
 </model:Minion>
