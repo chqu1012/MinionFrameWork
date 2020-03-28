@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
-  <toadies>
+  <toadies name="H2 Database Client" description="H2 DB Client Toady to managing connections and quering results.">
     <touchPoints xsi:type="model:VisionTouch">
       <visions id="de.dc.minion.model.addon.h2.MinionRecentlyOpenVision" name="Recent Files" uri="de.dc.minion.model.desk.control.MinionRecentlyOpenVision"/>
       <visions id="de.dc.minion.model.addon.h2.H2Diagram" name="H2Diagram" uri="de.dc.minion.model.addon.h2.H2Diagram"/>

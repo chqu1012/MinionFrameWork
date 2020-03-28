@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
-  <toadies>
+  <toadies name="Minion Desk Demo" description="Demo application with several loaded toadies">
     <touchPoints xsi:type="model:VisionTouch">
       <visions id="left.vision" name="Hello Vision" uri="de.dc.minion.model.desk.demo.vision.LeftVision"/>
       <visions id="right.vision" name="Right Vision"/>

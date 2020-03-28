@@ -18,6 +18,8 @@ class Minion{
 
 class Toady{
 	String ^id
+	String name
+	String description
 	// Extension Points
 	contains TouchPoint[0..*] touchPoints
 	ToadyStatus status

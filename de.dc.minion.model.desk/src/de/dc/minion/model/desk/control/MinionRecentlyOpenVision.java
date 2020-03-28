@@ -4,7 +4,6 @@ import java.io.File;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Inject;
@@ -16,6 +15,7 @@ import de.dc.minion.model.common.event.EventContext;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.event.ISelectionService;
 import de.dc.minion.model.common.file.RecentlyOpenFilesReader;
+import de.dc.minion.model.desk.control.feature.RecentFilesListCell;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -23,15 +23,11 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 public class MinionRecentlyOpenVision extends EmfViewPart{
 
@@ -51,28 +47,7 @@ public class MinionRecentlyOpenVision extends EmfViewPart{
 		
 		ListView<RecentlyOpenFile> listView = new ListView<>();
 		listView.setItems(filteredFiles);
-		listView.setCellFactory(param -> new ListCell<RecentlyOpenFile>() {
-			@Override
-			protected void updateItem(RecentlyOpenFile item, boolean empty) {
-				super.updateItem(item, empty);
-				if (item==null || empty) {
-					setText(null);
-					setGraphic(null);
-				}else {
-					VBox vbox = new VBox();
-					Label labelName = new Label(item.getName());
-					labelName.setFont(Font.font("arial", FontWeight.BOLD, 11));
-					vbox.getChildren().add(labelName);
-					Label labelPath = new Label(item.getPath());
-					labelPath.setFont(Font.font(9));
-					vbox.getChildren().add(labelPath);
-					Label labelTimestamp = new Label(item.getTimestamp()==null?"No Timestamp":String.valueOf(item.getTimestamp()));
-					labelTimestamp.setFont(Font.font(9));
-					vbox.getChildren().add(labelTimestamp);
-					setGraphic(vbox);
-				}
-			}
-		});
+		listView.setCellFactory(param -> new RecentFilesListCell());
 		listView.setOnMouseClicked(event -> {
 			if (event.getClickCount()==2) {
 				String selection = listView.getSelectionModel().getSelectedItem().getPath();

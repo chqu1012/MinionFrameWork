@@ -59,6 +59,8 @@ public class ToadyItemProvider extends ItemProviderAdapter
 			super.getPropertyDescriptors(object);
 
 			addIdPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 			addStatusPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -76,6 +78,37 @@ public class ToadyItemProvider extends ItemProviderAdapter
 						getResourceLocator(), getString("_UI_Toady_id_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Toady_id_feature", "_UI_Toady_type"),
 						MinionPackage.Literals.TOADY__ID, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Toady_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Toady_name_feature", "_UI_Toady_type"),
+						MinionPackage.Literals.TOADY__NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Toady_description_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Toady_description_feature",
+								"_UI_Toady_type"),
+						MinionPackage.Literals.TOADY__DESCRIPTION, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -168,7 +201,7 @@ public class ToadyItemProvider extends ItemProviderAdapter
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Toady) object).getId();
+		String label = ((Toady) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Toady_type")
 				: getString("_UI_Toady_type") + " " + label;
 	}
@@ -201,6 +234,8 @@ public class ToadyItemProvider extends ItemProviderAdapter
 
 		switch (notification.getFeatureID(Toady.class)) {
 		case MinionPackage.TOADY__ID:
+		case MinionPackage.TOADY__NAME:
+		case MinionPackage.TOADY__DESCRIPTION:
 		case MinionPackage.TOADY__STATUS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;

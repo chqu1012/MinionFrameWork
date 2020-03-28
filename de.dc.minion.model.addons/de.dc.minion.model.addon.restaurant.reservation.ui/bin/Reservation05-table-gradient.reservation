@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ASCII"?>
+<reservation:Restaurant xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:reservation="http://www.frateranatis.org/minon/addon/restaurant/reservation">
+  <tables x="63.53385725761922" y="61.28511099398736" width="221.99998474121094" height="188.0" number="1" seatCount="6">
+    <styles value="linear-gradient(to bottom left, purple, white)"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+  </tables>
+  <tables x="484.7859070082518" y="64.82191531860649" width="157.00003051757812" height="187.0" number="2" seatCount="4">
+    <styles value="linear-gradient(to bottom left, #ff7f50, #6a5acd)"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+  </tables>
+  <tables x="306.7402648925781" y="62.22402851515295" width="159.0" height="187.0" number="3" seatCount="4">
+    <styles value="linear-gradient(to bottom left, blue, white)"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+  </tables>
+  <tables x="62.492426408510994" y="293.33068636797015" width="369.0" height="180.0" number="4" seatCount="10">
+    <styles value="linear-gradient(to bottom left, green, white)"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+  </tables>
+  <tables x="447.86120605468744" y="296.4052995804273" width="721.0" height="177.0" number="5" seatCount="20">
+    <styles value="linear-gradient(to bottom left, gray, white)"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+  </tables>
+  <tables x="660.0000348772315" y="65.71428353445859" width="86.0" height="185.0" number="6" seatCount="2">
+    <styles value="linear-gradient(to bottom left, orange, white)"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+  </tables>
+  <tables x="1202.8572823660713" y="275.714307512556" width="163.0" height="106.0" number="7" seatCount="2">
+    <styles value="orange"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+    <styles value="linear-gradient(to bottom left, orange, white)"/>
+  </tables>
+  <tables x="875.7143293108262" y="62.85714394705636" width="86.0" height="185.0" number="8" seatCount="2">
+    <styles value="orange"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+    <styles value="linear-gradient(to bottom left, orange, white)"/>
+  </tables>
+  <tables x="1092.857177734375" y="65.71428680419922" width="79.99996512276789" height="185.0" number="9" seatCount="2">
+    <styles value="orange"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+    <styles value="linear-gradient(to bottom left, orange, white)"/>
+  </tables>
+  <tables x="985.7142508370536" y="64.28570774623324" width="85.0" height="185.0" number="10" seatCount="2">
+    <styles value="orange"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+    <styles value="linear-gradient(to bottom left, orange, white)"/>
+  </tables>
+  <tables x="768.5714372907365" y="64.28571319580078" width="86.0" height="185.0" number="11" seatCount="2">
+    <styles value="orange"/>
+    <styles value="linear-gradient(to bottom left, orange, white)"/>
+  </tables>
+  <tables x="1202.8570905412944" y="402.8571515764508" width="159.0" height="98.0" number="12" seatCount="2">
+    <styles value="orange"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+    <styles value="linear-gradient(to bottom left, orange, white)"/>
+  </tables>
+  <tables x="1385.7141287667405" y="401.4285888671875" width="159.0" height="98.0" number="13" seatCount="2">
+    <styles value="orange"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+    <styles value="linear-gradient(to bottom left, orange, white)"/>
+  </tables>
+  <tables x="1387.142822265625" y="274.2857666015625" width="159.0" height="107.14280482700894" number="14" seatCount="2">
+    <styles value="orange"/>
+    <styles value="linear-gradient(to bottom left, orange, white)"/>
+    <styles styleType="-fx-background-radius" value="10"/>
+  </tables>
+  <tables x="60.32626070295055" y="497.4669538225446" width="367.0" height="177.0" number="15" seatCount="10">
+    <styles value="green"/>
+  </tables>
+  <tables x="827.6527477946233" y="498.2730422872246" width="361.99993896484375" height="178.00003051757812" number="16" seatCount="10">
+    <styles value="green"/>
+  </tables>
+  <tables x="440.32623563493974" y="497.46694074358254" width="367.0" height="177.99996948242188" number="17" seatCount="10">
+    <styles value="green"/>
+  </tables>
+  <groupings/>
+  <groupings/>
+  <layout>
+    <items xsi:type="reservation:Wall" startx="41.04745251603108" startY="20.523726291085765" endx="1277.6019575689866" endY="23.94434732857665">
+      <styles styleType="-fx-stroke" value="brown"/>
+      <styles styleType="-fx-stroke-width" value="15"/>
+      <styles styleType="-fx-stroke-dash-array" value="12 2 4 2"/>
+      <styles styleType="-fx-stroke-dash-offset" value="6"/>
+      <styles styleType="-fx-stroke-line-cap" value="round"/>
+    </items>
+    <items xsi:type="reservation:Wall" startx="1275.891647050241" startY="20.523726291085765" endx="1599.1403350931298" endY="254.83626735921146">
+      <styles styleType="-fx-stroke" value="yellow"/>
+      <styles styleType="-fx-stroke-width" value="15"/>
+    </items>
+    <items xsi:type="reservation:Wall" startx="1599.1403350931298" startY="254.83626735921146" endx="1592.299093018148" endY="749.1160072766445">
+      <styles styleType="-fx-stroke" value="purple"/>
+      <styles styleType="-fx-stroke-width" value="15"/>
+    </items>
+    <items xsi:type="reservation:Wall" startx="1592.299093018148" startY="749.1160072766445" endx="35.91652095979475" endY="740.5644546829174">
+      <styles styleType="-fx-stroke" value="blue"/>
+      <styles styleType="-fx-stroke-width" value="20"/>
+      <styles styleType="-fx-stroke-line-cap" value="square"/>
+      <styles styleType="-fx-stroke-dash-array" value="12 2 4 2"/>
+      <styles styleType="-fx-stroke-dash-offset" value="20"/>
+    </items>
+    <items xsi:type="reservation:Wall" startx="10.0" startY="740.5644546829174" endx="10.0" endY="20.523726291085765">
+      <styles styleType="-fx-stroke" value="red"/>
+      <styles styleType="-fx-stroke-width" value="3"/>
+      <styles styleType="-fx-stroke-line-cap" value="butt"/>
+      <styles styleType="-fx-stroke-dash-array" value="12 2 4 2"/>
+      <styles styleType="-fx-stroke-dash-offset" value="6"/>
+    </items>
+  </layout>
+</reservation:Restaurant>
