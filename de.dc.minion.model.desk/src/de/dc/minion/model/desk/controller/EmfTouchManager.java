@@ -59,6 +59,13 @@ public class EmfTouchManager extends BaseBindingEmfTouchManagerController implem
 		}
 	}
 	
+	@Subscribe
+	public void subscribeRefreshList(EventContext<String> context) {
+		if (context.getEventId().equals("/open/landscape/as/page") && context.getInput().equals("emf.touch.manager")) {
+			refresh();
+		}
+	}
+	
 	@Override
 	public void initialize(){
 		super.initialize();
