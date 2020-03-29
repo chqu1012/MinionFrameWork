@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
-  <toadies name="MES Client" description="Toady for Manufactoring Execution Sysrtem">
+  <toadies id="mes.client" name="MES Client" description="Toady for Manufactoring Execution Sysrtem">
     <touchPoints xsi:type="model:VisionTouch">
       <visions id="de.dc.minion.model.desk.control.MinionRecentlyOpenVision" name="Recent Files" uri="de.dc.minion.model.desk.control.MinionRecentlyOpenVision"/>
       <visions id="de.dc.minion.model.addon.mes.MesDiagram" name="MesDiagram" uri="de.dc.minion.model.addon.mes.MesDiagram"/>

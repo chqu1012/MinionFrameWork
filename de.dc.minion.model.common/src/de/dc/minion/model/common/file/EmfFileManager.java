@@ -20,7 +20,7 @@ public class EmfFileManager implements IEmfFileManager{
 
 	@Override
 	public Optional<IEmfEditorPart<?>> getEditorByExtension(String extension) {
-		return Optional.of(editorRegistry.get(extension));
+		return Optional.ofNullable(editorRegistry.get(extension));
 	}
 
 	@Override

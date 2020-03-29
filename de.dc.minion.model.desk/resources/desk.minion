@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
-  <toadies name="Minion Core Environment" description="Core initialization to render the workdesk.">
+  <toadies id="minion.core.environment" name="Minion Core Environment" description="Core initialization to render the workdesk.">
     <touchPoints xsi:type="model:LandscapeTouch">
       <landscapes id="emf.file.wizard" name="Emf File Wizard" uri="de.dc.minion.model.desk.controller.EmfFileWizard" useAsPage="true"/>
       <landscapes id="emf.feature.dialog" name="Emf Feature Dialog" uri="de.dc.minion.model.desk.controller.EmfFeatureEditorDialog" useAsPage="true"/>

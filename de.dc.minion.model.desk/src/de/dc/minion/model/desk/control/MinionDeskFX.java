@@ -18,6 +18,8 @@ import com.google.inject.Inject;
 
 import de.dc.minion.fx.model.Landscape;
 import de.dc.minion.fx.model.Minion;
+import de.dc.minion.fx.model.Toady;
+import de.dc.minion.fx.model.ToadyStatus;
 import de.dc.minion.model.common.IControlManager;
 import de.dc.minion.model.common.control.IEmfEditorPart;
 import de.dc.minion.model.common.event.EventContext;
@@ -31,6 +33,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
@@ -113,8 +118,11 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 			if (minionFile.exists()) {
 				MinionFile efile = new MinionFile();
 				Minion minion = efile.load(minionFile.getAbsolutePath());
-				minionBuilder.setDesk(this);
-				minionBuilder.doSwitch(minion);
+				Toady toady = minion.getToadies().get(0);
+				if (toady.getStatus()==ToadyStatus.STARTED) {
+					minionBuilder.setDesk(this);
+					minionBuilder.doSwitch(minion);
+				}
 			}
 		}
 	}
@@ -181,8 +189,9 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 			String filename = file.getName();
 			if (!filename.isEmpty()) {
 				if (!isFileOpen(filename)) {
+					String extension = FilenameUtils.getExtension(filename);
 					Optional<IEmfEditorPart<?>> editorPart = MinionPlatform.getInstance(IEmfFileManager.class)
-							.getEditorByExtension(FilenameUtils.getExtension(filename));
+							.getEditorByExtension(extension);
 					editorPart.ifPresent(e -> {
 						try {
 							IEmfEditorPart<?> editor = e.getClass().newInstance();
@@ -196,6 +205,17 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 							e1.printStackTrace();
 						}
 					});
+					if (!editorPart.isPresent()) {
+						Alert alert = new Alert(AlertType.CONFIRMATION);
+						alert.setTitle("File Extension "+extension+" not registered");
+						alert.setHeaderText("Toady not loaded or not available");
+						alert.setContentText("Do you want to open the Touch Manager?");
+
+						Optional<ButtonType> result = alert.showAndWait();
+						if (result.get() == ButtonType.OK){
+							MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/open/landscape/as/page", "emf.touch.manager"));
+						}
+					}
 				} else {
 					getTabByName(filename)
 							.ifPresent(e -> currentLandscape.getEditorArea().getSelectionModel().select(e));

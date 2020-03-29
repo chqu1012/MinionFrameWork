@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
-  <toadies name="Mesh Editor" description="Toading for creating andy styling shapes">
+  <toadies id="mesh.editor" name="Mesh Editor" description="Toading for creating andy styling shapes">
     <touchPoints xsi:type="model:VisionTouch">
       <visions xsi:type="model:CommandHistoryTouch" id="de.dc.minion.model.desk.control.MinionRecentlyOpenVision" name="Command History" uri="de.dc.minion.model.desk.control.MinionRecentlyOpenVision"/>
       <visions id="vision.mesh.diagram" name="MeshDiagram" uri="de.dc.minion.model.addon.mesh.ui.MeshDiagram"/>
