@@ -105,6 +105,10 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX {
 				});
 	}
 
+	public void setDividerPositions(double left, double editorArea, double right) {
+		topSplitPane.setDividerPositions(left, editorArea, right);
+	}
+	
 	public void setLeftDividerPosition(double ratio) {
 		if (topSplitPane.getItems().size() == 3) {
 			topSplitPane.setDividerPosition(0, ratio);
@@ -112,7 +116,8 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX {
 	}
 
 	public void setRightDividerPosition(double ratio) {
-		topSplitPane.setDividerPosition(topSplitPane.getItems().size() - 1, ratio);
+		int index = topSplitPane.getItems().size() - 1;
+		topSplitPane.setDividerPosition(index, ratio);
 	}
 
 	public void setBottomDividerPosition(double ratio) {
@@ -163,7 +168,7 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX {
 			if (topSplitPane.getItems().size() < 3) {
 				topSplitPane.getItems().add(1, editorAreaPane);
 			}
-		} else if(!topSplitPane.getItems().contains(editorAreaPane)){
+		} else if(topSplitPane.getItems().contains(editorAreaPane)){
 			topSplitPane.getItems().remove(editorAreaPane);
 		}
 	}
@@ -171,7 +176,7 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX {
 	public void hideLeft(boolean hide) {
 		if (hide) {
 			topSplitPane.getItems().remove(leftAnchorPane);
-		} else if (!topSplitPane.getItems().contains(leftAnchorPane)) {
+		} else if (topSplitPane.getItems().contains(leftAnchorPane)) {
 			topSplitPane.getItems().add(0, leftAnchorPane);
 		}
 	}
@@ -179,7 +184,7 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX {
 	public void hideRight(boolean hide) {
 		if (hide) {
 			topSplitPane.getItems().remove(rightPane);
-		} else if (!topSplitPane.getItems().contains(rightPane)) {
+		} else if (topSplitPane.getItems().contains(rightPane)) {
 			topSplitPane.getItems().add(rightPane);
 		}
 	}

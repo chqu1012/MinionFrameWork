@@ -173,41 +173,33 @@ public class MinionBuilder extends MinionSwitch<Object> {
 			EList<Vision> leftPane = object.getLeft();
 			EList<Vision> bottomPane = object.getBottom();
 			
-			if (leftPane != null) {
-				if (leftPane.size()==0) {
-					landscape.hideLeft(true);
-				}
-				for (Vision view : leftPane) {
-					landscape.addToLeft((EmfViewPart) doSwitch(view));
-				}
-			}else {
+			if (leftPane.isEmpty()) {
 				landscape.hideLeft(true);
 			}
-			if (rightPane != null) {
-				if (rightPane.size()==0) {
-					landscape.hideRight(true);
-				}
-				for (Vision view : rightPane) {
-					landscape.addToRight((EmfViewPart) doSwitch(view));
-				}
-			}else {
+			for (Vision view : leftPane) {
+				landscape.addToLeft((EmfViewPart) doSwitch(view));
+			}
+			if (rightPane.isEmpty()) {
 				landscape.hideRight(true);
 			}
-			if (bottomPane != null) {
-				if (bottomPane.size()==0) {
-					landscape.hideBottom(true);
-				}
-				for (Vision view : bottomPane) {
-					landscape.addToBottom((EmfViewPart) doSwitch(view));
-				}
-			}else {
+			for (Vision view : rightPane) {
+				landscape.addToRight((EmfViewPart) doSwitch(view));
+			}
+			if (bottomPane.isEmpty()) {
 				landscape.hideBottom(true);
+			}
+			for (Vision view : bottomPane) {
+				landscape.addToBottom((EmfViewPart) doSwitch(view));
 			}
 
 			landscape.hideEditorArea(object.isShowEditorArea());
-			landscape.setLeftDividerPosition(object.getLeftDividerPosition());
-			landscape.setRightDividerPosition(object.getRightDividerPosition());
-			landscape.setBottomDividerPosition(object.getBottomDividerPosition());
+			double leftDP = object.getLeftDividerPosition();
+			double rightDP = object.getRightDividerPosition();
+			double bottomDP = object.getBottomDividerPosition();
+			landscape.setDividerPositions(leftDP, 0.9f, rightDP);
+//			landscape.setLeftDividerPosition(leftDP);
+//			landscape.setRightDividerPosition(rightDP);
+			landscape.setBottomDividerPosition(bottomDP);
 
 			minionDesk.addLandscapeFX(object.getId(), landscape);
 

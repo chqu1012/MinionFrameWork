@@ -2,7 +2,7 @@
 <model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
   <toadies id="pdf.viewer" name="PDF Viewer" description="Toady to view pdfs via DLSC GemsFX.">
     <touchPoints xsi:type="model:LandscapeTouch">
-      <landscapes id="landscape.pdfview" name="PDF Landscape" uri="" right="//@toadies.0/@touchPoints.3/@visions.0" rightDividerPosition="0.2" showEditorArea="false"/>
+      <landscapes id="landscape.pdfview" name="PDF Landscape" uri="" left="//@toadies.0/@touchPoints.3/@visions.1" right="//@toadies.0/@touchPoints.3/@visions.0" leftDividerPosition="0.2" rightDividerPosition="0.8" showEditorArea="false"/>
     </touchPoints>
     <touchPoints xsi:type="model:CommandTouch">
       <commands id="command.open.pdfview.landscape" name="PdfView" handler="de.dc.minion.model.addon.pdfview.handler.OpenPdfViewHandler"/>
@@ -12,6 +12,7 @@
     </touchPoints>
     <touchPoints xsi:type="model:VisionTouch">
       <visions id="vision.pdf" name="PdfVision" uri="de.dc.minion.model.addon.pdfview.touch.PdfVision"/>
+      <visions id="vision.recent.pdf" name="Recent Pdfs" uri="de.dc.minion.model.addon.pdfview.touch.RecentPdfVision"/>
     </touchPoints>
   </toadies>
 </model:Minion>

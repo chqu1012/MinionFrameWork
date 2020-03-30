@@ -38,22 +38,22 @@ public class PdfVision extends EmfViewPart {
 	}
 
 	public PdfVision() {
-//		documentProperty().addListener((obs, oldDoc, newDoc) -> {
-//			if (oldDoc != null) {
-//				try {
-//					oldDoc.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
+		documentProperty().addListener((obs, oldDoc, newDoc) -> {
+			if (oldDoc != null) {
+				try {
+					oldDoc.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	@Override
 	public Parent create() {
 		VBox parent = new VBox();
 		PDDocument document = load(new File(
-				"C:\\Development\\Repository\\MinionFrameWork\\de.dc.minion.model.addon.pdfview\\resources\\dummy.pdf"));
+				"C:\\Development\\Repository\\MinionFrameWork\\de.dc.minion.model.addons\\de.dc.minion.model.addon.pdfview\\resources\\dummy.pdf"));
 		imageView = new ImageView();
 		parent.setStyle("-fx-background-color: white");
 		
