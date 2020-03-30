@@ -17,8 +17,6 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import de.dc.minion.model.desk.control.internal.EmfComboBox;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
@@ -69,13 +67,14 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 				}
 			});
 			return datePicker;
-		} else if (name.equals("LocalDate")) {
+		} else if (name.equals("Date")) {
 			DatePicker datePicker = new DatePicker();
 			datePicker.setPrefWidth(200);
 			Object instanceValue = instanceObject.eGet(currentAttribute);
 			if (instanceValue!=null) {
-				LocalDate date = (LocalDate) instanceValue;
-				datePicker.setValue(date);
+				Date date = (Date) instanceValue;
+				LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+				datePicker.setValue(localDate);
 			}
 			datePicker.setOnAction(e->{
 				LocalDate val = datePicker.getValue();

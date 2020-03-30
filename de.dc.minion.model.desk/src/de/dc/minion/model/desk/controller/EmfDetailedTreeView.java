@@ -244,13 +244,7 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 								textfield.setStyle(null);
 							}
 						}else if (control instanceof DatePicker) {
-							if (typeName.equals("LocalDate")) {
-								DatePicker picker = (DatePicker) control;
-								LocalDate dateValue = picker.getValue();
-								if (dateValue!=null) {
-									createdObject.eSet(ks.getKey(), dateValue);
-								}
-							}else if (typeName.contains("Date")) {
+							if (typeName.contains("Date")) {
 								DatePicker picker = (DatePicker) control;
 								LocalDate dateValue = picker.getValue();
 								if (dateValue!=null) {

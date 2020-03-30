@@ -16,8 +16,6 @@
 	autoResizeProperties="true", autoExpandProperties="1")
 package de.dc.minion.model.addon.mes
 
-import java.time.LocalDate
-
 class Mes{
 	contains ListElement[0..*] lists
 }
@@ -86,8 +84,8 @@ class Filter extends NamedElement{}
 class Application extends NamedElement{}
 
 class AccessPrivilege extends NamedElement{
-	LocalDate start
-	LocalDate end
+	Date start
+	Date end
 }
 
 
@@ -95,5 +93,3 @@ class Property extends NamedElement{
 	String value
 	String ^type
 }
-
-type LocalDate wraps LocalDate
