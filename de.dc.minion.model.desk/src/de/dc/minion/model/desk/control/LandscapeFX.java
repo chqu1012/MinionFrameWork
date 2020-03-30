@@ -23,7 +23,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 
-public class LandscapeFX extends SplitPane implements ILandscapeFX{
+public class LandscapeFX extends SplitPane implements ILandscapeFX {
 
 	public static final String LEFT_PANE_ID = "de.dc.javafx.xcore.workbench.ui.control.LeftPane";
 	public static final String RIGHT_PANE_ID = "de.dc.javafx.xcore.workbench.ui.control.RightPane";
@@ -53,10 +53,10 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX{
 
 	@FXML
 	private AnchorPane leftAnchorPane;
-	
+
 	@FXML
 	private SplitPane topSplitPane;
-	
+
 	@Inject
 	protected IEventBroker eventBroker;
 
@@ -68,8 +68,9 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX{
 
 	public LandscapeFX() {
 		MinionPlatform.inject(this);
-		
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/de/dc/minion/model/desk/control/LandscapeFX.fxml"));
+
+		FXMLLoader fxmlLoader = new FXMLLoader(
+				getClass().getResource("/de/dc/minion/model/desk/control/LandscapeFX.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 
@@ -78,7 +79,7 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX{
 		} catch (IOException exception) {
 			exception.printStackTrace();
 		}
-		
+
 		eventBroker.register(this);
 
 		controlManager.registrate(BOTTOM_PANE_ID, getBottomTabPane());
@@ -103,17 +104,17 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX{
 					}
 				});
 	}
-	
+
 	public void setLeftDividerPosition(double ratio) {
-		if (topSplitPane.getItems().size()==3) {
+		if (topSplitPane.getItems().size() == 3) {
 			topSplitPane.setDividerPosition(0, ratio);
 		}
 	}
 
 	public void setRightDividerPosition(double ratio) {
-		topSplitPane.setDividerPosition(topSplitPane.getItems().size()-1, ratio);
+		topSplitPane.setDividerPosition(topSplitPane.getItems().size() - 1, ratio);
 	}
-	
+
 	public void setBottomDividerPosition(double ratio) {
 		perspective.setDividerPosition(0, ratio);
 	}
@@ -156,27 +157,29 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX{
 	protected void onEditorAreaCloseAllMenuItem(ActionEvent event) {
 		editorArea.getTabs().clear();
 	}
-	
-	public void hideEditorArea(boolean hideEditorArea) {
-		if (hideEditorArea) {
-			topSplitPane.getItems().add(1, editorAreaPane);
-		}else {
+
+	public void hideEditorArea(boolean showEditorArea) {
+		if (showEditorArea) {
+			if (topSplitPane.getItems().size() < 3) {
+				topSplitPane.getItems().add(1, editorAreaPane);
+			}
+		} else if(!topSplitPane.getItems().contains(editorAreaPane)){
 			topSplitPane.getItems().remove(editorAreaPane);
 		}
 	}
 
 	public void hideLeft(boolean hide) {
 		if (hide) {
-			topSplitPane.getItems().remove(topSplitPane.getItems().indexOf(leftAnchorPane));
-		}else {
+			topSplitPane.getItems().remove(leftAnchorPane);
+		} else if (!topSplitPane.getItems().contains(leftAnchorPane)) {
 			topSplitPane.getItems().add(0, leftAnchorPane);
 		}
 	}
-	
+
 	public void hideRight(boolean hide) {
 		if (hide) {
-			topSplitPane.getItems().remove(topSplitPane.getItems().indexOf(rightPane));
-		}else {
+			topSplitPane.getItems().remove(rightPane);
+		} else if (!topSplitPane.getItems().contains(rightPane)) {
 			topSplitPane.getItems().add(rightPane);
 		}
 	}
@@ -184,15 +187,13 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX{
 	public void hideBottom(boolean hide) {
 		if (hide) {
 			perspective.getItems().remove(perspective.getItems().indexOf(bottomPane));
-		}else {
+		} else if (!perspective.getItems().contains(bottomPane)) {
 			perspective.getItems().add(bottomPane);
 		}
 	}
-	
-	
-	
+
 	public void addToRight(EmfViewPart tab) {
-		if (tab==null) {
+		if (tab == null) {
 			return;
 		}
 		tab.setOnClosed(event -> {
@@ -204,7 +205,7 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX{
 	}
 
 	public void addToLeft(Tab tab) {
-		if (tab==null) {
+		if (tab == null) {
 			return;
 		}
 		tab.setOnClosed(event -> {
@@ -216,7 +217,7 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX{
 	}
 
 	public void addToBottom(EmfViewPart tab) {
-		if (tab==null) {
+		if (tab == null) {
 			return;
 		}
 		tab.setOnClosed(event -> {

@@ -53,7 +53,7 @@ public class PdfVision extends EmfViewPart {
 	public Parent create() {
 		VBox parent = new VBox();
 		PDDocument document = load(new File(
-				"C:\\Development\\eclipse-modeling-2019-12\\eclipse-workspace\\de.dc.minion.model.addon.pdfview\\resources\\dummy.pdf"));
+				"C:\\Development\\Repository\\MinionFrameWork\\de.dc.minion.model.addon.pdfview\\resources\\dummy.pdf"));
 		imageView = new ImageView();
 		parent.setStyle("-fx-background-color: white");
 		

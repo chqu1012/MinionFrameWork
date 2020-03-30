@@ -10,12 +10,12 @@
    <items>
       <SplitPane fx:id="topSplitPane" dividerPositions="0.2028380634390651, 0.7804674457429048" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
         <items>
-          <AnchorPane fx:id="leftAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+          <AnchorPane fx:id="leftAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" SplitPane.resizableWithParent="false">
                <children>
                   <TabPane fx:id="leftTabPane" layoutX="-46.0" layoutY="28.0" prefHeight="637.0" prefWidth="179.0" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-          <AnchorPane fx:id="editorAreaPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+          <AnchorPane fx:id="editorAreaPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" SplitPane.resizableWithParent="false">
                <children>
                   <TabPane fx:id="editorArea" layoutX="109.0" layoutY="88.0" prefHeight="637.0" prefWidth="836.0" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <contextMenu>
@@ -30,13 +30,13 @@
                   </TabPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="rightPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <AnchorPane fx:id="rightPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" SplitPane.resizableWithParent="false">
                <children>
                   <TabPane fx:id="rightTabPane" prefHeight="637.0" prefWidth="179.0" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
-      <TabPane fx:id="bottomPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="ALL_TABS" />
+      <TabPane fx:id="bottomPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="ALL_TABS" SplitPane.resizableWithParent="false" />
    </items>
 </fx:root>
