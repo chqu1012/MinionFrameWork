@@ -8,14 +8,14 @@
 
 <fx:root fx:id="perspective" dividerPositions="0.6404682274247492" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="1200.0" orientation="VERTICAL" stylesheets="@css/LandscapeFX.css" type="SplitPane" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1">
    <items>
-      <SplitPane fx:id="topSplitPane" dividerPositions="0.2028380634390651, 0.7804674457429048" prefHeight="160.0" prefWidth="200.0">
+      <SplitPane fx:id="topSplitPane" dividerPositions="0.2028380634390651, 0.7804674457429048" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
         <items>
-          <AnchorPane fx:id="leftAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
+          <AnchorPane fx:id="leftAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <children>
                   <TabPane fx:id="leftTabPane" layoutX="-46.0" layoutY="28.0" prefHeight="637.0" prefWidth="179.0" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane fx:id="editorAreaPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <children>
                   <TabPane fx:id="editorArea" layoutX="109.0" layoutY="88.0" prefHeight="637.0" prefWidth="836.0" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <contextMenu>
@@ -30,13 +30,13 @@
                   </TabPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="rightPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
+            <AnchorPane fx:id="rightPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <children>
                   <TabPane fx:id="rightTabPane" prefHeight="637.0" prefWidth="179.0" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
-      <TabPane fx:id="bottomPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" SplitPane.resizableWithParent="false" />
+      <TabPane fx:id="bottomPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="ALL_TABS" />
    </items>
 </fx:root>

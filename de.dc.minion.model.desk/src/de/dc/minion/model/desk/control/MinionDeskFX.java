@@ -213,7 +213,7 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 
 						Optional<ButtonType> result = alert.showAndWait();
 						if (result.get() == ButtonType.OK){
-							MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/open/landscape/as/page", "emf.touch.manager"));
+							MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>(MinionConstants.EVENT_OPEN_LANDSCAPE_ID, MinionConstants.LANDSCAPE_TOUCH_MANAGER));
 						}
 					}
 				} else {
@@ -281,7 +281,7 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 
 	@Subscribe
 	public void openLandscapeBy(EventContext<String> context) {
-		if (context.getEventId().equals("/open/landscape/as/page")) {
+		if (context.getEventId().equals(MinionConstants.EVENT_OPEN_LANDSCAPE_ID)) {
 			Optional<ILandscapeFX> optionalLandscape = perspectiveManager.get(context.getInput());
 			optionalLandscape.ifPresent(l -> {
 				l.init();

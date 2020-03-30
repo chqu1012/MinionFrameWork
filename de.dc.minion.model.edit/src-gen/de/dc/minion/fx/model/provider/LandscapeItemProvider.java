@@ -48,6 +48,10 @@ public class LandscapeItemProvider extends TouchItemProvider {
 			addRightPropertyDescriptor(object);
 			addBottomPropertyDescriptor(object);
 			addCenterPropertyDescriptor(object);
+			addLeftDividerPositionPropertyDescriptor(object);
+			addRightDividerPositionPropertyDescriptor(object);
+			addBottomDividerPositionPropertyDescriptor(object);
+			addShowEditorAreaPropertyDescriptor(object);
 			addUseAsPagePropertyDescriptor(object);
 			addShowToolbarPropertyDescriptor(object);
 			addShowStatusbarPropertyDescriptor(object);
@@ -116,6 +120,70 @@ public class LandscapeItemProvider extends TouchItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_Landscape_center_feature",
 								"_UI_Landscape_type"),
 						MinionPackage.Literals.LANDSCAPE__CENTER, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Left Divider Position feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLeftDividerPositionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Landscape_leftDividerPosition_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Landscape_leftDividerPosition_feature",
+								"_UI_Landscape_type"),
+						MinionPackage.Literals.LANDSCAPE__LEFT_DIVIDER_POSITION, true, false, false,
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Right Divider Position feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRightDividerPositionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Landscape_rightDividerPosition_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Landscape_rightDividerPosition_feature",
+								"_UI_Landscape_type"),
+						MinionPackage.Literals.LANDSCAPE__RIGHT_DIVIDER_POSITION, true, false, false,
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Bottom Divider Position feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBottomDividerPositionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Landscape_bottomDividerPosition_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Landscape_bottomDividerPosition_feature",
+								"_UI_Landscape_type"),
+						MinionPackage.Literals.LANDSCAPE__BOTTOM_DIVIDER_POSITION, true, false, false,
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Show Editor Area feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addShowEditorAreaPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Landscape_showEditorArea_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Landscape_showEditorArea_feature",
+								"_UI_Landscape_type"),
+						MinionPackage.Literals.LANDSCAPE__SHOW_EDITOR_AREA, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -260,6 +328,10 @@ public class LandscapeItemProvider extends TouchItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Landscape.class)) {
+		case MinionPackage.LANDSCAPE__LEFT_DIVIDER_POSITION:
+		case MinionPackage.LANDSCAPE__RIGHT_DIVIDER_POSITION:
+		case MinionPackage.LANDSCAPE__BOTTOM_DIVIDER_POSITION:
+		case MinionPackage.LANDSCAPE__SHOW_EDITOR_AREA:
 		case MinionPackage.LANDSCAPE__USE_AS_PAGE:
 		case MinionPackage.LANDSCAPE__SHOW_TOOLBAR:
 		case MinionPackage.LANDSCAPE__SHOW_STATUSBAR:

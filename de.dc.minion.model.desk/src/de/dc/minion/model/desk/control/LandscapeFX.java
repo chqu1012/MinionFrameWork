@@ -13,12 +13,7 @@ import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.file.IEmfFileManager;
 import de.dc.minion.model.desk.control.dnd.DraggingTabPaneSupport;
 import de.dc.minion.model.desk.module.MinionPlatform;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.BooleanBinding;
-import javafx.beans.binding.IntegerBinding;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,6 +41,9 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX{
 
 	@FXML
 	private AnchorPane rightPane;
+
+	@FXML
+	private AnchorPane editorAreaPane;
 
 	@FXML
 	private TabPane rightTabPane;
@@ -105,6 +103,20 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX{
 					}
 				});
 	}
+	
+	public void setLeftDividerPosition(double ratio) {
+		if (topSplitPane.getItems().size()==3) {
+			topSplitPane.setDividerPosition(0, ratio);
+		}
+	}
+
+	public void setRightDividerPosition(double ratio) {
+		topSplitPane.setDividerPosition(topSplitPane.getItems().size()-1, ratio);
+	}
+	
+	public void setBottomDividerPosition(double ratio) {
+		perspective.setDividerPosition(0, ratio);
+	}
 
 	public TabPane getLeftTabPane() {
 		return leftTabPane;
@@ -143,6 +155,14 @@ public class LandscapeFX extends SplitPane implements ILandscapeFX{
 	@FXML
 	protected void onEditorAreaCloseAllMenuItem(ActionEvent event) {
 		editorArea.getTabs().clear();
+	}
+	
+	public void hideEditorArea(boolean hideEditorArea) {
+		if (hideEditorArea) {
+			topSplitPane.getItems().add(1, editorAreaPane);
+		}else {
+			topSplitPane.getItems().remove(editorAreaPane);
+		}
 	}
 
 	public void hideLeft(boolean hide) {
