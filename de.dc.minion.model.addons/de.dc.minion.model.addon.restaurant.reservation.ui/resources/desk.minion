@@ -9,7 +9,7 @@
       <deskmans id="de.dc.minion.model.addon.restaurant.reservation.ReservationEditor" name="ReservationEditor" uri="de.dc.minion.model.addon.restaurant.reservation.ReservationEditor"/>
     </touchPoints>
     <touchPoints xsi:type="model:LandscapeTouch">
-      <landscapes id="de.dc.minion.model.addon.restaurant.reservationlandscape.Reservation" name="Reservation Landscape" left="//@toadies.0/@touchPoints.0/@visions.0" right="//@toadies.0/@touchPoints.0/@visions.1"/>
+      <landscapes id="de.dc.minion.model.addon.restaurant.reservationlandscape.Reservation" name="Reservation Landscape" left="//@toadies.0/@touchPoints.0/@visions.0" right="//@toadies.0/@touchPoints.0/@visions.1" leftDividerPosition="0.15" rightDividerPosition="0.6" editorDividerPosition="0.45"/>
     </touchPoints>
   </toadies>
 </model:Minion>

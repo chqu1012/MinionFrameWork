@@ -92,6 +92,7 @@ class Landscape extends Touch{
 	refers Deskman[0..*] center
 	double leftDividerPosition = '0.2028'
 	double rightDividerPosition = '0.7805'
+	double editorDividerPosition = '0.7805'
 	double bottomDividerPosition = '0.6405'
 	boolean showEditorArea = 'true'
 	boolean useAsPage = 'false'

@@ -50,6 +50,7 @@ public class LandscapeItemProvider extends TouchItemProvider {
 			addCenterPropertyDescriptor(object);
 			addLeftDividerPositionPropertyDescriptor(object);
 			addRightDividerPositionPropertyDescriptor(object);
+			addEditorDividerPositionPropertyDescriptor(object);
 			addBottomDividerPositionPropertyDescriptor(object);
 			addShowEditorAreaPropertyDescriptor(object);
 			addUseAsPagePropertyDescriptor(object);
@@ -151,6 +152,22 @@ public class LandscapeItemProvider extends TouchItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_Landscape_rightDividerPosition_feature",
 								"_UI_Landscape_type"),
 						MinionPackage.Literals.LANDSCAPE__RIGHT_DIVIDER_POSITION, true, false, false,
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Editor Divider Position feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEditorDividerPositionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Landscape_editorDividerPosition_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Landscape_editorDividerPosition_feature",
+								"_UI_Landscape_type"),
+						MinionPackage.Literals.LANDSCAPE__EDITOR_DIVIDER_POSITION, true, false, false,
 						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
@@ -330,6 +347,7 @@ public class LandscapeItemProvider extends TouchItemProvider {
 		switch (notification.getFeatureID(Landscape.class)) {
 		case MinionPackage.LANDSCAPE__LEFT_DIVIDER_POSITION:
 		case MinionPackage.LANDSCAPE__RIGHT_DIVIDER_POSITION:
+		case MinionPackage.LANDSCAPE__EDITOR_DIVIDER_POSITION:
 		case MinionPackage.LANDSCAPE__BOTTOM_DIVIDER_POSITION:
 		case MinionPackage.LANDSCAPE__SHOW_EDITOR_AREA:
 		case MinionPackage.LANDSCAPE__USE_AS_PAGE:

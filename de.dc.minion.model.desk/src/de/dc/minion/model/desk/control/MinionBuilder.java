@@ -196,9 +196,8 @@ public class MinionBuilder extends MinionSwitch<Object> {
 			double leftDP = object.getLeftDividerPosition();
 			double rightDP = object.getRightDividerPosition();
 			double bottomDP = object.getBottomDividerPosition();
-			landscape.setDividerPositions(leftDP, 0.9f, rightDP);
-//			landscape.setLeftDividerPosition(leftDP);
-//			landscape.setRightDividerPosition(rightDP);
+			double editorDP = object.getEditorDividerPosition();
+			landscape.setDividerPositions(leftDP, editorDP, rightDP);
 			landscape.setBottomDividerPosition(bottomDP);
 
 			minionDesk.addLandscapeFX(object.getId(), landscape);
