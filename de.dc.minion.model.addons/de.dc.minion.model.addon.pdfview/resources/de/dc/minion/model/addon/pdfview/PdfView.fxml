@@ -21,6 +21,9 @@
             <Separator orientation="VERTICAL" />
             <Button fx:id="buttonZoomIn" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="30.0" text="+" />
             <Button fx:id="buttonZoomOut" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="30.0" text="-" />
+            <Separator orientation="VERTICAL" />
+            <Label text="DPI" />
+            <TextField fx:id="textDpi" prefHeight="25.0" prefWidth="78.0" />
         </items>
       </ToolBar>
    </top>

@@ -3,6 +3,7 @@ package de.dc.minion.model.addon.pdfview.controller;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.Objects;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -43,6 +44,9 @@ public class PdfView extends BorderPane {
 	protected TextField textPageCount;
 
 	@FXML
+	protected TextField textDpi;
+
+	@FXML
 	protected Button buttonNextPage;
 
 	@FXML
@@ -58,8 +62,9 @@ public class PdfView extends BorderPane {
 	protected ImageView imageView;
 
 	final DoubleProperty zoomProperty = new SimpleDoubleProperty(200);
-	final IntegerProperty pageSizeProperty = new SimpleIntegerProperty();
 	final IntegerProperty currentPageProperty = new SimpleIntegerProperty();
+	final IntegerProperty pageSizeProperty = new SimpleIntegerProperty();
+	final IntegerProperty dpiProperty = new SimpleIntegerProperty(300);
 	
 	private PDFRenderer renderer;
 
@@ -124,6 +129,7 @@ public class PdfView extends BorderPane {
 		
 		textPageCount.textProperty().bind(pageSizeProperty.asString());
 		textPageIndex.textProperty().bind(currentPageProperty.add(1).asString());
+		textDpi.textProperty().bindBidirectional(dpiProperty, NumberFormat.getInstance());
 	}
 
 	public void setImage(Image createPdfPage) {
@@ -167,7 +173,7 @@ public class PdfView extends BorderPane {
 	}
 
 	private Image createPdfPage(int pageNumber) throws IOException {
-		BufferedImage bufferedImage = renderer.renderImageWithDPI(pageNumber, 300);
+		BufferedImage bufferedImage = renderer.renderImageWithDPI(pageNumber, dpiProperty.get());
 		return SwingFXUtils.toFXImage(bufferedImage, null);
 	}
 
