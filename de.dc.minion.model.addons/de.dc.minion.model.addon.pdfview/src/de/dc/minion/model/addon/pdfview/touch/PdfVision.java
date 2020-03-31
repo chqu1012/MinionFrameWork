@@ -13,6 +13,7 @@ import org.apache.pdfbox.rendering.RenderDestination;
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Inject;
 
+import de.dc.minion.model.addon.pdfview.controller.PdfView;
 import de.dc.minion.model.common.control.EmfViewPart;
 import de.dc.minion.model.common.event.EventContext;
 import de.dc.minion.model.common.event.IEventBroker;
@@ -23,7 +24,6 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 
 public class PdfVision extends EmfViewPart {
 
@@ -31,7 +31,8 @@ public class PdfVision extends EmfViewPart {
 	
 	private final ObjectProperty<PDDocument> document = new SimpleObjectProperty<>(this, "document");
 	private PDFRenderer renderer;
-	private ImageView imageView;
+
+	private PdfView pdfView;
 
 	public final ObjectProperty<PDDocument> documentProperty() {
 		return document;
@@ -57,15 +58,23 @@ public class PdfVision extends EmfViewPart {
 		});
 		MinionPlatform.inject(this);
 		eventBroker.register(this);
+		
+		setOnCloseRequest(e-> {
+			try {
+				PDDocument doc = documentProperty().get();
+				if (doc!=null) {
+					doc.close();
+				}
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});
 	}
 
 	@Override
 	public Parent create() {
-		VBox parent = new VBox();
-		imageView = new ImageView();
-		parent.setStyle("-fx-background-color: white");
-		parent.getChildren().add(imageView);
-		return parent;
+		pdfView = new PdfView();
+		return pdfView;
 	}
 	
 	@Subscribe
@@ -78,12 +87,10 @@ public class PdfVision extends EmfViewPart {
 
 	private void renderPdf(String filepath) {
 		PDDocument document = load(new File(filepath));
-		if (renderer == null) {
-			renderer = new PDFRenderer(document);
-		}
+		renderer = new PDFRenderer(document);
 		
 		try {
-			imageView.setImage(createPdfPage(0));
+			pdfView.setImage(createPdfPage(0));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -92,7 +99,9 @@ public class PdfVision extends EmfViewPart {
 	public PDDocument load(File file) {
 		Objects.requireNonNull(file, "file can not be null");
 		try {
-			return PDDocument.load(file);
+			PDDocument doc = PDDocument.load(file);
+			setDocument(doc);
+			return doc;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -100,7 +109,7 @@ public class PdfVision extends EmfViewPart {
 	}
 
 	private Image createPdfPage(int pageNumber) throws IOException {
-		BufferedImage bufferedImage = renderer.renderImage(pageNumber, 1.0f, ImageType.ARGB, RenderDestination.VIEW);
+		BufferedImage bufferedImage = renderer.renderImageWithDPI(1, 300);
 		return SwingFXUtils.toFXImage(bufferedImage, null);
 	}
 }
