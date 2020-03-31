@@ -1,10 +1,19 @@
 package de.dc.minion.model.addon.pdfview.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.PDFRenderer;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +23,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 public class PdfView extends BorderPane {
@@ -32,6 +40,9 @@ public class PdfView extends BorderPane {
 	protected TextField textPageIndex;
 
 	@FXML
+	protected TextField textPageCount;
+
+	@FXML
 	protected Button buttonNextPage;
 
 	@FXML
@@ -47,6 +58,10 @@ public class PdfView extends BorderPane {
 	protected ImageView imageView;
 
 	final DoubleProperty zoomProperty = new SimpleDoubleProperty(200);
+	final IntegerProperty pageSizeProperty = new SimpleIntegerProperty();
+	final IntegerProperty currentPageProperty = new SimpleIntegerProperty();
+	
+	private PDFRenderer renderer;
 
 	@FXML
 	protected void onButtonAction(ActionEvent event) {
@@ -54,11 +69,27 @@ public class PdfView extends BorderPane {
 		if (source == buttonExport) {
 
 		} else if (source == buttonNextPage) {
-
+			boolean isEquals = currentPageProperty.get() < pageSizeProperty.get();
+			if (isEquals) {
+				currentPageProperty.set(currentPageProperty.add(1).get());
+				try {
+					setImage(createPdfPage(currentPageProperty.get()));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		} else if (source == buttonOpen) {
 
 		} else if (source == buttonPreviousPage) {
-
+			boolean isEquals = currentPageProperty.get() > 0;
+			if (isEquals) {
+				currentPageProperty.set(currentPageProperty.subtract(1).get());
+				try {
+					setImage(createPdfPage(currentPageProperty.get()));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		} else if (source == buttonZoomIn) {
 			imageView.setScaleX(imageView.getScaleX() * 1.02);
 			imageView.setScaleY(imageView.getScaleY() * 1.02);
@@ -77,7 +108,7 @@ public class PdfView extends BorderPane {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		imageView.preserveRatioProperty().set(true);
+		imageView.preserveRatioProperty().set(false);
 		zoomProperty.addListener((InvalidationListener) arg0 -> {
 			imageView.setFitWidth(zoomProperty.get() * 4);
 			imageView.setFitHeight(zoomProperty.get() * 3);
@@ -90,10 +121,54 @@ public class PdfView extends BorderPane {
 				zoomProperty.set(zoomProperty.get() / 1.1);
 			}
 		});
+		
+		textPageCount.textProperty().bind(pageSizeProperty.asString());
+		textPageIndex.textProperty().bind(currentPageProperty.add(1).asString());
 	}
 
 	public void setImage(Image createPdfPage) {
+		imageView.setPreserveRatio(false);
+		imageView.setFitWidth(createPdfPage.getWidth());
+		imageView.setFitHeight(createPdfPage.getHeight());
+		imageView.setPreserveRatio(true);
 		imageView.setImage(createPdfPage);
+	}
+	
+	public IntegerProperty pageSizeProperty() {
+		return pageSizeProperty;
+	}
+
+	public IntegerProperty currentPageProperty() {
+		return currentPageProperty;
+	}
+	
+	public void renderPdf(String filepath) {
+		PDDocument document = load(new File(filepath));
+		renderer = new PDFRenderer(document);
+		
+		try {
+			currentPageProperty.set(0);
+			setImage(createPdfPage(0));
+			pageSizeProperty().set(document.getNumberOfPages());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public PDDocument load(File file) {
+		Objects.requireNonNull(file, "file can not be null");
+		try {
+			PDDocument doc = PDDocument.load(file);
+			return doc;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Image createPdfPage(int pageNumber) throws IOException {
+		BufferedImage bufferedImage = renderer.renderImageWithDPI(pageNumber, 300);
+		return SwingFXUtils.toFXImage(bufferedImage, null);
 	}
 
 }

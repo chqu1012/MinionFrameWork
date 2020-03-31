@@ -1,7 +1,6 @@
 package de.dc.minion.model.desk.controller;
 
 import java.io.File;
-import java.util.EventObject;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -2,7 +2,7 @@ package de.dc.minion.model.addon.mes;
 
 import org.eclipse.emf.ecore.EObject;
 
-import de.dc.minion.model.addon.mes.renderer.*;
+import de.dc.minion.model.addon.mes.renderer.MesRenderer;
 import de.dc.minion.model.common.control.EmfViewPart;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

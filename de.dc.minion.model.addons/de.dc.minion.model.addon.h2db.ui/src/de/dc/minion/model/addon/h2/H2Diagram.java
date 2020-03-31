@@ -2,7 +2,7 @@ package de.dc.minion.model.addon.h2;
 
 import org.eclipse.emf.ecore.EObject;
 
-import de.dc.minion.model.addon.h2.renderer.*;
+import de.dc.minion.model.addon.h2.renderer.H2Renderer;
 import de.dc.minion.model.common.control.EmfViewPart;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

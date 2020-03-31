@@ -7,9 +7,6 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.fx.emf.edit.ui.AdapterFactoryCellFactory.ICellEditHandler;
 
-import de.dc.minion.model.common.event.EventContext;
-import de.dc.minion.model.common.event.IEventBroker;
-import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.control.Cell;
 import javafx.scene.control.TextField;

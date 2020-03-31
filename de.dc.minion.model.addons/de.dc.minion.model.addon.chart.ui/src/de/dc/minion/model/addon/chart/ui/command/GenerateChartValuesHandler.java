@@ -2,8 +2,6 @@ package de.dc.minion.model.addon.chart.ui.command;
 
 import java.util.Random;
 
-import org.eclipse.fx.emf.edit.ui.AdapterFactoryTreeItem;
-
 import com.google.inject.Inject;
 
 import de.dc.javafx.xcore.workbench.chart.ChartFactory;

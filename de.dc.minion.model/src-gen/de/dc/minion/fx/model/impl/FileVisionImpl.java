@@ -2,10 +2,10 @@
  */
 package de.dc.minion.fx.model.impl;
 
+import org.eclipse.emf.ecore.EClass;
+
 import de.dc.minion.fx.model.FileVision;
 import de.dc.minion.fx.model.MinionPackage;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

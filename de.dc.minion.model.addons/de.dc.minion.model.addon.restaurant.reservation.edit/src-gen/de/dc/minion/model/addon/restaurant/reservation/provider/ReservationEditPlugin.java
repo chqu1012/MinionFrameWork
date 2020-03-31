@@ -3,7 +3,6 @@
 package de.dc.minion.model.addon.restaurant.reservation.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**

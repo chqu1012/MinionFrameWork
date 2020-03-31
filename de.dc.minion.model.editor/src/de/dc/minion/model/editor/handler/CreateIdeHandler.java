@@ -31,7 +31,6 @@ import de.dc.minion.fx.model.Vision;
 import de.dc.minion.fx.model.VisionTouch;
 import de.dc.minion.model.common.file.EmfProjectFile;
 import de.dc.minion.model.common.file.MinionFile;
-import de.dc.minion.model.common.file.ToadyFile;
 import de.dc.minion.model.editor.CreateIdeFileDialog;
 import de.dc.minion.model.editor.model.IdeModel;
 import de.dc.minion.model.editor.template.Templates;

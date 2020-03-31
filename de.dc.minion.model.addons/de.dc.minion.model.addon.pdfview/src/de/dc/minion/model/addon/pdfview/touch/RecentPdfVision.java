@@ -2,7 +2,6 @@ package de.dc.minion.model.addon.pdfview.touch;
 
 import java.io.File;
 import java.util.Date;
-import java.util.Stack;
 
 import org.eclipse.emf.common.util.ECollections;
 
@@ -16,7 +15,6 @@ import de.dc.minion.model.common.event.EventContext;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.file.RecentlyOpenFilesReader;
 import de.dc.minion.model.desk.control.feature.RecentFilesListCell;
-import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;

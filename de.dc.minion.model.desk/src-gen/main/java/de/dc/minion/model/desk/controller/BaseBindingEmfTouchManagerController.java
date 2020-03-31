@@ -1,9 +1,6 @@
 package de.dc.minion.model.desk.controller;
 
-import de.dc.minion.model.desk.model.*;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
+import de.dc.minion.model.desk.model.EmfTouchManagerBinding;
 
 public abstract class BaseBindingEmfTouchManagerController extends BaseEmfTouchManagerController{
 	

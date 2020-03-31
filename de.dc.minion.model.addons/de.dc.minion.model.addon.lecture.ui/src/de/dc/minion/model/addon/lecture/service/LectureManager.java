@@ -4,8 +4,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
 
-import de.dc.minion.model.addon.lecture.file.*;
-import de.dc.minion.model.addon.lecture.*;
+import de.dc.minion.model.addon.lecture.LectureProject;
+import de.dc.minion.model.addon.lecture.file.LectureFile;
 import de.dc.minion.model.common.AbstractEmfManager;
 import de.dc.minion.model.common.file.IEmfFile;
 public class LectureManager extends AbstractEmfManager<LectureProject>{

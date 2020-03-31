@@ -2,20 +2,18 @@
  */
 package de.dc.javafx.xcore.workbench.chart.provider;
 
-import de.dc.javafx.xcore.workbench.chart.ChartFactory;
-import de.dc.javafx.xcore.workbench.chart.ChartPackage;
-import de.dc.javafx.xcore.workbench.chart.XYChartFX;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.dc.javafx.xcore.workbench.chart.ChartFactory;
+import de.dc.javafx.xcore.workbench.chart.ChartPackage;
+import de.dc.javafx.xcore.workbench.chart.XYChartFX;
 
 /**
  * This is the item provider adapter for a {@link de.dc.javafx.xcore.workbench.chart.XYChartFX} object.

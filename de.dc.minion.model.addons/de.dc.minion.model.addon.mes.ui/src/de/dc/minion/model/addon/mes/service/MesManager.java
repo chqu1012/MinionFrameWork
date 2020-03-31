@@ -4,8 +4,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
 
-import de.dc.minion.model.addon.mes.file.*;
-import de.dc.minion.model.addon.mes.*;
+import de.dc.minion.model.addon.mes.Mes;
+import de.dc.minion.model.addon.mes.file.MesFile;
 import de.dc.minion.model.common.AbstractEmfManager;
 import de.dc.minion.model.common.file.IEmfFile;
 public class MesManager extends AbstractEmfManager<Mes>{

@@ -3,7 +3,6 @@
 package de.dc.minion.model.addon.mes.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**

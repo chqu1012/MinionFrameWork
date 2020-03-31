@@ -2,9 +2,6 @@
  */
 package de.dc.minion.fx.model.provider;
 
-import de.dc.minion.fx.model.MinionPackage;
-import de.dc.minion.fx.model.ToolbarItem;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -22,6 +19,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.dc.minion.fx.model.MinionPackage;
+import de.dc.minion.fx.model.ToolbarItem;
 
 /**
  * This is the item provider adapter for a {@link de.dc.minion.fx.model.ToolbarItem} object.

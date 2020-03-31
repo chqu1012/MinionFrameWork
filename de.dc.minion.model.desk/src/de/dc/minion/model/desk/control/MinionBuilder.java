@@ -2,7 +2,6 @@ package de.dc.minion.model.desk.control;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.EList;
@@ -36,9 +35,7 @@ import de.dc.minion.model.common.file.IEmfFileManager;
 import de.dc.minion.model.desk.controller.EmptyViewPart;
 import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.beans.value.ChangeListener;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 
 public class MinionBuilder extends MinionSwitch<Object> {
 

@@ -2,15 +2,14 @@
  */
 package de.dc.minion.fx.model.provider;
 
-import de.dc.minion.fx.model.PropertyVision;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+
+import de.dc.minion.fx.model.PropertyVision;
 
 /**
  * This is the item provider adapter for a {@link de.dc.minion.fx.model.PropertyVision} object.

@@ -4,8 +4,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
 
-import de.dc.minion.model.addon.h2.file.*;
-import de.dc.minion.model.addon.h2db.*;
+import de.dc.minion.model.addon.h2.file.H2File;
+import de.dc.minion.model.addon.h2db.H2Servers;
 import de.dc.minion.model.common.AbstractEmfManager;
 import de.dc.minion.model.common.file.IEmfFile;
 public class H2Manager extends AbstractEmfManager<H2Servers>{

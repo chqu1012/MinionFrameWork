@@ -2,20 +2,18 @@
  */
 package de.dc.minion.fx.model.provider;
 
-import de.dc.minion.fx.model.DeskmanTouch;
-import de.dc.minion.fx.model.MinionFactory;
-import de.dc.minion.fx.model.MinionPackage;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.dc.minion.fx.model.DeskmanTouch;
+import de.dc.minion.fx.model.MinionFactory;
+import de.dc.minion.fx.model.MinionPackage;
 
 /**
  * This is the item provider adapter for a {@link de.dc.minion.fx.model.DeskmanTouch} object.

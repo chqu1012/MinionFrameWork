@@ -2,22 +2,18 @@
  */
 package de.dc.minion.model.addon.mesh.impl;
 
-import de.dc.minion.model.addon.mesh.MeshPackage;
-import de.dc.minion.model.addon.mesh.Shape;
-import de.dc.minion.model.addon.mesh.Transition;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import de.dc.minion.model.addon.mesh.MeshPackage;
+import de.dc.minion.model.addon.mesh.Shape;
+import de.dc.minion.model.addon.mesh.Transition;
 
 /**
  * <!-- begin-user-doc -->

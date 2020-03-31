@@ -2,15 +2,14 @@
  */
 package de.dc.javafx.xcore.workbench.chart.provider;
 
-import de.dc.javafx.xcore.workbench.chart.PerlinNoiseChart3d;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+
+import de.dc.javafx.xcore.workbench.chart.PerlinNoiseChart3d;
 
 /**
  * This is the item provider adapter for a {@link de.dc.javafx.xcore.workbench.chart.PerlinNoiseChart3d} object.

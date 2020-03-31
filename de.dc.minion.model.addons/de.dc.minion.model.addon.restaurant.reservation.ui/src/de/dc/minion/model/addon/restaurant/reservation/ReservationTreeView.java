@@ -1,7 +1,6 @@
 package de.dc.minion.model.addon.restaurant.reservation;
 
-import de.dc.minion.model.addon.restaurant.reservation.*;
-import de.dc.minion.model.addon.restaurant.reservation.service.*;
+import de.dc.minion.model.addon.restaurant.reservation.service.ReservationManager;
 import de.dc.minion.model.common.IEmfManager;
 import de.dc.minion.model.desk.controller.EmfModelTreeView;
 

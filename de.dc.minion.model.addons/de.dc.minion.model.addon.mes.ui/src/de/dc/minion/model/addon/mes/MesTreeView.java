@@ -1,7 +1,6 @@
 package de.dc.minion.model.addon.mes;
 
-import de.dc.minion.model.addon.mes.*;
-import de.dc.minion.model.addon.mes.service.*;
+import de.dc.minion.model.addon.mes.service.MesManager;
 import de.dc.minion.model.common.IEmfManager;
 import de.dc.minion.model.desk.controller.EmfModelTreeView;
 

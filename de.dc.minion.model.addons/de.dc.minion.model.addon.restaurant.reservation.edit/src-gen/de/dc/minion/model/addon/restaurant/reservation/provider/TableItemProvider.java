@@ -2,9 +2,6 @@
  */
 package de.dc.minion.model.addon.restaurant.reservation.provider;
 
-import de.dc.minion.model.addon.restaurant.reservation.ReservationPackage;
-import de.dc.minion.model.addon.restaurant.reservation.Table;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -14,6 +11,9 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.dc.minion.model.addon.restaurant.reservation.ReservationPackage;
+import de.dc.minion.model.addon.restaurant.reservation.Table;
 
 /**
  * This is the item provider adapter for a {@link de.dc.minion.model.addon.restaurant.reservation.Table} object.

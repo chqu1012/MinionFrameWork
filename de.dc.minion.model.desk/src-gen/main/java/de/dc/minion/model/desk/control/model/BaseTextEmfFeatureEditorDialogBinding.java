@@ -1,8 +1,7 @@
 package de.dc.minion.model.desk.control.model;
 
-import javafx.beans.property.*;
-import javafx.collections.*;
-import javafx.collections.transformation.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class BaseTextEmfFeatureEditorDialogBinding  extends BaseSelectionEmfFeatureEditorDialogBinding{
 	private StringProperty textSearch = new SimpleStringProperty();

@@ -2,10 +2,10 @@
  */
 package de.dc.minion.model.addon.restaurant.reservation.impl;
 
+import org.eclipse.emf.ecore.EClass;
+
 import de.dc.minion.model.addon.restaurant.reservation.LayoutItem;
 import de.dc.minion.model.addon.restaurant.reservation.ReservationPackage;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

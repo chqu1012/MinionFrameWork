@@ -1,9 +1,9 @@
 package de.dc.minion.model.addon.mes.file;
 
-import de.dc.minion.model.addon.mes.*;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
 
+import de.dc.minion.model.addon.mes.Mes;
 import de.dc.minion.model.common.file.EmfFile;
 
 public class MesFile extends EmfFile<Mes>{

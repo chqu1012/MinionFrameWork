@@ -1,9 +1,9 @@
 package de.dc.minion.model.addon.restaurant.reservation.file;
 
-import de.dc.minion.model.addon.restaurant.reservation.*;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
 
+import de.dc.minion.model.addon.restaurant.reservation.Restaurant;
 import de.dc.minion.model.common.file.EmfFile;
 
 public class ReservationFile extends EmfFile<Restaurant>{

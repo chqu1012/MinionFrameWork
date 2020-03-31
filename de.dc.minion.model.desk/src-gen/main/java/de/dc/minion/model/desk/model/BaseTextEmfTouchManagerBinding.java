@@ -1,8 +1,7 @@
 package de.dc.minion.model.desk.model;
 
-import javafx.beans.property.*;
-import javafx.collections.*;
-import javafx.collections.transformation.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class BaseTextEmfTouchManagerBinding  extends BaseSelectionEmfTouchManagerBinding{
 	private StringProperty textSearchTouch = new SimpleStringProperty();

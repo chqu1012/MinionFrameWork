@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.eclipse.emf.ecore.EObject;
-
 import de.dc.minion.model.addon.h2db.Column;
 import de.dc.minion.model.addon.h2db.Config;
 import de.dc.minion.model.addon.h2db.Table;

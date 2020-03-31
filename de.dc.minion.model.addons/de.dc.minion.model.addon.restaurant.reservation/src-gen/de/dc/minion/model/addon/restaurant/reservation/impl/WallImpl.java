@@ -2,14 +2,12 @@
  */
 package de.dc.minion.model.addon.restaurant.reservation.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import de.dc.minion.model.addon.restaurant.reservation.ReservationPackage;
 import de.dc.minion.model.addon.restaurant.reservation.Wall;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
