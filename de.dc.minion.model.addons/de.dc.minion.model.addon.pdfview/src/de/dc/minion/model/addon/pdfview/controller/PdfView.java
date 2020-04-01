@@ -19,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -28,6 +29,9 @@ import javafx.scene.layout.BorderPane;
 
 public class PdfView extends BorderPane {
 
+	@FXML
+	protected CheckBox buttonZoomOnScroll;
+	
 	@FXML
 	protected Button buttonOpen;
 
@@ -64,7 +68,7 @@ public class PdfView extends BorderPane {
 	final DoubleProperty zoomProperty = new SimpleDoubleProperty(200);
 	final IntegerProperty currentPageProperty = new SimpleIntegerProperty();
 	final IntegerProperty pageSizeProperty = new SimpleIntegerProperty();
-	final IntegerProperty dpiProperty = new SimpleIntegerProperty(300);
+	final IntegerProperty dpiProperty = new SimpleIntegerProperty(150);
 	
 	private PDFRenderer renderer;
 
@@ -74,35 +78,43 @@ public class PdfView extends BorderPane {
 		if (source == buttonExport) {
 
 		} else if (source == buttonNextPage) {
-			boolean isEquals = currentPageProperty.get() < pageSizeProperty.get();
-			if (isEquals) {
-				currentPageProperty.set(currentPageProperty.add(1).get());
-				try {
-					setImage(createPdfPage(currentPageProperty.get()));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				scrolledPane.setVvalue(0);
-			}
+			dispatchOnPreviousPage();
 		} else if (source == buttonOpen) {
 
 		} else if (source == buttonPreviousPage) {
-			boolean isEquals = currentPageProperty.get() > 0;
-			if (isEquals) {
-				currentPageProperty.set(currentPageProperty.subtract(1).get());
-				try {
-					setImage(createPdfPage(currentPageProperty.get()));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				scrolledPane.setVvalue(0);
-			}
+			dispatchOnNextPage();
 		} else if (source == buttonZoomIn) {
 			imageView.setScaleX(imageView.getScaleX() * 1.02);
 			imageView.setScaleY(imageView.getScaleY() * 1.02);
 		} else if (source == buttonZoomOut) {
 			imageView.setScaleX(imageView.getScaleX() * 0.98);
 			imageView.setScaleY(imageView.getScaleY() * 0.98);
+		}
+	}
+
+	private void dispatchOnPreviousPage() {
+		boolean isEquals = currentPageProperty.get() < pageSizeProperty.get();
+		if (isEquals) {
+			currentPageProperty.set(currentPageProperty.add(1).get());
+			try {
+				setImage(createPdfPage(currentPageProperty.get()));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			scrolledPane.setVvalue(0);
+		}
+	}
+
+	private void dispatchOnNextPage() {
+		boolean isEquals = currentPageProperty.get() > 0;
+		if (isEquals) {
+			currentPageProperty.set(currentPageProperty.subtract(1).get());
+			try {
+				setImage(createPdfPage(currentPageProperty.get()));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			scrolledPane.setVvalue(0);
 		}
 	}
 
@@ -122,10 +134,18 @@ public class PdfView extends BorderPane {
 		});
 
 		scrolledPane.addEventFilter(ScrollEvent.ANY, event -> {
-			if (event.getDeltaY() > 0) {
-				zoomProperty.set(zoomProperty.get() * 1.1);
-			} else if (event.getDeltaY() < 0) {
-				zoomProperty.set(zoomProperty.get() * 0.9);
+			if (buttonZoomOnScroll.isSelected()) {
+				if (event.getDeltaY() > 0) {
+					zoomProperty.set(zoomProperty.get() * 1.1);
+				} else if (event.getDeltaY() < 0) {
+					zoomProperty.set(zoomProperty.get() * 0.9);
+				}
+			}else {
+				if (event.getDeltaY() > 0) {
+					dispatchOnNextPage();
+				}else if (event.getDeltaY() < 0) {
+					dispatchOnPreviousPage();
+				}
 			}
 		});
 		

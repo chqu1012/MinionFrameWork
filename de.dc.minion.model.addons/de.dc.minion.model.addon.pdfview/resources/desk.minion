@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
-  <toadies id="pdf.viewer" name="PDF Viewer" description="Toady to view pdfs via DLSC GemsFX.">
+  <toadies id="pdf.viewer" name="PDF Viewer" description="Toady to view pdfs with a lot of functions.">
     <touchPoints xsi:type="model:LandscapeTouch">
       <landscapes id="landscape.pdfview" name="PDF Landscape" uri="" left="//@toadies.0/@touchPoints.3/@visions.1" right="//@toadies.0/@touchPoints.3/@visions.0" leftDividerPosition="0.2" rightDividerPosition="0.8" showEditorArea="false"/>
     </touchPoints>
