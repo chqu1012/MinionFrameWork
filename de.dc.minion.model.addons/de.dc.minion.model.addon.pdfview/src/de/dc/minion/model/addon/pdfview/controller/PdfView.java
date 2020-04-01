@@ -82,6 +82,7 @@ public class PdfView extends BorderPane {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				scrolledPane.setVvalue(0);
 			}
 		} else if (source == buttonOpen) {
 
@@ -94,6 +95,7 @@ public class PdfView extends BorderPane {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				scrolledPane.setVvalue(0);
 			}
 		} else if (source == buttonZoomIn) {
 			imageView.setScaleX(imageView.getScaleX() * 1.02);
@@ -123,7 +125,7 @@ public class PdfView extends BorderPane {
 			if (event.getDeltaY() > 0) {
 				zoomProperty.set(zoomProperty.get() * 1.1);
 			} else if (event.getDeltaY() < 0) {
-				zoomProperty.set(zoomProperty.get() / 1.1);
+				zoomProperty.set(zoomProperty.get() * 0.9);
 			}
 		});
 		
