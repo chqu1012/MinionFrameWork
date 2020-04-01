@@ -1,6 +1,8 @@
 package de.dc.minion.model.addon.pdfview.touch;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 
@@ -70,7 +72,12 @@ public class PdfVision extends EmfViewPart {
 	@Subscribe
 	public void subscribeRenderPdf(EventContext<String> context) {
 		if (context.getEventId().equals("/open/pdf/file")) {
-			pdfView.renderPdf(context.getInput());
+			String input = context.getInput();
+			Path path = Paths.get(input); 
+	        Path fileName = path.getFileName(); 
+			pdfView.renderPdf(input);
+			
+			setText(fileName.toString());
 		}
 		
 	}
