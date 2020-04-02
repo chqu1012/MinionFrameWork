@@ -21,7 +21,9 @@ import de.dc.minion.fx.model.Minion;
 import de.dc.minion.fx.model.Toady;
 import de.dc.minion.fx.model.ToadyStatus;
 import de.dc.minion.model.common.IControlManager;
+import de.dc.minion.model.common.control.EmfViewPart;
 import de.dc.minion.model.common.control.IEmfEditorPart;
+import de.dc.minion.model.common.control.IEmfViewPart;
 import de.dc.minion.model.common.event.EventContext;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.event.ISelectionService;
@@ -37,6 +39,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
@@ -46,11 +51,28 @@ import javafx.scene.layout.StackPane;
 public abstract class MinionDeskFX extends AbstractFxmlControl implements ChangeListener<Object> {
 
 	public static final String ID = "de.dc.javafx.xcore.workbench.ui.control.EmfWorkbench";
+	public static final String MENUBAR_ID = "de.dc.javafx.xcore.workbench.ui.control.Menubar";
 	public static final String TOOLBAR_ID = "de.dc.javafx.xcore.workbench.ui.control.Toolbar";
 	public static final String PERSPECTIVE_TOOLBAR_ID = "de.dc.javafx.xcore.workbench.ui.control.Perspective";
 	public static final String STATUSLINE_ID = "de.dc.javafx.xcore.workbench.ui.control.Statusline";
 	public static final String EDITOR_AREA_ID = "de.dc.javafx.xcore.workbench.ui.control.EditorArea";
 
+	
+    @FXML
+    protected MenuBar menubar;
+
+    @FXML
+    protected Menu menuFile;
+
+    @FXML
+    protected Menu menuEdit;
+
+    @FXML
+    protected Menu menuHelp;
+    
+    @FXML
+    protected Menu menuShowTouch;
+    
 	@FXML
 	protected StackPane perspectiveArea;
 
@@ -101,6 +123,7 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 		selectionService.addListener(this);
 		eventBroker.register(this);
 
+		controlManager.registrate(MENUBAR_ID, menubar);
 		controlManager.registrate(TOOLBAR_ID, getToolBar());
 		controlManager.registrate(PERSPECTIVE_TOOLBAR_ID, getPerspectiveToolBar());
 
@@ -235,18 +258,6 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 		}
 	}
 
-//	@Subscribe
-//	public void openPreview(EventContext<FXPreview> context) {
-//		if (context.getEventId() != null && context.getEventId().equals("open.preview")) {
-//			FXPreview input = context.getInput();
-//			Tab preview = new Tab(input.getTitle());
-//			DIPlatform.getInstance(IEmfSelectionService.class).addListener(input);
-//			preview.setContent(input);
-//			currentPerspective.getBottomTabPane().getTabs().add(preview);
-//			currentPerspective.getBottomTabPane().getSelectionModel().select(preview);
-//		}
-//	}
-
 	public boolean isFileOpen(String name) {
 		return currentLandscape.getEditorArea().getTabs().stream().anyMatch(e -> e.getText().equalsIgnoreCase(name));
 	}
@@ -263,6 +274,15 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 		currentLandscape = landscapeFX;
 	}
 
+	public void addMenuShowVision(String visionName, EmfViewPart part) {
+		MenuItem menuItem = new MenuItem(visionName);
+		menuItem.setOnAction(e->{
+			LandscapeFX landscape = (LandscapeFX) getCurrentLandscape();
+			landscape.addToRight(part);
+		});
+		menuShowTouch.getItems().add(menuItem);
+	}
+	
 	public ILandscapeFX getCurrentLandscape() {
 		return currentLandscape;
 	}

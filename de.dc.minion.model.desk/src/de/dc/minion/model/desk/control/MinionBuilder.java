@@ -249,6 +249,7 @@ public class MinionBuilder extends MinionSwitch<Object> {
 		}
 
 		controlManager.registrate(object.getId(), view);
+		minionDesk.addMenuShowVision(object.getName(), (EmfViewPart) view);
 		return view;
 	}
 
