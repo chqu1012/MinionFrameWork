@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: de.dc.minion.model.addon.snapshot.edit;singleton:=true
+Automatic-Module-Name: de.dc.minion.model.addon.snapshot.edit
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: de.dc.minion.model.addon.snapshot.provider.SnapshotEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: de.dc.minion.model.addon.snapshot.provider
+Require-Bundle: org.eclipse.core.runtime,
+ de.dc.minion.model.addon.snapshot;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.eclipse.emf.ecore;visibility:=reexport
+Bundle-ActivationPolicy: lazy

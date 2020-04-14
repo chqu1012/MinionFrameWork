@@ -1,0 +1,49 @@
+@Ecore(nsURI="http://www.frateranatis.org/minon/addon/snapshot")
+@GenModel(
+	modelPluginID="de.dc.minion.model.addon.snapshot", 
+	modelDirectory="/de.dc.minion.model.addon.snapshot/src-gen",
+	editorPluginID="de.dc.minion.model.addon.snapshot.editor",
+	editPluginID="de.dc.minion.model.addon.snapshot.edit", 
+	editDirectory="/de.dc.minion.model.addon.snapshot.edit/src-gen",
+	editorDirectory="/de.dc.minion.model.addon.snapshot.editor/src-gen", 
+	fileExtensions="snapshot", modelName="Snapshot", prefix="Snapshot",
+	
+	multipleEditorPages="false", creationIcons="false", 
+	richClientPlatform="true", codeFormatting="true",
+	importerID="org.eclipse.emf.importer.ecore", runtimePlatform="RCP", tableProviders="true",
+	generateExampleClass="false", revertAction="true", findAction="true",
+	expandAllAction="true", decoration="Live", creationSubmenus="true", collapseAllAction="true",
+	autoResizeProperties="true", autoExpandProperties="1")
+package de.dc.minion.model.addon.snapshot
+
+class Snapshot{
+	String imagePath
+	String imageName
+	String exportPath
+	String filetype
+	contains Layer[0..*] layers
+}
+
+class Layer{
+	String name
+	contains FXEffect[0..*] effects
+	contains ColorGrading colorGrading
+}
+
+class FXEffect{
+	
+}
+
+class ColorGrading{
+	int r
+	int g
+	int b
+	double exposure
+	double contrast
+	double highlights
+	double shadows
+	double blacks
+	double clarify
+	double vibrance
+	double saturation
+}

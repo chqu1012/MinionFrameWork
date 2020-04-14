@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ui
+Bundle-SymbolicName: de.dc.minion.model.addons.snapshot.ui
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: de.dc.minion.model.addons.snapshot.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.20.0",
+ de.dc.minion.model.common;bundle-version="1.0.0",
+ de.dc.minion.model;bundle-version="0.1.0",
+ org.eclipse.emf.edit;bundle-version="2.16.0",
+ de.dc.minion.model.desk;bundle-version="1.0.0",
+ com.google.inject,
+ de.dc.minion.model.addon.snapshot;bundle-version="1.0.0",
+ de.dc.minion.model.addon.snapshot.edit;bundle-version="1.0.0"

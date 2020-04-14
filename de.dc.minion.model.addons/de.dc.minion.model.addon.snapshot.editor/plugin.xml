@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension
+         point="org.eclipse.core.runtime.applications"
+         id="SnapshotEditorAdvisorApplication">
+      <!-- @generated snapshot -->
+      <application>
+         <run class="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisor$Application"/>
+      </application>
+   </extension>
+
+   <extension point="org.eclipse.ui.perspectives">
+      <!-- @generated snapshot -->
+      <perspective
+            name="%_UI_Perspective_label"
+            class="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisor$Perspective"
+            id="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisorPerspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <!-- @generated snapshot -->
+      <command
+            name="%_UI_Menu_OpenURI_label"
+            description="%_UI_Menu_OpenURI_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisorOpenURICommand"/>
+      <command
+            name="%_UI_Menu_Open_label"
+            description="%_UI_Menu_Open_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisorOpenCommand"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <!-- @generated snapshot -->
+      <key
+            commandId="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisorOpenURICommand"
+            sequence="M1+U"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisorOpenCommand"
+            sequence="M1+O"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated snapshot -->
+      <actionSet
+            label="%_UI_SnapshotEditorAdvisor_ActionSet_label"
+            visible="true"
+            id="SnapshotEditorAdvisorActionSet">
+         <action
+               label="%_UI_Menu_About_label"
+               class="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisor$AboutAction"
+               menubarPath="help/additions"
+               id="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisorAboutAction"/>
+         <action
+               label="%_UI_Menu_OpenURI_label"
+               definitionId="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisorOpenURICommand"
+               class="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisor$OpenURIAction"
+               menubarPath="file/additions"
+               id="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisorOpenURIAction"/>
+         <action
+               label="%_UI_Menu_Open_label"
+               definitionId="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisorOpenCommand"
+               class="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisor$OpenAction"
+               menubarPath="file/additions"
+               id="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorAdvisorOpenAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated snapshot -->
+      <actionSet
+            label="%_UI_SnapshotModelWizard_ActionSet_label"
+            visible="true"
+            id="de.dc.minion.model.addon.snapshot.presentation.SnapshotActionBarContributorActionSet">
+         <action
+               label="%_UI_SnapshotModelWizard_label"
+               class="de.dc.minion.model.addon.snapshot.presentation.SnapshotActionBarContributor$NewAction"
+               menubarPath="file/new/additions"
+               id="de.dc.minion.model.addon.snapshot.presentation.SnapshotActionBarContributorNewAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated snapshot -->
+      <editor
+            id="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditorID"
+            name="%_UI_SnapshotEditor_label"
+            icon="icons/full/obj16/SnapshotModelFile.gif"
+            extensions="snapshot"
+            class="de.dc.minion.model.addon.snapshot.presentation.SnapshotEditor"
+            contributorClass="de.dc.minion.model.addon.snapshot.presentation.SnapshotActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
