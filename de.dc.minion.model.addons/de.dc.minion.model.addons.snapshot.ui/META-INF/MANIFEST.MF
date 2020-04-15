@@ -12,4 +12,5 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.20.0",
  de.dc.minion.model.desk;bundle-version="1.0.0",
  com.google.inject,
  de.dc.minion.model.addon.snapshot;bundle-version="1.0.0",
- de.dc.minion.model.addon.snapshot.edit;bundle-version="1.0.0"
+ de.dc.minion.model.addon.snapshot.edit;bundle-version="1.0.0",
+ de.dc.minion.model.libs

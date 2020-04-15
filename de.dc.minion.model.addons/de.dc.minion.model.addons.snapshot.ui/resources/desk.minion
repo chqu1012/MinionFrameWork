@@ -10,7 +10,7 @@
       <deskmans id="de.dc.minion.model.addon.snapshot.SnapshotEditor" name="SnapshotEditor" uri="de.dc.minion.model.addon.snapshot.SnapshotEditor"/>
     </touchPoints>
     <touchPoints xsi:type="model:LandscapeTouch">
-      <landscapes id="de.dc.minion.model.addon.snapshotlandscape.Snapshot" name="Snapshot Landscape" left="//@toadies.0/@touchPoints.0/@visions.0 //@toadies.0/@touchPoints.0/@visions.2" right="//@toadies.0/@touchPoints.0/@visions.1"/>
+      <landscapes id="de.dc.minion.model.addon.snapshotlandscape.Snapshot" name="Snapshot Landscape" left="//@toadies.0/@touchPoints.0/@visions.0" right="//@toadies.0/@touchPoints.0/@visions.1" bottom="//@toadies.0/@touchPoints.0/@visions.2"/>
     </touchPoints>
   </toadies>
 </model:Minion>

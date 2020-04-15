@@ -12,8 +12,10 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 public class SnapshotRenderer extends SnapshotSwitch<Node> {
 	
@@ -30,6 +32,16 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 		try {
 			image = new Image(new File(object.getImagePath()).toURI().toURL().toExternalForm());
 			imageView = new ImageView(image);
+			imageView.setOnMouseClicked(e->{
+				Color color = imageView.getImage().getPixelReader().getColor((int) e.getX(), (int) e.getY());
+				int argb = imageView.getImage().getPixelReader().getArgb((int) e.getX(), (int) e.getY());
+				int r = (0xff & (argb >> 16));
+				int g = (0xff & (argb >> 8));
+				int b = (0xff & argb);
+				System.out.println("R: "+r);
+				System.out.println("G: "+g);
+				System.out.println("B: "+b);
+			});
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
