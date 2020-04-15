@@ -48,7 +48,7 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 		Object attributeValue = instanceObject.eGet(currentAttribute);
 		String value = attributeValue == null ? "" : attributeValue.toString();
 		TextField node = null;
-		if (name.equals("EIntegerObject") || name.equals("EInteger")) {
+		if (name.equals("EIntegerObject") || name.equals("EInteger") || name.equals("EInt")) {
 			node = new TextField();
 		} else if (name.equals("EString")) {
 			node = new TextField();

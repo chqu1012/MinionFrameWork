@@ -307,11 +307,11 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 								if (textfield.getStyle().equals(EDITED_STYLE)) {
 									EAttribute attributeName = ks.getValue();
 									String typeName = attributeName.getEType().getName();
-									if (typeName.contains("Double")) {
+									if (typeName.contains("Double") || typeName.contains("double")) {
 										createdObject.eSet(attributeName, Double.parseDouble(textfield.getText()));
-									} else if (typeName.contains("Integer")) {
+									} else if (typeName.contains("Integer") || typeName.contains("Int")) {
 										createdObject.eSet(attributeName, Integer.parseInt(textfield.getText()));
-									} else if (typeName.contains("Boolean")) {
+									} else if (typeName.contains("Boolean") || typeName.contains("boolean")) {
 										createdObject.eSet(attributeName, Boolean.parseBoolean(textfield.getText()));
 									} else {
 										createdObject.eSet(attributeName, textfield.getText());
