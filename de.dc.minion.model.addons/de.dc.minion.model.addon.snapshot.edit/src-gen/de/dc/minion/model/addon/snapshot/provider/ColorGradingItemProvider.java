@@ -66,6 +66,7 @@ public class ColorGradingItemProvider extends ItemProviderAdapter
 			addClarifyPropertyDescriptor(object);
 			addVibrancePropertyDescriptor(object);
 			addSaturationPropertyDescriptor(object);
+			addOpacityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -247,6 +248,22 @@ public class ColorGradingItemProvider extends ItemProviderAdapter
 	}
 
 	/**
+	 * This adds a property descriptor for the Opacity feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOpacityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_ColorGrading_opacity_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_ColorGrading_opacity_feature",
+								"_UI_ColorGrading_type"),
+						SnapshotPackage.Literals.COLOR_GRADING__OPACITY, true, false, false,
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This returns ColorGrading.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -332,6 +349,7 @@ public class ColorGradingItemProvider extends ItemProviderAdapter
 		case SnapshotPackage.COLOR_GRADING__CLARIFY:
 		case SnapshotPackage.COLOR_GRADING__VIBRANCE:
 		case SnapshotPackage.COLOR_GRADING__SATURATION:
+		case SnapshotPackage.COLOR_GRADING__OPACITY:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

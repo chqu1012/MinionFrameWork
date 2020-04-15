@@ -12,14 +12,14 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 public class SnapshotRenderer extends SnapshotSwitch<Node> {
 	
 	private StackPane parent = new StackPane();
 	private ImageView imageView;
-	private BorderPane currentLayer;
+	private Pane currentLayer;
 	
 	public void clear(){}
 	
@@ -40,7 +40,7 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 	
 	@Override
 	public Node caseLayer(Layer object) {
-		currentLayer = new BorderPane();
+		currentLayer = new Pane();
 		ColorGrading colorGrading = object.getColorGrading();
 		if (colorGrading!=null) {
 			doSwitch(colorGrading);
@@ -54,7 +54,7 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 		ColorInput input = new ColorInput();
 		
 		String STYLE = "-fx-background-color: rgb(%s,%s,%s); -fx-opacity: %s";
-		String opacity = "1";
+		String opacity = String.valueOf(object.getOpacity());
 		String r = String.valueOf(object.getR());
 		String g = String.valueOf(object.getG());
 		String b = String.valueOf(object.getB());

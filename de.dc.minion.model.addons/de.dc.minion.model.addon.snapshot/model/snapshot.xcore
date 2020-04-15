@@ -46,4 +46,5 @@ class ColorGrading{
 	double clarify
 	double vibrance
 	double saturation
+	double opacity = '1.0'
 }
