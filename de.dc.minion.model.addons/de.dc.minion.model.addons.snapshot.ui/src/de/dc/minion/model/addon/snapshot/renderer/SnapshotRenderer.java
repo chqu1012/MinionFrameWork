@@ -67,7 +67,9 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 		String r = String.valueOf(object.getR());
 		String g = String.valueOf(object.getG());
 		String b = String.valueOf(object.getB());
-		currentLayer.setStyle(String.format(STYLE, r,g,b,opacity));
+		if (currentLayer!=null) {
+			currentLayer.setStyle(String.format(STYLE, r,g,b,opacity));
+		}
 		return super.caseColorGrading(object);
 	}
 	
