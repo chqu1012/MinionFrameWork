@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
-  <toadies id="restaurant.modeller" name="Restaurant Modeller" description="Toady to managing tables in a restaurant.">
+  <toadies id="restaurant.modeller" name="Restaurant Modeller" description="Toady to managing tables in a restaurant." status="Stopped">
     <touchPoints xsi:type="model:VisionTouch">
       <visions id="de.dc.minion.model.desk.control.MinionRecentlyOpenVision" name="Recent Files" uri="de.dc.minion.model.desk.control.MinionRecentlyOpenVision"/>
       <visions id="de.dc.minion.model.addon.restaurant.reservation.ReservationDiagram" name="ReservationDiagram" uri="de.dc.minion.model.addon.restaurant.reservation.ReservationDiagram"/>

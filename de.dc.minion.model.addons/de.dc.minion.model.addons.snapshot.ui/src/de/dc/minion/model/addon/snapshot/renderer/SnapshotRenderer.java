@@ -37,8 +37,8 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 		try {
 			image = new Image(new File(object.getImagePath()).toURI().toURL().toExternalForm());
 			imageView = new ImageView(image);
-			imageView.setOnMouseClicked(this::readColorGradingFromMouseCoordinate);
-			imageView.setOnMouseMoved(this::readColorGradingFromMouseCoordinate);
+			imageView.setOnMouseClicked(this::readColorGradingFromMouseCoordinateOnClick);
+			imageView.setOnMouseMoved(this::readColorGradingFromMouseCoordinateOnHover);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
@@ -71,9 +71,19 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 		return super.caseColorGrading(object);
 	}
 	
-	public void readColorGradingFromMouseCoordinate(MouseEvent e) {
-		Color color = imageView.getImage().getPixelReader().getColor((int) e.getX(), (int) e.getY());
-		int argb = imageView.getImage().getPixelReader().getArgb((int) e.getX(), (int) e.getY());
+	public void readColorGradingFromMouseCoordinateOnClick(MouseEvent e) {
+		readColorGradingFromMouseCoordinate(e, "click");
+	}
+	
+	public void readColorGradingFromMouseCoordinateOnHover(MouseEvent e) {
+		readColorGradingFromMouseCoordinate(e, "hover");
+		
+	}
+	
+	public void readColorGradingFromMouseCoordinate(MouseEvent e, String action) {
+		PixelReader pixelReader = imageView.getImage().getPixelReader();
+		Color color = pixelReader.getColor((int) e.getX(), (int) e.getY());
+		int argb = pixelReader.getArgb((int) e.getX(), (int) e.getY());
 		int r = (0xff & (argb >> 16));
 		int g = (0xff & (argb >> 8));
 		int b = (0xff & argb);
@@ -82,7 +92,8 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 		cg.setR(r);
 		cg.setG(g);
 		cg.setB(b);
+		cg.setOpacity(color.getOpacity());
 		
-		MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/update/snapshot/color/vision", cg));
+		MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/update/snapshot/color/vision/"+action, cg));
 	}
 }
