@@ -54,17 +54,6 @@ public class FXEffectItemProvider extends ItemProviderAdapter
 	}
 
 	/**
-	 * This returns FXEffect.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/FXEffect"));
-	}
-
-	/**
 	 * This returns <code>getImage(object)</code> for the column index <code>0</code> or <code>super.getImage(object)</code> otherwise.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

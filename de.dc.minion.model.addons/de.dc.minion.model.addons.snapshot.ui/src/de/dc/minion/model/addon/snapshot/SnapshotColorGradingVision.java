@@ -15,6 +15,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import com.google.inject.Inject;
+import com.sun.javafx.scene.control.skin.CustomColorDialog;
 
 import de.dc.minion.model.addon.snapshot.renderer.SnapshotFormRenderer;
 import de.dc.minion.model.common.control.EmfViewPart;
@@ -37,6 +38,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class SnapshotColorGradingVision extends EmfViewPart implements ChangeListener<Object> {
 
@@ -77,6 +79,9 @@ public class SnapshotColorGradingVision extends EmfViewPart implements ChangeLis
 			sliderMap.put(eAttribute.getName(), node);
 		}
 		
+		CustomColorDialog dialog = new CustomColorDialog(new Stage());
+		parent.getChildren().add(dialog);
+		
 		return parent;
 	}
 
@@ -97,6 +102,9 @@ public class SnapshotColorGradingVision extends EmfViewPart implements ChangeLis
 						setSlider("b", () -> selectedLayer.getColorGrading().getB(), r -> selectedLayer.getColorGrading().setB(r.intValue())).setMax(255);
 						setSlider("opacity", () -> selectedLayer.getColorGrading().getOpacity(), r -> selectedLayer.getColorGrading().setOpacity(r)).setMax(1.0);
 					}
+				}else if (value instanceof ShadowEffect) {
+					ShadowEffect effect = (ShadowEffect) value;
+					
 				}
 			}
 		}

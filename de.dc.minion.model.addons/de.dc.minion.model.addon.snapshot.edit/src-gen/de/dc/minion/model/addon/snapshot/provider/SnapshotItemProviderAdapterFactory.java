@@ -121,26 +121,26 @@ public class SnapshotItemProviderAdapterFactory extends SnapshotAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.FXEffect} instances.
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.ShadowEffect} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected FXEffectItemProvider fxEffectItemProvider;
+	protected ShadowEffectItemProvider shadowEffectItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.FXEffect}.
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.ShadowEffect}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createFXEffectAdapter() {
-		if (fxEffectItemProvider == null) {
-			fxEffectItemProvider = new FXEffectItemProvider(this);
+	public Adapter createShadowEffectAdapter() {
+		if (shadowEffectItemProvider == null) {
+			shadowEffectItemProvider = new ShadowEffectItemProvider(this);
 		}
 
-		return fxEffectItemProvider;
+		return shadowEffectItemProvider;
 	}
 
 	/**
@@ -275,8 +275,8 @@ public class SnapshotItemProviderAdapterFactory extends SnapshotAdapterFactory
 			snapshotItemProvider.dispose();
 		if (layerItemProvider != null)
 			layerItemProvider.dispose();
-		if (fxEffectItemProvider != null)
-			fxEffectItemProvider.dispose();
+		if (shadowEffectItemProvider != null)
+			shadowEffectItemProvider.dispose();
 		if (colorGradingItemProvider != null)
 			colorGradingItemProvider.dispose();
 	}

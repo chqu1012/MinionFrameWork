@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 
 import de.dc.minion.model.addon.snapshot.ColorGrading;
 import de.dc.minion.model.addon.snapshot.Layer;
+import de.dc.minion.model.addon.snapshot.ShadowEffect;
 import de.dc.minion.model.addon.snapshot.Snapshot;
 import de.dc.minion.model.addon.snapshot.SnapshotFactory;
 import de.dc.minion.model.addon.snapshot.util.SnapshotSwitch;
@@ -14,6 +15,8 @@ import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.scene.Node;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.ColorInput;
+import javafx.scene.effect.Shadow;
+import javafx.scene.effect.ShadowBuilder;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
@@ -72,6 +75,18 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 			currentLayer.setStyle(String.format(STYLE, r,g,b,opacity));
 		}
 		return super.caseColorGrading(object);
+	}
+	
+	@Override
+	public Node caseShadowEffect(ShadowEffect object) {
+		Shadow shadow = new Shadow();
+		if (object.getColor()!=null) {
+			shadow.setColor(Color.valueOf(object.getColor()));
+		}
+		shadow.setHeight(object.getHeight());
+		shadow.setWidth(object.getWidth());
+		shadow.setRadius(object.getRadius());
+		return super.caseShadowEffect(object);
 	}
 	
 	public void readColorGradingFromMouseCoordinateOnClick(MouseEvent e) {

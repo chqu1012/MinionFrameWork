@@ -225,7 +225,7 @@ public class LayerItemProvider extends ItemProviderAdapter
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
-				SnapshotFactory.eINSTANCE.createFXEffect()));
+				SnapshotFactory.eINSTANCE.createShadowEffect()));
 
 		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__COLOR_GRADING,
 				SnapshotFactory.eINSTANCE.createColorGrading()));

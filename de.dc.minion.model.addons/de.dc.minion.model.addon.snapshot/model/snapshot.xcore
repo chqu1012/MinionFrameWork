@@ -27,12 +27,17 @@ class Snapshot{
 class Layer{
 	String name
 	boolean visible = 'true'
-	contains FXEffect[0..*] effects
+	contains FXEffect effects
 	contains ColorGrading colorGrading
 }
 
-class FXEffect{
-	
+abstract class FXEffect{}
+
+class ShadowEffect extends FXEffect{
+	double width
+	double height
+	double radius
+	String color
 }
 
 class ColorGrading{
