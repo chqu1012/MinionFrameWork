@@ -1,11 +1,15 @@
 package de.dc.minion.model.addon.snapshot;
 
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.dc.minion.model.addon.snapshot.renderer.*;
 import de.dc.minion.model.common.control.EmfViewPart;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.BorderPane;
@@ -28,7 +32,9 @@ public class SnapshotDiagram extends EmfViewPart implements ChangeListener<Objec
 			if (newValue instanceof TreeItem) {
 				TreeItem<Object> treeItem = (TreeItem<Object>) newValue;
 				Object value = treeItem.getValue();
-				parent.setCenter(renderer.doSwitch((EObject) value));
+				ResourceSetImpl root = (ResourceSetImpl) EcoreUtil.getRoot((EObject) value, true);
+				Node eobject = renderer.doSwitch(root.getResources().get(0).getContents().get(0));
+				parent.setCenter(eobject);
 			}
 		}
 	}

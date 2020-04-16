@@ -54,6 +54,7 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 		if (colorGrading!=null) {
 			doSwitch(colorGrading);
 		}
+		currentLayer.setVisible(object.isVisible());
 		return currentLayer;
 	}
 	

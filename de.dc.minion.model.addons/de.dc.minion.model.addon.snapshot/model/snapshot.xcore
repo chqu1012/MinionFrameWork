@@ -26,6 +26,7 @@ class Snapshot{
 
 class Layer{
 	String name
+	boolean visible = 'true'
 	contains FXEffect[0..*] effects
 	contains ColorGrading colorGrading
 }
@@ -35,9 +36,9 @@ class FXEffect{
 }
 
 class ColorGrading{
-	int r
-	int g
-	int b
+	int r = '100'
+	int g = '100'
+	int b = '100'
 	double exposure
 	double contrast
 	double highlights
@@ -46,5 +47,5 @@ class ColorGrading{
 	double clarify
 	double vibrance
 	double saturation
-	double opacity = '1.0'
+	double opacity = '0.3'
 }
