@@ -5,12 +5,13 @@
       <visions id="de.dc.minion.model.desk.control.MinionRecentlyOpenVision" name="Recent Files" uri="de.dc.minion.model.desk.control.MinionRecentlyOpenVision"/>
       <visions id="de.dc.minion.model.addon.snapshot.SnapshotDiagram" name="SnapshotDiagram" uri="de.dc.minion.model.addon.snapshot.SnapshotDiagram"/>
       <visions id="de.dc.minion.model.addon.snapshot.SnapshotHistogram" name="Snapshot Histogram" uri="de.dc.minion.model.addon.snapshot.SnapshotHistogram"/>
+      <visions id="de.dc.minion.model.addon.snapshot.SnapshotColorVision" name="Snapshot Color" uri="de.dc.minion.model.addon.snapshot.SnapshotColorVision" changeListener="false"/>
     </touchPoints>
     <touchPoints xsi:type="model:DeskmanTouch">
       <deskmans id="de.dc.minion.model.addon.snapshot.SnapshotEditor" name="SnapshotEditor" uri="de.dc.minion.model.addon.snapshot.SnapshotEditor"/>
     </touchPoints>
     <touchPoints xsi:type="model:LandscapeTouch">
-      <landscapes id="de.dc.minion.model.addon.snapshotlandscape.Snapshot" name="Snapshot Landscape" left="//@toadies.0/@touchPoints.0/@visions.0" right="//@toadies.0/@touchPoints.0/@visions.1" bottom="//@toadies.0/@touchPoints.0/@visions.2"/>
+      <landscapes id="de.dc.minion.model.addon.snapshotlandscape.Snapshot" name="Snapshot Landscape" left="//@toadies.0/@touchPoints.0/@visions.0" right="//@toadies.0/@touchPoints.0/@visions.1" bottom="//@toadies.0/@touchPoints.0/@visions.2 //@toadies.0/@touchPoints.0/@visions.3"/>
     </touchPoints>
   </toadies>
 </model:Minion>

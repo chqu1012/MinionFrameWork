@@ -14,3 +14,4 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.20.0",
  de.dc.minion.model.addon.snapshot;bundle-version="1.0.0",
  de.dc.minion.model.addon.snapshot.edit;bundle-version="1.0.0",
  de.dc.minion.model.libs
+Import-Package: com.google.common.eventbus

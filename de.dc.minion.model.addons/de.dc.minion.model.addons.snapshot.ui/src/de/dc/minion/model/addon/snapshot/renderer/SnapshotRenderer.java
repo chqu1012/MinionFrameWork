@@ -6,13 +6,18 @@ import java.net.MalformedURLException;
 import de.dc.minion.model.addon.snapshot.ColorGrading;
 import de.dc.minion.model.addon.snapshot.Layer;
 import de.dc.minion.model.addon.snapshot.Snapshot;
+import de.dc.minion.model.addon.snapshot.SnapshotFactory;
 import de.dc.minion.model.addon.snapshot.util.SnapshotSwitch;
+import de.dc.minion.model.common.event.EventContext;
+import de.dc.minion.model.common.event.IEventBroker;
+import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.scene.Node;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -32,16 +37,8 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 		try {
 			image = new Image(new File(object.getImagePath()).toURI().toURL().toExternalForm());
 			imageView = new ImageView(image);
-			imageView.setOnMouseClicked(e->{
-				Color color = imageView.getImage().getPixelReader().getColor((int) e.getX(), (int) e.getY());
-				int argb = imageView.getImage().getPixelReader().getArgb((int) e.getX(), (int) e.getY());
-				int r = (0xff & (argb >> 16));
-				int g = (0xff & (argb >> 8));
-				int b = (0xff & argb);
-				System.out.println("R: "+r);
-				System.out.println("G: "+g);
-				System.out.println("B: "+b);
-			});
+			imageView.setOnMouseClicked(this::readColorGradingFromMouseCoordinate);
+			imageView.setOnMouseMoved(this::readColorGradingFromMouseCoordinate);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
@@ -72,5 +69,20 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 		String b = String.valueOf(object.getB());
 		currentLayer.setStyle(String.format(STYLE, r,g,b,opacity));
 		return super.caseColorGrading(object);
+	}
+	
+	public void readColorGradingFromMouseCoordinate(MouseEvent e) {
+		Color color = imageView.getImage().getPixelReader().getColor((int) e.getX(), (int) e.getY());
+		int argb = imageView.getImage().getPixelReader().getArgb((int) e.getX(), (int) e.getY());
+		int r = (0xff & (argb >> 16));
+		int g = (0xff & (argb >> 8));
+		int b = (0xff & argb);
+		
+		ColorGrading cg = SnapshotFactory.eINSTANCE.createColorGrading();
+		cg.setR(r);
+		cg.setG(g);
+		cg.setB(b);
+		
+		MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/update/snapshot/color/vision", cg));
 	}
 }
