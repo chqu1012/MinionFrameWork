@@ -157,34 +157,38 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 				button.setTooltip(new Tooltip(menuText));
 				button.setGraphic(new ImageView(new Image(((URL) icon).toExternalForm())));
 				button.setOnMouseEntered(e-> labelTooltip.setText("Create new "+menuText));
-				button.setOnAction(event -> {
-					EClassifier eClassifier = manager.getModelPackage().getEClassifier(name);
-					EObject obj = manager.getExtendedModelFactory().create((EClass) eClassifier);
-
-					int id = EmfUtil.getValueByName(manager.getModelPackage(), name);
-					Command command = AddCommand.create(editingDomain, eObject, id, obj);
-					command.execute();
-
-					// TODO: Event command stack refresh
-					EmfCommand emfCommand = MinionFactory.eINSTANCE.createEmfCommand();
-					emfCommand.setTimestamp(LocalDateTime.now());
-					emfCommand.setCommand(command);
-					emfCommand.setName(command.getLabel());
-					emfCommand.setDescription(command.getDescription());
-
-					MinionPlatform.getInstance(IEventBroker.class)
-							.post(new EventContext<>(UIConstants.UPDATE_COMMAND_HISTORY.name(), emfCommand));
-					treeView.getTreeView().getSelectionModel().getSelectedItem().setExpanded(true);
-
-					ObservableList<TreeItem<Object>> children = treeView.getTreeView().getSelectionModel()
-							.getSelectedItem().getChildren();
-					treeView.getTreeView().getSelectionModel().select(children.get(children.size() - 1));
-				});
+				button.setOnAction(event -> executeAddCommand(eObject, name));
 				emModelTreeViewToolbar.getItems().add(button);
 			}
 		}
 	}
 
+	@Override
+	public Object executeAddCommand(EObject instanceObject, String className) {
+		EClassifier eClassifier = getEmfManager().getModelPackage().getEClassifier(className);
+		EObject createdObj = getEmfManager().getExtendedModelFactory().create((EClass) eClassifier);
+		
+		int id = EmfUtil.getValueByName(getEmfManager().getModelPackage(), className);
+		Command command = AddCommand.create(editingDomain, instanceObject, id, createdObj);
+		command.execute();
+
+		// TODO: Event command stack refresh
+		EmfCommand emfCommand = MinionFactory.eINSTANCE.createEmfCommand();
+		emfCommand.setTimestamp(LocalDateTime.now());
+		emfCommand.setCommand(command);
+		emfCommand.setName(command.getLabel());
+		emfCommand.setDescription(command.getDescription());
+
+		MinionPlatform.getInstance(IEventBroker.class)
+				.post(new EventContext<>(UIConstants.UPDATE_COMMAND_HISTORY.name(), emfCommand));
+		treeView.getTreeView().getSelectionModel().getSelectedItem().setExpanded(true);
+
+		ObservableList<TreeItem<Object>> children = treeView.getTreeView().getSelectionModel()
+				.getSelectedItem().getChildren();
+		treeView.getTreeView().getSelectionModel().select(children.get(children.size() - 1));
+		return createdObj;		
+	}
+	
 	private void initTableContent(TreeItem<Object> newValue, Object value, EObject eObject) {
 		IEmfManager<T> manager = treeView.getEmfManager();
 		Collection<?> collection = editingDomain.getNewChildDescriptors(eObject, null);

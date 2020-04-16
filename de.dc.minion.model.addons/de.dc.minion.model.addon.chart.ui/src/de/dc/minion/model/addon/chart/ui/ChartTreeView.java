@@ -11,5 +11,4 @@ public class ChartTreeView extends EmfModelTreeView<ChartProject> {
 	public IEmfManager<ChartProject> initEmfManager() {
 		return new ChartManager();
 	}
-
 }

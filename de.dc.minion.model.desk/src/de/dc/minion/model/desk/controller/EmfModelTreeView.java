@@ -318,12 +318,7 @@ public abstract class EmfModelTreeView<T> extends EmfModelView<T> {
 					MenuItem item = new MenuItem(menuText);
 					item.setGraphic(new ImageView(new Image(((URL)icon).toExternalForm())));
 					item.setOnAction(event -> {
-						EClassifier eClassifier = getEmfManager().getModelPackage().getEClassifier(name);
-						EObject obj = getEmfManager().getExtendedModelFactory().create((EClass) eClassifier);
-						
-						int id = EmfUtil.getValueByName(getEmfManager().getModelPackage(), name);
-						Command command = AddCommand.create(editingDomain, value, id, obj);
-						command.execute();
+						executeAddCommand((EObject) value, name);
 						
 						// TODO: Event command stack refresh
 //						eventBroker.post(new EventContext<>(EventTopic.COMMAND_STACK_REFRESH, CommandFactory.create(command)));
@@ -333,6 +328,17 @@ public abstract class EmfModelTreeView<T> extends EmfModelView<T> {
 				}
 			}
 		}
+	}
+	
+	@Override
+	public Object executeAddCommand(EObject instanceObject, String className) {
+		EClassifier eClassifier = getEmfManager().getModelPackage().getEClassifier(className);
+		EObject obj = getEmfManager().getExtendedModelFactory().create((EClass) eClassifier);
+		
+		int id = EmfUtil.getValueByName(getEmfManager().getModelPackage(), className);
+		Command command = AddCommand.create(editingDomain, instanceObject, id, obj);
+		command.execute();
+		return obj;
 	}
 
 	@Override
