@@ -84,7 +84,7 @@ public class ColorGradingItemProvider extends ItemProviderAdapter
 						getString("_UI_PropertyDescriptor_description", "_UI_ColorGrading_r_feature",
 								"_UI_ColorGrading_type"),
 						SnapshotPackage.Literals.COLOR_GRADING__R, true, false, false,
-						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class ColorGradingItemProvider extends ItemProviderAdapter
 						getString("_UI_PropertyDescriptor_description", "_UI_ColorGrading_g_feature",
 								"_UI_ColorGrading_type"),
 						SnapshotPackage.Literals.COLOR_GRADING__G, true, false, false,
-						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class ColorGradingItemProvider extends ItemProviderAdapter
 						getString("_UI_PropertyDescriptor_description", "_UI_ColorGrading_b_feature",
 								"_UI_ColorGrading_type"),
 						SnapshotPackage.Literals.COLOR_GRADING__B, true, false, false,
-						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**

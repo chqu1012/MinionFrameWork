@@ -1,12 +1,16 @@
 package de.dc.minion.model.addon.snapshot;
 
-import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import de.dc.minion.model.addon.snapshot.renderer.*;
+import com.google.common.eventbus.Subscribe;
+
+import de.dc.minion.model.addon.snapshot.renderer.SnapshotRenderer;
 import de.dc.minion.model.common.control.EmfViewPart;
+import de.dc.minion.model.common.event.EventContext;
+import de.dc.minion.model.common.event.IEventBroker;
+import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
@@ -18,11 +22,14 @@ public class SnapshotDiagram extends EmfViewPart implements ChangeListener<Objec
 
 	private SnapshotRenderer renderer;
 	private BorderPane parent;
+	private EObject rootElement;
 	
 	@Override
 	public Parent create() {
 		renderer = new SnapshotRenderer();
 		parent = new BorderPane();
+		
+		MinionPlatform.getInstance(IEventBroker.class).register(this);
 		return parent;
 	}
 
@@ -33,9 +40,21 @@ public class SnapshotDiagram extends EmfViewPart implements ChangeListener<Objec
 				TreeItem<Object> treeItem = (TreeItem<Object>) newValue;
 				Object value = treeItem.getValue();
 				ResourceSetImpl root = (ResourceSetImpl) EcoreUtil.getRoot((EObject) value, true);
-				Node eobject = renderer.doSwitch(root.getResources().get(0).getContents().get(0));
-				parent.setCenter(eobject);
+				rootElement = root.getResources().get(0).getContents().get(0);
+				renderRoot();
 			}
 		}
+	}
+
+	@Subscribe
+	public void subscribeUpdateDiagram(EventContext<String> context) {
+		if (context.getEventId().equals("/update/snapshot/diagram")) {
+			renderRoot();
+		}
+	}
+	
+	private void renderRoot() {
+		Node eobject = renderer.doSwitch(rootElement);
+		parent.setCenter(eobject);
 	}
 }

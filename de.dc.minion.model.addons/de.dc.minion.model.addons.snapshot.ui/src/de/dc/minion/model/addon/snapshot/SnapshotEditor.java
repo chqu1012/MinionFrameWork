@@ -7,6 +7,9 @@ public class SnapshotEditor extends EmfDetailedTreeView<Snapshot>{
 
 	@Override
 	protected EmfModelTreeView<Snapshot> initEmfModelTreeView() {
-		return new SnapshotTreeView();
+		hideDetailedForm(true);
+		SnapshotTreeView treeView = new SnapshotTreeView();
+		treeView.addEditableFor(SnapshotPackage.eINSTANCE.getLayer_Name());
+		return treeView;
 	}
 }

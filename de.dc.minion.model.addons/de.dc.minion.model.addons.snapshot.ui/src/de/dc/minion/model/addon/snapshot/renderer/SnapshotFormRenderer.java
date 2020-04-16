@@ -1,4 +1,4 @@
-package de.dc.minion.model.desk.util;
+package de.dc.minion.model.addon.snapshot.renderer;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -6,11 +6,8 @@ import java.util.Date;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -20,10 +17,12 @@ import de.dc.minion.model.desk.control.internal.EmfComboBox;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.VBox;
 
-public class EAttributeFormSwitch extends EcoreSwitch<Node> {
+public class SnapshotFormRenderer extends EcoreSwitch<Node>{
 
 	protected static final String EDITED_STYLE = "-fx-background-color: red; -fx-text-fill: white;";
 
@@ -31,27 +30,34 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 	protected EAttribute currentAttribute;
 	protected EditingDomain editingDomain;
 
-	public EAttributeFormSwitch(EditingDomain editingDomain, EObject instanceObject) {
+	public SnapshotFormRenderer(EditingDomain editingDomain, EObject instanceObject) {
 		this.editingDomain = editingDomain;
 		this.instanceObject = instanceObject;
 	}
-
-	@Override
-	public Node caseEAttribute(EAttribute object) {
-		this.currentAttribute = object;
-		return doSwitch(object.getEType());
-	}
-
+	
 	@Override
 	public Node caseEClassifier(EClassifier object) {
+		VBox node = new VBox(3);
+		
+		EList<EAttribute> eAttributes = object.eClass().getEAttributes();
+		for (EAttribute eAttribute : eAttributes) {
+			Node child = caseEAttribute(eAttribute);
+			node.getChildren().add(child);
+		}
+//		String name = object.getName();
+//		Object attributeValue = instanceObject.eGet(currentAttribute);
+		return node;
+	}
+	
+	@Override
+	public Node caseEAttribute(EAttribute object) {
 		String name = object.getName();
-		Object attributeValue = instanceObject.eGet(currentAttribute);
-		String value = attributeValue == null ? "" : attributeValue.toString();
-		TextField node = null;
+		String value = object == null ? "" : object.toString();
+		Slider node = null;
 		if (name.equals("EIntegerObject") || name.equals("EInteger") || name.equals("EInt")) {
-			node = new TextField();
+			node = new Slider();
 		} else if (name.equals("EString")) {
-			node = new TextField();
+			node = new Slider();
 		} else if (name.equals("EDate")) {
 			DatePicker datePicker = new DatePicker();
 			datePicker.setPrefWidth(200);
@@ -84,21 +90,20 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 			});
 			return datePicker;
 		} else if (name.equals("EFloat")) {
-			node = new TextField();
+			node = new Slider();
 		} else if (name.equals("EDoubleObject") || name.equals("EDouble")) {
-			node = new TextField();
+			node = new Slider();
 		} else if (name.equals("EBoolean")) {
 			EmfComboBox<Boolean> combobox = new EmfComboBox<>(currentAttribute);
 			combobox.setItems(FXCollections.observableArrayList(true, false));
-			combobox.select((Boolean) attributeValue);
 			combobox.addListener(e -> setValue(instanceObject, combobox.getEAttribute(), e));
 			return combobox;
 		}
 
 		if (node != null) {
 			node.setPrefWidth(400);
-			node.setText(value);
-			node.setPromptText(currentAttribute.getName());
+//			node.setText(value);
+//			node.setPromptText(currentAttribute.getName());
 			node.setOnKeyPressed(event -> {
 				TextField textField = (TextField) event.getSource();
 				KeyCode code = event.getCode();
@@ -111,27 +116,7 @@ public class EAttributeFormSwitch extends EcoreSwitch<Node> {
 		}
 		return node;
 	}
-
-	@Override
-	public Node caseEEnum(EEnum object) {
-		EEnum enumeration = (EEnum) currentAttribute.getEAttributeType();
-		EList<EEnumLiteral> literals = enumeration.getELiterals();
-
-		Object currentSelection = instanceObject.eGet(currentAttribute) == null ? literals.get(0)
-				: instanceObject.eGet(currentAttribute);
-		EEnumLiteral selectedLiteral = enumeration.getEEnumLiteralByLiteral(String.valueOf(currentSelection));
-
-		EmfComboBox<Enumerator> combobox = new EmfComboBox<>(currentAttribute);
-		combobox.setItems(FXCollections.observableArrayList(literals));
-		combobox.select(selectedLiteral.getInstance());
-		combobox.addListener(e -> {
-			Enumerator enumInstance = enumeration.getEEnumLiteral(e.getName()).getInstance();
-			EAttribute attribute = combobox.getEAttribute();
-			setValue(instanceObject, attribute, enumInstance);
-		});
-		return combobox;
-	}
-
+	
 	protected void setValue(EObject eObject, EAttribute eAttribute, Object value) {
 		Command command = new SetCommand(editingDomain, eObject, eAttribute, value);
 		editingDomain.getCommandStack().execute(command);

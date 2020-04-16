@@ -132,6 +132,11 @@ public abstract class EmfModelTreeView<T> extends EmfModelView<T> {
 		initTreeView();
 	}
 
+	@Override
+	public void hideDetailedForm(boolean hide) {
+		// This is not required for this class
+	}
+	
 	public void initializeEmf(IEmfManager<T> manager) {
 		this.manager = manager;
 		this.editingDomain = manager.getEditingDomain();

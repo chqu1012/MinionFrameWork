@@ -36,9 +36,9 @@ class FXEffect{
 }
 
 class ColorGrading{
-	int r = '100'
-	int g = '100'
-	int b = '100'
+	double r = '100'
+	double g = '100'
+	double b = '100'
 	double exposure
 	double contrast
 	double highlights

@@ -10,4 +10,6 @@ public interface IEmfEditorPart<T> extends IEmfFileService<T>{
 	IEmfManager<T> getEmfManager();
 	
 	Object executeAddCommand(EObject instanceObject, String className);
+	
+	void hideDetailedForm(boolean hide);
 }

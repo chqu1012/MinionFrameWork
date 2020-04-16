@@ -86,6 +86,7 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 	@FXML ToolBar emModelTreeViewToolbar;
 	@FXML HBox toolbar;
 	@FXML SplitPane root;
+	@FXML SplitPane splitpaneForm;
     @FXML BorderPane emfModelTreeViewContainer;
     @FXML VBox attributeContainer;
     @FXML VBox childAttributeContainer;
@@ -110,6 +111,18 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 		emfModelTreeViewContainer.setCenter(treeView);
 	}
 
+	@Override
+	public void hideDetailedForm(boolean hide) {
+		if (hide) {
+			root.getItems().remove(splitpaneForm);
+		}else {
+			int size = root.getItems().size();
+			if (size==1) {
+				root.getItems().add(splitpaneForm);
+			}
+		}
+	}
+	
 	@Override
 	public IEmfManager<T> getEmfManager() {
 		return treeView.getEmfManager();
@@ -141,6 +154,8 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 		}
 	}
 
+	
+	
 	private void initChildPropertiesToolbar(EObject eObject) {
 		IEmfManager<T> manager = treeView.getEmfManager();
 		Collection<?> collection = editingDomain.getNewChildDescriptors(eObject, null);

@@ -31,7 +31,7 @@
             </VBox>
         </content>
       </TitledPane>
-      <SplitPane dividerPositions="0.3" orientation="VERTICAL">
+      <SplitPane fx:id="splitpaneForm" dividerPositions="0.3" orientation="VERTICAL">
          <items>
             <TitledPane collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="General">
                <content>
