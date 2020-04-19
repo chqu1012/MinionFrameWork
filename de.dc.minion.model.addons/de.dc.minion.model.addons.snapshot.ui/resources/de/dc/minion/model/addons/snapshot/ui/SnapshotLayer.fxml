@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -386,6 +387,57 @@
                               <Label fx:id="labelInnerShadowSpread" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                               <Label text="blurType" GridPane.rowIndex="2" />
                               <ComboBox fx:id="comboInnerShadowBlurType" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                        <GridPane fx:id="gridpaneLightning" hgap="3.0" prefHeight="330.0" prefWidth="503.0" style="-fx-background-color: -fx-base;" vgap="3.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="112.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="497.0" minWidth="10.0" prefWidth="309.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="497.0" minWidth="10.0" prefWidth="146.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints fillHeight="false" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                           </rowConstraints>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <children>
+                              <Label text="Lightning" GridPane.columnSpan="2">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label text="diffuseConstant" GridPane.rowIndex="2" />
+                              <Slider fx:id="sliderLightningDiffuseConstant" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label fx:id="labelLightningDiffuseConstant" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Label text="spectularConstant" GridPane.rowIndex="3" />
+                              <Slider fx:id="sliderLightningSpectularConstant" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label fx:id="labelLightningSpectularConstant" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <Label text="spectularExponent" GridPane.rowIndex="4" />
+                              <Slider fx:id="sliderLightningSpectularExponent" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="labelLightningSpectularExponent" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <Label text="surcfaceScale" GridPane.rowIndex="5" />
+                              <Slider fx:id="sliderLightningsurcfaceScale" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Label fx:id="labelLightningsurcfaceScale" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                              <Label text="light" GridPane.rowIndex="6" />
+                              <ComboBox fx:id="comboLightningLight" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Label text="color" GridPane.rowIndex="7" />
+                              <ColorPicker editable="true" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Label text="azimuth" GridPane.rowIndex="8" />
+                              <Label text="evalutation" GridPane.rowIndex="9" />
+                              <Slider fx:id="sliderLightningAzimuth" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <Slider fx:id="sliderLightningEvaluation" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                              <Label fx:id="labelLightningAzimuth" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                              <Label fx:id="labelLightningEvaluation" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
                            </children>
                         </GridPane>
                      </children>
