@@ -440,6 +440,88 @@
                               <Label fx:id="labelLightningEvaluation" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
                            </children>
                         </GridPane>
+                        <GridPane fx:id="gridpaneMotionBlur" hgap="3.0" prefHeight="330.0" prefWidth="503.0" style="-fx-background-color: -fx-base;" vgap="3.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="106.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="497.0" minWidth="10.0" prefWidth="324.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="497.0" minWidth="10.0" prefWidth="164.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints fillHeight="false" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                           </rowConstraints>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <children>
+                              <Label text="Motion Blur" GridPane.columnSpan="2">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label text="angel" GridPane.rowIndex="2" />
+                              <Slider fx:id="sliderMotionBlurAngle" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label fx:id="labelMotionBlurAngel" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Label text="radius" GridPane.rowIndex="3" />
+                              <Slider fx:id="sliderMotionBlurRadius" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label fx:id="labelMotionBlurRadius" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                        <GridPane fx:id="gridpanePerspectiveTransform" hgap="3.0" prefHeight="330.0" prefWidth="503.0" style="-fx-background-color: -fx-base;" vgap="3.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="112.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="497.0" minWidth="10.0" prefWidth="309.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="497.0" minWidth="10.0" prefWidth="146.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints fillHeight="false" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" />
+                           </rowConstraints>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <children>
+                              <Label text="Perspective Transform" GridPane.columnSpan="2">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label text="llx" GridPane.rowIndex="2" />
+                              <Slider fx:id="sliderPerspectiveTransformLlx" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label fx:id="labelPerspectiveTransformLlx" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Label text="lly" GridPane.rowIndex="3" />
+                              <Slider fx:id="sliderPerspectiveTransformLly" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label fx:id="labelPerspectiveTransformLly" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <Label text="lrx" GridPane.rowIndex="4" />
+                              <Slider fx:id="sliderPerspectiveTransformLrx" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="labelPerspectiveTransformLrx" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <Label text="lry" GridPane.rowIndex="5" />
+                              <Slider fx:id="sliderPerspectiveTransformLry" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Label fx:id="labelPerspectiveTransformLry" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                              <Label text="ulx" GridPane.rowIndex="6" />
+                              <Label text="uly" GridPane.rowIndex="7" />
+                              <Slider fx:id="sliderPerspectiveTransformUlx" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Slider fx:id="sliderPerspectiveTransformUly" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Label fx:id="labelPerspectiveTransformUlx" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <Label fx:id="labelPerspectiveTransformUly" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                              <Label text="urx" GridPane.rowIndex="8" />
+                              <Label text="ury" GridPane.rowIndex="9" />
+                              <Slider fx:id="sliderPerspectiveTransformUrx" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <Slider fx:id="sliderPerspectiveTransformUry" prefHeight="14.0" prefWidth="469.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                              <Label fx:id="labelPerspectiveTransformUrx" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                              <Label fx:id="labelPerspectiveTransformUry" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                           </children>
+                        </GridPane>
                      </children>
                   </StackPane>
                </content>
