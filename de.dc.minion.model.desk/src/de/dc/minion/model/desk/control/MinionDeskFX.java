@@ -275,12 +275,15 @@ public abstract class MinionDeskFX extends AbstractFxmlControl implements Change
 	}
 
 	public void addMenuShowVision(String visionName, EmfViewPart part) {
-		MenuItem menuItem = new MenuItem(visionName);
-		menuItem.setOnAction(e->{
-			LandscapeFX landscape = (LandscapeFX) getCurrentLandscape();
-			landscape.addToRight(part);
-		});
-		menuShowTouch.getItems().add(menuItem);
+		long count = menuShowTouch.getItems().stream().map(MenuItem::getText).filter(e-> e.equals(visionName)).count();
+		if (count == 0) {
+			MenuItem menuItem = new MenuItem(visionName);
+			menuItem.setOnAction(e->{
+				LandscapeFX landscape = (LandscapeFX) getCurrentLandscape();
+				landscape.addToRight(part);
+			});
+			menuShowTouch.getItems().add(menuItem);
+		}
 	}
 	
 	public ILandscapeFX getCurrentLandscape() {

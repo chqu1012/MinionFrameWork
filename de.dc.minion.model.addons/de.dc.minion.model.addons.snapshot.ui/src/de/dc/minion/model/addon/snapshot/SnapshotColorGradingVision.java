@@ -3,21 +3,14 @@ package de.dc.minion.model.addon.snapshot;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
 
 import com.google.inject.Inject;
 import com.sun.javafx.scene.control.skin.CustomColorDialog;
 
-import de.dc.minion.model.addon.snapshot.renderer.SnapshotFormRenderer;
 import de.dc.minion.model.common.control.EmfViewPart;
 import de.dc.minion.model.common.control.IEmfEditorPart;
 import de.dc.minion.model.common.event.EventContext;
@@ -28,14 +21,10 @@ import de.dc.minion.model.desk.util.EAttributeFormSwitch;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;

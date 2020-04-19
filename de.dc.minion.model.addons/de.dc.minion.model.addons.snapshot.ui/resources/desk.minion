@@ -7,12 +7,13 @@
       <visions id="de.dc.minion.model.addon.snapshot.SnapshotHistogram" name="Snapshot Histogram" uri="de.dc.minion.model.addon.snapshot.SnapshotHistogram"/>
       <visions id="de.dc.minion.model.addon.snapshot.SnapshotColorVision" name="Snapshot Color" uri="de.dc.minion.model.addon.snapshot.SnapshotColorVision" changeListener="false"/>
       <visions id="de.dc.minion.model.addon.snapshot.SnapshotColorGradingVision" name="Snapshot ColorGrading" uri="de.dc.minion.model.addon.snapshot.SnapshotColorGradingVision"/>
+      <visions id="de.dc.minion.model.addon.snapshot.SnapshotLayerVision" name="Snapshot Layer" uri="de.dc.minion.model.addon.snapshot.SnapshotLayerVision"/>
     </touchPoints>
     <touchPoints xsi:type="model:DeskmanTouch">
       <deskmans id="de.dc.minion.model.addon.snapshot.SnapshotEditor" name="SnapshotEditor" uri="de.dc.minion.model.addon.snapshot.SnapshotEditor"/>
     </touchPoints>
     <touchPoints xsi:type="model:LandscapeTouch">
-      <landscapes id="de.dc.minion.model.addon.snapshotlandscape.Snapshot" name="Snapshot Landscape" left="//@toadies.0/@touchPoints.0/@visions.0" right="//@toadies.0/@touchPoints.0/@visions.1" bottom="//@toadies.0/@touchPoints.0/@visions.2 //@toadies.0/@touchPoints.0/@visions.3 //@toadies.0/@touchPoints.0/@visions.4" leftDividerPosition="0.18" editorDividerPosition="0.405"/>
+      <landscapes id="de.dc.minion.model.addon.snapshotlandscape.Snapshot" name="Snapshot Landscape" left="//@toadies.0/@touchPoints.0/@visions.5 //@toadies.0/@touchPoints.0/@visions.0" right="//@toadies.0/@touchPoints.0/@visions.1" bottom="//@toadies.0/@touchPoints.0/@visions.2 //@toadies.0/@touchPoints.0/@visions.3 //@toadies.0/@touchPoints.0/@visions.4" leftDividerPosition="0.18" editorDividerPosition="0.405"/>
     </touchPoints>
   </toadies>
 </model:Minion>

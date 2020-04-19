@@ -1,10 +1,10 @@
 package de.dc.minion.model.addon.lecture.renderer;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtend2.lib.StringConcatenation;
-
 import de.dc.minion.model.addon.lecture.LectureProject;
 import de.dc.minion.model.addon.lecture.Section;
+import de.dc.minion.model.addon.lecture.renderer.LectureStringSwitch;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
 public class LectureTemplate {
