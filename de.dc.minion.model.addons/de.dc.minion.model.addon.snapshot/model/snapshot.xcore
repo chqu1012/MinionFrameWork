@@ -27,7 +27,7 @@ class Snapshot{
 class Layer{
 	String name
 	boolean visible = 'true'
-	contains FXEffect effects
+	contains FXEffect[0..*] effects
 	contains ColorGrading colorGrading
 }
 
