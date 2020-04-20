@@ -139,5 +139,70 @@ public abstract class BaseBindingSnapshotLayerController extends BaseSnapshotLay
 		sliderColorInputY.valueProperty().bindBidirectional(binding.sliderColorInputYProperty());
 		labelColorInputY.textProperty().bindBidirectional(binding.labelColorInputYProperty());
 		colorPickerColorInput.valueProperty().bindBidirectional(binding.colorPickerColorInputProperty());
+		
+		bindSliderValuesToLabelText(false);
+	}
+	
+	/**
+	* Bind Slider Value to Label Text.
+	*/
+	protected void bindSliderValuesToLabelText(boolean enable){
+		if(enable){
+			labelBlendOpacity.textProperty().bind(sliderBlendOpacity.valueProperty().asString());
+			labelBloomThreshold.textProperty().bind(sliderBloomThreshold.valueProperty().asString());
+			labelBoxBlurWidth.textProperty().bind(sliderBoxBlurWidth.valueProperty().asString());
+			labelBoxBlurHeight.textProperty().bind(sliderBoxBlurHeight.valueProperty().asString());
+			labelBoxBlurIteration.textProperty().bind(sliderBoxBlurIteration.valueProperty().asString());
+			labelColorAdjustContrast.textProperty().bind(sliderColorAdjustContrast.valueProperty().asString());
+			labelColorAdjustBrigthness.textProperty().bind(sliderColorAdjustBrigthness.valueProperty().asString());
+			labelColorAdjustHue.textProperty().bind(sliderColorAdjustHue.valueProperty().asString());
+			labelColorAdjustSaturation.textProperty().bind(sliderColorAdjustSaturation.valueProperty().asString());
+			labelDisplacementMapOffsetY.textProperty().bind(sliderDisplacementMapOffsetY.valueProperty().asString());
+			labelDisplacementMapOffsetX.textProperty().bind(sliderDisplacementMapOffsetX.valueProperty().asString());
+			labelDisplacementMapScaleX.textProperty().bind(sliderDisplacementMapScaleX.valueProperty().asString());
+			labelDisplacementMapScaleY.textProperty().bind(sliderDisplacementMapScaleY.valueProperty().asString());
+			labelGaussianBlurRadius.textProperty().bind(sliderGaussianBlurRadius.valueProperty().asString());
+			labelGlowLevel.textProperty().bind(sliderGlowLevel.valueProperty().asString());
+			labelLightningDiffuseConstant.textProperty().bind(sliderLightningDiffuseConstant.valueProperty().asString());
+			labelLightningSpectularConstant.textProperty().bind(sliderLightningSpectularConstant.valueProperty().asString());
+			labelLightningSpectularExponent.textProperty().bind(sliderLightningSpectularExponent.valueProperty().asString());
+			labelLightningsurcfaceScale.textProperty().bind(sliderLightningsurcfaceScale.valueProperty().asString());
+			labelLightningAzimuth.textProperty().bind(sliderLightningAzimuth.valueProperty().asString());
+			labelLightningEvaluation.textProperty().bind(sliderLightningEvaluation.valueProperty().asString());
+			labelMotionBlurAngel.textProperty().bind(sliderMotionBlurAngle.valueProperty().asString());
+			labelMotionBlurRadius.textProperty().bind(sliderMotionBlurRadius.valueProperty().asString());
+			labelPerspectiveTransformLlx.textProperty().bind(sliderPerspectiveTransformLlx.valueProperty().asString());
+			labelPerspectiveTransformLly.textProperty().bind(sliderPerspectiveTransformLly.valueProperty().asString());
+			labelPerspectiveTransformLrx.textProperty().bind(sliderPerspectiveTransformLrx.valueProperty().asString());
+			labelPerspectiveTransformLry.textProperty().bind(sliderPerspectiveTransformLry.valueProperty().asString());
+			labelPerspectiveTransformUlx.textProperty().bind(sliderPerspectiveTransformUlx.valueProperty().asString());
+			labelPerspectiveTransformUly.textProperty().bind(sliderPerspectiveTransformUly.valueProperty().asString());
+			labelPerspectiveTransformUrx.textProperty().bind(sliderPerspectiveTransformUrx.valueProperty().asString());
+			labelPerspectiveTransformUry.textProperty().bind(sliderPerspectiveTransformUry.valueProperty().asString());
+			labelReflectionBottomOpacity.textProperty().bind(sliderReflectionBottomOpacity.valueProperty().asString());
+			labelReflectionTopOpacity.textProperty().bind(sliderReflectionTopOpacity.valueProperty().asString());
+			labelReflectionTopOffset.textProperty().bind(sliderReflectionTopOffset.valueProperty().asString());
+			labelReflectionFraction.textProperty().bind(sliderReflectionFraction.valueProperty().asString());
+			labelsSepiaToneLevel.textProperty().bind(sliderSepiaToneLevel.valueProperty().asString());
+			labelShadowHeight.textProperty().bind(sliderShadowHeight.valueProperty().asString());
+			labelShadowWidth.textProperty().bind(sliderShadowWidth.valueProperty().asString());
+			labelShadowRadius.textProperty().bind(sliderShadowRadius.valueProperty().asString());
+			labelInnerShadowHeight.textProperty().bind(sliderInnerShadowHeight.valueProperty().asString());
+			labelInnerShadowWidth.textProperty().bind(sliderInnerShadowWidth.valueProperty().asString());
+			labelInnerShadowRadius.textProperty().bind(sliderInnerShadowRadius.valueProperty().asString());
+			labelInnerShadowOffsetX.textProperty().bind(sliderInnerShadowOffsetX.valueProperty().asString());
+			labelInnerShadowOffsetY.textProperty().bind(sliderInnerShadowOffsetY.valueProperty().asString());
+			labelInnerShadowSpread.textProperty().bind(sliderInnerShadowSpread.valueProperty().asString());
+			labelDropshadowHeight.textProperty().bind(sliderDropshadowHeight.valueProperty().asString());
+			labelDropshadowWidth.textProperty().bind(sliderDropshadowWidth.valueProperty().asString());
+			labelDropshadowRadius.textProperty().bind(sliderDropshadowRadius.valueProperty().asString());
+			labelDropshadowOffsetX.textProperty().bind(sliderDropshadowOffsetX.valueProperty().asString());
+			labelDropshadowOffsetY.textProperty().bind(sliderDropshadowOffsetY.valueProperty().asString());
+			labelDropshadowSpread.textProperty().bind(sliderDropshadowSpread.valueProperty().asString());
+			labelColorInputHeight.textProperty().bind(sliderColorInputHeight.valueProperty().asString());
+			labelColorInputWidth.textProperty().bind(sliderColorInputWidth.valueProperty().asString());
+			labelColorInputX.textProperty().bind(sliderColorInputX.valueProperty().asString());
+			labelColorInputY.textProperty().bind(sliderColorInputY.valueProperty().asString());
+		}
 	}
 }

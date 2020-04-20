@@ -37,7 +37,7 @@ public class SnapshotLayer extends BaseBindingSnapshotLayerController {
 			}
 		});
 		
-		
+		bindSliderValuesToLabelText(true);
 	}
 	
 	

@@ -6,7 +6,7 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.event.ActionEvent;
-public abstract class BaseSnapshotLayerController{
+public abstract class BaseSnapshotLayerController extends VBox{
 	
 	@FXML protected VBox root;
 	@FXML protected TextField textSearch;
