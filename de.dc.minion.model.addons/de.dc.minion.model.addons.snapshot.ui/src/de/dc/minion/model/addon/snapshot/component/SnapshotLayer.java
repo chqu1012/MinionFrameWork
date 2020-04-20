@@ -36,7 +36,11 @@ public class SnapshotLayer extends BaseBindingSnapshotLayerController {
 				}
 			}
 		});
+		
+		
 	}
+	
+	
 
 	@Override
 	protected void onButtonAction(ActionEvent event) {

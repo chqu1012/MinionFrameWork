@@ -7,64 +7,119 @@ import javafx.collections.transformation.*;
 public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBinding{
 	private StringProperty textSearch = new SimpleStringProperty();
 	private DoubleProperty sliderBlendOpacity = new SimpleDoubleProperty();
+	private StringProperty labelBlendOpacity = new SimpleStringProperty();
 	private DoubleProperty sliderBloomThreshold = new SimpleDoubleProperty();
+	private StringProperty labelBloomThreshold = new SimpleStringProperty();
 	private DoubleProperty sliderBoxBlurWidth = new SimpleDoubleProperty();
+	private StringProperty labelBoxBlurWidth = new SimpleStringProperty();
 	private DoubleProperty sliderBoxBlurHeight = new SimpleDoubleProperty();
+	private StringProperty labelBoxBlurHeight = new SimpleStringProperty();
 	private DoubleProperty sliderBoxBlurIteration = new SimpleDoubleProperty();
+	private StringProperty labelBoxBlurIteration = new SimpleStringProperty();
 	private DoubleProperty sliderColorAdjustContrast = new SimpleDoubleProperty();
+	private StringProperty labelColorAdjustContrast = new SimpleStringProperty();
 	private DoubleProperty sliderColorAdjustBrigthness = new SimpleDoubleProperty();
+	private StringProperty labelColorAdjustBrigthness = new SimpleStringProperty();
 	private DoubleProperty sliderColorAdjustHue = new SimpleDoubleProperty();
+	private StringProperty labelColorAdjustHue = new SimpleStringProperty();
 	private DoubleProperty sliderColorAdjustSaturation = new SimpleDoubleProperty();
+	private StringProperty labelColorAdjustSaturation = new SimpleStringProperty();
 	private DoubleProperty sliderDisplacementMapOffsetY = new SimpleDoubleProperty();
+	private StringProperty labelDisplacementMapOffsetY = new SimpleStringProperty();
 	private DoubleProperty sliderDisplacementMapOffsetX = new SimpleDoubleProperty();
+	private StringProperty labelDisplacementMapOffsetX = new SimpleStringProperty();
 	private DoubleProperty sliderDisplacementMapScaleX = new SimpleDoubleProperty();
+	private StringProperty labelDisplacementMapScaleX = new SimpleStringProperty();
 	private DoubleProperty sliderDisplacementMapScaleY = new SimpleDoubleProperty();
+	private StringProperty labelDisplacementMapScaleY = new SimpleStringProperty();
 	private DoubleProperty sliderGaussianBlurRadius = new SimpleDoubleProperty();
+	private StringProperty labelGaussianBlurRadius = new SimpleStringProperty();
 	private DoubleProperty sliderGlowLevel = new SimpleDoubleProperty();
+	private StringProperty labelGlowLevel = new SimpleStringProperty();
 	private DoubleProperty sliderLightningDiffuseConstant = new SimpleDoubleProperty();
+	private StringProperty labelLightningDiffuseConstant = new SimpleStringProperty();
 	private DoubleProperty sliderLightningSpectularConstant = new SimpleDoubleProperty();
+	private StringProperty labelLightningSpectularConstant = new SimpleStringProperty();
 	private DoubleProperty sliderLightningSpectularExponent = new SimpleDoubleProperty();
+	private StringProperty labelLightningSpectularExponent = new SimpleStringProperty();
 	private DoubleProperty sliderLightningsurcfaceScale = new SimpleDoubleProperty();
+	private StringProperty labelLightningsurcfaceScale = new SimpleStringProperty();
 	private ObjectProperty<javafx.scene.paint.Color> colorPickerLightning = new SimpleObjectProperty<>();
 	private DoubleProperty sliderLightningAzimuth = new SimpleDoubleProperty();
 	private DoubleProperty sliderLightningEvaluation = new SimpleDoubleProperty();
+	private StringProperty labelLightningAzimuth = new SimpleStringProperty();
+	private StringProperty labelLightningEvaluation = new SimpleStringProperty();
 	private DoubleProperty sliderMotionBlurAngle = new SimpleDoubleProperty();
+	private StringProperty labelMotionBlurAngel = new SimpleStringProperty();
 	private DoubleProperty sliderMotionBlurRadius = new SimpleDoubleProperty();
+	private StringProperty labelMotionBlurRadius = new SimpleStringProperty();
 	private DoubleProperty sliderPerspectiveTransformLlx = new SimpleDoubleProperty();
+	private StringProperty labelPerspectiveTransformLlx = new SimpleStringProperty();
 	private DoubleProperty sliderPerspectiveTransformLly = new SimpleDoubleProperty();
+	private StringProperty labelPerspectiveTransformLly = new SimpleStringProperty();
 	private DoubleProperty sliderPerspectiveTransformLrx = new SimpleDoubleProperty();
+	private StringProperty labelPerspectiveTransformLrx = new SimpleStringProperty();
 	private DoubleProperty sliderPerspectiveTransformLry = new SimpleDoubleProperty();
+	private StringProperty labelPerspectiveTransformLry = new SimpleStringProperty();
 	private DoubleProperty sliderPerspectiveTransformUlx = new SimpleDoubleProperty();
 	private DoubleProperty sliderPerspectiveTransformUly = new SimpleDoubleProperty();
+	private StringProperty labelPerspectiveTransformUlx = new SimpleStringProperty();
+	private StringProperty labelPerspectiveTransformUly = new SimpleStringProperty();
 	private DoubleProperty sliderPerspectiveTransformUrx = new SimpleDoubleProperty();
 	private DoubleProperty sliderPerspectiveTransformUry = new SimpleDoubleProperty();
+	private StringProperty labelPerspectiveTransformUrx = new SimpleStringProperty();
+	private StringProperty labelPerspectiveTransformUry = new SimpleStringProperty();
 	private DoubleProperty sliderReflectionBottomOpacity = new SimpleDoubleProperty();
+	private StringProperty labelReflectionBottomOpacity = new SimpleStringProperty();
 	private DoubleProperty sliderReflectionTopOpacity = new SimpleDoubleProperty();
+	private StringProperty labelReflectionTopOpacity = new SimpleStringProperty();
 	private DoubleProperty sliderReflectionTopOffset = new SimpleDoubleProperty();
+	private StringProperty labelReflectionTopOffset = new SimpleStringProperty();
 	private DoubleProperty sliderReflectionFraction = new SimpleDoubleProperty();
+	private StringProperty labelReflectionFraction = new SimpleStringProperty();
 	private DoubleProperty sliderSepiaToneLevel = new SimpleDoubleProperty();
+	private StringProperty labelsSepiaToneLevel = new SimpleStringProperty();
 	private DoubleProperty sliderShadowHeight = new SimpleDoubleProperty();
+	private StringProperty labelShadowHeight = new SimpleStringProperty();
 	private DoubleProperty sliderShadowWidth = new SimpleDoubleProperty();
+	private StringProperty labelShadowWidth = new SimpleStringProperty();
 	private DoubleProperty sliderShadowRadius = new SimpleDoubleProperty();
+	private StringProperty labelShadowRadius = new SimpleStringProperty();
 	private ObjectProperty<javafx.scene.paint.Color> colorPickerShadow = new SimpleObjectProperty<>();
 	private DoubleProperty sliderInnerShadowHeight = new SimpleDoubleProperty();
+	private StringProperty labelInnerShadowHeight = new SimpleStringProperty();
 	private DoubleProperty sliderInnerShadowWidth = new SimpleDoubleProperty();
+	private StringProperty labelInnerShadowWidth = new SimpleStringProperty();
 	private DoubleProperty sliderInnerShadowRadius = new SimpleDoubleProperty();
+	private StringProperty labelInnerShadowRadius = new SimpleStringProperty();
 	private DoubleProperty sliderInnerShadowOffsetX = new SimpleDoubleProperty();
+	private StringProperty labelInnerShadowOffsetX = new SimpleStringProperty();
 	private DoubleProperty sliderInnerShadowOffsetY = new SimpleDoubleProperty();
+	private StringProperty labelInnerShadowOffsetY = new SimpleStringProperty();
 	private DoubleProperty sliderInnerShadowSpread = new SimpleDoubleProperty();
+	private StringProperty labelInnerShadowSpread = new SimpleStringProperty();
 	private ObjectProperty<javafx.scene.paint.Color> colorPickerInnerShadow = new SimpleObjectProperty<>();
 	private DoubleProperty sliderDropshadowHeight = new SimpleDoubleProperty();
+	private StringProperty labelDropshadowHeight = new SimpleStringProperty();
 	private DoubleProperty sliderDropshadowWidth = new SimpleDoubleProperty();
+	private StringProperty labelDropshadowWidth = new SimpleStringProperty();
 	private DoubleProperty sliderDropshadowRadius = new SimpleDoubleProperty();
+	private StringProperty labelDropshadowRadius = new SimpleStringProperty();
 	private DoubleProperty sliderDropshadowOffsetX = new SimpleDoubleProperty();
+	private StringProperty labelDropshadowOffsetX = new SimpleStringProperty();
 	private DoubleProperty sliderDropshadowOffsetY = new SimpleDoubleProperty();
+	private StringProperty labelDropshadowOffsetY = new SimpleStringProperty();
 	private DoubleProperty sliderDropshadowSpread = new SimpleDoubleProperty();
+	private StringProperty labelDropshadowSpread = new SimpleStringProperty();
 	private ObjectProperty<javafx.scene.paint.Color> colorPickerDropShadow = new SimpleObjectProperty<>();
 	private DoubleProperty sliderColorInputHeight = new SimpleDoubleProperty();
+	private StringProperty labelColorInputHeight = new SimpleStringProperty();
 	private DoubleProperty sliderColorInputWidth = new SimpleDoubleProperty();
+	private StringProperty labelColorInputWidth = new SimpleStringProperty();
 	private DoubleProperty sliderColorInputX = new SimpleDoubleProperty();
+	private StringProperty labelColorInputX = new SimpleStringProperty();
 	private DoubleProperty sliderColorInputY = new SimpleDoubleProperty();
+	private StringProperty labelColorInputY = new SimpleStringProperty();
 	private ObjectProperty<javafx.scene.paint.Color> colorPickerColorInput = new SimpleObjectProperty<>();
 	
 	public String getTextSearch(){
@@ -97,6 +152,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderBlendOpacityProperty(DoubleProperty sliderBlendOpacity){
 		this.sliderBlendOpacity=sliderBlendOpacity;
 	}
+	public String getLabelBlendOpacity(){
+		return this.labelBlendOpacity.get();
+	}
+	
+	public void setLabelBlendOpacity(String labelBlendOpacity){
+		this.labelBlendOpacity.set(labelBlendOpacity);
+	}
+	
+	public StringProperty labelBlendOpacityProperty(){
+		return this.labelBlendOpacity;
+	}
+	
+	public void setLabelBlendOpacityProperty(StringProperty labelBlendOpacity){
+		this.labelBlendOpacity=labelBlendOpacity;
+	}
 	public Double getSliderBloomThreshold(){
 		return this.sliderBloomThreshold.get();
 	}
@@ -111,6 +181,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderBloomThresholdProperty(DoubleProperty sliderBloomThreshold){
 		this.sliderBloomThreshold=sliderBloomThreshold;
+	}
+	public String getLabelBloomThreshold(){
+		return this.labelBloomThreshold.get();
+	}
+	
+	public void setLabelBloomThreshold(String labelBloomThreshold){
+		this.labelBloomThreshold.set(labelBloomThreshold);
+	}
+	
+	public StringProperty labelBloomThresholdProperty(){
+		return this.labelBloomThreshold;
+	}
+	
+	public void setLabelBloomThresholdProperty(StringProperty labelBloomThreshold){
+		this.labelBloomThreshold=labelBloomThreshold;
 	}
 	public Double getSliderBoxBlurWidth(){
 		return this.sliderBoxBlurWidth.get();
@@ -127,6 +212,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderBoxBlurWidthProperty(DoubleProperty sliderBoxBlurWidth){
 		this.sliderBoxBlurWidth=sliderBoxBlurWidth;
 	}
+	public String getLabelBoxBlurWidth(){
+		return this.labelBoxBlurWidth.get();
+	}
+	
+	public void setLabelBoxBlurWidth(String labelBoxBlurWidth){
+		this.labelBoxBlurWidth.set(labelBoxBlurWidth);
+	}
+	
+	public StringProperty labelBoxBlurWidthProperty(){
+		return this.labelBoxBlurWidth;
+	}
+	
+	public void setLabelBoxBlurWidthProperty(StringProperty labelBoxBlurWidth){
+		this.labelBoxBlurWidth=labelBoxBlurWidth;
+	}
 	public Double getSliderBoxBlurHeight(){
 		return this.sliderBoxBlurHeight.get();
 	}
@@ -141,6 +241,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderBoxBlurHeightProperty(DoubleProperty sliderBoxBlurHeight){
 		this.sliderBoxBlurHeight=sliderBoxBlurHeight;
+	}
+	public String getLabelBoxBlurHeight(){
+		return this.labelBoxBlurHeight.get();
+	}
+	
+	public void setLabelBoxBlurHeight(String labelBoxBlurHeight){
+		this.labelBoxBlurHeight.set(labelBoxBlurHeight);
+	}
+	
+	public StringProperty labelBoxBlurHeightProperty(){
+		return this.labelBoxBlurHeight;
+	}
+	
+	public void setLabelBoxBlurHeightProperty(StringProperty labelBoxBlurHeight){
+		this.labelBoxBlurHeight=labelBoxBlurHeight;
 	}
 	public Double getSliderBoxBlurIteration(){
 		return this.sliderBoxBlurIteration.get();
@@ -157,6 +272,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderBoxBlurIterationProperty(DoubleProperty sliderBoxBlurIteration){
 		this.sliderBoxBlurIteration=sliderBoxBlurIteration;
 	}
+	public String getLabelBoxBlurIteration(){
+		return this.labelBoxBlurIteration.get();
+	}
+	
+	public void setLabelBoxBlurIteration(String labelBoxBlurIteration){
+		this.labelBoxBlurIteration.set(labelBoxBlurIteration);
+	}
+	
+	public StringProperty labelBoxBlurIterationProperty(){
+		return this.labelBoxBlurIteration;
+	}
+	
+	public void setLabelBoxBlurIterationProperty(StringProperty labelBoxBlurIteration){
+		this.labelBoxBlurIteration=labelBoxBlurIteration;
+	}
 	public Double getSliderColorAdjustContrast(){
 		return this.sliderColorAdjustContrast.get();
 	}
@@ -171,6 +301,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderColorAdjustContrastProperty(DoubleProperty sliderColorAdjustContrast){
 		this.sliderColorAdjustContrast=sliderColorAdjustContrast;
+	}
+	public String getLabelColorAdjustContrast(){
+		return this.labelColorAdjustContrast.get();
+	}
+	
+	public void setLabelColorAdjustContrast(String labelColorAdjustContrast){
+		this.labelColorAdjustContrast.set(labelColorAdjustContrast);
+	}
+	
+	public StringProperty labelColorAdjustContrastProperty(){
+		return this.labelColorAdjustContrast;
+	}
+	
+	public void setLabelColorAdjustContrastProperty(StringProperty labelColorAdjustContrast){
+		this.labelColorAdjustContrast=labelColorAdjustContrast;
 	}
 	public Double getSliderColorAdjustBrigthness(){
 		return this.sliderColorAdjustBrigthness.get();
@@ -187,6 +332,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderColorAdjustBrigthnessProperty(DoubleProperty sliderColorAdjustBrigthness){
 		this.sliderColorAdjustBrigthness=sliderColorAdjustBrigthness;
 	}
+	public String getLabelColorAdjustBrigthness(){
+		return this.labelColorAdjustBrigthness.get();
+	}
+	
+	public void setLabelColorAdjustBrigthness(String labelColorAdjustBrigthness){
+		this.labelColorAdjustBrigthness.set(labelColorAdjustBrigthness);
+	}
+	
+	public StringProperty labelColorAdjustBrigthnessProperty(){
+		return this.labelColorAdjustBrigthness;
+	}
+	
+	public void setLabelColorAdjustBrigthnessProperty(StringProperty labelColorAdjustBrigthness){
+		this.labelColorAdjustBrigthness=labelColorAdjustBrigthness;
+	}
 	public Double getSliderColorAdjustHue(){
 		return this.sliderColorAdjustHue.get();
 	}
@@ -201,6 +361,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderColorAdjustHueProperty(DoubleProperty sliderColorAdjustHue){
 		this.sliderColorAdjustHue=sliderColorAdjustHue;
+	}
+	public String getLabelColorAdjustHue(){
+		return this.labelColorAdjustHue.get();
+	}
+	
+	public void setLabelColorAdjustHue(String labelColorAdjustHue){
+		this.labelColorAdjustHue.set(labelColorAdjustHue);
+	}
+	
+	public StringProperty labelColorAdjustHueProperty(){
+		return this.labelColorAdjustHue;
+	}
+	
+	public void setLabelColorAdjustHueProperty(StringProperty labelColorAdjustHue){
+		this.labelColorAdjustHue=labelColorAdjustHue;
 	}
 	public Double getSliderColorAdjustSaturation(){
 		return this.sliderColorAdjustSaturation.get();
@@ -217,6 +392,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderColorAdjustSaturationProperty(DoubleProperty sliderColorAdjustSaturation){
 		this.sliderColorAdjustSaturation=sliderColorAdjustSaturation;
 	}
+	public String getLabelColorAdjustSaturation(){
+		return this.labelColorAdjustSaturation.get();
+	}
+	
+	public void setLabelColorAdjustSaturation(String labelColorAdjustSaturation){
+		this.labelColorAdjustSaturation.set(labelColorAdjustSaturation);
+	}
+	
+	public StringProperty labelColorAdjustSaturationProperty(){
+		return this.labelColorAdjustSaturation;
+	}
+	
+	public void setLabelColorAdjustSaturationProperty(StringProperty labelColorAdjustSaturation){
+		this.labelColorAdjustSaturation=labelColorAdjustSaturation;
+	}
 	public Double getSliderDisplacementMapOffsetY(){
 		return this.sliderDisplacementMapOffsetY.get();
 	}
@@ -231,6 +421,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderDisplacementMapOffsetYProperty(DoubleProperty sliderDisplacementMapOffsetY){
 		this.sliderDisplacementMapOffsetY=sliderDisplacementMapOffsetY;
+	}
+	public String getLabelDisplacementMapOffsetY(){
+		return this.labelDisplacementMapOffsetY.get();
+	}
+	
+	public void setLabelDisplacementMapOffsetY(String labelDisplacementMapOffsetY){
+		this.labelDisplacementMapOffsetY.set(labelDisplacementMapOffsetY);
+	}
+	
+	public StringProperty labelDisplacementMapOffsetYProperty(){
+		return this.labelDisplacementMapOffsetY;
+	}
+	
+	public void setLabelDisplacementMapOffsetYProperty(StringProperty labelDisplacementMapOffsetY){
+		this.labelDisplacementMapOffsetY=labelDisplacementMapOffsetY;
 	}
 	public Double getSliderDisplacementMapOffsetX(){
 		return this.sliderDisplacementMapOffsetX.get();
@@ -247,6 +452,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderDisplacementMapOffsetXProperty(DoubleProperty sliderDisplacementMapOffsetX){
 		this.sliderDisplacementMapOffsetX=sliderDisplacementMapOffsetX;
 	}
+	public String getLabelDisplacementMapOffsetX(){
+		return this.labelDisplacementMapOffsetX.get();
+	}
+	
+	public void setLabelDisplacementMapOffsetX(String labelDisplacementMapOffsetX){
+		this.labelDisplacementMapOffsetX.set(labelDisplacementMapOffsetX);
+	}
+	
+	public StringProperty labelDisplacementMapOffsetXProperty(){
+		return this.labelDisplacementMapOffsetX;
+	}
+	
+	public void setLabelDisplacementMapOffsetXProperty(StringProperty labelDisplacementMapOffsetX){
+		this.labelDisplacementMapOffsetX=labelDisplacementMapOffsetX;
+	}
 	public Double getSliderDisplacementMapScaleX(){
 		return this.sliderDisplacementMapScaleX.get();
 	}
@@ -261,6 +481,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderDisplacementMapScaleXProperty(DoubleProperty sliderDisplacementMapScaleX){
 		this.sliderDisplacementMapScaleX=sliderDisplacementMapScaleX;
+	}
+	public String getLabelDisplacementMapScaleX(){
+		return this.labelDisplacementMapScaleX.get();
+	}
+	
+	public void setLabelDisplacementMapScaleX(String labelDisplacementMapScaleX){
+		this.labelDisplacementMapScaleX.set(labelDisplacementMapScaleX);
+	}
+	
+	public StringProperty labelDisplacementMapScaleXProperty(){
+		return this.labelDisplacementMapScaleX;
+	}
+	
+	public void setLabelDisplacementMapScaleXProperty(StringProperty labelDisplacementMapScaleX){
+		this.labelDisplacementMapScaleX=labelDisplacementMapScaleX;
 	}
 	public Double getSliderDisplacementMapScaleY(){
 		return this.sliderDisplacementMapScaleY.get();
@@ -277,6 +512,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderDisplacementMapScaleYProperty(DoubleProperty sliderDisplacementMapScaleY){
 		this.sliderDisplacementMapScaleY=sliderDisplacementMapScaleY;
 	}
+	public String getLabelDisplacementMapScaleY(){
+		return this.labelDisplacementMapScaleY.get();
+	}
+	
+	public void setLabelDisplacementMapScaleY(String labelDisplacementMapScaleY){
+		this.labelDisplacementMapScaleY.set(labelDisplacementMapScaleY);
+	}
+	
+	public StringProperty labelDisplacementMapScaleYProperty(){
+		return this.labelDisplacementMapScaleY;
+	}
+	
+	public void setLabelDisplacementMapScaleYProperty(StringProperty labelDisplacementMapScaleY){
+		this.labelDisplacementMapScaleY=labelDisplacementMapScaleY;
+	}
 	public Double getSliderGaussianBlurRadius(){
 		return this.sliderGaussianBlurRadius.get();
 	}
@@ -291,6 +541,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderGaussianBlurRadiusProperty(DoubleProperty sliderGaussianBlurRadius){
 		this.sliderGaussianBlurRadius=sliderGaussianBlurRadius;
+	}
+	public String getLabelGaussianBlurRadius(){
+		return this.labelGaussianBlurRadius.get();
+	}
+	
+	public void setLabelGaussianBlurRadius(String labelGaussianBlurRadius){
+		this.labelGaussianBlurRadius.set(labelGaussianBlurRadius);
+	}
+	
+	public StringProperty labelGaussianBlurRadiusProperty(){
+		return this.labelGaussianBlurRadius;
+	}
+	
+	public void setLabelGaussianBlurRadiusProperty(StringProperty labelGaussianBlurRadius){
+		this.labelGaussianBlurRadius=labelGaussianBlurRadius;
 	}
 	public Double getSliderGlowLevel(){
 		return this.sliderGlowLevel.get();
@@ -307,6 +572,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderGlowLevelProperty(DoubleProperty sliderGlowLevel){
 		this.sliderGlowLevel=sliderGlowLevel;
 	}
+	public String getLabelGlowLevel(){
+		return this.labelGlowLevel.get();
+	}
+	
+	public void setLabelGlowLevel(String labelGlowLevel){
+		this.labelGlowLevel.set(labelGlowLevel);
+	}
+	
+	public StringProperty labelGlowLevelProperty(){
+		return this.labelGlowLevel;
+	}
+	
+	public void setLabelGlowLevelProperty(StringProperty labelGlowLevel){
+		this.labelGlowLevel=labelGlowLevel;
+	}
 	public Double getSliderLightningDiffuseConstant(){
 		return this.sliderLightningDiffuseConstant.get();
 	}
@@ -321,6 +601,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderLightningDiffuseConstantProperty(DoubleProperty sliderLightningDiffuseConstant){
 		this.sliderLightningDiffuseConstant=sliderLightningDiffuseConstant;
+	}
+	public String getLabelLightningDiffuseConstant(){
+		return this.labelLightningDiffuseConstant.get();
+	}
+	
+	public void setLabelLightningDiffuseConstant(String labelLightningDiffuseConstant){
+		this.labelLightningDiffuseConstant.set(labelLightningDiffuseConstant);
+	}
+	
+	public StringProperty labelLightningDiffuseConstantProperty(){
+		return this.labelLightningDiffuseConstant;
+	}
+	
+	public void setLabelLightningDiffuseConstantProperty(StringProperty labelLightningDiffuseConstant){
+		this.labelLightningDiffuseConstant=labelLightningDiffuseConstant;
 	}
 	public Double getSliderLightningSpectularConstant(){
 		return this.sliderLightningSpectularConstant.get();
@@ -337,6 +632,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderLightningSpectularConstantProperty(DoubleProperty sliderLightningSpectularConstant){
 		this.sliderLightningSpectularConstant=sliderLightningSpectularConstant;
 	}
+	public String getLabelLightningSpectularConstant(){
+		return this.labelLightningSpectularConstant.get();
+	}
+	
+	public void setLabelLightningSpectularConstant(String labelLightningSpectularConstant){
+		this.labelLightningSpectularConstant.set(labelLightningSpectularConstant);
+	}
+	
+	public StringProperty labelLightningSpectularConstantProperty(){
+		return this.labelLightningSpectularConstant;
+	}
+	
+	public void setLabelLightningSpectularConstantProperty(StringProperty labelLightningSpectularConstant){
+		this.labelLightningSpectularConstant=labelLightningSpectularConstant;
+	}
 	public Double getSliderLightningSpectularExponent(){
 		return this.sliderLightningSpectularExponent.get();
 	}
@@ -352,6 +662,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderLightningSpectularExponentProperty(DoubleProperty sliderLightningSpectularExponent){
 		this.sliderLightningSpectularExponent=sliderLightningSpectularExponent;
 	}
+	public String getLabelLightningSpectularExponent(){
+		return this.labelLightningSpectularExponent.get();
+	}
+	
+	public void setLabelLightningSpectularExponent(String labelLightningSpectularExponent){
+		this.labelLightningSpectularExponent.set(labelLightningSpectularExponent);
+	}
+	
+	public StringProperty labelLightningSpectularExponentProperty(){
+		return this.labelLightningSpectularExponent;
+	}
+	
+	public void setLabelLightningSpectularExponentProperty(StringProperty labelLightningSpectularExponent){
+		this.labelLightningSpectularExponent=labelLightningSpectularExponent;
+	}
 	public Double getSliderLightningsurcfaceScale(){
 		return this.sliderLightningsurcfaceScale.get();
 	}
@@ -366,6 +691,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderLightningsurcfaceScaleProperty(DoubleProperty sliderLightningsurcfaceScale){
 		this.sliderLightningsurcfaceScale=sliderLightningsurcfaceScale;
+	}
+	public String getLabelLightningsurcfaceScale(){
+		return this.labelLightningsurcfaceScale.get();
+	}
+	
+	public void setLabelLightningsurcfaceScale(String labelLightningsurcfaceScale){
+		this.labelLightningsurcfaceScale.set(labelLightningsurcfaceScale);
+	}
+	
+	public StringProperty labelLightningsurcfaceScaleProperty(){
+		return this.labelLightningsurcfaceScale;
+	}
+	
+	public void setLabelLightningsurcfaceScaleProperty(StringProperty labelLightningsurcfaceScale){
+		this.labelLightningsurcfaceScale=labelLightningsurcfaceScale;
 	}
 	public javafx.scene.paint.Color getColorPickerLightning(){
 		return this.colorPickerLightning.get();
@@ -412,6 +752,36 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderLightningEvaluationProperty(DoubleProperty sliderLightningEvaluation){
 		this.sliderLightningEvaluation=sliderLightningEvaluation;
 	}
+	public String getLabelLightningAzimuth(){
+		return this.labelLightningAzimuth.get();
+	}
+	
+	public void setLabelLightningAzimuth(String labelLightningAzimuth){
+		this.labelLightningAzimuth.set(labelLightningAzimuth);
+	}
+	
+	public StringProperty labelLightningAzimuthProperty(){
+		return this.labelLightningAzimuth;
+	}
+	
+	public void setLabelLightningAzimuthProperty(StringProperty labelLightningAzimuth){
+		this.labelLightningAzimuth=labelLightningAzimuth;
+	}
+	public String getLabelLightningEvaluation(){
+		return this.labelLightningEvaluation.get();
+	}
+	
+	public void setLabelLightningEvaluation(String labelLightningEvaluation){
+		this.labelLightningEvaluation.set(labelLightningEvaluation);
+	}
+	
+	public StringProperty labelLightningEvaluationProperty(){
+		return this.labelLightningEvaluation;
+	}
+	
+	public void setLabelLightningEvaluationProperty(StringProperty labelLightningEvaluation){
+		this.labelLightningEvaluation=labelLightningEvaluation;
+	}
 	public Double getSliderMotionBlurAngle(){
 		return this.sliderMotionBlurAngle.get();
 	}
@@ -426,6 +796,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderMotionBlurAngleProperty(DoubleProperty sliderMotionBlurAngle){
 		this.sliderMotionBlurAngle=sliderMotionBlurAngle;
+	}
+	public String getLabelMotionBlurAngel(){
+		return this.labelMotionBlurAngel.get();
+	}
+	
+	public void setLabelMotionBlurAngel(String labelMotionBlurAngel){
+		this.labelMotionBlurAngel.set(labelMotionBlurAngel);
+	}
+	
+	public StringProperty labelMotionBlurAngelProperty(){
+		return this.labelMotionBlurAngel;
+	}
+	
+	public void setLabelMotionBlurAngelProperty(StringProperty labelMotionBlurAngel){
+		this.labelMotionBlurAngel=labelMotionBlurAngel;
 	}
 	public Double getSliderMotionBlurRadius(){
 		return this.sliderMotionBlurRadius.get();
@@ -442,6 +827,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderMotionBlurRadiusProperty(DoubleProperty sliderMotionBlurRadius){
 		this.sliderMotionBlurRadius=sliderMotionBlurRadius;
 	}
+	public String getLabelMotionBlurRadius(){
+		return this.labelMotionBlurRadius.get();
+	}
+	
+	public void setLabelMotionBlurRadius(String labelMotionBlurRadius){
+		this.labelMotionBlurRadius.set(labelMotionBlurRadius);
+	}
+	
+	public StringProperty labelMotionBlurRadiusProperty(){
+		return this.labelMotionBlurRadius;
+	}
+	
+	public void setLabelMotionBlurRadiusProperty(StringProperty labelMotionBlurRadius){
+		this.labelMotionBlurRadius=labelMotionBlurRadius;
+	}
 	public Double getSliderPerspectiveTransformLlx(){
 		return this.sliderPerspectiveTransformLlx.get();
 	}
@@ -456,6 +856,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderPerspectiveTransformLlxProperty(DoubleProperty sliderPerspectiveTransformLlx){
 		this.sliderPerspectiveTransformLlx=sliderPerspectiveTransformLlx;
+	}
+	public String getLabelPerspectiveTransformLlx(){
+		return this.labelPerspectiveTransformLlx.get();
+	}
+	
+	public void setLabelPerspectiveTransformLlx(String labelPerspectiveTransformLlx){
+		this.labelPerspectiveTransformLlx.set(labelPerspectiveTransformLlx);
+	}
+	
+	public StringProperty labelPerspectiveTransformLlxProperty(){
+		return this.labelPerspectiveTransformLlx;
+	}
+	
+	public void setLabelPerspectiveTransformLlxProperty(StringProperty labelPerspectiveTransformLlx){
+		this.labelPerspectiveTransformLlx=labelPerspectiveTransformLlx;
 	}
 	public Double getSliderPerspectiveTransformLly(){
 		return this.sliderPerspectiveTransformLly.get();
@@ -472,6 +887,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderPerspectiveTransformLlyProperty(DoubleProperty sliderPerspectiveTransformLly){
 		this.sliderPerspectiveTransformLly=sliderPerspectiveTransformLly;
 	}
+	public String getLabelPerspectiveTransformLly(){
+		return this.labelPerspectiveTransformLly.get();
+	}
+	
+	public void setLabelPerspectiveTransformLly(String labelPerspectiveTransformLly){
+		this.labelPerspectiveTransformLly.set(labelPerspectiveTransformLly);
+	}
+	
+	public StringProperty labelPerspectiveTransformLlyProperty(){
+		return this.labelPerspectiveTransformLly;
+	}
+	
+	public void setLabelPerspectiveTransformLlyProperty(StringProperty labelPerspectiveTransformLly){
+		this.labelPerspectiveTransformLly=labelPerspectiveTransformLly;
+	}
 	public Double getSliderPerspectiveTransformLrx(){
 		return this.sliderPerspectiveTransformLrx.get();
 	}
@@ -487,6 +917,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderPerspectiveTransformLrxProperty(DoubleProperty sliderPerspectiveTransformLrx){
 		this.sliderPerspectiveTransformLrx=sliderPerspectiveTransformLrx;
 	}
+	public String getLabelPerspectiveTransformLrx(){
+		return this.labelPerspectiveTransformLrx.get();
+	}
+	
+	public void setLabelPerspectiveTransformLrx(String labelPerspectiveTransformLrx){
+		this.labelPerspectiveTransformLrx.set(labelPerspectiveTransformLrx);
+	}
+	
+	public StringProperty labelPerspectiveTransformLrxProperty(){
+		return this.labelPerspectiveTransformLrx;
+	}
+	
+	public void setLabelPerspectiveTransformLrxProperty(StringProperty labelPerspectiveTransformLrx){
+		this.labelPerspectiveTransformLrx=labelPerspectiveTransformLrx;
+	}
 	public Double getSliderPerspectiveTransformLry(){
 		return this.sliderPerspectiveTransformLry.get();
 	}
@@ -501,6 +946,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderPerspectiveTransformLryProperty(DoubleProperty sliderPerspectiveTransformLry){
 		this.sliderPerspectiveTransformLry=sliderPerspectiveTransformLry;
+	}
+	public String getLabelPerspectiveTransformLry(){
+		return this.labelPerspectiveTransformLry.get();
+	}
+	
+	public void setLabelPerspectiveTransformLry(String labelPerspectiveTransformLry){
+		this.labelPerspectiveTransformLry.set(labelPerspectiveTransformLry);
+	}
+	
+	public StringProperty labelPerspectiveTransformLryProperty(){
+		return this.labelPerspectiveTransformLry;
+	}
+	
+	public void setLabelPerspectiveTransformLryProperty(StringProperty labelPerspectiveTransformLry){
+		this.labelPerspectiveTransformLry=labelPerspectiveTransformLry;
 	}
 	public Double getSliderPerspectiveTransformUlx(){
 		return this.sliderPerspectiveTransformUlx.get();
@@ -532,6 +992,36 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderPerspectiveTransformUlyProperty(DoubleProperty sliderPerspectiveTransformUly){
 		this.sliderPerspectiveTransformUly=sliderPerspectiveTransformUly;
 	}
+	public String getLabelPerspectiveTransformUlx(){
+		return this.labelPerspectiveTransformUlx.get();
+	}
+	
+	public void setLabelPerspectiveTransformUlx(String labelPerspectiveTransformUlx){
+		this.labelPerspectiveTransformUlx.set(labelPerspectiveTransformUlx);
+	}
+	
+	public StringProperty labelPerspectiveTransformUlxProperty(){
+		return this.labelPerspectiveTransformUlx;
+	}
+	
+	public void setLabelPerspectiveTransformUlxProperty(StringProperty labelPerspectiveTransformUlx){
+		this.labelPerspectiveTransformUlx=labelPerspectiveTransformUlx;
+	}
+	public String getLabelPerspectiveTransformUly(){
+		return this.labelPerspectiveTransformUly.get();
+	}
+	
+	public void setLabelPerspectiveTransformUly(String labelPerspectiveTransformUly){
+		this.labelPerspectiveTransformUly.set(labelPerspectiveTransformUly);
+	}
+	
+	public StringProperty labelPerspectiveTransformUlyProperty(){
+		return this.labelPerspectiveTransformUly;
+	}
+	
+	public void setLabelPerspectiveTransformUlyProperty(StringProperty labelPerspectiveTransformUly){
+		this.labelPerspectiveTransformUly=labelPerspectiveTransformUly;
+	}
 	public Double getSliderPerspectiveTransformUrx(){
 		return this.sliderPerspectiveTransformUrx.get();
 	}
@@ -562,6 +1052,36 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderPerspectiveTransformUryProperty(DoubleProperty sliderPerspectiveTransformUry){
 		this.sliderPerspectiveTransformUry=sliderPerspectiveTransformUry;
 	}
+	public String getLabelPerspectiveTransformUrx(){
+		return this.labelPerspectiveTransformUrx.get();
+	}
+	
+	public void setLabelPerspectiveTransformUrx(String labelPerspectiveTransformUrx){
+		this.labelPerspectiveTransformUrx.set(labelPerspectiveTransformUrx);
+	}
+	
+	public StringProperty labelPerspectiveTransformUrxProperty(){
+		return this.labelPerspectiveTransformUrx;
+	}
+	
+	public void setLabelPerspectiveTransformUrxProperty(StringProperty labelPerspectiveTransformUrx){
+		this.labelPerspectiveTransformUrx=labelPerspectiveTransformUrx;
+	}
+	public String getLabelPerspectiveTransformUry(){
+		return this.labelPerspectiveTransformUry.get();
+	}
+	
+	public void setLabelPerspectiveTransformUry(String labelPerspectiveTransformUry){
+		this.labelPerspectiveTransformUry.set(labelPerspectiveTransformUry);
+	}
+	
+	public StringProperty labelPerspectiveTransformUryProperty(){
+		return this.labelPerspectiveTransformUry;
+	}
+	
+	public void setLabelPerspectiveTransformUryProperty(StringProperty labelPerspectiveTransformUry){
+		this.labelPerspectiveTransformUry=labelPerspectiveTransformUry;
+	}
 	public Double getSliderReflectionBottomOpacity(){
 		return this.sliderReflectionBottomOpacity.get();
 	}
@@ -576,6 +1096,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderReflectionBottomOpacityProperty(DoubleProperty sliderReflectionBottomOpacity){
 		this.sliderReflectionBottomOpacity=sliderReflectionBottomOpacity;
+	}
+	public String getLabelReflectionBottomOpacity(){
+		return this.labelReflectionBottomOpacity.get();
+	}
+	
+	public void setLabelReflectionBottomOpacity(String labelReflectionBottomOpacity){
+		this.labelReflectionBottomOpacity.set(labelReflectionBottomOpacity);
+	}
+	
+	public StringProperty labelReflectionBottomOpacityProperty(){
+		return this.labelReflectionBottomOpacity;
+	}
+	
+	public void setLabelReflectionBottomOpacityProperty(StringProperty labelReflectionBottomOpacity){
+		this.labelReflectionBottomOpacity=labelReflectionBottomOpacity;
 	}
 	public Double getSliderReflectionTopOpacity(){
 		return this.sliderReflectionTopOpacity.get();
@@ -592,6 +1127,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderReflectionTopOpacityProperty(DoubleProperty sliderReflectionTopOpacity){
 		this.sliderReflectionTopOpacity=sliderReflectionTopOpacity;
 	}
+	public String getLabelReflectionTopOpacity(){
+		return this.labelReflectionTopOpacity.get();
+	}
+	
+	public void setLabelReflectionTopOpacity(String labelReflectionTopOpacity){
+		this.labelReflectionTopOpacity.set(labelReflectionTopOpacity);
+	}
+	
+	public StringProperty labelReflectionTopOpacityProperty(){
+		return this.labelReflectionTopOpacity;
+	}
+	
+	public void setLabelReflectionTopOpacityProperty(StringProperty labelReflectionTopOpacity){
+		this.labelReflectionTopOpacity=labelReflectionTopOpacity;
+	}
 	public Double getSliderReflectionTopOffset(){
 		return this.sliderReflectionTopOffset.get();
 	}
@@ -606,6 +1156,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderReflectionTopOffsetProperty(DoubleProperty sliderReflectionTopOffset){
 		this.sliderReflectionTopOffset=sliderReflectionTopOffset;
+	}
+	public String getLabelReflectionTopOffset(){
+		return this.labelReflectionTopOffset.get();
+	}
+	
+	public void setLabelReflectionTopOffset(String labelReflectionTopOffset){
+		this.labelReflectionTopOffset.set(labelReflectionTopOffset);
+	}
+	
+	public StringProperty labelReflectionTopOffsetProperty(){
+		return this.labelReflectionTopOffset;
+	}
+	
+	public void setLabelReflectionTopOffsetProperty(StringProperty labelReflectionTopOffset){
+		this.labelReflectionTopOffset=labelReflectionTopOffset;
 	}
 	public Double getSliderReflectionFraction(){
 		return this.sliderReflectionFraction.get();
@@ -622,6 +1187,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderReflectionFractionProperty(DoubleProperty sliderReflectionFraction){
 		this.sliderReflectionFraction=sliderReflectionFraction;
 	}
+	public String getLabelReflectionFraction(){
+		return this.labelReflectionFraction.get();
+	}
+	
+	public void setLabelReflectionFraction(String labelReflectionFraction){
+		this.labelReflectionFraction.set(labelReflectionFraction);
+	}
+	
+	public StringProperty labelReflectionFractionProperty(){
+		return this.labelReflectionFraction;
+	}
+	
+	public void setLabelReflectionFractionProperty(StringProperty labelReflectionFraction){
+		this.labelReflectionFraction=labelReflectionFraction;
+	}
 	public Double getSliderSepiaToneLevel(){
 		return this.sliderSepiaToneLevel.get();
 	}
@@ -636,6 +1216,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderSepiaToneLevelProperty(DoubleProperty sliderSepiaToneLevel){
 		this.sliderSepiaToneLevel=sliderSepiaToneLevel;
+	}
+	public String getLabelsSepiaToneLevel(){
+		return this.labelsSepiaToneLevel.get();
+	}
+	
+	public void setLabelsSepiaToneLevel(String labelsSepiaToneLevel){
+		this.labelsSepiaToneLevel.set(labelsSepiaToneLevel);
+	}
+	
+	public StringProperty labelsSepiaToneLevelProperty(){
+		return this.labelsSepiaToneLevel;
+	}
+	
+	public void setLabelsSepiaToneLevelProperty(StringProperty labelsSepiaToneLevel){
+		this.labelsSepiaToneLevel=labelsSepiaToneLevel;
 	}
 	public Double getSliderShadowHeight(){
 		return this.sliderShadowHeight.get();
@@ -652,6 +1247,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderShadowHeightProperty(DoubleProperty sliderShadowHeight){
 		this.sliderShadowHeight=sliderShadowHeight;
 	}
+	public String getLabelShadowHeight(){
+		return this.labelShadowHeight.get();
+	}
+	
+	public void setLabelShadowHeight(String labelShadowHeight){
+		this.labelShadowHeight.set(labelShadowHeight);
+	}
+	
+	public StringProperty labelShadowHeightProperty(){
+		return this.labelShadowHeight;
+	}
+	
+	public void setLabelShadowHeightProperty(StringProperty labelShadowHeight){
+		this.labelShadowHeight=labelShadowHeight;
+	}
 	public Double getSliderShadowWidth(){
 		return this.sliderShadowWidth.get();
 	}
@@ -667,6 +1277,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderShadowWidthProperty(DoubleProperty sliderShadowWidth){
 		this.sliderShadowWidth=sliderShadowWidth;
 	}
+	public String getLabelShadowWidth(){
+		return this.labelShadowWidth.get();
+	}
+	
+	public void setLabelShadowWidth(String labelShadowWidth){
+		this.labelShadowWidth.set(labelShadowWidth);
+	}
+	
+	public StringProperty labelShadowWidthProperty(){
+		return this.labelShadowWidth;
+	}
+	
+	public void setLabelShadowWidthProperty(StringProperty labelShadowWidth){
+		this.labelShadowWidth=labelShadowWidth;
+	}
 	public Double getSliderShadowRadius(){
 		return this.sliderShadowRadius.get();
 	}
@@ -681,6 +1306,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderShadowRadiusProperty(DoubleProperty sliderShadowRadius){
 		this.sliderShadowRadius=sliderShadowRadius;
+	}
+	public String getLabelShadowRadius(){
+		return this.labelShadowRadius.get();
+	}
+	
+	public void setLabelShadowRadius(String labelShadowRadius){
+		this.labelShadowRadius.set(labelShadowRadius);
+	}
+	
+	public StringProperty labelShadowRadiusProperty(){
+		return this.labelShadowRadius;
+	}
+	
+	public void setLabelShadowRadiusProperty(StringProperty labelShadowRadius){
+		this.labelShadowRadius=labelShadowRadius;
 	}
 	public javafx.scene.paint.Color getColorPickerShadow(){
 		return this.colorPickerShadow.get();
@@ -712,6 +1352,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderInnerShadowHeightProperty(DoubleProperty sliderInnerShadowHeight){
 		this.sliderInnerShadowHeight=sliderInnerShadowHeight;
 	}
+	public String getLabelInnerShadowHeight(){
+		return this.labelInnerShadowHeight.get();
+	}
+	
+	public void setLabelInnerShadowHeight(String labelInnerShadowHeight){
+		this.labelInnerShadowHeight.set(labelInnerShadowHeight);
+	}
+	
+	public StringProperty labelInnerShadowHeightProperty(){
+		return this.labelInnerShadowHeight;
+	}
+	
+	public void setLabelInnerShadowHeightProperty(StringProperty labelInnerShadowHeight){
+		this.labelInnerShadowHeight=labelInnerShadowHeight;
+	}
 	public Double getSliderInnerShadowWidth(){
 		return this.sliderInnerShadowWidth.get();
 	}
@@ -726,6 +1381,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderInnerShadowWidthProperty(DoubleProperty sliderInnerShadowWidth){
 		this.sliderInnerShadowWidth=sliderInnerShadowWidth;
+	}
+	public String getLabelInnerShadowWidth(){
+		return this.labelInnerShadowWidth.get();
+	}
+	
+	public void setLabelInnerShadowWidth(String labelInnerShadowWidth){
+		this.labelInnerShadowWidth.set(labelInnerShadowWidth);
+	}
+	
+	public StringProperty labelInnerShadowWidthProperty(){
+		return this.labelInnerShadowWidth;
+	}
+	
+	public void setLabelInnerShadowWidthProperty(StringProperty labelInnerShadowWidth){
+		this.labelInnerShadowWidth=labelInnerShadowWidth;
 	}
 	public Double getSliderInnerShadowRadius(){
 		return this.sliderInnerShadowRadius.get();
@@ -742,6 +1412,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderInnerShadowRadiusProperty(DoubleProperty sliderInnerShadowRadius){
 		this.sliderInnerShadowRadius=sliderInnerShadowRadius;
 	}
+	public String getLabelInnerShadowRadius(){
+		return this.labelInnerShadowRadius.get();
+	}
+	
+	public void setLabelInnerShadowRadius(String labelInnerShadowRadius){
+		this.labelInnerShadowRadius.set(labelInnerShadowRadius);
+	}
+	
+	public StringProperty labelInnerShadowRadiusProperty(){
+		return this.labelInnerShadowRadius;
+	}
+	
+	public void setLabelInnerShadowRadiusProperty(StringProperty labelInnerShadowRadius){
+		this.labelInnerShadowRadius=labelInnerShadowRadius;
+	}
 	public Double getSliderInnerShadowOffsetX(){
 		return this.sliderInnerShadowOffsetX.get();
 	}
@@ -756,6 +1441,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderInnerShadowOffsetXProperty(DoubleProperty sliderInnerShadowOffsetX){
 		this.sliderInnerShadowOffsetX=sliderInnerShadowOffsetX;
+	}
+	public String getLabelInnerShadowOffsetX(){
+		return this.labelInnerShadowOffsetX.get();
+	}
+	
+	public void setLabelInnerShadowOffsetX(String labelInnerShadowOffsetX){
+		this.labelInnerShadowOffsetX.set(labelInnerShadowOffsetX);
+	}
+	
+	public StringProperty labelInnerShadowOffsetXProperty(){
+		return this.labelInnerShadowOffsetX;
+	}
+	
+	public void setLabelInnerShadowOffsetXProperty(StringProperty labelInnerShadowOffsetX){
+		this.labelInnerShadowOffsetX=labelInnerShadowOffsetX;
 	}
 	public Double getSliderInnerShadowOffsetY(){
 		return this.sliderInnerShadowOffsetY.get();
@@ -772,6 +1472,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderInnerShadowOffsetYProperty(DoubleProperty sliderInnerShadowOffsetY){
 		this.sliderInnerShadowOffsetY=sliderInnerShadowOffsetY;
 	}
+	public String getLabelInnerShadowOffsetY(){
+		return this.labelInnerShadowOffsetY.get();
+	}
+	
+	public void setLabelInnerShadowOffsetY(String labelInnerShadowOffsetY){
+		this.labelInnerShadowOffsetY.set(labelInnerShadowOffsetY);
+	}
+	
+	public StringProperty labelInnerShadowOffsetYProperty(){
+		return this.labelInnerShadowOffsetY;
+	}
+	
+	public void setLabelInnerShadowOffsetYProperty(StringProperty labelInnerShadowOffsetY){
+		this.labelInnerShadowOffsetY=labelInnerShadowOffsetY;
+	}
 	public Double getSliderInnerShadowSpread(){
 		return this.sliderInnerShadowSpread.get();
 	}
@@ -786,6 +1501,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderInnerShadowSpreadProperty(DoubleProperty sliderInnerShadowSpread){
 		this.sliderInnerShadowSpread=sliderInnerShadowSpread;
+	}
+	public String getLabelInnerShadowSpread(){
+		return this.labelInnerShadowSpread.get();
+	}
+	
+	public void setLabelInnerShadowSpread(String labelInnerShadowSpread){
+		this.labelInnerShadowSpread.set(labelInnerShadowSpread);
+	}
+	
+	public StringProperty labelInnerShadowSpreadProperty(){
+		return this.labelInnerShadowSpread;
+	}
+	
+	public void setLabelInnerShadowSpreadProperty(StringProperty labelInnerShadowSpread){
+		this.labelInnerShadowSpread=labelInnerShadowSpread;
 	}
 	public javafx.scene.paint.Color getColorPickerInnerShadow(){
 		return this.colorPickerInnerShadow.get();
@@ -817,6 +1547,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderDropshadowHeightProperty(DoubleProperty sliderDropshadowHeight){
 		this.sliderDropshadowHeight=sliderDropshadowHeight;
 	}
+	public String getLabelDropshadowHeight(){
+		return this.labelDropshadowHeight.get();
+	}
+	
+	public void setLabelDropshadowHeight(String labelDropshadowHeight){
+		this.labelDropshadowHeight.set(labelDropshadowHeight);
+	}
+	
+	public StringProperty labelDropshadowHeightProperty(){
+		return this.labelDropshadowHeight;
+	}
+	
+	public void setLabelDropshadowHeightProperty(StringProperty labelDropshadowHeight){
+		this.labelDropshadowHeight=labelDropshadowHeight;
+	}
 	public Double getSliderDropshadowWidth(){
 		return this.sliderDropshadowWidth.get();
 	}
@@ -831,6 +1576,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderDropshadowWidthProperty(DoubleProperty sliderDropshadowWidth){
 		this.sliderDropshadowWidth=sliderDropshadowWidth;
+	}
+	public String getLabelDropshadowWidth(){
+		return this.labelDropshadowWidth.get();
+	}
+	
+	public void setLabelDropshadowWidth(String labelDropshadowWidth){
+		this.labelDropshadowWidth.set(labelDropshadowWidth);
+	}
+	
+	public StringProperty labelDropshadowWidthProperty(){
+		return this.labelDropshadowWidth;
+	}
+	
+	public void setLabelDropshadowWidthProperty(StringProperty labelDropshadowWidth){
+		this.labelDropshadowWidth=labelDropshadowWidth;
 	}
 	public Double getSliderDropshadowRadius(){
 		return this.sliderDropshadowRadius.get();
@@ -847,6 +1607,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderDropshadowRadiusProperty(DoubleProperty sliderDropshadowRadius){
 		this.sliderDropshadowRadius=sliderDropshadowRadius;
 	}
+	public String getLabelDropshadowRadius(){
+		return this.labelDropshadowRadius.get();
+	}
+	
+	public void setLabelDropshadowRadius(String labelDropshadowRadius){
+		this.labelDropshadowRadius.set(labelDropshadowRadius);
+	}
+	
+	public StringProperty labelDropshadowRadiusProperty(){
+		return this.labelDropshadowRadius;
+	}
+	
+	public void setLabelDropshadowRadiusProperty(StringProperty labelDropshadowRadius){
+		this.labelDropshadowRadius=labelDropshadowRadius;
+	}
 	public Double getSliderDropshadowOffsetX(){
 		return this.sliderDropshadowOffsetX.get();
 	}
@@ -861,6 +1636,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderDropshadowOffsetXProperty(DoubleProperty sliderDropshadowOffsetX){
 		this.sliderDropshadowOffsetX=sliderDropshadowOffsetX;
+	}
+	public String getLabelDropshadowOffsetX(){
+		return this.labelDropshadowOffsetX.get();
+	}
+	
+	public void setLabelDropshadowOffsetX(String labelDropshadowOffsetX){
+		this.labelDropshadowOffsetX.set(labelDropshadowOffsetX);
+	}
+	
+	public StringProperty labelDropshadowOffsetXProperty(){
+		return this.labelDropshadowOffsetX;
+	}
+	
+	public void setLabelDropshadowOffsetXProperty(StringProperty labelDropshadowOffsetX){
+		this.labelDropshadowOffsetX=labelDropshadowOffsetX;
 	}
 	public Double getSliderDropshadowOffsetY(){
 		return this.sliderDropshadowOffsetY.get();
@@ -877,6 +1667,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderDropshadowOffsetYProperty(DoubleProperty sliderDropshadowOffsetY){
 		this.sliderDropshadowOffsetY=sliderDropshadowOffsetY;
 	}
+	public String getLabelDropshadowOffsetY(){
+		return this.labelDropshadowOffsetY.get();
+	}
+	
+	public void setLabelDropshadowOffsetY(String labelDropshadowOffsetY){
+		this.labelDropshadowOffsetY.set(labelDropshadowOffsetY);
+	}
+	
+	public StringProperty labelDropshadowOffsetYProperty(){
+		return this.labelDropshadowOffsetY;
+	}
+	
+	public void setLabelDropshadowOffsetYProperty(StringProperty labelDropshadowOffsetY){
+		this.labelDropshadowOffsetY=labelDropshadowOffsetY;
+	}
 	public Double getSliderDropshadowSpread(){
 		return this.sliderDropshadowSpread.get();
 	}
@@ -891,6 +1696,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderDropshadowSpreadProperty(DoubleProperty sliderDropshadowSpread){
 		this.sliderDropshadowSpread=sliderDropshadowSpread;
+	}
+	public String getLabelDropshadowSpread(){
+		return this.labelDropshadowSpread.get();
+	}
+	
+	public void setLabelDropshadowSpread(String labelDropshadowSpread){
+		this.labelDropshadowSpread.set(labelDropshadowSpread);
+	}
+	
+	public StringProperty labelDropshadowSpreadProperty(){
+		return this.labelDropshadowSpread;
+	}
+	
+	public void setLabelDropshadowSpreadProperty(StringProperty labelDropshadowSpread){
+		this.labelDropshadowSpread=labelDropshadowSpread;
 	}
 	public javafx.scene.paint.Color getColorPickerDropShadow(){
 		return this.colorPickerDropShadow.get();
@@ -922,6 +1742,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderColorInputHeightProperty(DoubleProperty sliderColorInputHeight){
 		this.sliderColorInputHeight=sliderColorInputHeight;
 	}
+	public String getLabelColorInputHeight(){
+		return this.labelColorInputHeight.get();
+	}
+	
+	public void setLabelColorInputHeight(String labelColorInputHeight){
+		this.labelColorInputHeight.set(labelColorInputHeight);
+	}
+	
+	public StringProperty labelColorInputHeightProperty(){
+		return this.labelColorInputHeight;
+	}
+	
+	public void setLabelColorInputHeightProperty(StringProperty labelColorInputHeight){
+		this.labelColorInputHeight=labelColorInputHeight;
+	}
 	public Double getSliderColorInputWidth(){
 		return this.sliderColorInputWidth.get();
 	}
@@ -936,6 +1771,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderColorInputWidthProperty(DoubleProperty sliderColorInputWidth){
 		this.sliderColorInputWidth=sliderColorInputWidth;
+	}
+	public String getLabelColorInputWidth(){
+		return this.labelColorInputWidth.get();
+	}
+	
+	public void setLabelColorInputWidth(String labelColorInputWidth){
+		this.labelColorInputWidth.set(labelColorInputWidth);
+	}
+	
+	public StringProperty labelColorInputWidthProperty(){
+		return this.labelColorInputWidth;
+	}
+	
+	public void setLabelColorInputWidthProperty(StringProperty labelColorInputWidth){
+		this.labelColorInputWidth=labelColorInputWidth;
 	}
 	public Double getSliderColorInputX(){
 		return this.sliderColorInputX.get();
@@ -952,6 +1802,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderColorInputXProperty(DoubleProperty sliderColorInputX){
 		this.sliderColorInputX=sliderColorInputX;
 	}
+	public String getLabelColorInputX(){
+		return this.labelColorInputX.get();
+	}
+	
+	public void setLabelColorInputX(String labelColorInputX){
+		this.labelColorInputX.set(labelColorInputX);
+	}
+	
+	public StringProperty labelColorInputXProperty(){
+		return this.labelColorInputX;
+	}
+	
+	public void setLabelColorInputXProperty(StringProperty labelColorInputX){
+		this.labelColorInputX=labelColorInputX;
+	}
 	public Double getSliderColorInputY(){
 		return this.sliderColorInputY.get();
 	}
@@ -966,6 +1831,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderColorInputYProperty(DoubleProperty sliderColorInputY){
 		this.sliderColorInputY=sliderColorInputY;
+	}
+	public String getLabelColorInputY(){
+		return this.labelColorInputY.get();
+	}
+	
+	public void setLabelColorInputY(String labelColorInputY){
+		this.labelColorInputY.set(labelColorInputY);
+	}
+	
+	public StringProperty labelColorInputYProperty(){
+		return this.labelColorInputY;
+	}
+	
+	public void setLabelColorInputYProperty(StringProperty labelColorInputY){
+		this.labelColorInputY=labelColorInputY;
 	}
 	public javafx.scene.paint.Color getColorPickerColorInput(){
 		return this.colorPickerColorInput.get();
