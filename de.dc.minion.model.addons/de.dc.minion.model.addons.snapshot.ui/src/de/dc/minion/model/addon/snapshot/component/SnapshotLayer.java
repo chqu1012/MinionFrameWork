@@ -25,14 +25,14 @@ public class SnapshotLayer extends BaseBindingSnapshotLayerController {
 	@Override
 	public void initialize() {
 		super.initialize();
-		toolbarEffects.getItems().forEach(node->{
+		toolbarEffects.getItems().forEach(node -> {
 			if (node instanceof Button) {
 				Button button = (Button) node;
-				String text = "gridpane"+button.getText();
-				
-				Node gridpane = stackpaneEffects.lookup("#"+text);
+				String text = "gridpane" + button.getText();
+
+				Node gridpane = stackpaneEffects.lookup("#" + text);
 				if (gridpane != null) {
-					button.setOnAction(e-> gridpane.toFront());
+					button.setOnAction(e -> gridpane.toFront());
 				}
 			}
 		});
@@ -40,6 +40,7 @@ public class SnapshotLayer extends BaseBindingSnapshotLayerController {
 
 	@Override
 	protected void onButtonAction(ActionEvent event) {
+		Object source = event.getSource();
 	}
 
 }

@@ -37,6 +37,7 @@ public abstract class BaseBindingSnapshotLayerController extends BaseSnapshotLay
 		sliderLightningsurcfaceScale.valueProperty().bindBidirectional(binding.sliderLightningsurcfaceScaleProperty());
 		comboLightningLight.setItems(binding.sortedDataComboLightningLight());
 		binding.selectedDataComboLightningLight().bind(comboLightningLight.getSelectionModel().selectedItemProperty());
+		colorPickerLightning.valueProperty().bindBidirectional(binding.colorPickerLightningProperty());
 		sliderLightningAzimuth.valueProperty().bindBidirectional(binding.sliderLightningAzimuthProperty());
 		sliderLightningEvaluation.valueProperty().bindBidirectional(binding.sliderLightningEvaluationProperty());
 		sliderMotionBlurAngle.valueProperty().bindBidirectional(binding.sliderMotionBlurAngleProperty());
@@ -59,6 +60,7 @@ public abstract class BaseBindingSnapshotLayerController extends BaseSnapshotLay
 		sliderShadowRadius.valueProperty().bindBidirectional(binding.sliderShadowRadiusProperty());
 		comboIShadowBlurType.setItems(binding.sortedDataComboIShadowBlurType());
 		binding.selectedDataComboIShadowBlurType().bind(comboIShadowBlurType.getSelectionModel().selectedItemProperty());
+		colorPickerShadow.valueProperty().bindBidirectional(binding.colorPickerShadowProperty());
 		sliderInnerShadowHeight.valueProperty().bindBidirectional(binding.sliderInnerShadowHeightProperty());
 		sliderInnerShadowWidth.valueProperty().bindBidirectional(binding.sliderInnerShadowWidthProperty());
 		sliderInnerShadowRadius.valueProperty().bindBidirectional(binding.sliderInnerShadowRadiusProperty());
@@ -67,6 +69,7 @@ public abstract class BaseBindingSnapshotLayerController extends BaseSnapshotLay
 		sliderInnerShadowSpread.valueProperty().bindBidirectional(binding.sliderInnerShadowSpreadProperty());
 		comboInnerShadowBlurType.setItems(binding.sortedDataComboInnerShadowBlurType());
 		binding.selectedDataComboInnerShadowBlurType().bind(comboInnerShadowBlurType.getSelectionModel().selectedItemProperty());
+		colorPickerInnerShadow.valueProperty().bindBidirectional(binding.colorPickerInnerShadowProperty());
 		sliderDropshadowHeight.valueProperty().bindBidirectional(binding.sliderDropshadowHeightProperty());
 		sliderDropshadowWidth.valueProperty().bindBidirectional(binding.sliderDropshadowWidthProperty());
 		sliderDropshadowRadius.valueProperty().bindBidirectional(binding.sliderDropshadowRadiusProperty());
@@ -75,9 +78,11 @@ public abstract class BaseBindingSnapshotLayerController extends BaseSnapshotLay
 		sliderDropshadowSpread.valueProperty().bindBidirectional(binding.sliderDropshadowSpreadProperty());
 		comboDropShadowBlurType.setItems(binding.sortedDataComboDropShadowBlurType());
 		binding.selectedDataComboDropShadowBlurType().bind(comboDropShadowBlurType.getSelectionModel().selectedItemProperty());
+		colorPickerDropShadow.valueProperty().bindBidirectional(binding.colorPickerDropShadowProperty());
 		sliderColorInputHeight.valueProperty().bindBidirectional(binding.sliderColorInputHeightProperty());
 		sliderColorInputWidth.valueProperty().bindBidirectional(binding.sliderColorInputWidthProperty());
 		sliderColorInputX.valueProperty().bindBidirectional(binding.sliderColorInputXProperty());
 		sliderColorInputY.valueProperty().bindBidirectional(binding.sliderColorInputYProperty());
+		colorPickerColorInput.valueProperty().bindBidirectional(binding.colorPickerColorInputProperty());
 	}
 }

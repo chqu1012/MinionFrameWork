@@ -25,6 +25,7 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	private DoubleProperty sliderLightningSpectularConstant = new SimpleDoubleProperty();
 	private DoubleProperty sliderLightningSpectularExponent = new SimpleDoubleProperty();
 	private DoubleProperty sliderLightningsurcfaceScale = new SimpleDoubleProperty();
+	private ObjectProperty<javafx.scene.paint.Color> colorPickerLightning = new SimpleObjectProperty<>();
 	private DoubleProperty sliderLightningAzimuth = new SimpleDoubleProperty();
 	private DoubleProperty sliderLightningEvaluation = new SimpleDoubleProperty();
 	private DoubleProperty sliderMotionBlurAngle = new SimpleDoubleProperty();
@@ -45,22 +46,26 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	private DoubleProperty sliderShadowHeight = new SimpleDoubleProperty();
 	private DoubleProperty sliderShadowWidth = new SimpleDoubleProperty();
 	private DoubleProperty sliderShadowRadius = new SimpleDoubleProperty();
+	private ObjectProperty<javafx.scene.paint.Color> colorPickerShadow = new SimpleObjectProperty<>();
 	private DoubleProperty sliderInnerShadowHeight = new SimpleDoubleProperty();
 	private DoubleProperty sliderInnerShadowWidth = new SimpleDoubleProperty();
 	private DoubleProperty sliderInnerShadowRadius = new SimpleDoubleProperty();
 	private DoubleProperty sliderInnerShadowOffsetX = new SimpleDoubleProperty();
 	private DoubleProperty sliderInnerShadowOffsetY = new SimpleDoubleProperty();
 	private DoubleProperty sliderInnerShadowSpread = new SimpleDoubleProperty();
+	private ObjectProperty<javafx.scene.paint.Color> colorPickerInnerShadow = new SimpleObjectProperty<>();
 	private DoubleProperty sliderDropshadowHeight = new SimpleDoubleProperty();
 	private DoubleProperty sliderDropshadowWidth = new SimpleDoubleProperty();
 	private DoubleProperty sliderDropshadowRadius = new SimpleDoubleProperty();
 	private DoubleProperty sliderDropshadowOffsetX = new SimpleDoubleProperty();
 	private DoubleProperty sliderDropshadowOffsetY = new SimpleDoubleProperty();
 	private DoubleProperty sliderDropshadowSpread = new SimpleDoubleProperty();
+	private ObjectProperty<javafx.scene.paint.Color> colorPickerDropShadow = new SimpleObjectProperty<>();
 	private DoubleProperty sliderColorInputHeight = new SimpleDoubleProperty();
 	private DoubleProperty sliderColorInputWidth = new SimpleDoubleProperty();
 	private DoubleProperty sliderColorInputX = new SimpleDoubleProperty();
 	private DoubleProperty sliderColorInputY = new SimpleDoubleProperty();
+	private ObjectProperty<javafx.scene.paint.Color> colorPickerColorInput = new SimpleObjectProperty<>();
 	
 	public String getTextSearch(){
 		return this.textSearch.get();
@@ -362,6 +367,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderLightningsurcfaceScaleProperty(DoubleProperty sliderLightningsurcfaceScale){
 		this.sliderLightningsurcfaceScale=sliderLightningsurcfaceScale;
 	}
+	public javafx.scene.paint.Color getColorPickerLightning(){
+		return this.colorPickerLightning.get();
+	}
+	
+	public void setColorPickerLightning(javafx.scene.paint.Color colorPickerLightning){
+		this.colorPickerLightning.set(colorPickerLightning);
+	}
+	
+	public ObjectProperty<javafx.scene.paint.Color> colorPickerLightningProperty(){
+		return this.colorPickerLightning;
+	}
+	
+	public void setColorPickerLightningProperty(ObjectProperty<javafx.scene.paint.Color> colorPickerLightning){
+		this.colorPickerLightning=colorPickerLightning;
+	}
 	public Double getSliderLightningAzimuth(){
 		return this.sliderLightningAzimuth.get();
 	}
@@ -662,6 +682,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderShadowRadiusProperty(DoubleProperty sliderShadowRadius){
 		this.sliderShadowRadius=sliderShadowRadius;
 	}
+	public javafx.scene.paint.Color getColorPickerShadow(){
+		return this.colorPickerShadow.get();
+	}
+	
+	public void setColorPickerShadow(javafx.scene.paint.Color colorPickerShadow){
+		this.colorPickerShadow.set(colorPickerShadow);
+	}
+	
+	public ObjectProperty<javafx.scene.paint.Color> colorPickerShadowProperty(){
+		return this.colorPickerShadow;
+	}
+	
+	public void setColorPickerShadowProperty(ObjectProperty<javafx.scene.paint.Color> colorPickerShadow){
+		this.colorPickerShadow=colorPickerShadow;
+	}
 	public Double getSliderInnerShadowHeight(){
 		return this.sliderInnerShadowHeight.get();
 	}
@@ -751,6 +786,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderInnerShadowSpreadProperty(DoubleProperty sliderInnerShadowSpread){
 		this.sliderInnerShadowSpread=sliderInnerShadowSpread;
+	}
+	public javafx.scene.paint.Color getColorPickerInnerShadow(){
+		return this.colorPickerInnerShadow.get();
+	}
+	
+	public void setColorPickerInnerShadow(javafx.scene.paint.Color colorPickerInnerShadow){
+		this.colorPickerInnerShadow.set(colorPickerInnerShadow);
+	}
+	
+	public ObjectProperty<javafx.scene.paint.Color> colorPickerInnerShadowProperty(){
+		return this.colorPickerInnerShadow;
+	}
+	
+	public void setColorPickerInnerShadowProperty(ObjectProperty<javafx.scene.paint.Color> colorPickerInnerShadow){
+		this.colorPickerInnerShadow=colorPickerInnerShadow;
 	}
 	public Double getSliderDropshadowHeight(){
 		return this.sliderDropshadowHeight.get();
@@ -842,6 +892,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	public void setSliderDropshadowSpreadProperty(DoubleProperty sliderDropshadowSpread){
 		this.sliderDropshadowSpread=sliderDropshadowSpread;
 	}
+	public javafx.scene.paint.Color getColorPickerDropShadow(){
+		return this.colorPickerDropShadow.get();
+	}
+	
+	public void setColorPickerDropShadow(javafx.scene.paint.Color colorPickerDropShadow){
+		this.colorPickerDropShadow.set(colorPickerDropShadow);
+	}
+	
+	public ObjectProperty<javafx.scene.paint.Color> colorPickerDropShadowProperty(){
+		return this.colorPickerDropShadow;
+	}
+	
+	public void setColorPickerDropShadowProperty(ObjectProperty<javafx.scene.paint.Color> colorPickerDropShadow){
+		this.colorPickerDropShadow=colorPickerDropShadow;
+	}
 	public Double getSliderColorInputHeight(){
 		return this.sliderColorInputHeight.get();
 	}
@@ -901,6 +966,21 @@ public class BaseTextSnapshotLayerBinding  extends BaseSelectionSnapshotLayerBin
 	
 	public void setSliderColorInputYProperty(DoubleProperty sliderColorInputY){
 		this.sliderColorInputY=sliderColorInputY;
+	}
+	public javafx.scene.paint.Color getColorPickerColorInput(){
+		return this.colorPickerColorInput.get();
+	}
+	
+	public void setColorPickerColorInput(javafx.scene.paint.Color colorPickerColorInput){
+		this.colorPickerColorInput.set(colorPickerColorInput);
+	}
+	
+	public ObjectProperty<javafx.scene.paint.Color> colorPickerColorInputProperty(){
+		return this.colorPickerColorInput;
+	}
+	
+	public void setColorPickerColorInputProperty(ObjectProperty<javafx.scene.paint.Color> colorPickerColorInput){
+		this.colorPickerColorInput=colorPickerColorInput;
 	}
 	
 	@Override
