@@ -2,15 +2,19 @@ package de.dc.minion.model.addon.snapshot.component;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 import de.dc.minion.model.addon.snapshot.component.controller.BaseBindingSnapshotLayerController;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.effect.BlendMode;
@@ -57,7 +61,6 @@ public class SnapshotLayer extends BaseBindingSnapshotLayerController {
 						gridpaneEffects.add(new Label(effect.getSimpleName()), 0, 0, 2, 1);
 						int rowIndex = 1;
 						for (Field field : effect.getDeclaredFields()) {
-							System.out.println(field.getName());
 							if (field.getType().isAssignableFrom(DoubleProperty.class)) {
 								Slider slider = new Slider();
 								slider.setAccessibleHelp(field.getName());
@@ -68,7 +71,21 @@ public class SnapshotLayer extends BaseBindingSnapshotLayerController {
 								gridpaneEffects.add(labelValue, 2, rowIndex);
 								rowIndex++;
 							} else if (field.getType().isAssignableFrom(ObjectProperty.class)) {
-								System.out.println("ObjectProperty : " + field.getName() + " : " + field.getType());
+								Type genericType = field.getGenericType();
+								if (genericType instanceof ParameterizedType) {
+									ParameterizedType parameterType = (ParameterizedType) genericType;
+									Type[] typeArguments = parameterType.getActualTypeArguments();
+									for (Type type : typeArguments) {
+										ComboBox<Object> comboBox = new ComboBox<>();
+										Class<?> enumClass = Class.forName(type.getTypeName());
+										if (enumClass.isEnum()) {
+											comboBox.setItems(FXCollections.observableArrayList(enumClass.getEnumConstants()));
+										}
+										gridpaneEffects.add(new Label(field.getName()), 0, rowIndex);
+										gridpaneEffects.add(comboBox, 1, rowIndex);
+										rowIndex++;
+									}
+								}
 							}
 						}
 						Button buttonAccept = new Button("Accept");
