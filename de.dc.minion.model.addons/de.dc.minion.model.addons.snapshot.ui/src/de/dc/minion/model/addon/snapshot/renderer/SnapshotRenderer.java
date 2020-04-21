@@ -1,11 +1,13 @@
 package de.dc.minion.model.addon.snapshot.renderer;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 
 import de.dc.minion.model.addon.snapshot.ColorGrading;
+import de.dc.minion.model.addon.snapshot.FXEffect;
 import de.dc.minion.model.addon.snapshot.Layer;
-import de.dc.minion.model.addon.snapshot.ShadowEffect;
 import de.dc.minion.model.addon.snapshot.Snapshot;
 import de.dc.minion.model.addon.snapshot.SnapshotFactory;
 import de.dc.minion.model.addon.snapshot.util.SnapshotSwitch;
@@ -15,8 +17,7 @@ import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.scene.Node;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.ColorInput;
-import javafx.scene.effect.Shadow;
-import javafx.scene.effect.ShadowBuilder;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
@@ -27,6 +28,7 @@ import javafx.scene.paint.Color;
 
 public class SnapshotRenderer extends SnapshotSwitch<Node> {
 	
+	private SnapshotEffects effects = new SnapshotEffects();
 	private StackPane parent = new StackPane();
 	private ImageView imageView;
 	private Pane currentLayer;
@@ -57,6 +59,40 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 		if (colorGrading!=null) {
 			doSwitch(colorGrading);
 		}
+		
+//		object.getEffects().stream().map(e->effects.doSwitch(e)). reduce((e1, e2)->{
+//			Method method = e1.getClass().getMethod("setInput", null);
+//			if (method != null) {
+//				method.setAccessible(true);
+//				method.invoke(e1, e2);
+//			}
+//		});
+		Effect tempEffect = null;
+		for (int i = 0; i < object.getEffects().size(); i++) {
+			Effect effect = effects.doSwitch(object.getEffects().get(i));
+			if (i!=0 && tempEffect!=null) {
+				try {
+					Method method = tempEffect.getClass().getMethod("setInput", null);
+					if (method != null) {
+						method.setAccessible(true);
+						method.invoke(tempEffect, effect);
+					}
+				} catch (NoSuchMethodException | SecurityException e) {
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			tempEffect = effect;
+		}
+		
+		currentLayer.setEffect(tempEffect);
 		currentLayer.setVisible(object.isVisible());
 		return currentLayer;
 	}
@@ -75,18 +111,6 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 			currentLayer.setStyle(String.format(STYLE, r,g,b,opacity));
 		}
 		return super.caseColorGrading(object);
-	}
-	
-	@Override
-	public Node caseShadowEffect(ShadowEffect object) {
-		Shadow shadow = new Shadow();
-		if (object.getColor()!=null) {
-			shadow.setColor(Color.valueOf(object.getColor()));
-		}
-		shadow.setHeight(object.getHeight());
-		shadow.setWidth(object.getWidth());
-		shadow.setRadius(object.getRadius());
-		return super.caseShadowEffect(object);
 	}
 	
 	public void readColorGradingFromMouseCoordinateOnClick(MouseEvent e) {

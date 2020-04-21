@@ -24,11 +24,16 @@ import de.dc.minion.model.addon.snapshot.SnapshotFactory;
 import de.dc.minion.model.addon.snapshot.SnapshotPackage;
 import de.dc.minion.model.addon.snapshot.component.controller.BaseBindingSnapshotLayerController;
 import de.dc.minion.model.common.IEmfManager;
+import de.dc.minion.model.common.event.EventContext;
+import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.event.ISelectionService;
 import de.dc.minion.model.common.file.IEmfFileManager;
+import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -149,6 +154,7 @@ public class SnapshotLayerView extends BaseBindingSnapshotLayerController {
 									AddCommand.create(editingDomain, layer,
 											SnapshotPackage.eINSTANCE.getLayer_Effects(), EcoreUtil.copy(obj))
 											.execute();
+									MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/update/snapshot/diagram", ""));
 								}
 							}
 						});
