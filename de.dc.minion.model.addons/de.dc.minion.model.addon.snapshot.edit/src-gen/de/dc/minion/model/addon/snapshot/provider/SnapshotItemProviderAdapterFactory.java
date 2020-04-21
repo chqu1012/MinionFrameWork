@@ -121,6 +121,351 @@ public class SnapshotItemProviderAdapterFactory extends SnapshotAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.BlendEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BlendEffectItemProvider blendEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.BlendEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBlendEffectAdapter() {
+		if (blendEffectItemProvider == null) {
+			blendEffectItemProvider = new BlendEffectItemProvider(this);
+		}
+
+		return blendEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.BloomEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BloomEffectItemProvider bloomEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.BloomEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBloomEffectAdapter() {
+		if (bloomEffectItemProvider == null) {
+			bloomEffectItemProvider = new BloomEffectItemProvider(this);
+		}
+
+		return bloomEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.BoxBlurEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BoxBlurEffectItemProvider boxBlurEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.BoxBlurEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBoxBlurEffectAdapter() {
+		if (boxBlurEffectItemProvider == null) {
+			boxBlurEffectItemProvider = new BoxBlurEffectItemProvider(this);
+		}
+
+		return boxBlurEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.ColorAdjustEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ColorAdjustEffectItemProvider colorAdjustEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.ColorAdjustEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createColorAdjustEffectAdapter() {
+		if (colorAdjustEffectItemProvider == null) {
+			colorAdjustEffectItemProvider = new ColorAdjustEffectItemProvider(this);
+		}
+
+		return colorAdjustEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.ColorInputEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ColorInputEffectItemProvider colorInputEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.ColorInputEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createColorInputEffectAdapter() {
+		if (colorInputEffectItemProvider == null) {
+			colorInputEffectItemProvider = new ColorInputEffectItemProvider(this);
+		}
+
+		return colorInputEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.DisplacementMapEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DisplacementMapEffectItemProvider displacementMapEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.DisplacementMapEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDisplacementMapEffectAdapter() {
+		if (displacementMapEffectItemProvider == null) {
+			displacementMapEffectItemProvider = new DisplacementMapEffectItemProvider(this);
+		}
+
+		return displacementMapEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.DropShadowEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DropShadowEffectItemProvider dropShadowEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.DropShadowEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDropShadowEffectAdapter() {
+		if (dropShadowEffectItemProvider == null) {
+			dropShadowEffectItemProvider = new DropShadowEffectItemProvider(this);
+		}
+
+		return dropShadowEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.GaussianBlurEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GaussianBlurEffectItemProvider gaussianBlurEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.GaussianBlurEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGaussianBlurEffectAdapter() {
+		if (gaussianBlurEffectItemProvider == null) {
+			gaussianBlurEffectItemProvider = new GaussianBlurEffectItemProvider(this);
+		}
+
+		return gaussianBlurEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.GlowEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GlowEffectItemProvider glowEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.GlowEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGlowEffectAdapter() {
+		if (glowEffectItemProvider == null) {
+			glowEffectItemProvider = new GlowEffectItemProvider(this);
+		}
+
+		return glowEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.InnerShadowEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InnerShadowEffectItemProvider innerShadowEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.InnerShadowEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInnerShadowEffectAdapter() {
+		if (innerShadowEffectItemProvider == null) {
+			innerShadowEffectItemProvider = new InnerShadowEffectItemProvider(this);
+		}
+
+		return innerShadowEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.LightingEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LightingEffectItemProvider lightingEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.LightingEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLightingEffectAdapter() {
+		if (lightingEffectItemProvider == null) {
+			lightingEffectItemProvider = new LightingEffectItemProvider(this);
+		}
+
+		return lightingEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.MotionBlurEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MotionBlurEffectItemProvider motionBlurEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.MotionBlurEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMotionBlurEffectAdapter() {
+		if (motionBlurEffectItemProvider == null) {
+			motionBlurEffectItemProvider = new MotionBlurEffectItemProvider(this);
+		}
+
+		return motionBlurEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.PerspectiveTransformEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PerspectiveTransformEffectItemProvider perspectiveTransformEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.PerspectiveTransformEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPerspectiveTransformEffectAdapter() {
+		if (perspectiveTransformEffectItemProvider == null) {
+			perspectiveTransformEffectItemProvider = new PerspectiveTransformEffectItemProvider(this);
+		}
+
+		return perspectiveTransformEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.ReflectionEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReflectionEffectItemProvider reflectionEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.ReflectionEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReflectionEffectAdapter() {
+		if (reflectionEffectItemProvider == null) {
+			reflectionEffectItemProvider = new ReflectionEffectItemProvider(this);
+		}
+
+		return reflectionEffectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.SepiaToneEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SepiaToneEffectItemProvider sepiaToneEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dc.minion.model.addon.snapshot.SepiaToneEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSepiaToneEffectAdapter() {
+		if (sepiaToneEffectItemProvider == null) {
+			sepiaToneEffectItemProvider = new SepiaToneEffectItemProvider(this);
+		}
+
+		return sepiaToneEffectItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dc.minion.model.addon.snapshot.ShadowEffect} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -275,6 +620,36 @@ public class SnapshotItemProviderAdapterFactory extends SnapshotAdapterFactory
 			snapshotItemProvider.dispose();
 		if (layerItemProvider != null)
 			layerItemProvider.dispose();
+		if (blendEffectItemProvider != null)
+			blendEffectItemProvider.dispose();
+		if (bloomEffectItemProvider != null)
+			bloomEffectItemProvider.dispose();
+		if (boxBlurEffectItemProvider != null)
+			boxBlurEffectItemProvider.dispose();
+		if (colorAdjustEffectItemProvider != null)
+			colorAdjustEffectItemProvider.dispose();
+		if (colorInputEffectItemProvider != null)
+			colorInputEffectItemProvider.dispose();
+		if (displacementMapEffectItemProvider != null)
+			displacementMapEffectItemProvider.dispose();
+		if (dropShadowEffectItemProvider != null)
+			dropShadowEffectItemProvider.dispose();
+		if (gaussianBlurEffectItemProvider != null)
+			gaussianBlurEffectItemProvider.dispose();
+		if (glowEffectItemProvider != null)
+			glowEffectItemProvider.dispose();
+		if (innerShadowEffectItemProvider != null)
+			innerShadowEffectItemProvider.dispose();
+		if (lightingEffectItemProvider != null)
+			lightingEffectItemProvider.dispose();
+		if (motionBlurEffectItemProvider != null)
+			motionBlurEffectItemProvider.dispose();
+		if (perspectiveTransformEffectItemProvider != null)
+			perspectiveTransformEffectItemProvider.dispose();
+		if (reflectionEffectItemProvider != null)
+			reflectionEffectItemProvider.dispose();
+		if (sepiaToneEffectItemProvider != null)
+			sepiaToneEffectItemProvider.dispose();
 		if (shadowEffectItemProvider != null)
 			shadowEffectItemProvider.dispose();
 		if (colorGradingItemProvider != null)

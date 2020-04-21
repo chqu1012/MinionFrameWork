@@ -1,17 +1,12 @@
 @Ecore(nsURI="http://www.frateranatis.org/minon/addon/snapshot")
-@GenModel(
-	modelPluginID="de.dc.minion.model.addon.snapshot", 
+@GenModel(modelPluginID="de.dc.minion.model.addon.snapshot",
 	modelDirectory="/de.dc.minion.model.addon.snapshot/src-gen",
-	editorPluginID="de.dc.minion.model.addon.snapshot.editor",
-	editPluginID="de.dc.minion.model.addon.snapshot.edit", 
+	editorPluginID="de.dc.minion.model.addon.snapshot.editor", editPluginID="de.dc.minion.model.addon.snapshot.edit",
 	editDirectory="/de.dc.minion.model.addon.snapshot.edit/src-gen",
-	editorDirectory="/de.dc.minion.model.addon.snapshot.editor/src-gen", 
-	fileExtensions="snapshot", modelName="Snapshot", prefix="Snapshot",
-	
-	multipleEditorPages="false", creationIcons="false", 
-	richClientPlatform="true", codeFormatting="true",
-	importerID="org.eclipse.emf.importer.ecore", runtimePlatform="RCP", tableProviders="true",
-	generateExampleClass="false", revertAction="true", findAction="true",
+	editorDirectory="/de.dc.minion.model.addon.snapshot.editor/src-gen", fileExtensions="snapshot",
+	modelName="Snapshot", prefix="Snapshot", multipleEditorPages="false", creationIcons="false",
+	richClientPlatform="true", codeFormatting="true", importerID="org.eclipse.emf.importer.ecore",
+	runtimePlatform="RCP", tableProviders="true", generateExampleClass="false", revertAction="true", findAction="true",
 	expandAllAction="true", decoration="Live", creationSubmenus="true", collapseAllAction="true",
 	autoResizeProperties="true", autoExpandProperties="1")
 package de.dc.minion.model.addon.snapshot
@@ -31,13 +26,148 @@ class Layer{
 	contains ColorGrading colorGrading
 }
 
-abstract class FXEffect{}
+abstract class FXEffect{
+}
+
+enum BlendMode{
+	ADD
+	BLUE
+	COLOR_BURN
+	COLOR_DODGE
+	DARKEN
+	DIFFERENCE
+	EXCLUSION
+	GREEN
+	HARD_LIGHT
+	LIGHTEN
+	MULTIPLY
+	OVERLAY
+	RED
+	SCREEN
+	SOFT_LIGHT
+	SRC_ATOP
+	SRC_OVER
+}
+
+class BlendEffect extends FXEffect{
+	BlendMode mode
+	double opacity
+}
+
+class BloomEffect extends FXEffect{
+	double threshold
+}
+
+class BoxBlurEffect extends FXEffect{
+	double height
+	double width
+	int iterations
+}
+
+class ColorAdjustEffect extends FXEffect{
+	double brightness
+	double contrast
+	double hue
+	double saturation
+}
+
+class ColorInputEffect extends FXEffect{
+	double height
+	String color
+	double width
+	double x
+	double y
+}
+
+class DisplacementMapEffect extends FXEffect{
+	double offsetX
+	double offsetY
+	double scaleX
+	double scaleY
+	boolean wrap
+}
+
+enum BlurType{
+	GAUSSIAN
+	ONE_PASS_BOX
+	THREE_PASS_BOX
+	TWO_PASS_BOX
+}
+
+class DropShadowEffect extends FXEffect{
+	BlurType blurType
+	boolean changeIsLocal
+	String color
+	double height
+	double offsetX
+	double offsetY
+	double radius
+	double spread
+	double width
+}
+
+class GaussianBlurEffect extends FXEffect{
+	double radius
+}
+
+class GlowEffect extends FXEffect{
+	double level
+}
+
+class InnerShadowEffect extends FXEffect{
+	BlurType blurType
+	boolean changeIsLocal
+	String color
+	double choke
+	double height
+	double offsetX
+	double offsetY
+	double radius
+	double spread
+	double width
+}
+
+class LightingEffect extends FXEffect{
+	double diffuseConstant
+	double specularConstant
+	double specularExponent
+	double surfaceScale
+}
+
+class MotionBlurEffect extends FXEffect{
+	double angle
+	double radius
+}
+
+class PerspectiveTransformEffect extends FXEffect{
+	double llx
+	double lly
+	double lrx
+	double lry
+	double ulx
+	double uly
+	double urx
+	double ury
+}
+
+class ReflectionEffect extends FXEffect{
+	double bottomOpacity
+	double fraction
+	double topOffset
+	double topOpacity
+}
+
+class SepiaToneEffect extends FXEffect{
+	double level	
+}
 
 class ShadowEffect extends FXEffect{
-	double width
+	BlurType blurType
+	boolean changeIsLocal
+	String color
 	double height
 	double radius
-	String color
+	double width
 }
 
 class ColorGrading{

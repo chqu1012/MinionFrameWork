@@ -2,6 +2,7 @@
  */
 package de.dc.minion.model.addon.snapshot.provider;
 
+import de.dc.minion.model.addon.snapshot.BlurType;
 import de.dc.minion.model.addon.snapshot.ShadowEffect;
 import de.dc.minion.model.addon.snapshot.SnapshotPackage;
 
@@ -44,12 +45,46 @@ public class ShadowEffectItemProvider extends FXEffectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addWidthPropertyDescriptor(object);
+			addBlurTypePropertyDescriptor(object);
+			addChangeIsLocalPropertyDescriptor(object);
+			addColorPropertyDescriptor(object);
 			addHeightPropertyDescriptor(object);
 			addRadiusPropertyDescriptor(object);
-			addColorPropertyDescriptor(object);
+			addWidthPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Blur Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBlurTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_ShadowEffect_blurType_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_ShadowEffect_blurType_feature",
+								"_UI_ShadowEffect_type"),
+						SnapshotPackage.Literals.SHADOW_EFFECT__BLUR_TYPE, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Change Is Local feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addChangeIsLocalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_ShadowEffect_changeIsLocal_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_ShadowEffect_changeIsLocal_feature",
+								"_UI_ShadowEffect_type"),
+						SnapshotPackage.Literals.SHADOW_EFFECT__CHANGE_IS_LOCAL, true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -145,8 +180,10 @@ public class ShadowEffectItemProvider extends FXEffectItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		ShadowEffect shadowEffect = (ShadowEffect) object;
-		return getString("_UI_ShadowEffect_type") + " " + shadowEffect.getWidth();
+		BlurType labelValue = ((ShadowEffect) object).getBlurType();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ? getString("_UI_ShadowEffect_type")
+				: getString("_UI_ShadowEffect_type") + " " + label;
 	}
 
 	/**
@@ -161,10 +198,12 @@ public class ShadowEffectItemProvider extends FXEffectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ShadowEffect.class)) {
-		case SnapshotPackage.SHADOW_EFFECT__WIDTH:
+		case SnapshotPackage.SHADOW_EFFECT__BLUR_TYPE:
+		case SnapshotPackage.SHADOW_EFFECT__CHANGE_IS_LOCAL:
+		case SnapshotPackage.SHADOW_EFFECT__COLOR:
 		case SnapshotPackage.SHADOW_EFFECT__HEIGHT:
 		case SnapshotPackage.SHADOW_EFFECT__RADIUS:
-		case SnapshotPackage.SHADOW_EFFECT__COLOR:
+		case SnapshotPackage.SHADOW_EFFECT__WIDTH:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

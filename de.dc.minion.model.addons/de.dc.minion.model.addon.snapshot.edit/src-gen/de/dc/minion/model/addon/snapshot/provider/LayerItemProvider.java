@@ -225,6 +225,51 @@ public class LayerItemProvider extends ItemProviderAdapter
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createBlendEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createBloomEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createBoxBlurEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createColorAdjustEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createColorInputEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createDisplacementMapEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createDropShadowEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createGaussianBlurEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createGlowEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createInnerShadowEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createLightingEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createMotionBlurEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createPerspectiveTransformEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createReflectionEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
+				SnapshotFactory.eINSTANCE.createSepiaToneEffect()));
+
+		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__EFFECTS,
 				SnapshotFactory.eINSTANCE.createShadowEffect()));
 
 		newChildDescriptors.add(createChildParameter(SnapshotPackage.Literals.LAYER__COLOR_GRADING,
