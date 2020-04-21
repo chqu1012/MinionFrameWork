@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root type="VBox" fx:id="root" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="root" type="VBox" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1">
    <children>
     <TitledPane collapsible="false" minHeight="400.0" text="Layer">
          <content>
@@ -45,28 +45,28 @@
                <content>
                   <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
-                        <ToolBar prefHeight="40.0" prefWidth="200.0" fx:id="toolbarEffects">
+                        <ToolBar fx:id="toolbarEffects" prefHeight="40.0" prefWidth="200.0">
                           <items>
-                              <Button mnemonicParsing="false" text="Blend" fx:id="buttonBlend"/>
-                              <Button mnemonicParsing="false" text="Dropshadow" fx:id="buttonDropshadow"/>
-                              <Button mnemonicParsing="false" text="Bloom" fx:id="buttonBloom"/>
-                              <Button mnemonicParsing="false" text="BoxBlur" fx:id="buttonBoxBlur"/>
-                              <Button mnemonicParsing="false" text="ColorAdjust"  fx:id="buttonColorAdjust"/>
-                              <Button mnemonicParsing="false" text="ColorInput"  fx:id="buttonColorInput"/>
-                              <Button mnemonicParsing="false" text="Displacement"  fx:id="buttonDisplacement"/>
-                              <Button mnemonicParsing="false" text="GaussianBlur"  fx:id="buttonGaussianBlur"/>
-                              <Button mnemonicParsing="false" text="Glow"  fx:id="buttonGlow"/>
-                              <Button mnemonicParsing="false" text="Lightning"  fx:id="buttonLightning"/>
-                              <Button mnemonicParsing="false" text="MotionBlur"  fx:id="buttonMotionBlur"/>
-                              <Button mnemonicParsing="false" text="PerspectiveTransform"  fx:id="buttonPerspectiveTransform"/>
-                              <Button mnemonicParsing="false" text="Reflection"  fx:id="buttonReflection"/>
-                              <Button mnemonicParsing="false" text="SepiaTone"  fx:id="buttonSepiaTone"/>
-                              <Button mnemonicParsing="false" text="Shadow"  fx:id="buttonShadow"/>
+                              <Button fx:id="buttonBlend" mnemonicParsing="false" text="Blend" />
+                              <Button fx:id="buttonDropshadow" mnemonicParsing="false" text="DropShadow" />
+                              <Button fx:id="buttonBloom" mnemonicParsing="false" text="Bloom" />
+                              <Button fx:id="buttonBoxBlur" mnemonicParsing="false" text="BoxBlur" />
+                              <Button fx:id="buttonColorAdjust" mnemonicParsing="false" text="ColorAdjust" />
+                              <Button fx:id="buttonColorInput" mnemonicParsing="false" text="ColorInput" />
+                              <Button fx:id="buttonDisplacement" mnemonicParsing="false" text="DisplacementMap" />
+                              <Button fx:id="buttonGaussianBlur" mnemonicParsing="false" text="GaussianBlur" />
+                              <Button fx:id="buttonGlow" mnemonicParsing="false" text="Glow" />
+                              <Button fx:id="buttonLighting" mnemonicParsing="false" text="Lighting" />
+                              <Button fx:id="buttonMotionBlur" mnemonicParsing="false" text="MotionBlur" />
+                              <Button fx:id="buttonPerspectiveTransform" mnemonicParsing="false" text="PerspectiveTransform" />
+                              <Button fx:id="buttonReflection" mnemonicParsing="false" text="Reflection" />
+                              <Button fx:id="buttonSepiaTone" mnemonicParsing="false" text="SepiaTone" />
+                              <Button fx:id="buttonShadow" mnemonicParsing="false" text="Shadow" />
                           </items>
                         </ToolBar>
                         <StackPane fx:id="stackpaneEffects" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                            <children>
-                              <GridPane fx:id="gridpaneBlend" id="gridpaneBlend" hgap="3.0" prefHeight="330.0" prefWidth="503.0" style="-fx-background-color: -fx-base;" vgap="3.0">
+                              <GridPane id="gridpaneBlend" fx:id="gridpaneBlend" hgap="3.0" prefHeight="330.0" prefWidth="503.0" style="-fx-background-color: -fx-base;" vgap="3.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="100.0" prefWidth="106.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="497.0" minWidth="10.0" prefWidth="324.0" />
@@ -276,7 +276,7 @@
                                     <Label fx:id="labelGlowLevel" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
-                              <GridPane fx:id="gridpaneLightning" hgap="3.0" prefHeight="330.0" prefWidth="503.0" style="-fx-background-color: -fx-base;" vgap="3.0">
+                              <GridPane fx:id="gridpaneLighting" hgap="3.0" prefHeight="330.0" prefWidth="503.0" style="-fx-background-color: -fx-base;" vgap="3.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="100.0" prefWidth="112.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="497.0" minWidth="10.0" prefWidth="309.0" />
@@ -298,7 +298,7 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
                                  <children>
-                                    <Label text="Lightning" GridPane.columnSpan="2">
+                                    <Label text="Lighting" GridPane.columnSpan="2">
                                        <font>
                                           <Font name="System Bold" size="13.0" />
                                        </font>
@@ -651,6 +651,13 @@
                                     <Label text="color" GridPane.rowIndex="6" />
                                     <ColorPicker fx:id="colorPickerColorInput" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                  </children>
+                              </GridPane>
+                              <GridPane fx:id="gridpaneEffects" style="-fx-background-color: -fx-base;">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="100.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="430.0" minWidth="10.0" prefWidth="290.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="430.0" minWidth="10.0" prefWidth="188.0" />
+                                </columnConstraints>
                               </GridPane>
                            </children>
                         </StackPane>

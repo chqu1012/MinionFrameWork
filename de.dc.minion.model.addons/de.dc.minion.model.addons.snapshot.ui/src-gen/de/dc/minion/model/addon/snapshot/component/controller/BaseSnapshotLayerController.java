@@ -8,6 +8,7 @@ import javafx.scene.layout.*;
 import javafx.event.ActionEvent;
 public abstract class BaseSnapshotLayerController extends VBox{
 	
+	@FXML protected GridPane gridpaneEffects;
 	@FXML protected VBox root;
 	@FXML protected TextField textSearch;
 	@FXML protected Button buttonNew;
@@ -25,7 +26,7 @@ public abstract class BaseSnapshotLayerController extends VBox{
 	@FXML protected Button buttonDisplacement;
 	@FXML protected Button buttonGaussianBlur;
 	@FXML protected Button buttonGlow;
-	@FXML protected Button buttonLightning;
+	@FXML protected Button buttonLighting;
 	@FXML protected Button buttonMotionBlur;
 	@FXML protected Button buttonPerspectiveTransform;
 	@FXML protected Button buttonReflection;
@@ -70,7 +71,7 @@ public abstract class BaseSnapshotLayerController extends VBox{
 	@FXML protected GridPane gridpaneGlow;
 	@FXML protected Slider sliderGlowLevel;
 	@FXML protected Label labelGlowLevel;
-	@FXML protected GridPane gridpaneLightning;
+	@FXML protected GridPane gridpaneLighting;
 	@FXML protected Slider sliderLightningDiffuseConstant;
 	@FXML protected Label labelLightningDiffuseConstant;
 	@FXML protected Slider sliderLightningSpectularConstant;
