@@ -2,10 +2,10 @@
  */
 package de.dc.javafx.xcore.workbench.chart.impl;
 
-import org.eclipse.emf.ecore.EClass;
-
 import de.dc.javafx.xcore.workbench.chart.ChartPackage;
 import de.dc.javafx.xcore.workbench.chart.PerlinNoiseChart3d;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

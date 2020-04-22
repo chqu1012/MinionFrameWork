@@ -18,6 +18,8 @@ import de.dc.minion.model.common.file.MinionFile;
 import de.dc.minion.model.desk.control.ILandscapeFX;
 import de.dc.minion.model.desk.control.feature.ToadyListCell;
 import de.dc.minion.model.desk.module.MinionPlatform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TabPane;
@@ -71,6 +73,17 @@ public class EmfTouchManager extends BaseBindingEmfTouchManagerController implem
 		super.initialize();
 		
 		listViewTouch.setCellFactory(p -> new ToadyListCell());
+		
+		textSearchTouch.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue!=null) {
+					binding.filteredDataListViewTouch().setPredicate(p->{
+						return p.getToadies().get(0).getName().toLowerCase().contains(newValue.toLowerCase());
+					});
+				}
+			}
+		});
 	}
 
 	@Override

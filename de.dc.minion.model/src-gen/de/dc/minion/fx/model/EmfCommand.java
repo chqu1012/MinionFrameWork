@@ -5,7 +5,9 @@ package de.dc.minion.fx.model;
 import java.time.LocalDateTime;
 
 import org.eclipse.emf.common.command.Command;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
