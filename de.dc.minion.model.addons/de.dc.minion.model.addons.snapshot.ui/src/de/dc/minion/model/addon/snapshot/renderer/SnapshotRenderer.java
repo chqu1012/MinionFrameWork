@@ -60,13 +60,6 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 			doSwitch(colorGrading);
 		}
 		
-//		object.getEffects().stream().map(e->effects.doSwitch(e)). reduce((e1, e2)->{
-//			Method method = e1.getClass().getMethod("setInput", null);
-//			if (method != null) {
-//				method.setAccessible(true);
-//				method.invoke(e1, e2);
-//			}
-//		});
 		Effect tempEffect = null;
 		for (int i = 0; i < object.getEffects().size(); i++) {
 			Effect effect = effects.doSwitch(object.getEffects().get(i));
@@ -77,16 +70,7 @@ public class SnapshotRenderer extends SnapshotSwitch<Node> {
 						method.setAccessible(true);
 						method.invoke(tempEffect, effect);
 					}
-				} catch (NoSuchMethodException | SecurityException e) {
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				}
 			}
 			tempEffect = effect;
