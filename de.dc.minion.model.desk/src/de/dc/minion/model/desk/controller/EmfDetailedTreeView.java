@@ -154,7 +154,9 @@ public abstract class EmfDetailedTreeView<T> extends SplitPane
 		}
 	}
 
-	
+	@Override
+	public void setSelection(Object selectedObject) {
+	}
 	
 	private void initChildPropertiesToolbar(EObject eObject) {
 		IEmfManager<T> manager = treeView.getEmfManager();

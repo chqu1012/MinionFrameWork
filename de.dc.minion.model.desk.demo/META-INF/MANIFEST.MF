@@ -31,4 +31,5 @@ Require-Bundle: de.dc.minion.model.desk;bundle-version="1.0.0",
  de.dc.minion.model.addon.pdfview;bundle-version="1.0.0",
  de.dc.minion.model.addon.snapshot;bundle-version="1.0.0",
  de.dc.minion.model.addon.snapshot.edit;bundle-version="1.0.0",
- de.dc.minion.model.addons.snapshot.ui;bundle-version="1.0.0"
+ de.dc.minion.model.addons.snapshot.ui;bundle-version="1.0.0",
+ de.dc.minion.model.addon.fileview;bundle-version="1.0.0"

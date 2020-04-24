@@ -61,31 +61,31 @@ public abstract class EmfModelTreeView<T> extends EmfModelView<T> {
 
 	@FXML
 	protected Menu openWithMenu;
-	
+
 	@FXML
 	protected ContextMenu contextMenu;
-	
+
 	@FXML
 	protected MenuItem newMenuItem;
-	
+
 	@FXML
 	protected MenuItem undoMenuItem;
-	
+
 	@FXML
 	protected MenuItem redoMenuItem;
-	
+
 	@FXML
 	protected MenuItem editMenuItem;
-	
+
 	@FXML
 	protected MenuItem copyMenuItem;
-	
+
 	@FXML
 	protected MenuItem pasteMenuItem;
-	
+
 	@FXML
 	protected MenuItem deleteMenuItem;
-	
+
 	@FXML
 	protected Menu newMenu;
 
@@ -93,12 +93,14 @@ public abstract class EmfModelTreeView<T> extends EmfModelView<T> {
 	protected TreeView<Object> treeView;
 
 	protected ObservableList<MenuItem> defaultMenuItems = FXCollections.observableArrayList();
-	
+
 	protected AdapterFactoryTreeCellFactory<Object> treeCellFactory;
 
 	protected ISelectionService selectionService;
 
 	protected IEventBroker eventBroker;
+
+	protected TreeItem<Object> rootItem;
 
 	public EmfModelTreeView() {
 		FXMLLoader fxmlLoader = new FXMLLoader(
@@ -136,7 +138,7 @@ public abstract class EmfModelTreeView<T> extends EmfModelView<T> {
 	public void hideDetailedForm(boolean hide) {
 		// This is not required for this class
 	}
-	
+
 	public void initializeEmf(IEmfManager<T> manager) {
 		this.manager = manager;
 		this.editingDomain = manager.getEditingDomain();
@@ -147,7 +149,7 @@ public abstract class EmfModelTreeView<T> extends EmfModelView<T> {
 	public T load(String filepath) {
 		T model = manager.getFile().load(filepath);
 		manager.setRoot(model);
-		TreeItem<Object> rootItem = new AdapterFactoryTreeItem<>(manager.getRoot(), manager.getAdapterFactory());
+		rootItem = new AdapterFactoryTreeItem<>(manager.getRoot(), manager.getAdapterFactory());
 		treeView.setRoot(rootItem);
 		return model;
 	}
@@ -189,7 +191,7 @@ public abstract class EmfModelTreeView<T> extends EmfModelView<T> {
 	}
 
 	protected void onTreeKeyBinding(KeyCode code) {
-		
+
 	}
 
 	private void activateEditModeForSelection() {
@@ -316,15 +318,16 @@ public abstract class EmfModelTreeView<T> extends EmfModelView<T> {
 				if (object instanceof CommandParameter) {
 					CommandParameter commandParameter = (CommandParameter) object;
 					String name = commandParameter.getValue().getClass().getSimpleName().replace("Impl", "");
-					String menuText = ((IItemLabelProvider) manager.getAdapterFactory().adapt(commandParameter.getValue(), IItemLabelProvider.class))
-							.getText(commandParameter.getValue());
-					Object icon = ((IItemLabelProvider) manager.getAdapterFactory().adapt(commandParameter.getValue(), IItemLabelProvider.class))
-							.getImage(commandParameter.getValue());
+					String menuText = ((IItemLabelProvider) manager.getAdapterFactory()
+							.adapt(commandParameter.getValue(), IItemLabelProvider.class))
+									.getText(commandParameter.getValue());
+					Object icon = ((IItemLabelProvider) manager.getAdapterFactory().adapt(commandParameter.getValue(),
+							IItemLabelProvider.class)).getImage(commandParameter.getValue());
 					MenuItem item = new MenuItem(menuText);
-					item.setGraphic(new ImageView(new Image(((URL)icon).toExternalForm())));
+					item.setGraphic(new ImageView(new Image(((URL) icon).toExternalForm())));
 					item.setOnAction(event -> {
 						executeAddCommand((EObject) value, name);
-						
+
 						// TODO: Event command stack refresh
 //						eventBroker.post(new EventContext<>(EventTopic.COMMAND_STACK_REFRESH, CommandFactory.create(command)));
 						treeItem.setExpanded(true);
@@ -334,12 +337,12 @@ public abstract class EmfModelTreeView<T> extends EmfModelView<T> {
 			}
 		}
 	}
-	
+
 	@Override
 	public Object executeAddCommand(EObject instanceObject, String className) {
 		EClassifier eClassifier = getEmfManager().getModelPackage().getEClassifier(className);
 		EObject obj = getEmfManager().getExtendedModelFactory().create((EClass) eClassifier);
-		
+
 		int id = EmfUtil.getValueByName(getEmfManager().getModelPackage(), className);
 		Command command = AddCommand.create(editingDomain, instanceObject, id, obj);
 		command.execute();
@@ -354,12 +357,57 @@ public abstract class EmfModelTreeView<T> extends EmfModelView<T> {
 		defaultMenuItems.addAll(contextMenu.getItems());
 		contextMenu.getItems().clear();
 	}
-	
+
 	public void restoreDefaultContextMenu() {
 		contextMenu.getItems().addAll(defaultMenuItems);
 	}
-	
-	public TreeView<Object> getTreeView(){
+
+	public TreeView<Object> getTreeView() {
 		return treeView;
+	}
+
+	@Override
+	public void setSelection(Object selectedObject) {
+		selectByObject(rootItem, selectedObject);
+	}
+	
+	protected void selectByObject(TreeItem<Object> treeNode, Object obj) {
+		if (treeNode.getChildren().isEmpty()) {
+			// Do nothing node is empty.
+		} else {
+			// Loop through each child node.
+			for (TreeItem<Object> node : treeNode.getChildren()) {
+				if (node.getValue().equals(obj)) {
+					node.setExpanded(true);
+					treeView.getSelectionModel().select(node);
+				} else {
+					node.setExpanded(true);
+				}
+				// If the current node has children then check them.
+				if (!treeNode.getChildren().isEmpty()) {
+					selectByObject(node, obj);
+				}
+			}
+		}
+	}
+	
+	protected void findNode(TreeItem<Object> treeNode, String name) {
+		if (treeNode.getChildren().isEmpty()) {
+			// Do nothing node is empty.
+		} else {
+			// Loop through each child node.
+			for (TreeItem<Object> node : treeNode.getChildren()) {
+				if (node.getValue().equals(name)) {
+					node.setExpanded(true);
+					treeView.getSelectionModel().select(node);
+				} else {
+					node.setExpanded(true);
+				}
+				// If the current node has children then check them.
+				if (!treeNode.getChildren().isEmpty()) {
+					findNode(node, name);
+				}
+			}
+		}
 	}
 }

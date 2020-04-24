@@ -12,4 +12,6 @@ public interface IEmfEditorPart<T> extends IEmfFileService<T>{
 	Object executeAddCommand(EObject instanceObject, String className);
 	
 	void hideDetailedForm(boolean hide);
+	
+	void setSelection(Object selectedObject);
 }

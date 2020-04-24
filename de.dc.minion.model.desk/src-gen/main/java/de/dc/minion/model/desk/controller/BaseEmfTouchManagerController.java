@@ -1,5 +1,6 @@
 package de.dc.minion.model.desk.controller;
 	
+import de.dc.minion.fx.model.Minion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,7 +12,7 @@ import javafx.scene.layout.BorderPane;
 public abstract class BaseEmfTouchManagerController extends BorderPane{
 	
 	@FXML protected TextField textSearchTouch;
-	@FXML protected ListView listViewTouch;
+	@FXML protected ListView<Minion> listViewTouch;
 	@FXML protected Label labelTouchSize;
 	@FXML protected TabPane tabPane;
 	@FXML protected Button buttonRefresh;

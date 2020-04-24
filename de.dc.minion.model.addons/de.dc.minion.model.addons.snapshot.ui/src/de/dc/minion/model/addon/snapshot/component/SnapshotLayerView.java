@@ -165,6 +165,15 @@ public class SnapshotLayerView extends BaseBindingSnapshotLayerController {
 		});
 
 		listViewLayer.setItems(layers);
+		
+		listViewLayer.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Layer>() {
+			@Override
+			public void changed(ObservableValue<? extends Layer> observable, Layer oldValue, Layer newValue) {
+				if (newValue!=null) {
+					fileManager.getActiveEditor().ifPresent(editor-> editor.setSelection(newValue));
+				}
+			}
+		});
 	}
 
 	@Override

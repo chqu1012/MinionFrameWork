@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Fileview
+Bundle-SymbolicName: de.dc.minion.model.addon.fileview
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: de.dc.minion.model.addon.fileview
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: de.dc.minion.model.desk;bundle-version="1.0.0",
+ com.google.inject,
+ de.dc.minion.model.common,
+ de.dc.minion.model;bundle-version="0.1.0",
+ org.apache.commons.lang3,
+ org.apache.commons.logging,
+ com.google.guava
