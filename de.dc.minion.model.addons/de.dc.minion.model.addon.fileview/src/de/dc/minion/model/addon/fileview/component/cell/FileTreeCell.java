@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 public class FileTreeCell extends TreeCell<File> {
 	
 	public static final String IMG_FOLDER_URL = "/de/dc/minion/model/addon/fileview/images/icons8-mappe-16.png";
-	public static final ImageView imageViewFolder = new ImageView(IMG_FOLDER_URL);
 	
 	@Override
 	protected void updateItem(File item, boolean empty) {
@@ -20,7 +19,7 @@ public class FileTreeCell extends TreeCell<File> {
 		} else {
 			setText(item.getName());
 			if (item.isDirectory()) {
-				setGraphic(imageViewFolder);
+				setGraphic(new ImageView(IMG_FOLDER_URL));
 			} else {
 				setGraphic(new ImageView(SystemIconsHelper.getFileIcon(item.getName())));
 			}
