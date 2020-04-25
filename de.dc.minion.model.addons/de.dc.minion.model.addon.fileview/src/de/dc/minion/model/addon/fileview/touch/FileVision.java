@@ -13,14 +13,18 @@ import de.dc.minion.model.common.control.EmfViewPart;
 import de.dc.minion.model.common.event.EventContext;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.desk.module.MinionPlatform;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -29,8 +33,9 @@ public class FileVision extends EmfViewPart {
 
 	@Inject
 	IEventBroker eventBroker;
-	private TreeView<File> fileView;
-	private TextField textSearch;
+	protected TreeView<File> fileView;
+	protected TextField textSearch;
+	private TextField textPath;
 
 	@Override
 	public Parent create() {
@@ -41,17 +46,14 @@ public class FileVision extends EmfViewPart {
 		VBox vbox = new VBox(1);
 
 		HBox hBox = new HBox();
-		TextField textPath = new TextField();
+		textPath = new TextField();
 		textSearch = new TextField();
 		textSearch.setPromptText("Enter filter text ...");
 
 		HBox.setHgrow(textPath, Priority.ALWAYS);
 		hBox.getChildren().addAll(textPath, textSearch);
-		textPath.setText("C:\\Development\\Repository\\MinionFrameWork\\de.dc.minion.model.addons\\de.dc.minion.model.addon.chart");
 
-		String currentPath = "C:\\Development\\Repository\\MinionFrameWork\\de.dc.minion.model.addons\\de.dc.minion.model.addon.chart";
-		FileTreeItem rootItem = setRoot(currentPath);
-		fileView = new TreeView<>(rootItem);
+		fileView = new TreeView<>();
 		fileView.setCellFactory(cell -> new FileTreeCell());
 		fileView.setShowRoot(true);
 		fileView.setOnMouseClicked(e->{
@@ -69,15 +71,33 @@ public class FileVision extends EmfViewPart {
 					}
 				});
 
+		textPath.setOnKeyReleased(e->{
+			if (e.getCode().equals(KeyCode.ENTER)) {
+				new Service<Void>() {
+					@Override
+					protected Task<Void> createTask() {
+						return new Task<Void>() {
+							@Override
+							protected Void call() throws Exception {
+								Platform.runLater(()->setRoot(textPath.getText()));
+								return null;
+							}
+						};
+					}
+				}.restart();
+			};
+		});
+		
 		return vbox;
 	}
 
-	private FileTreeItem setRoot(String currentPath) {
+	protected void setRoot(String currentPath) {
 		FileTreeItem rootItem = new FileTreeItem(new File(currentPath));
 		getTreeModel(rootItem);
 		rootItem.predicateProperty().bind(
                 Bindings.createObjectBinding(this::searchTreeItemPredicate, textSearch.textProperty()));
-		return rootItem;
+		fileView.setRoot(rootItem);
+		textPath.setText(currentPath);
 	}
 
 	private FileTreeItem getTreeModel(FileTreeItem rootItem) {

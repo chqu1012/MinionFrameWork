@@ -14,3 +14,8 @@ Require-Bundle: de.dc.minion.model.desk;bundle-version="1.0.0",
  com.google.guava,
  de.dc.minion.model.libs;bundle-version="1.0.0",
  org.apache.commons.io;bundle-version="2.6.0"
+Export-Package: de.dc.minion.model.addon.fileview.component,
+ de.dc.minion.model.addon.fileview.component.cell,
+ de.dc.minion.model.addon.fileview.handler,
+ de.dc.minion.model.addon.fileview.touch,
+ de.dc.minion.model.addon.fileview.util

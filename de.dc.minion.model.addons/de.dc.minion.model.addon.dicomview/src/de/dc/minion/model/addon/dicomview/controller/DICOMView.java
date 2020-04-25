@@ -1,13 +1,10 @@
-package de.dc.minion.model.addon.pdfview.controller;
+package de.dc.minion.model.addon.dicomview.controller;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.Objects;
-
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.rendering.PDFRenderer;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.DoubleProperty;
@@ -24,10 +21,11 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
 
-public class PdfView extends BorderPane {
+public class DICOMView extends BorderPane {
 
 	@FXML
 	protected CheckBox buttonZoomOnScroll;
@@ -70,8 +68,6 @@ public class PdfView extends BorderPane {
 	final IntegerProperty pageSizeProperty = new SimpleIntegerProperty();
 	final IntegerProperty dpiProperty = new SimpleIntegerProperty(150);
 	
-	private PDFRenderer renderer;
-
 	@FXML
 	protected void onButtonAction(ActionEvent event) {
 		Object source = event.getSource();
@@ -95,31 +91,31 @@ public class PdfView extends BorderPane {
 	private void dispatchOnPreviousPage() {
 		boolean isEquals = currentPageProperty.get() < pageSizeProperty.get();
 		if (isEquals) {
-			currentPageProperty.set(currentPageProperty.add(1).get());
-			try {
-				setImage(createPdfPage(currentPageProperty.get()));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			scrolledPane.setVvalue(0);
+//			currentPageProperty.set(currentPageProperty.add(1).get());
+//			try {
+//				setImage(createPdfPage(currentPageProperty.get()));
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//			scrolledPane.setVvalue(0);
 		}
 	}
 
 	private void dispatchOnNextPage() {
 		boolean isEquals = currentPageProperty.get() > 0;
 		if (isEquals) {
-			currentPageProperty.set(currentPageProperty.subtract(1).get());
-			try {
-				setImage(createPdfPage(currentPageProperty.get()));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			scrolledPane.setVvalue(0);
+//			currentPageProperty.set(currentPageProperty.subtract(1).get());
+//			try {
+//				setImage(createPdfPage(currentPageProperty.get()));
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//			scrolledPane.setVvalue(0);
 		}
 	}
 
-	public PdfView() {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/dc/minion/model/addon/pdfview/PdfView.fxml"));
+	public DICOMView() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/de/dc/minion/model/addon/dicomview/DICOMView.fxml"));
 		try {
 			loader.setController(this);
 			loader.setRoot(this);
@@ -169,34 +165,4 @@ public class PdfView extends BorderPane {
 	public IntegerProperty currentPageProperty() {
 		return currentPageProperty;
 	}
-	
-	public void renderPdf(String filepath) {
-		PDDocument document = load(new File(filepath));
-		renderer = new PDFRenderer(document);
-		
-		try {
-			currentPageProperty.set(0);
-			setImage(createPdfPage(0));
-			pageSizeProperty().set(document.getNumberOfPages());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public PDDocument load(File file) {
-		Objects.requireNonNull(file, "file can not be null");
-		try {
-			PDDocument doc = PDDocument.load(file);
-			return doc;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	private Image createPdfPage(int pageNumber) throws IOException {
-		BufferedImage bufferedImage = renderer.renderImageWithDPI(pageNumber, dpiProperty.get());
-		return SwingFXUtils.toFXImage(bufferedImage, null);
-	}
-
 }
