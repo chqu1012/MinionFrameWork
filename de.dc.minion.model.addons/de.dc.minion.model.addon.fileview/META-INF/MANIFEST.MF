@@ -11,4 +11,5 @@ Require-Bundle: de.dc.minion.model.desk;bundle-version="1.0.0",
  de.dc.minion.model;bundle-version="0.1.0",
  org.apache.commons.lang3,
  org.apache.commons.logging,
- com.google.guava
+ com.google.guava,
+ de.dc.minion.model.libs;bundle-version="1.0.0"

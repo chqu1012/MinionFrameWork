@@ -2,11 +2,9 @@ package de.dc.minion.model.addon.fileview.component;
 
 import java.io.File;
 
-import de.dc.minion.model.addon.fileview.util.SystemIconsHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
-import javafx.scene.image.ImageView;
 
 public class SimpleFileTreeItem extends TreeItem<File> {
  
@@ -51,7 +49,9 @@ public class SimpleFileTreeItem extends TreeItem<File> {
 		if (isFirstTimeLeaf) {
 			isFirstTimeLeaf = false;
 			File f = (File) getValue();
-			isLeaf = f.isFile();
+			if (f!=null) {
+				isLeaf = f.isFile();
+			}
 		}
  
 		return isLeaf;
