@@ -3,24 +3,18 @@ package de.dc.minion.model.addon.fileview.touch;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.eclipse.fx.ui.controls.tree.FilterableTreeItem;
-import org.eclipse.fx.ui.controls.tree.TreeItemPredicate;
 
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Inject;
 
 import de.dc.minion.model.addon.fileview.component.FileTreeItem;
-import de.dc.minion.model.addon.fileview.component.SimpleFileTreeItem;
 import de.dc.minion.model.addon.fileview.component.cell.FileTreeCell;
 import de.dc.minion.model.common.control.EmfViewPart;
 import de.dc.minion.model.common.event.EventContext;
 import de.dc.minion.model.common.event.IEventBroker;
+import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
@@ -40,6 +34,10 @@ public class FileVision extends EmfViewPart {
 
 	@Override
 	public Parent create() {
+		return createFileView();
+	}
+
+	protected VBox createFileView() {
 		VBox vbox = new VBox(1);
 
 		HBox hBox = new HBox();
@@ -52,12 +50,15 @@ public class FileVision extends EmfViewPart {
 		textPath.setText("C:\\Development\\Repository\\MinionFrameWork\\de.dc.minion.model.addons\\de.dc.minion.model.addon.chart");
 
 		String currentPath = "C:\\Development\\Repository\\MinionFrameWork\\de.dc.minion.model.addons\\de.dc.minion.model.addon.chart";
-		FileTreeItem rootItem = new FileTreeItem(new File(currentPath));
-		getTreeModel(rootItem);
-		
+		FileTreeItem rootItem = setRoot(currentPath);
 		fileView = new TreeView<>(rootItem);
 		fileView.setCellFactory(cell -> new FileTreeCell());
 		fileView.setShowRoot(true);
+		fileView.setOnMouseClicked(e->{
+			if (e.getClickCount()==2) {
+				MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/open/file/from/file/vision", fileView.getSelectionModel().getSelectedItem().getValue()));
+			}
+		});
 		
 		VBox.setVgrow(fileView, Priority.ALWAYS);
 		vbox.getChildren().addAll(hBox, fileView);
@@ -68,9 +69,15 @@ public class FileVision extends EmfViewPart {
 					}
 				});
 
+		return vbox;
+	}
+
+	private FileTreeItem setRoot(String currentPath) {
+		FileTreeItem rootItem = new FileTreeItem(new File(currentPath));
+		getTreeModel(rootItem);
 		rootItem.predicateProperty().bind(
                 Bindings.createObjectBinding(this::searchTreeItemPredicate, textSearch.textProperty()));
-		return vbox;
+		return rootItem;
 	}
 
 	private FileTreeItem getTreeModel(FileTreeItem rootItem) {
