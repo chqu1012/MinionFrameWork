@@ -18,7 +18,10 @@ import de.dc.minion.model.common.file.MinionFile;
 import de.dc.minion.model.desk.control.ILandscapeFX;
 import de.dc.minion.model.desk.control.MinionBuilder;
 import de.dc.minion.model.desk.metro.MinionRibbonBuilder;
+import de.dc.minion.model.desk.metro.component.cell.LandscapeListCell;
 import de.dc.minion.model.desk.module.MinionPlatform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -26,8 +29,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.util.Callback;
 
 public class MinionRibbonControl extends BaseMinionRibbonControl{
 
@@ -58,20 +59,18 @@ public class MinionRibbonControl extends BaseMinionRibbonControl{
 	
 	public void initialize() {
 		listViewLandscapes.setItems(filteredLandscapes);
-		listViewLandscapes.setCellFactory(new Callback<ListView<Landscape>, ListCell<Landscape>>() {
+		listViewLandscapes.setCellFactory(param -> new LandscapeListCell());
+		
+		textSearchlandscapes.textProperty().addListener(new ChangeListener<String>() {
 			@Override
-			public ListCell<Landscape> call(ListView<Landscape> param) {
-				return new ListCell<Landscape>() {
-					@Override
-					protected void updateItem(Landscape item, boolean empty) {
-						super.updateItem(item, empty);
-						if (item==null || empty) {
-							setText(null);
-						}else {
-							setText(item.getName());
-						}
-					}
-				};
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (newValue!=null) {
+					filteredLandscapes.setPredicate(p->{
+						boolean isEmpty = p.getName().isEmpty() || p.getName()==null;
+						boolean containsName = p.getName().toLowerCase().contains(newValue.toLowerCase());
+						return isEmpty || containsName;
+					});
+				}
 			}
 		});
 	}
