@@ -2,7 +2,7 @@
 <model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
   <toadies id="file.viewer" name="DICOM View Addon" description="Toady to view dicom files with a lot of functions.">
     <touchPoints xsi:type="model:LandscapeTouch">
-      <landscapes id="dicom.landscape" name="DICOM Landscape" left="//@toadies.0/@touchPoints.1/@visions.1" right="//@toadies.0/@touchPoints.1/@visions.2" showEditorArea="false"/>
+      <landscapes id="dicom.landscape" name="DICOM Landscape" right="//@toadies.0/@touchPoints.1/@visions.2" showEditorArea="false"/>
     </touchPoints>
     <touchPoints xsi:type="model:VisionTouch">
       <visions id="vision.file" name="FileVision" uri="de.dc.minion.model.addon.fileview.touch.FileVision"/>

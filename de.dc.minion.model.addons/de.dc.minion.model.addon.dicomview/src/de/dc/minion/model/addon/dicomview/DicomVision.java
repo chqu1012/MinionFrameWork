@@ -39,7 +39,7 @@ public class DicomVision extends FileVision{
 	
 	@Subscribe
 	public void subscribeOpenFile(EventContext<File> context) {
-		if (context.getEventId().equals("/open/file/from/file/vision")) {
+		if (context.getEventId().equals("/open/file/from/file/vision/on/single/click")) {
 			File input = context.getInput();
 			if (FilenameUtils.getExtension(input.getName()).equals("dcm")) {
 				try {

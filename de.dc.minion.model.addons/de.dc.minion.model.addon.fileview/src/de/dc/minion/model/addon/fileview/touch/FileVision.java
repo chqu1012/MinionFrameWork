@@ -59,6 +59,8 @@ public class FileVision extends EmfViewPart {
 		fileView.setOnMouseClicked(e->{
 			if (e.getClickCount()==2) {
 				MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/open/file/from/file/vision", fileView.getSelectionModel().getSelectedItem().getValue()));
+			}else {
+				MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/open/file/from/file/vision/on/single/click", fileView.getSelectionModel().getSelectedItem().getValue()));
 			}
 		});
 		

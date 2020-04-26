@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root id="BorderPane" fx:id="tabRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <TabPane prefHeight="143.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="tabHome" text="HOME">
+               <content>
+                  <HBox prefHeight="147.0" prefWidth="1200.0" spacing="10.0">
+                     <children>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="104.0" spacing="5.0">
+                           <children>
+                              <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Button fx:id="buttonOpen" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="60.0" text="Open" HBox.hgrow="ALWAYS">
+                                       <graphic>
+                                          <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/icons8_Open_32px_3.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="buttonNew" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="60.0" text="New" HBox.hgrow="ALWAYS">
+                                       <graphic>
+                                          <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/icons8_File_32px_1.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="buttonSave" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="60.0" text="Save" HBox.hgrow="ALWAYS">
+                                       <graphic>
+                                          <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/icons8_Save_32px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="buttonSaveAs" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="60.0" text="Save As">
+                                       <graphic>
+                                          <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/icons8_Save_32px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="File" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="107.0" prefWidth="160.0" spacing="5.0">
+                           <children>
+                              <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="188.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Button fx:id="buttonPaste" alignment="BASELINE_CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="60.0" text="Paste">
+                                       <graphic>
+                                          <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/icons8-paste-30.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="85.0" prefWidth="97.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Button fx:id="buttonCopy" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onButtonAction" text="Copy">
+                                             <graphic>
+                                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/icons8-kopieren-40.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="buttonCut" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onButtonAction" text="Cut">
+                                             <graphic>
+                                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/icons8-ausschneiden-30.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="buttonDuplicate" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onButtonAction" text="Duplicate">
+                                             <graphic>
+                                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/icons8-zeilen-kopieren-96.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Clipboard" />
+                           </children>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="107.0" spacing="5.0">
+                           <children>
+                              <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Button fx:id="buttonUndo" alignment="BASELINE_CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="60.0" text="Undo">
+                                       <graphic>
+                                          <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/icons8_Undo_16px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="buttonRedo" alignment="BASELINE_CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onButtonAction" prefWidth="60.0" text="Redo">
+                                       <graphic>
+                                          <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/icons8_Redo_16px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Undo / Redo" />
+                           </children>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="500.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ListView fx:id="listViewLandscapes" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="HORIZONTAL" />
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Landscapes" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Opened Landscapes" />
+                              <ComboBox fx:id="comboBoxLandscapesOpen" prefWidth="150.0" />
+                              <TextField fx:id="textSearchlandscapes" promptText="Search Landscapes" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+               </content>
+          </Tab>
+          <Tab fx:id="tabEdit" text="EDIT">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab fx:id="tabView" text="VIEW">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="tabPreferences" text="PREFERENCES">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="tabInfo" text="INFO">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+        </tabs>
+         <BorderPane.margin>
+            <Insets bottom="5.0" />
+         </BorderPane.margin>
+      </TabPane>
+   </top>
+   <center>
+      <StackPane fx:id="stackPaneMain" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="1200.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Selection:" />
+            <Label fx:id="labelSelection" />
+            <Separator orientation="VERTICAL">
+               <HBox.margin>
+                  <Insets bottom="4.0" top="4.0" />
+               </HBox.margin>
+            </Separator>
+            <Label text="Active Landscape:" />
+            <Label fx:id="labelLandscape" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
+</fx:root>
