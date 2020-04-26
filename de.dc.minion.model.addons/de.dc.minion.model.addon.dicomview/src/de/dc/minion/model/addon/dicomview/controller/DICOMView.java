@@ -148,12 +148,14 @@ public class DICOMView extends BorderPane {
 		textPageCount.textProperty().bind(pageSizeProperty.asString());
 		textPageIndex.textProperty().bind(currentPageProperty.add(1).asString());
 		textDpi.textProperty().bindBidirectional(dpiProperty, NumberFormat.getInstance());
+		
+		dpiProperty.set(300);
 	}
 
 	public void setImage(Image createPdfPage) {
 		imageView.setPreserveRatio(false);
-		imageView.setFitWidth(createPdfPage.getWidth());
-		imageView.setFitHeight(createPdfPage.getHeight());
+		imageView.setFitWidth(createPdfPage.getWidth()*2);
+		imageView.setFitHeight(createPdfPage.getHeight()*2);
 		imageView.setPreserveRatio(true);
 		imageView.setImage(createPdfPage);
 	}

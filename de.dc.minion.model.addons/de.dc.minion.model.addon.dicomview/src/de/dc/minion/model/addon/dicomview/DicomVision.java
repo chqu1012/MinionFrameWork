@@ -31,9 +31,9 @@ public class DicomVision extends FileVision{
 		parent.getItems().add(createFileView());
 		dicomView = new DICOMView();
 		parent.getItems().add(dicomView);
-		parent.setDividerPosition(0, 0.5);
+		parent.setDividerPosition(0, 0.2);
 		
-		setRoot("C:\\Development\\eclipse-modeling-2019-12\\eclipse-workspace\\de.dc.minion.model.addon.dicomview\\resources");
+		setRoot("C:\\Development\\Repository\\MinionFrameWork\\de.dc.minion.model.addons\\de.dc.minion.model.addon.dicomview\\resources");
 		return parent;
 	}
 	
