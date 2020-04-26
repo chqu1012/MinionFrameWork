@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
@@ -82,5 +83,8 @@ public abstract class BaseMinionRibbonControl extends BorderPane{
 
     @FXML
     protected abstract void onButtonAction(ActionEvent event);
+    
+    @FXML
+    protected abstract void onMouseClicked(MouseEvent event);
 
 }

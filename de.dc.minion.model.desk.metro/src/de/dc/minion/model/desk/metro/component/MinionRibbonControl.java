@@ -4,7 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.logging.Level;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.inject.Inject;
 
@@ -16,7 +17,6 @@ import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.event.ISelectionService;
 import de.dc.minion.model.common.file.MinionFile;
 import de.dc.minion.model.desk.control.ILandscapeFX;
-import de.dc.minion.model.desk.control.MinionBuilder;
 import de.dc.minion.model.desk.metro.MinionRibbonBuilder;
 import de.dc.minion.model.desk.metro.component.cell.LandscapeListCell;
 import de.dc.minion.model.desk.module.MinionPlatform;
@@ -27,12 +27,18 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 
 public class MinionRibbonControl extends BaseMinionRibbonControl{
 
 	public static final String ID = "de.dc.minion.model.desk.metro.component.MinionRibbonControl";
+	
+	protected ILandscapeFX currentLandscape;
+	protected Map<Landscape, ILandscapeFX> perspectiveManager = new HashMap<>();
 	
 	protected ObservableList<Landscape> landscapes = FXCollections.observableArrayList();
 	protected FilteredList<Landscape> filteredLandscapes = new FilteredList<Landscape>(landscapes);
@@ -121,5 +127,19 @@ public class MinionRibbonControl extends BaseMinionRibbonControl{
 
 	public void addLandscapeFX(Landscape landscape, ILandscapeFX newInstance) {
 		landscapes.add(landscape);
+		perspectiveManager.put(landscape, newInstance);
+	}
+
+	@Override
+	protected void onMouseClicked(MouseEvent event) {
+		Object source = event.getSource();
+		if (event.getClickCount()==2) {
+			if (source == listViewLandscapes) {
+				Landscape selection = listViewLandscapes.getSelectionModel().getSelectedItem();
+				ILandscapeFX landscape = perspectiveManager.get(selection);
+				stackPaneMain.getChildren().clear();
+				stackPaneMain.getChildren().add((Node) landscape);
+			}
+		}
 	}
 }

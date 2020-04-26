@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import org.eclipse.emf.common.util.EList;
+
 import com.google.inject.Inject;
 
 import de.dc.minion.fx.model.Command;
@@ -24,12 +26,14 @@ import de.dc.minion.fx.model.util.MinionSwitch;
 import de.dc.minion.model.common.IControlManager;
 import de.dc.minion.model.common.command.ICommandHandler;
 import de.dc.minion.model.common.command.ICommandService;
+import de.dc.minion.model.common.control.EmfViewPart;
 import de.dc.minion.model.common.control.IEmfEditorPart;
 import de.dc.minion.model.common.control.IEmfViewPart;
 import de.dc.minion.model.common.event.IEventBroker;
 import de.dc.minion.model.common.event.ISelectionService;
 import de.dc.minion.model.common.file.IEmfFileManager;
 import de.dc.minion.model.desk.control.ILandscapeFX;
+import de.dc.minion.model.desk.control.LandscapeFX;
 import de.dc.minion.model.desk.controller.EmptyViewPart;
 import de.dc.minion.model.desk.metro.component.MinionRibbonControl;
 import de.dc.minion.model.desk.module.MinionPlatform;
@@ -163,43 +167,43 @@ public class MinionRibbonBuilder extends MinionSwitch<Object> {
 //			perspectiveButton.setOnAction(e -> minionDesk.switchPerspective(object));
 //			minionDesk.getPerspectiveToolBar().getItems().add(perspectiveButton);
 
-//			LandscapeFX landscape = new LandscapeFX();
+			LandscapeFX landscape = new LandscapeFX();
 //
-//			EList<Vision> rightPane = object.getRight();
-//			EList<Vision> leftPane = object.getLeft();
-//			EList<Vision> bottomPane = object.getBottom();
+			EList<Vision> rightPane = object.getRight();
+			EList<Vision> leftPane = object.getLeft();
+			EList<Vision> bottomPane = object.getBottom();
 //			
-//			if (leftPane.isEmpty()) {
-//				landscape.hideLeft(true);
-//			}
-//			for (Vision view : leftPane) {
-//				landscape.addToLeft((EmfViewPart) doSwitch(view));
-//			}
-//			if (rightPane.isEmpty()) {
-//				landscape.hideRight(true);
-//			}
-//			for (Vision view : rightPane) {
-//				landscape.addToRight((EmfViewPart) doSwitch(view));
-//			}
-//			if (bottomPane.isEmpty()) {
-//				landscape.hideBottom(true);
-//			}
-//			for (Vision view : bottomPane) {
-//				landscape.addToBottom((EmfViewPart) doSwitch(view));
-//			}
-//
-//			landscape.hideEditorArea(object.isShowEditorArea());
-//			double leftDP = object.getLeftDividerPosition();
-//			double rightDP = object.getRightDividerPosition();
-//			double bottomDP = object.getBottomDividerPosition();
-//			double editorDP = object.getEditorDividerPosition();
-//			landscape.setDividerPositions(leftDP, editorDP, rightDP);
-//			landscape.setBottomDividerPosition(bottomDP);
-//
-//			minionDesk.addLandscapeFX(object.getId(), landscape);
-//
-//			landscapes.put(object.getId(), object);
-//			controlManager.registrate(object.getId(), perspectiveButton);
+			if (leftPane.isEmpty()) {
+				landscape.hideLeft(true);
+			}
+			for (Vision view : leftPane) {
+				landscape.addToLeft((EmfViewPart) doSwitch(view));
+			}
+			if (rightPane.isEmpty()) {
+				landscape.hideRight(true);
+			}
+			for (Vision view : rightPane) {
+				landscape.addToRight((EmfViewPart) doSwitch(view));
+			}
+			if (bottomPane.isEmpty()) {
+				landscape.hideBottom(true);
+			}
+			for (Vision view : bottomPane) {
+				landscape.addToBottom((EmfViewPart) doSwitch(view));
+			}
+
+			landscape.hideEditorArea(object.isShowEditorArea());
+			double leftDP = object.getLeftDividerPosition();
+			double rightDP = object.getRightDividerPosition();
+			double bottomDP = object.getBottomDividerPosition();
+			double editorDP = object.getEditorDividerPosition();
+			landscape.setDividerPositions(leftDP, editorDP, rightDP);
+			landscape.setBottomDividerPosition(bottomDP);
+
+			minionDesk.addLandscapeFX(object, landscape);
+
+			landscapes.put(object.getId(), object);
+			controlManager.registrate(object.getId(), perspectiveButton);
 		}
 		return super.caseLandscape(object);
 	}

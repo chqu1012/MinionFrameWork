@@ -10,7 +10,9 @@ public class BaseMinionRibbon extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-        Scene scene = new Scene(new MinionRibbonControl());
+        MinionRibbonControl root = new MinionRibbonControl();
+        root.setStyle("-fx-base: #3f474f");
+		Scene scene = new Scene(root);
 
         primaryStage.setMaximized(true);
         primaryStage.setScene(scene);
