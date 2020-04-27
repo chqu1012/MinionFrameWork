@@ -55,6 +55,7 @@ public class RecentlyOpenFileItemProvider extends ItemProviderAdapter
 
 			addNamePropertyDescriptor(object);
 			addPathPropertyDescriptor(object);
+			addLandscapeIdPropertyDescriptor(object);
 			addTimestampPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -89,6 +90,22 @@ public class RecentlyOpenFileItemProvider extends ItemProviderAdapter
 						getString("_UI_PropertyDescriptor_description", "_UI_RecentlyOpenFile_path_feature",
 								"_UI_RecentlyOpenFile_type"),
 						MinionPackage.Literals.RECENTLY_OPEN_FILE__PATH, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Landscape Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLandscapeIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_RecentlyOpenFile_landscapeId_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_RecentlyOpenFile_landscapeId_feature",
+								"_UI_RecentlyOpenFile_type"),
+						MinionPackage.Literals.RECENTLY_OPEN_FILE__LANDSCAPE_ID, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -186,6 +203,7 @@ public class RecentlyOpenFileItemProvider extends ItemProviderAdapter
 		switch (notification.getFeatureID(RecentlyOpenFile.class)) {
 		case MinionPackage.RECENTLY_OPEN_FILE__NAME:
 		case MinionPackage.RECENTLY_OPEN_FILE__PATH:
+		case MinionPackage.RECENTLY_OPEN_FILE__LANDSCAPE_ID:
 		case MinionPackage.RECENTLY_OPEN_FILE__TIMESTAMP:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;

@@ -2,6 +2,7 @@ package de.dc.minion.model.desk.metro;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.EList;
@@ -42,7 +43,7 @@ import javafx.scene.control.Button;
 
 public class MinionRibbonBuilder extends MinionSwitch<Object> {
 
-	private Logger log = Logger.getLogger(MinionRibbonBuilder.class.getSimpleName());
+	private static final Logger LOG = Logger.getLogger(MinionRibbonBuilder.class.getSimpleName());
 
 	@Inject
 	ISelectionService selectionService;
@@ -124,10 +125,12 @@ public class MinionRibbonBuilder extends MinionSwitch<Object> {
 				ICommandHandler commandHandler = handlerClass.newInstance();
 				MinionPlatform.inject(commandHandler);
 				commandService.registrate(id, commandHandler);
-			} catch (InstantiationException | IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
+				
+				minionDesk.addCommands(object);
+			} catch (InstantiationException | IllegalAccessException e1) {
+				LOG.log(Level.SEVERE, "Failed to create Command Handler " + handler);
+			} catch (ClassNotFoundException e1) {
+				LOG.log(Level.SEVERE, "Failed to get Command Handler " + handler);
 			}
 		}
 		return super.caseCommand(object);
@@ -153,15 +156,15 @@ public class MinionRibbonBuilder extends MinionSwitch<Object> {
 			String uri = object.getUri();
 			try {
 				Class<ILandscapeFX> clazz = (Class<ILandscapeFX>) Class.forName(uri);
-				ILandscapeFX newInstance =  clazz.newInstance();
+				ILandscapeFX newInstance = clazz.newInstance();
 				MinionPlatform.inject(newInstance);
 				newInstance.init();
 				landscapePages.put(object.getId(), newInstance);
-				minionDesk.addLandscapeFX(object, (ILandscapeFX)newInstance);
+				minionDesk.addLandscapeFX(object, (ILandscapeFX) newInstance);
 			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-		}else {
+		} else {
 			Button perspectiveButton = new Button(object.getName());
 			perspectiveButton.setId(object.getId());
 //			perspectiveButton.setOnAction(e -> minionDesk.switchPerspective(object));
@@ -172,7 +175,7 @@ public class MinionRibbonBuilder extends MinionSwitch<Object> {
 			EList<Vision> rightPane = object.getRight();
 			EList<Vision> leftPane = object.getLeft();
 			EList<Vision> bottomPane = object.getBottom();
-			
+
 			if (leftPane.isEmpty()) {
 				landscape.hideLeft(true);
 			}
@@ -238,7 +241,7 @@ public class MinionRibbonBuilder extends MinionSwitch<Object> {
 
 	private IEmfViewPart createVision(Vision object)
 			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-		if (object.getUri()==null) {
+		if (object.getUri() == null) {
 			return new EmptyViewPart(object.getName());
 		}
 		Class<IEmfViewPart> clazz = (Class<IEmfViewPart>) Class.forName(object.getUri());

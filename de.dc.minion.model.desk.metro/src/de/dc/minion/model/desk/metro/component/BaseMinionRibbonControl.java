@@ -11,10 +11,14 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
 public abstract class BaseMinionRibbonControl extends BorderPane{
 
+	@FXML
+	protected HBox hboxRegisteredCommands;
+	
     @FXML
     protected ComboBox<?> comboBoxLandscapesOpen;
 
@@ -59,18 +63,6 @@ public abstract class BaseMinionRibbonControl extends BorderPane{
 
     @FXML
     protected ListView<Landscape> listViewLandscapes;
-
-    @FXML
-    protected Tab tabEdit;
-
-    @FXML
-    protected Tab tabView;
-
-    @FXML
-    protected Tab tabPreferences;
-
-    @FXML
-    protected Tab tabInfo;
 
     @FXML
     protected StackPane stackPaneMain;

@@ -172,22 +172,54 @@
                   </HBox>
                </content>
           </Tab>
-          <Tab fx:id="tabEdit" text="EDIT">
+          <Tab text="EDIT">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
           </Tab>
-            <Tab fx:id="tabView" text="VIEW">
+            <Tab text="COMMAND">
+               <content>
+                  <HBox maxHeight="1.7976931348623157E308">
+                     <children>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                           <children>
+                              <HBox fx:id="hboxRegisteredCommands" maxHeight="1.7976931348623157E308" minWidth="200.0" prefHeight="100.0" spacing="5.0" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Registered Commands" />
+                           </children>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0">
+                           <HBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Separator>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                           <children>
+                              <ListView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="92.0" prefWidth="300.0" />
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="All Commands" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </content>
+            </Tab>
+            <Tab text="VIEW">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
             </Tab>
-            <Tab fx:id="tabPreferences" text="PREFERENCES">
+            <Tab text="PREFERENCES">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
             </Tab>
-            <Tab fx:id="tabInfo" text="INFO">
+            <Tab text="INFO">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>

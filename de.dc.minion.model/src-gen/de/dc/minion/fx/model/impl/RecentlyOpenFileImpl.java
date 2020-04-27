@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link de.dc.minion.fx.model.impl.RecentlyOpenFileImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.dc.minion.fx.model.impl.RecentlyOpenFileImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link de.dc.minion.fx.model.impl.RecentlyOpenFileImpl#getLandscapeId <em>Landscape Id</em>}</li>
  *   <li>{@link de.dc.minion.fx.model.impl.RecentlyOpenFileImpl#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  *
@@ -69,6 +70,26 @@ public class RecentlyOpenFileImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected String path = PATH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLandscapeId() <em>Landscape Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLandscapeId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LANDSCAPE_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLandscapeId() <em>Landscape Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLandscapeId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String landscapeId = LANDSCAPE_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
@@ -163,6 +184,30 @@ public class RecentlyOpenFileImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
+	public String getLandscapeId() {
+		return landscapeId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setLandscapeId(String newLandscapeId) {
+		String oldLandscapeId = landscapeId;
+		landscapeId = newLandscapeId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MinionPackage.RECENTLY_OPEN_FILE__LANDSCAPE_ID,
+					oldLandscapeId, landscapeId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Date getTimestamp() {
 		return timestamp;
 	}
@@ -193,6 +238,8 @@ public class RecentlyOpenFileImpl extends MinimalEObjectImpl.Container implement
 			return getName();
 		case MinionPackage.RECENTLY_OPEN_FILE__PATH:
 			return getPath();
+		case MinionPackage.RECENTLY_OPEN_FILE__LANDSCAPE_ID:
+			return getLandscapeId();
 		case MinionPackage.RECENTLY_OPEN_FILE__TIMESTAMP:
 			return getTimestamp();
 		}
@@ -212,6 +259,9 @@ public class RecentlyOpenFileImpl extends MinimalEObjectImpl.Container implement
 			return;
 		case MinionPackage.RECENTLY_OPEN_FILE__PATH:
 			setPath((String) newValue);
+			return;
+		case MinionPackage.RECENTLY_OPEN_FILE__LANDSCAPE_ID:
+			setLandscapeId((String) newValue);
 			return;
 		case MinionPackage.RECENTLY_OPEN_FILE__TIMESTAMP:
 			setTimestamp((Date) newValue);
@@ -234,6 +284,9 @@ public class RecentlyOpenFileImpl extends MinimalEObjectImpl.Container implement
 		case MinionPackage.RECENTLY_OPEN_FILE__PATH:
 			setPath(PATH_EDEFAULT);
 			return;
+		case MinionPackage.RECENTLY_OPEN_FILE__LANDSCAPE_ID:
+			setLandscapeId(LANDSCAPE_ID_EDEFAULT);
+			return;
 		case MinionPackage.RECENTLY_OPEN_FILE__TIMESTAMP:
 			setTimestamp(TIMESTAMP_EDEFAULT);
 			return;
@@ -253,6 +306,8 @@ public class RecentlyOpenFileImpl extends MinimalEObjectImpl.Container implement
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case MinionPackage.RECENTLY_OPEN_FILE__PATH:
 			return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
+		case MinionPackage.RECENTLY_OPEN_FILE__LANDSCAPE_ID:
+			return LANDSCAPE_ID_EDEFAULT == null ? landscapeId != null : !LANDSCAPE_ID_EDEFAULT.equals(landscapeId);
 		case MinionPackage.RECENTLY_OPEN_FILE__TIMESTAMP:
 			return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
 		}
@@ -274,6 +329,8 @@ public class RecentlyOpenFileImpl extends MinimalEObjectImpl.Container implement
 		result.append(name);
 		result.append(", path: ");
 		result.append(path);
+		result.append(", landscapeId: ");
+		result.append(landscapeId);
 		result.append(", timestamp: ");
 		result.append(timestamp);
 		result.append(')');

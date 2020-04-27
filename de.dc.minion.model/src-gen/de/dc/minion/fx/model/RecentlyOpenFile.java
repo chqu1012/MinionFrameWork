@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.dc.minion.fx.model.RecentlyOpenFile#getName <em>Name</em>}</li>
  *   <li>{@link de.dc.minion.fx.model.RecentlyOpenFile#getPath <em>Path</em>}</li>
+ *   <li>{@link de.dc.minion.fx.model.RecentlyOpenFile#getLandscapeId <em>Landscape Id</em>}</li>
  *   <li>{@link de.dc.minion.fx.model.RecentlyOpenFile#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  *
@@ -68,6 +69,28 @@ public interface RecentlyOpenFile extends EObject {
 	 * @generated
 	 */
 	void setPath(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Landscape Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Landscape Id</em>' attribute.
+	 * @see #setLandscapeId(String)
+	 * @see de.dc.minion.fx.model.MinionPackage#getRecentlyOpenFile_LandscapeId()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getLandscapeId();
+
+	/**
+	 * Sets the value of the '{@link de.dc.minion.fx.model.RecentlyOpenFile#getLandscapeId <em>Landscape Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Landscape Id</em>' attribute.
+	 * @see #getLandscapeId()
+	 * @generated
+	 */
+	void setLandscapeId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Timestamp</b></em>' attribute.

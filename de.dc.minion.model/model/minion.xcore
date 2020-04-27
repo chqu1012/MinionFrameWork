@@ -110,6 +110,7 @@ class RecentlyOpenVision extends Vision{
 class RecentlyOpenFile{
 	String name
 	String path
+	String landscapeId
 	Date timestamp
 }
 

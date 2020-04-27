@@ -8,9 +8,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -19,11 +21,14 @@ import org.eclipse.fx.ui.controls.styledtext.StyledTextArea;
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Inject;
 
+import de.dc.minion.fx.model.Command;
 import de.dc.minion.fx.model.Landscape;
 import de.dc.minion.fx.model.Minion;
 import de.dc.minion.fx.model.Toady;
 import de.dc.minion.fx.model.ToadyStatus;
 import de.dc.minion.model.common.IControlManager;
+import de.dc.minion.model.common.command.ICommandHandler;
+import de.dc.minion.model.common.command.ICommandService;
 import de.dc.minion.model.common.control.IEmfEditorPart;
 import de.dc.minion.model.common.event.EventContext;
 import de.dc.minion.model.common.event.IEventBroker;
@@ -36,7 +41,7 @@ import de.dc.minion.model.desk.control.MinionDeskFX;
 import de.dc.minion.model.desk.metro.MinionRibbonBuilder;
 import de.dc.minion.model.desk.metro.component.cell.LandscapeListCell;
 import de.dc.minion.model.desk.module.MinionPlatform;
-import javafx.beans.value.ChangeListener;
+import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,10 +52,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 
 public class MinionRibbonControl extends BaseMinionRibbonControl {
@@ -79,9 +87,12 @@ public class MinionRibbonControl extends BaseMinionRibbonControl {
 
 	@Inject
 	protected IControlManager controlManager;
-	
+
 	@Inject
 	protected IEmfFileManager fileManager;
+
+	@Inject
+	protected ICommandService commandService;
 
 	public MinionRibbonControl() {
 		MinionPlatform.inject(this);
@@ -97,7 +108,8 @@ public class MinionRibbonControl extends BaseMinionRibbonControl {
 		textSearchlandscapes.textProperty().addListener(this::onTextSearchLandscapes);
 	}
 
-	private void onTextSearchLandscapes(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+	private void onTextSearchLandscapes(ObservableValue<? extends String> observable, String oldValue,
+			String newValue) {
 		if (newValue != null) {
 			filteredLandscapes.setPredicate(p -> {
 				boolean isEmpty = p.getName().isEmpty() || p.getName() == null;
@@ -106,7 +118,7 @@ public class MinionRibbonControl extends BaseMinionRibbonControl {
 			});
 		}
 	}
-	
+
 	private void loadFxml() {
 		String fxmlName = "/de/dc/minion/model/desk/metro/MinionRibbon.fxml";
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlName));
@@ -150,8 +162,25 @@ public class MinionRibbonControl extends BaseMinionRibbonControl {
 		}
 	}
 
+	public void addCommands(Command command) {
+		Platform.runLater(() -> {
+			Button buttonCommand = new Button(command.getName());
+			buttonCommand.setMaxSize(60, Double.MAX_VALUE);
+			buttonCommand.setContentDisplay(ContentDisplay.TOP);
+			buttonCommand.setTooltip(new Tooltip(command.getName()));
+			buttonCommand.setOnAction(e -> commandService.execute(command.getId()));
+			ImageView imageView = new ImageView("/de/dc/minion/model/desk/metro/images/icons8-air-play-48.png");
+			imageView.setFitHeight(32);
+			imageView.setFitWidth(32);
+			buttonCommand.setGraphic(imageView);
+			hboxRegisteredCommands.getChildren().add(buttonCommand);
+		});
+	}
+
 	public void addLandscapeFX(Landscape landscape, ILandscapeFX landscapeFX) {
-		landscapes.add(landscape);
+		if (!landscape.isUseAsPage()) {
+			landscapes.add(landscape);
+		}
 		perspectiveManager.put(landscape, landscapeFX);
 		stackPaneMain.getChildren().add((Node) landscapeFX);
 		this.currentLandscape = landscapeFX;
@@ -250,6 +279,22 @@ public class MinionRibbonControl extends BaseMinionRibbonControl {
 			controlManager.registrate(MinionDeskFX.EDITOR_AREA_ID, currentLandscape.getEditorArea());
 			labelLandscape.setText(landscape.getName());
 			((Parent) openLandscape).toFront();
+		}
+	}
+
+	@Subscribe
+	public void openLandscapeBy(EventContext<String> context) {
+		if (context.getEventId().equals(MinionConstants.EVENT_OPEN_LANDSCAPE_ID)) {
+			perspectiveManager.entrySet().stream().filter(p -> {
+				String id = p.getKey().getId();
+				if (id == null) {
+					return false;
+				}
+				return id.equals(context.getInput());
+			}).findAny().ifPresent(l -> {
+				l.getValue().init();
+				((Parent) l.getValue()).toFront();
+			});
 		}
 	}
 }
