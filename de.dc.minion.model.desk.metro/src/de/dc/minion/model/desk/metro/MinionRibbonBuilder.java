@@ -168,11 +168,11 @@ public class MinionRibbonBuilder extends MinionSwitch<Object> {
 //			minionDesk.getPerspectiveToolBar().getItems().add(perspectiveButton);
 
 			LandscapeFX landscape = new LandscapeFX();
-//
+
 			EList<Vision> rightPane = object.getRight();
 			EList<Vision> leftPane = object.getLeft();
 			EList<Vision> bottomPane = object.getBottom();
-//			
+			
 			if (leftPane.isEmpty()) {
 				landscape.hideLeft(true);
 			}

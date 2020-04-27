@@ -57,10 +57,13 @@ public class FileVision extends EmfViewPart {
 		fileView.setCellFactory(cell -> new FileTreeCell());
 		fileView.setShowRoot(true);
 		fileView.setOnMouseClicked(e->{
-			if (e.getClickCount()==2) {
-				MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/open/file/from/file/vision", fileView.getSelectionModel().getSelectedItem().getValue()));
-			}else {
-				MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/open/file/from/file/vision/on/single/click", fileView.getSelectionModel().getSelectedItem().getValue()));
+			TreeItem<File> selectedItem = fileView.getSelectionModel().getSelectedItem();
+			if (selectedItem !=null){
+				if (e.getClickCount()==2) {
+					MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/open/file/from/file/vision", selectedItem.getValue()));
+				}else {
+					MinionPlatform.getInstance(IEventBroker.class).post(new EventContext<>("/open/file/from/file/vision/on/single/click", selectedItem.getValue()));
+				}
 			}
 		});
 		

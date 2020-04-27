@@ -90,8 +90,11 @@ public abstract class BaseMinionRecentlyOpenVision extends EmfViewPart{
 	
 	protected void onListViewMouseClicked(MouseEvent e) {
 		if (e.getClickCount()==2) {
-			String selection = listView.getSelectionModel().getSelectedItem().getPath();
-			eventBroker.post(new EventContext<>("/open/"+getFileType()+"/file", selection));
+			RecentlyOpenFile selectedItem = listView.getSelectionModel().getSelectedItem();
+			if (selectedItem!=null) {
+				String selection = selectedItem.getPath();
+				eventBroker.post(new EventContext<>("/open/"+getFileType()+"/file", selection));
+			}
 		}
 	}
 	

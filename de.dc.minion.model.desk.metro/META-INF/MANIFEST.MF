@@ -9,5 +9,9 @@ Require-Bundle: de.dc.minion.model.desk;bundle-version="1.0.0",
  de.dc.minion.model.common;bundle-version="1.0.0",
  com.google.inject;bundle-version="3.0.0",
  de.dc.minion.model,
- de.dc.minion.model.desk.demo;bundle-version="1.0.0"
+ de.dc.minion.model.desk.demo;bundle-version="1.0.0",
+ org.apache.commons.io;bundle-version="2.6.0",
+ javax.inject;bundle-version="1.0.0",
+ de.dc.minion.model.libs
 Bundle-ClassPath: .
+Import-Package: com.google.common.eventbus
