@@ -186,7 +186,7 @@ public class MinionRibbonControl extends BaseMinionRibbonControl{
 							currentLandscape.getEditorArea().getTabs().add(editorTab);
 							currentLandscape.getEditorArea().getSelectionModel().select(editorTab);
 						} catch (InstantiationException | IllegalAccessException e1) {
-							e1.printStackTrace();
+							LOG.log(Level.SEVERE, "Failed to open editor "+filename);
 						}
 					});
 					if (!editorPart.isPresent()) {
@@ -213,7 +213,7 @@ public class MinionRibbonControl extends BaseMinionRibbonControl{
 					currentLandscape.getEditorArea().getTabs().add(editorTab);
 					currentLandscape.getEditorArea().getSelectionModel().select(editorTab);
 				} catch (IOException e1) {
-					e1.printStackTrace();
+					LOG.log(Level.SEVERE, "Failed to open file "+filename);
 				}
 			}
 		}
@@ -233,7 +233,7 @@ public class MinionRibbonControl extends BaseMinionRibbonControl{
 		if (openLandscape != null) {
 			this.currentLandscape = openLandscape;
 			controlManager.registrate(MinionDeskFX.EDITOR_AREA_ID, currentLandscape.getEditorArea());
-//			statusLinePerspectiveLabel.setText(landscape.getName());
+			labelLandscape.setText(landscape.getName());
 			((Parent) openLandscape).toFront();
 		}
 	}
