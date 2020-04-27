@@ -1,5 +1,6 @@
 package de.dc.minion.model.desk.metro.component;
 
+import de.dc.minion.fx.model.Command;
 import de.dc.minion.fx.model.Landscape;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
 public abstract class BaseMinionRibbonControl extends BorderPane{
+
+	@FXML
+	protected ListView<Command> listViewCommands;
+	
+	@FXML
+	protected TextField textSearchCommand;
 
 	@FXML
 	protected HBox hboxRegisteredCommands;

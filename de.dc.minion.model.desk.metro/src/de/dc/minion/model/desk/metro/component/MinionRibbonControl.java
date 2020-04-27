@@ -8,11 +8,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -27,7 +25,6 @@ import de.dc.minion.fx.model.Minion;
 import de.dc.minion.fx.model.Toady;
 import de.dc.minion.fx.model.ToadyStatus;
 import de.dc.minion.model.common.IControlManager;
-import de.dc.minion.model.common.command.ICommandHandler;
 import de.dc.minion.model.common.command.ICommandService;
 import de.dc.minion.model.common.control.IEmfEditorPart;
 import de.dc.minion.model.common.event.EventContext;
@@ -39,6 +36,7 @@ import de.dc.minion.model.desk.control.ILandscapeFX;
 import de.dc.minion.model.desk.control.MinionConstants;
 import de.dc.minion.model.desk.control.MinionDeskFX;
 import de.dc.minion.model.desk.metro.MinionRibbonBuilder;
+import de.dc.minion.model.desk.metro.component.cell.CommandListCell;
 import de.dc.minion.model.desk.metro.component.cell.LandscapeListCell;
 import de.dc.minion.model.desk.module.MinionPlatform;
 import javafx.application.Platform;
@@ -52,13 +50,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class MinionRibbonControl extends BaseMinionRibbonControl {
@@ -71,7 +69,10 @@ public class MinionRibbonControl extends BaseMinionRibbonControl {
 	protected Map<Landscape, ILandscapeFX> perspectiveManager = new HashMap<>();
 
 	protected ObservableList<Landscape> landscapes = FXCollections.observableArrayList();
-	protected FilteredList<Landscape> filteredLandscapes = new FilteredList<Landscape>(landscapes);
+	protected FilteredList<Landscape> filteredLandscapes = new FilteredList<>(landscapes);
+
+	protected ObservableList<Command> commands = FXCollections.observableArrayList();
+	protected FilteredList<Command> filteredCommands = new FilteredList<>(commands);
 
 	@Inject
 	protected MinionFile minionFile;
@@ -106,6 +107,22 @@ public class MinionRibbonControl extends BaseMinionRibbonControl {
 		listViewLandscapes.setItems(filteredLandscapes);
 		listViewLandscapes.setCellFactory(param -> new LandscapeListCell());
 		textSearchlandscapes.textProperty().addListener(this::onTextSearchLandscapes);
+		
+		listViewCommands.setItems(filteredCommands);
+		listViewCommands.setCellFactory(param -> new CommandListCell());
+		listViewCommands.setOnMouseClicked(this::onMouseClicked);
+		textSearchCommand.textProperty().addListener(this::onTextSearchCommands);
+	}
+
+	private void onTextSearchCommands(ObservableValue<? extends String> observable, String oldValue,
+			String newValue) {
+		if (newValue != null) {
+			filteredCommands.setPredicate(p -> {
+				boolean isEmpty = p.getName().isEmpty() || p.getName() == null;
+				boolean containsName = p.getName().toLowerCase().contains(newValue.toLowerCase());
+				return isEmpty || containsName;
+			});
+		}
 	}
 
 	private void onTextSearchLandscapes(ObservableValue<? extends String> observable, String oldValue,
@@ -174,6 +191,7 @@ public class MinionRibbonControl extends BaseMinionRibbonControl {
 			imageView.setFitWidth(32);
 			buttonCommand.setGraphic(imageView);
 			hboxRegisteredCommands.getChildren().add(buttonCommand);
+			commands.add(command);
 		});
 	}
 
@@ -193,6 +211,11 @@ public class MinionRibbonControl extends BaseMinionRibbonControl {
 			if (source == listViewLandscapes) {
 				Landscape selection = listViewLandscapes.getSelectionModel().getSelectedItem();
 				switchPerspective(selection);
+			}else if (source == listViewCommands) {
+				Command selection = listViewCommands.getSelectionModel().getSelectedItem();
+				if (selection!=null) {
+					commandService.execute(selection.getId());
+				}
 			}
 		}
 	}
