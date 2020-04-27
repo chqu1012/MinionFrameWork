@@ -17,10 +17,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
-public class DirectoryVision extends FileVision{
+public class DirectoryListVision extends FileVision{
 
 	private ObservableList<File> files;
-	
 	
 	@Override
 	public Parent create() {

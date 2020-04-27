@@ -142,11 +142,9 @@ public class FileVision extends EmfViewPart {
 				for (File childFile : files) {
 					FileTreeItem childItem = new FileTreeItem(childFile);
 					buildChildren(childItem);					
-					System.out.println(isShowOnlyDirectory());
 					if (childFile.isFile() && !isShowOnlyDirectory()) {
 						root.addChild(childItem);
-					}
-					else if (childFile.isDirectory()) {
+					}else if (childFile.isDirectory()) {
 						root.addChild(childItem);
 					}
 				}
