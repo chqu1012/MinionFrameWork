@@ -18,8 +18,8 @@ public class LandscapeListCell extends ListCell<Landscape>{
 			setGraphic(null);
 		}else {
 			ImageView imageView = new ImageView("/de/dc/minion/model/desk/metro/images/icons8-landschaft-64.png");
-			imageView.setFitWidth(48);
-			imageView.setFitHeight(48);
+			imageView.setFitWidth(40);
+			imageView.setFitHeight(40);
 			VBox vbox = new VBox(3);
 			VBox.setVgrow(imageView, Priority.ALWAYS);
 			vbox.setAlignment(Pos.BASELINE_CENTER);

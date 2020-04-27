@@ -43,6 +43,9 @@ public abstract class BaseMinionRibbonControl extends BorderPane{
     protected Tab tabHome;
 
     @FXML
+    protected Button buttonTouchManager;
+
+    @FXML
     protected Button buttonOpen;
 
     @FXML

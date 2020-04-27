@@ -180,6 +180,8 @@ public class MinionRibbonControl extends BaseMinionRibbonControl {
 			commandService.execute("save.as.file");
 		} else if (source == buttonSaveAs) {
 			commandService.execute("save.as.file");
+		} else if (source == buttonTouchManager) {
+			commandService.execute("open.emf.touch.manager");
 		}
 	}
 
