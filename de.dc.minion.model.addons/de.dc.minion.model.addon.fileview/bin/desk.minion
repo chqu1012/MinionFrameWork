@@ -2,7 +2,7 @@
 <model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
   <toadies id="file.viewer" name="File Browser" description="Toady to view files with a lot of functions.">
     <touchPoints xsi:type="model:LandscapeTouch">
-      <landscapes id="landscape.fileview" name="File Landscape" uri="" left="//@toadies.0/@touchPoints.3/@visions.1" right="//@toadies.0/@touchPoints.3/@visions.0 //@toadies.0/@touchPoints.3/@visions.2" leftDividerPosition="0.2" rightDividerPosition="0.8" showEditorArea="false"/>
+      <landscapes id="landscape.fileview" name="File Landscape" uri="" left="//@toadies.0/@touchPoints.3/@visions.1" right="//@toadies.0/@touchPoints.3/@visions.0 //@toadies.0/@touchPoints.3/@visions.2 //@toadies.0/@touchPoints.3/@visions.3" leftDividerPosition="0.2" rightDividerPosition="0.8" showEditorArea="false"/>
     </touchPoints>
     <touchPoints xsi:type="model:CommandTouch">
       <commands id="command.open.fileview.landscape" name="FileView" handler="de.dc.minion.model.addon.fileview.handler.OpenFileViewHandler"/>
@@ -14,6 +14,7 @@
       <visions id="vision.file" name="FileVision" uri="de.dc.minion.model.addon.fileview.touch.FileVision"/>
       <visions id="vision.recent.file" name="Recent Files" uri="de.dc.minion.model.addon.fileview.touch.RecentFileVision"/>
       <visions id="vision.file.preview" name="FilePreviewVision" uri="de.dc.minion.model.addon.fileview.touch.FilePreviewVision"/>
+      <visions id="vision.directory" name="DirectoryVision" uri="de.dc.minion.model.addon.fileview.touch.DirectoryVision"/>
     </touchPoints>
   </toadies>
 </model:Minion>

@@ -35,10 +35,12 @@ public class FileVision extends EmfViewPart {
 	IEventBroker eventBroker;
 	protected TreeView<File> fileView;
 	protected TextField textSearch;
-	private TextField textPath;
-
+	protected TextField textPath;
+	private boolean showOnlyDirectory;
+	
 	@Override
 	public Parent create() {
+		showOnlyDirectory = false;
 		return createFileView();
 	}
 
@@ -96,6 +98,14 @@ public class FileVision extends EmfViewPart {
 		return vbox;
 	}
 
+	public void setShowOnlyDirectory(boolean showOnlyDirectory) {
+		this.showOnlyDirectory = showOnlyDirectory;
+	}
+	
+	public boolean isShowOnlyDirectory() {
+		return this.showOnlyDirectory;
+	}
+	
 	protected void setRoot(String currentPath) {
 		FileTreeItem rootItem = new FileTreeItem(new File(currentPath));
 		getTreeModel(rootItem);
@@ -132,7 +142,13 @@ public class FileVision extends EmfViewPart {
 				for (File childFile : files) {
 					FileTreeItem childItem = new FileTreeItem(childFile);
 					buildChildren(childItem);					
-					root.addChild(childItem);
+					System.out.println(isShowOnlyDirectory());
+					if (childFile.isFile() && !isShowOnlyDirectory()) {
+						root.addChild(childItem);
+					}
+					else if (childFile.isDirectory()) {
+						root.addChild(childItem);
+					}
 				}
 
 			}

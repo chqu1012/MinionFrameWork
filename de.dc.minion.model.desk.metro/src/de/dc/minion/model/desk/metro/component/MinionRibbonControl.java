@@ -173,9 +173,13 @@ public class MinionRibbonControl extends BaseMinionRibbonControl {
 	protected void onButtonAction(ActionEvent event) {
 		Object source = event.getSource();
 		if (source == buttonOpen) {
-			stackPaneMain.getChildren().add(new Button("Open"));
+			commandService.execute("open.file");
 		} else if (source == buttonNew) {
-			stackPaneMain.getChildren().add(new Button("New"));
+			openLandscapeById("emf.file.wizard");
+		} else if (source == buttonSave) {
+			commandService.execute("save.as.file");
+		} else if (source == buttonSaveAs) {
+			commandService.execute("save.as.file");
 		}
 	}
 
@@ -308,16 +312,20 @@ public class MinionRibbonControl extends BaseMinionRibbonControl {
 	@Subscribe
 	public void openLandscapeBy(EventContext<String> context) {
 		if (context.getEventId().equals(MinionConstants.EVENT_OPEN_LANDSCAPE_ID)) {
-			perspectiveManager.entrySet().stream().filter(p -> {
-				String id = p.getKey().getId();
-				if (id == null) {
-					return false;
-				}
-				return id.equals(context.getInput());
-			}).findAny().ifPresent(l -> {
-				l.getValue().init();
-				((Parent) l.getValue()).toFront();
-			});
+			openLandscapeById(context.getInput());
 		}
+	}
+
+	private void openLandscapeById(String landscapeId) {
+		perspectiveManager.entrySet().stream().filter(p -> {
+			String id = p.getKey().getId();
+			if (id == null) {
+				return false;
+			}
+			return id.equals(landscapeId);
+		}).findAny().ifPresent(l -> {
+			l.getValue().init();
+			((Parent) l.getValue()).toFront();
+		});
 	}
 }
