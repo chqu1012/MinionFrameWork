@@ -4,7 +4,7 @@
     <touchPoints xsi:type="model:LandscapeTouch">
       <landscapes id="landscape.fileview" name="File Landscape" uri="" left="//@toadies.0/@touchPoints.3/@visions.1" 
       right="//@toadies.0/@touchPoints.3/@visions.4 //@toadies.0/@touchPoints.3/@visions.0 //@toadies.0/@touchPoints.3/@visions.2 //@toadies.0/@touchPoints.3/@visions.3 
-      //@toadies.0/@touchPoints.3/@visions.5 //@toadies.0/@touchPoints.3/@visions.6" 
+      //@toadies.0/@touchPoints.3/@visions.5 //@toadies.0/@touchPoints.3/@visions.6 //@toadies.0/@touchPoints.3/@visions.7" 
       leftDividerPosition="0.2" rightDividerPosition="0.8" showEditorArea="false"/>
     </touchPoints>
     <touchPoints xsi:type="model:CommandTouch">
@@ -21,6 +21,7 @@
       <visions id="vision.directory.list" name="DirectoryListVision" uri="de.dc.minion.model.addon.fileview.touch.DirectoryListVision"/>
       <visions id="vision.EfxDirectoryVision" name="EfxDirectoryVision" uri="de.dc.minion.model.addon.fileview.touch.EfxDirectoryVision"/>
       <visions id="vision.EfxDirectoryTreeVision" name="EfxDirectoryTreeVision" uri="de.dc.minion.model.addon.fileview.touch.EfxDirectoryTreeVision"/>
+      <visions id="vision.EfxDirectoryTreeResourceVision" name="EfxDirectoryTreeResourceVision" uri="de.dc.minion.model.addon.fileview.touch.EfxDirectoryTreeResourceVision"/>
     </touchPoints>
   </toadies>
 </model:Minion>
