@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <model:Minion xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://www.frateranatis.org/minon">
-  <toadies name="Chart" description="Chart Toady to render data in real time." status="Stopped">
+  <toadies name="Chart" description="Chart Toady to render data in real time.">
     <touchPoints xsi:type="model:VisionTouch">
       <visions xsi:type="model:CommandHistoryTouch" id="de.dc.minion.model.desk.control.MinionRecentlyOpenVision" name="Command History" uri="de.dc.minion.model.desk.control.MinionRecentlyOpenVision"/>
       <visions id="vision.chart.diagram" name="ChartDiagram" uri="de.dc.minion.model.addon.chart.ui.ChartDiagram"/>
